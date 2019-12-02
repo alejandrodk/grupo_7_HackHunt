@@ -10,8 +10,17 @@ Con el equipo de HackHunt decidimos crear un único sitio que especializado en b
   - Posibilidad de contacto directo a empresas una vez realizada una publicación con posibles pretendientes al puesto basado en las caracteristicas solicitadas.
   
   - Notificaciones a los usuarios por publicación teniendo en cuenta las aptitudes que el mismo haya cargado en su perfil.
-  
+
 -----------------------------------------------------------------------------------
+### Sitios de referencia 
+
+[ZonaJobs](https://www.zonajobs.com.ar/)
+
+[Bumeran](https://www.bumeran.com.ar/)
+
+[Computrabajo](https://www.computrabajo.com.ar/)
+
+
 ### Te interesa colaborar en el proyecto o encontraste un Bug?
 
 No dejes de ayudarnos creando un nuevo [issue!](https://github.com/alejandrodk/grupo_7_HackHunt/issues) describiendo con el mayor detalle que puedas tu idea o inconveniente 
