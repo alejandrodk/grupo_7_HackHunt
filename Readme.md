@@ -6,7 +6,7 @@
 
 Con el equipo de HackHunt decidimos crear un único sitio que especializado en busqueda de trabajo para desarrolladores manteniendo las practicidades de un cv dinámico online pero agregando caracteristicas únicas que otros sitios con propositos mas genericos no pueden.  
 
-### Ofrecemos!
+### Novedades!
   - Posibilidad de contacto directo a empresas una vez realizada una publicación con posibles pretendientes al puesto basado en las caracteristicas solicitadas.
   
   - Notificaciones a los usuarios por publicación teniendo en cuenta las aptitudes que el mismo haya cargado en su perfil.
