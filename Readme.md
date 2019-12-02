@@ -4,7 +4,7 @@
 
 ## ¿Qué nos motiva? 
 
-Con el equipo de HackHunt decidimos crear un único sitio que especializado en busqueda de trabajo para desarrolladores manteniendo las practicidades de un cv dinámico online pero agregando caracteristicas únicas que otros sitios con propositos mas genericos no pueden.  
+Con el equipo de HackHunt decidimos crear un único sitio especializado en busqueda de trabajo para desarrolladores manteniendo las practicidades de un cv dinámico online pero agregando caracteristicas únicas que otros sitios con propositos mas genericos no pueden.  
 
 ### Novedades!
   - Posibilidad de contacto directo a empresas una vez realizada una publicación con posibles pretendientes al puesto basado en las caracteristicas solicitadas.
