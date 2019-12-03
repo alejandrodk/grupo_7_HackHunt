@@ -1,0 +1,9 @@
+html,
+body {
+	min-height: 100vh;
+	margin: 0;
+}
+a {
+	display: block;
+	font-size: 18px;
+}
