@@ -7,10 +7,10 @@ const mainController = require("../controllers/mainController");
 
 /* GET - home page. */
 router.get("/", mainController.home);
-router.get("/detalleAnuncio", mainController.detalleAnuncio);
-router.get("/misPostulaciones", mainController.misPostulaciones);
-router.get("/registroEmpresa", mainController.registroEmpresa);
-router.get("/registroUsuario", mainController.registroUsuario);
-router.get("/crearPublicacion", mainController.crearPublicacion);
+router.get("/detalle", mainController.detalleAnuncio);
+router.get("/login", mainController.loginUsuario);
+router.get("/registro", mainController.registroUsuario);
+router.get("/empresa/login", mainController.loginEmpresa);
+router.get("/empresa/registro", mainController.registroEmpresa);
 
 module.exports = router;

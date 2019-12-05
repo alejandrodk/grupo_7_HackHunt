@@ -23,8 +23,11 @@ app.set('view engine', 'ejs');
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
+const clienteRouter = require('./routes/cliente');
+const empresaRouter = require('./routes/empresa');
 app.use('/', mainRouter);
-
+app.use('/perfil', clienteRouter);
+app.use('/empresa', clienteRouter);
 
 
 // ************ DON'T TOUCH FROM HERE ************
