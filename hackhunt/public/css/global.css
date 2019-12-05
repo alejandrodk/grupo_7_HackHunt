@@ -1,0 +1,28 @@
+*{
+	box-sizing: border-box;
+}
+html,
+body {
+	min-height: 100vh;
+	margin: 0;
+}
+a {
+	display: block;
+	font-size: 18px;
+}
+
+.wrap {
+    display: flex!important;
+    flex-wrap: wrap!important;
+}
+:root {
+    --main-bg-color: #2a2d35;
+    --main-bg-color-2: #333842;
+    --main-bg-color-3: #494e56;
+    --main-logo: #f9c900;
+    --main-texto-blanco: #e2e2e2;
+  }
+
+.contenedor-total {
+    width: 100%;
+}

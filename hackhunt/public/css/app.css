@@ -1,9 +1,204 @@
-html,
-body {
-	min-height: 100vh;
-	margin: 0;
+/*HEADER-----------------------------------*/
+body{
+	background-image: url(/hackhunt/public/images/bg/code.png);
 }
-a {
-	display: block;
-	font-size: 18px;
+.container-fluid.header,
+body{
+	background: var(--main-bg-color);
+}
+.container.header .row{
+	padding-top: 5px;
+}
+.container.header .info,
+.container.header .botones{
+	align-items: center;
+}
+.container.header .info a{
+	width: 25%;
+}
+.container.header .info a:hover{
+	text-decoration: none;
+}
+.container.header .info h1{
+	color: var(--main-logo);
+	font-size: 25px;
+	font-weight: 200;
+}
+#huntLogo{
+	font-weight: 500;
+}
+.container.header .info h2{
+	width: 75%;
+	font-size: 20px;
+	color: gray;
+	font-weight: 200;
+}
+
+.container.header .botones a{
+    width: 45%;
+    text-align: center;
+    border-radius: 2px;
+    margin: 0 2.5%;
+    text-decoration: none;
+    color: var(--main-bg-color);
+    font-weight: 200;
+}
+.container.header .botones .boton:nth-child(1){
+	background-color: white;
+}
+.container.header .botones .boton:nth-child(2){
+	background-color: white;
+}
+
+/*BUSCADOR-----------------------------------*/
+.container-fluid.buscador {
+    background: var(--main-bg-color-2);
+	height: 200px;
+	align-items: center;
+}
+.container-fluid.buscador .barra{
+    background-color: white;
+    padding: 3px;
+    border: solid 1px white;
+    border-radius: 5px;
+}
+.container-fluid.buscador .buscador label{
+	width: 100%;
+    font-size: 25px;
+    color: white;
+    font-weight: 200;
+	height: 35px;
+	border-radius: 10px;
+}
+.container-fluid.buscador .buscador input{
+	width: 70%;
+	border: none;
+}
+.container-fluid.buscador .buscador .barra p,
+.container-fluid.buscador .buscador button{
+    width: 5%;
+    text-align: center;
+    margin: auto;
+}
+.container-fluid.buscador .buscador select{
+	width: 20%;
+    border: none;
+}
+/*CUERPO --------------------------------*/
+.container-fluid.cuerpo .filtros > p{
+	width: 15%;
+	color: var(--main-texto-blanco);
+	margin: auto;
+}
+.container-fluid.cuerpo .filtros{
+	height: 100px;
+    align-items: center;
+}
+.filtrosAct{
+	width: 85%;
+    justify-content: left;
+}
+.filtrosAct .item {
+	color: var(--main-bg-color);
+    background: white;
+    position: relative;
+    margin: 4px;
+    padding: 5px;
+    height: 35px;
+	border-radius: 8px;
+}
+.filtrosAct .item a {
+    position: absolute;
+    top: -13px;
+    right: 0;
+    background: white;
+    width: 15px;
+    height: 15px;
+    font-size: 11px;
+    border-radius: 50%;
+    text-align: center;
+}
+/*MENU LATERAL*/
+.container-fluid.cuerpo .menu dl{
+	background: var(--main-texto-blanco);
+    border-radius: 5px;
+}
+.container-fluid.cuerpo .menu dt{
+	background: var(--main-bg-color-2);
+	color: var(--main-texto-blanco);
+	padding: 5px;
+	font-weight: 200;
+}
+.container-fluid.cuerpo .menu dd{
+	padding-left: 5px;
+}
+
+/*RESULTADOS - BARRA */
+.container-fluid.cuerpo .resultados .barra{
+	width: 100%;
+    background: var(--main-texto-blanco);
+    border-radius: 7px;
+}
+.container-fluid.cuerpo .resultados .barra dl{
+	display: flex;
+    padding: 6px;
+    align-items: center;
+}
+.container-fluid.cuerpo .resultados .barra dt{
+	font-weight: 400;
+    margin-right: 12px;
+}
+.container-fluid.cuerpo .resultados .barra dd{
+    margin: 1%;
+}
+/*RESULTADOS - ANUNCIOS*/
+.container-fluid.cuerpo .resultados .anuncios .item{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    padding: 10px;
+	flex-wrap: wrap;
+	margin: 15px 0;
+    border-radius: 10px;
+    background: var(--main-texto-blanco);
+}
+.container-fluid.cuerpo .resultados .anuncios .item .img{
+	width: 15%;
+    height: 100px;
+    background: gray;
+}
+.container-fluid.cuerpo .resultados .anuncios .item .info{
+	width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5px;	
+}
+.container-fluid.cuerpo .resultados .anuncios .item .info h2{
+	width: 100%;
+    font-size: 19px;
+    margin: 0;
+}
+.container-fluid.cuerpo .resultados .anuncios .item .info ul{
+	list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+.container-fluid.cuerpo .resultados .anuncios .item .info li{
+	margin-right: 20px;
+}
+.container-fluid.cuerpo .resultados .anuncios .item .info .desc{
+    height: 41px;
+    color: gray;
+    font-size: 13px;
+    margin: 0;
+    overflow: hidden;
+}
+.container-fluid.cuerpo .resultados .anuncios .item .info .sal{
+	width: 50%;
+    text-align: left;
+}
+.container-fluid.cuerpo .resultados .anuncios .item .info .skills{
+	width: 50%;
+    text-align: right;
 }
