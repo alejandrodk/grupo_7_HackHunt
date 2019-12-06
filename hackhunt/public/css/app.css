@@ -85,6 +85,12 @@ body{
     border: none;
 }
 /*CUERPO --------------------------------*/
+.container-fluid.cuerpo {
+    background: url(/images/bg/code.png);
+    background-repeat: repeat;
+    background-position: bottom;
+    background-size: 1500px;
+}
 .container-fluid.cuerpo .filtros > p{
 	width: 15%;
 	color: var(--main-texto-blanco);
@@ -93,6 +99,7 @@ body{
 .container-fluid.cuerpo .filtros{
 	height: 100px;
     align-items: center;
+    background: var(--main-bg-color);
 }
 .filtrosAct{
 	width: 85%;
@@ -122,6 +129,9 @@ body{
 .container-fluid.cuerpo .menu dl{
 	background: var(--main-texto-blanco);
     border-radius: 5px;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container-fluid.cuerpo .menu dt{
 	background: var(--main-bg-color-2);
@@ -138,6 +148,9 @@ body{
 	width: 100%;
     background: var(--main-texto-blanco);
     border-radius: 7px;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container-fluid.cuerpo .resultados .barra dl{
 	display: flex;
@@ -152,6 +165,10 @@ body{
     margin: 1%;
 }
 /*RESULTADOS - ANUNCIOS*/
+.container-fluid.cuerpo .resultados .anuncios a{
+    text-decoration: none;
+    color: var(--main-bg-color);
+}
 .container-fluid.cuerpo .resultados .anuncios .item{
     width: 100%;
     height: 150px;
@@ -161,6 +178,9 @@ body{
 	margin: 15px 0;
     border-radius: 10px;
     background: var(--main-texto-blanco);
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container-fluid.cuerpo .resultados .anuncios .item .img{
 	width: 15%;
