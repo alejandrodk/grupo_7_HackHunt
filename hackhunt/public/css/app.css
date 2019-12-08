@@ -183,9 +183,14 @@ body{
     box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container-fluid.cuerpo .resultados .anuncios .item .img{
+    display: flex;
+    align-items: center;
 	width: 15%;
     height: 100px;
-    background: gray;
+    background: white;
+}
+.container-fluid.cuerpo .resultados .anuncios .item img{
+    width: 100%;
 }
 .container-fluid.cuerpo .resultados .anuncios .item .info{
 	width: 85%;
