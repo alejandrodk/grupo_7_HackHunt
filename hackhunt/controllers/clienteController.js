@@ -1,36 +1,24 @@
-const fs = require("fs");
-const path = require("path");
-
-// ************ Function to Read an HTML File ************
-function readHTML(fileName) {
-    let htmlFile = fs.readFileSync(path.join(__dirname, `/../views/cliente/${fileName}.html`), "utf-8");
-    return htmlFile;
-}
-
 const controller = {
     perfil: (req, res) => {
-        let html = readHTML("perfil");
-        res.send(html);
+        res.render('cliente/perfil', { title: 'Perfil' });
     },
     postulaciones: (req, res) => {
-        let html = readHTML("postulaciones");
-        res.send(html);
+        res.render('cliente/postulaciones', { title: 'Postulaciones' });
     },
     favoritos: (req, res) => {
-        let html = readHTML("favoritos");
-        res.send(html);
+        res.render('cliente/favoritos', { title: 'Favoritos' });
+    },
+    alertas : (req, res) => {
+        res.render('cliente/alertas' , { title: 'Alertas '});
     },
     info: (req, res) => {
-        let html = readHTML("info");
-        res.send(html);
+        res.render('cliente/info', { title: 'CV' });
     },
     mensajes: (req, res) => {
-        let html = readHTML("mensajes");
-        res.send(html);
+        res.render('cliente/mensajes', { title: 'Mensajes' });
     },
      configuracion: (req, res) => {
-        let html = readHTML("config");
-        res.send(html);
+        res.render('cliente/config', { title: 'Config' });
     },
 
 };

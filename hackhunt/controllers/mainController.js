@@ -1,36 +1,21 @@
-const fs = require("fs");
-const path = require("path");
-
-// ************ Function to Read an HTML File ************
-function readHTML(fileName) {
-	let htmlFile = fs.readFileSync(path.join(__dirname, `/../views/main/${fileName}.html`), "utf-8");
-	return htmlFile;
-}
-
 const controller = {
 	home: (req, res) => {
-		let html = readHTML("index");
-		res.send(html);
+		res.render('main/index', { title: 'Express' });
 	},
 	detalleAnuncio: (req, res) => {
-		let html = readHTML("detalleAnuncio");
-		res.send(html);
+		res.render('main/detalleAnuncio', { title: 'Express' });
 	},
 	loginUsuario: (req, res) => {
-		let html = readHTML("loginUsuario");
-		res.send(html);
+		res.render('main/loginUsuario', { title: 'Express' });
 	},
 	registroUsuario: (req, res) => {
-		let html = readHTML("registroUsuario");
-		res.send(html);
+		res.render('main/registroUsuario', { title: 'Express' });
 	},
 	loginEmpresa: (req, res) => {
-		let html = readHTML("loginEmpresa");
-		res.send(html);
+		res.render('main/loginEmpresa', { title: 'Express' });
 	},
 	registroEmpresa: (req, res) => {
-		let html = readHTML("registroEmpresa");
-		res.send(html);
+		res.render('main/registroEmpresa', { title: 'Express' });
 	},
 };
 

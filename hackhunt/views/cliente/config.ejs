@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" href="/css/headerLog.css" />
+    <link rel="stylesheet" href="/css/cliente/config.css" />
+</head>
+<body>
+    <header>
+        <%- include('../partials/headerLog'); -%>
+    </header>  
+    <div class="container config">
+        <div class="row">
+            <div class="col-12 barra-menu wrap">
+                <a href="/perfil/informacion">Editar mi CV</a>
+                <a href="/perfil/postulaciones">Mis postulaciones</a>
+                <a href="/perfil/favoritos">Favoritos</a>
+                <a href="/perfil/alertas">Alertas</a>
+                <a href="/perfil/configuracion" id="select">Configuración</a>
+            </div>
+            <div class="col-12 barra">
+                <h2>Mi cuenta</h2>
+            </div>
+            <div class="col-3 panel">
+                <div class="panel">
+                    <ul>
+                        <li><a href="#perfil">Perfil</a></li>
+                        <li><a href="#notificaciones">Notificaciones</a></li>
+                        <li><a href="#alertas">Alertas</a></li>
+                        <li><a href="#privacidad">Privacidad</a></li>
+                        <li><a href="/perfil/informacion">Mi CV</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6 cuerpo">
+                <div class="item titulo">
+                    <h3>Perfil</h3>
+                    <p id="perfil"></p>
+                </div>
+                <div class="item perfil">
+                    <h4>Cambiar Email</h4>
+                    <p>Ingresá la nueva dirección email para tu cuenta</p>
+                    <form action="" method="post">
+                        <input type="email" name="" id="">
+                        <button type="submit">Cambiar Email</button>
+                    </form>
+                </div>
+                <div class="item clave">
+                    <h4>Cambiar contraseña</h4>
+                    <p>Ingresá tu contraseña actual seguida de tu nueva contraseña</p>
+                    <form action="" method="post">
+                        <input type="password" name="" id="" placeholder="Contraseña anterior">
+                        <input type="password" name="" id="" placeholder="Nueva contraseña">
+                        <input type="password" name="" id="" placeholder="Repetir contraseña">
+                        <button type="submit">Cambiar contraseña</button>
+                    </form>
+                </div>
+                 <div class="item titulo">
+                    <h3>Notificaciones</h3>
+                    <p id="notificaciones"></p>
+                </div>
+                <div class="item notificaciones">
+                    <h4>Modificar notificaciones</h4>
+                    <form action="" method="post">
+                        <div class="item">
+                            <input type="checkbox" name="" id="">
+                            <label for="">Recibir novedades y promociones</label>
+                            <p>Consejos, promociones y nuevas funciones</p>
+                        </div>
+                        <div class="item">
+                            <input type="checkbox" name="" id="">
+                            <label for="">Envío de avisos recomendados</label>
+                            <p>Envío semanal de ofertas laborales que se ajustan a mis búsquedas / CV.</p>
+                        </div>
+                        <div class="item">
+                            <input type="checkbox" name="" id="">
+                            <label for="">Resumen de Actividad</label>
+                            <p>Envío mensual de un resumen sobre la actividad entre las empresas y mi CV.</p>
+                        </div>
+                        <div class="item">
+                            <input type="checkbox" name="" id="">
+                            <label for="">Avisos destacados</label>
+                            <p>Envío de avisos en los que tengo mayores posibilidades.</p>
+                        </div>
+                        <button type="submit">Guardar preferencias</button>
+                    </form>
+                </div>
+                <div class="item titulo">
+                    <h3>Alertas</h3>
+                    <p id="alertas"></p>
+                </div>
+                <div class="item alertas">
+                    <h4>Modificar alertas</h4>
+                </div>
+                <div class="item titulo">
+                    <h3>Privacidad</h3>
+                    <p id="privacidad"></p>
+                </div>
+                <div class="item privacidad">
+                    <h4>Visualización de perfil</h4>
+                    <form action="" method="post">
+                        <input type="radio" name="visperfil" id="">
+                        <label for="">Público</label>
+                        <p>Además de los avisos en los que me postulé, el CV es visible en otras búsquedas que realizan las empresas.</p>
+                        <input type="radio" name="visperfil" id="">
+                        <label for="">Privado</label>
+                        <p>El CV aparece visible únicamente en los avisos que me postulé.</p>
+                        <button type="submit">Guardar preferencias</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-3 info">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -9,7 +9,8 @@ const clienteController = require("../controllers/clienteController");
 router.get("/", clienteController.perfil);
 router.get("/postulaciones", clienteController.postulaciones);
 router.get("/favoritos", clienteController.favoritos);
-router.get("/info", clienteController.info);
+router.get("/alertas", clienteController.alertas);
+router.get("/informacion", clienteController.info);
 router.get("/configuracion", clienteController.configuracion);
 router.get("/mensajes", clienteController.mensajes);
 

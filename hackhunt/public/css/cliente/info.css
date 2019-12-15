@@ -1,0 +1,154 @@
+body{
+    background: var(--main-bg-color);
+}
+/*BARRA MENU-----------------------------------*/
+.barra-menu{
+	margin: 3% 0;
+}
+.barra-menu a {
+    background: var(--main-texto-blanco);
+    margin-right: 1%;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--main-bg-color);
+    font-weight: 300;
+}
+#select{
+    color: var(--main-texto-blanco);
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+    border: solid 2px var(--main-texto-blanco);
+}
+/* ÍNDICE */
+.container.cv .panel .indice{
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--main-texto-blanco);
+    position: fixed;
+    width: 20%;
+    padding: 1%;
+    border-radius: 10px;
+}
+.container.cv .panel .indice a{
+    width: 100%;
+    text-decoration: none;
+    margin: 3% 0;
+    color: var(--main-bg-color-2);
+    border-bottom: solid 1px var(--main-bg-color-2);
+}
+/* DATOS PERSONALES -----------------------*/
+.container.cv .datos.personales {
+	align-items: center;
+	justify-content: center;
+}
+.container.cv h3{
+    width: 100%;
+    background: var(--main-bg-color);
+    color: var(--main-texto-blanco);
+    border-radius: 5px;
+    font-weight: 100;
+    padding: 6px;
+    margin-bottom: 5%;
+    font-size: 25px;
+}
+.container.cv form{
+	align-items: center;
+	justify-content: center;
+}
+.container.cv .formulario{
+	width: 100%;
+}
+.container.cv .datos label {
+    width: 40%;
+    padding-right: 4%;
+    color: var(--main-texto-blanco);
+    margin-bottom: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.container.cv .datos input,
+.container.cv .datos select {
+    width: 60%;
+    margin: 0;
+    padding: 5px;
+    height: 30px;
+    border: solid 1px var(--main-texto-blanco);
+	border-radius: 5px;
+	margin-bottom: 2%;
+}
+.container.cv .datos input:focus{
+	color: var(--main-texto-blanco);
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+}
+.container.cv .datos.personales .formulario .genero{
+	display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+.container.cv .datos.personales .formulario .genero label:first-child{
+	width: 40%;
+}
+.container.cv .datos.personales .formulario .genero label{
+	width: 20%;
+}
+.container.cv .datos.personales .formulario .genero input{
+	width: 10%;
+}
+
+.container.cv button{
+    display: block;
+    width: 170px;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    margin: 2%;
+    background: #a8e004;
+    color: var(--main-bg-color);
+}
+/* DATOS PROFESIONALES -----------------------*/
+
+.container.cv .datos.profesionales {
+	align-items: center;
+	justify-content: center;
+}
+.container.cv .datos textarea{
+	width: 60%;
+    border: solid 1px var(--main-texto-blanco);
+    border-radius: 5px;
+	height: 150px;
+	margin-bottom: 2%;
+}
+.container.cv .datos.profesionales p{
+	width: 100%;
+    text-align: right;
+    margin-top: 1%;
+    color: var(--main-texto-blanco);
+}
+/**/
+#puestoDeseado,
+#areaDeseada,
+#ubicacionesDeseadas{
+    width: 50%;
+}
+
+#adItem{
+    width: 5%;
+    margin-top: auto;
+}
+.puestos,
+.areas,
+.ubicaciones {
+    width: 100%;
+    border-radius: 10px;
+    height: 150px;
+    background: white;
+    margin: 1% 0;
+    padding: 1%;
+}
+.puestos p,
+.areas p,
+.ubicaciones p{
+    width: 100%;
+    text-align: center;
+    color: var(--main-bg-color-3);
+}

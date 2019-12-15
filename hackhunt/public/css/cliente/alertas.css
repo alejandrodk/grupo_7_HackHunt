@@ -1,0 +1,196 @@
+/*BARRA MENU-----------------------------------*/
+.barra-menu{
+	margin: 3% 0;
+}
+.barra-menu a {
+    background: var(--main-texto-blanco);
+    margin-right: 1%;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--main-bg-color);
+    font-weight: 300;
+}
+#select{
+    color: var(--main-texto-blanco);
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+    border: solid 2px var(--main-texto-blanco);
+}
+/**/
+.container.alertas .barra{
+    margin-bottom: 2%;
+    align-items: center;
+    justify-content: space-between;
+}
+.container.alertas .barra h2{
+    font-size: 25px;
+    color: var(--main-texto-blanco);
+    font-weight: 200;
+    width: 23%;
+    background: var(--main-bg-color);
+    border-radius: 5px;
+    padding: 7px;
+}
+
+/* BARRA FILTRO */
+.barra-orden{
+    width: 50%;
+    height: 50px;
+    background: var(--main-texto-blanco);
+    border-radius: 7px;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.barra-orden dl{
+	display: flex;
+    padding: 6px;
+    align-items: center;
+    justify-content: space-around;
+}
+.barra-orden dt{
+	font-weight: 400;
+    margin-right: 12px;
+}
+.barra-orden dd{
+    margin: 1%;
+}
+.barra-orden dd a{
+    font-size: 16px;
+    display: inline;
+    text-decoration: none;
+    color: var(--main-bg-color);
+}
+/**/
+.container.alertas .barra a.boton{
+    width: 20%;
+    height: 50px;
+    margin: 0 2%;
+    text-decoration: none;
+    color: var(--main-bg-color-2);
+}
+.container.alertas .barra .config{
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: var(--main-texto-blanco);
+    border-radius: 7px;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.container.alertas .barra .config p{
+    margin: 0;
+}
+
+/* PANEL */
+.container.alertas .panel .seguidas{
+    width: 100%;
+    min-height: 40%;
+    background: var(--main-texto-blanco);
+    border-radius: 5px;
+    padding: 5%;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.container.alertas .panel .seguidas h3{
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--main-bg-color-2);
+    border-bottom: solid 1px var(--main-bg-color);
+    margin-bottom: 10%;
+    padding-bottom: 2%;
+    text-align: center;
+}
+.container.alertas .panel .seguidas .item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3% 0;
+}
+.container.alertas .panel .seguidas .item .avatar{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background: white;
+    padding: 5px;
+}
+.container.alertas .panel .seguidas .item .avatar img{
+    width: 100%;
+}
+.container.alertas .panel .seguidas .item h2{
+    width: 70%;
+    font-size: 17px;
+    color: var(--main-bg-color-2);
+    font-weight: 300;
+}
+/* ANUNCIOS*/
+.container.alertas .anuncios a{
+    text-decoration: none;
+    color: var(--main-bg-color);
+}
+.container.alertas .anuncios .item{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    padding: 10px;
+	flex-wrap: wrap;
+    margin: 15px 0;
+    margin-top: 0;
+    border-radius: 10px;
+    background: var(--main-texto-blanco);
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.container.alertas .anuncios .item .img{
+    display: flex;
+    align-items: center;
+	width: 15%;
+    height: 100px;
+    background: white;
+    overflow: hidden;
+    padding: 2%;
+}
+.container.alertas .anuncios .item img{
+    width: 100%;
+}
+.container.alertas .anuncios .item .info{
+	width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5px;	
+}
+.container.alertas .anuncios .item .info h2{
+	width: 100%;
+    font-size: 19px;
+    margin: 0;
+}
+.container.alertas .anuncios .item .info ul{
+	list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+.container.alertas .anuncios .item .info li{
+	margin-right: 20px;
+}
+.container.alertas .anuncios .item .info .desc{
+    height: 41px;
+    color: gray;
+    font-size: 13px;
+    margin: 0;
+    overflow: hidden;
+}
+.container.alertas .anuncios .item .info .sal{
+	width: 50%;
+    text-align: left;
+}
+.container.alertas .anuncios .item .info .skills{
+	width: 50%;
+    text-align: right;
+}

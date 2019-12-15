@@ -1,55 +1,3 @@
-/*HEADER-----------------------------------*/
-body{
-	background-image: url(/hackhunt/public/images/bg/code.png);
-}
-.container-fluid.header,
-body{
-	background: var(--main-bg-color);
-}
-.container.header .row{
-	padding-top: 5px;
-}
-.container.header .info,
-.container.header .botones{
-	align-items: center;
-}
-.container.header .info a{
-	width: 25%;
-}
-.container.header .info a:hover{
-	text-decoration: none;
-}
-.container.header .info h1{
-	color: var(--main-logo);
-	font-size: 25px;
-	font-weight: 200;
-}
-#huntLogo{
-	font-weight: 500;
-}
-.container.header .info h2{
-	width: 75%;
-	font-size: 20px;
-	color: gray;
-	font-weight: 200;
-}
-
-.container.header .botones a{
-    width: 45%;
-    text-align: center;
-    border-radius: 2px;
-    margin: 0 2.5%;
-    text-decoration: none;
-    color: var(--main-bg-color);
-    font-weight: 200;
-}
-.container.header .botones .boton:nth-child(1){
-	background-color: white;
-}
-.container.header .botones .boton:nth-child(2){
-	background-color: white;
-}
-
 /*BUSCADOR-----------------------------------*/
 .container-fluid.buscador {
     background: var(--main-bg-color-2);
@@ -142,7 +90,10 @@ body{
 .container-fluid.cuerpo .menu dd{
 	padding-left: 5px;
 }
-
+#cant {
+    color: gray;
+    font-size: 12px;
+}
 /*RESULTADOS - BARRA */
 .container-fluid.cuerpo .resultados .barra{
 	width: 100%;
@@ -188,6 +139,8 @@ body{
 	width: 15%;
     height: 100px;
     background: white;
+    overflow: hidden;
+    padding: 2%;
 }
 .container-fluid.cuerpo .resultados .anuncios .item img{
     width: 100%;

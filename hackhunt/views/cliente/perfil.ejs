@@ -1,49 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="keywords" content="Trabajo Programación Developers Fullstack Desarrolladores">
-    <meta name="description" content="La primera bolsa de trabajo para desarrolladores">
-    <title>HACKHUNT: Trabajos para desarrolladores</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/cliente/perfil.css" />
-    <link rel="stylesheet" href="/css/global.css">
-    <script src="https://kit.fontawesome.com/79b890f672.js"></script>
 </head>
 <!-- CÓDIGO -->
-<div class="container-fluid header">
-        <div class="container header">
-            <div class="row">
-                <div class="col-5 info wrap">
-                    <a href="">
-                        <h1>
-                            < HACK<spam id="huntLogo">HUNT</spam> >
-                        </h1>
-                    </a>
-                </div>
-                <div class="col-7 secciones wrap">
-                    <a href="./"><i class="fas fa-home"></i> INICIO</a>
-                    <a href=""><i class="fas fa-briefcase"></i> EMPLEOS</a>
-                    <a href=""><i class="fas fa-bell"></i> NOTIFICACIONES</a>
-                    <a href=""><i class="fas fa-comment"></i> MENSAJES</a>
-                    <a href="/perfil"><i class="fas fa-user-circle"></i> PERFIL</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<body>
+    <header>
+        <%- include('../partials/headerLog'); -%>
+    </header>    
     <div class="container-fluid cuerpo">
         <div class="container cuerpo">
             <div class="row">
-                <div class="col-12 barra wrap">
-                    <a href="">Editar mi CV</a>
-                    <a href="">Mis postulaciones</a>
-                    <a href="">Favoritos</a>
-                    <a href="">Alertas</a>
-                    <a href="">Configuración</a>
+                <div class="col-12 barra-menu wrap">
+                    <a href="perfil/informacion">Editar mi CV</a>
+                    <a href="perfil/postulaciones">Mis postulaciones</a>
+                    <a href="perfil/favoritos">Favoritos</a>
+                    <a href="perfil/alertas">Alertas</a>
+                    <a href="perfil/configuracion">Configuración</a>
                 </div>
                 <div class="col-4 info">
                     <div class="perfil wrap">
@@ -152,19 +128,10 @@
             </div>
         </div>
     </div>
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>    
 <!-- CÓDIGO -->
-
-<body>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

@@ -1,18 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<meta name="keywords" content="Trabajo Programación Developers Fullstack Desarrolladores">
-	<meta name="description" content="La primera bolsa de trabajo para desarrolladores">
-	<title>HACKHUNT: Trabajos para desarrolladores</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/app.css" />
-	<link rel="stylesheet" href="/css/global.css">
-	<script src="https://kit.fontawesome.com/79b890f672.js"></script>
+	<%- include('../partials/head'); -%>
+	<link rel="stylesheet" href="/css/main/app.css" />
 </head>
 <!--
 
@@ -24,25 +15,11 @@
 	en el CSS hago referencia siempre al contenedor (container o container-fluid), a la columna padre (col xxxx) y al elemento
 	esto es para poder guiarnos y aber que elemento estamos modificando cuando el CSS sea más grande.
 -->
+
 <body>
-	<div class="container-fluid header">
-		<div class="container header">
-			<div class="row">
-				<div class="col-9 info wrap">
-					<a href="">
-						<h1>
-							< HACK<spam id="huntLogo">HUNT</spam> >
-						</h1>
-					</a>
-					<h2>SLOGAN LOGAN SLOGAN</h2>
-				</div>
-				<div class="col-3 botones wrap">
-					<a href="/empresa/login" class="boton">Soy Empresa</a>
-					<a href="/login" class="boton">Ingresar</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	<header>
+		<%- include('../partials/header'); -%>
+	</header>
 	<div class="container-fluid buscador wrap">
 		<div class="container">
 			<div class="row">
@@ -98,35 +75,37 @@
 					</div>
 				</div>
 				<div class="col-3 menu">
+					<!-- Consultar si coviene definir los items como listas o 
+					hacer inputs tipo check para hacer el filtrado -->
 					<dl>
 						<dt><i class="fas fa-calendar-day"></i> Fecha de publicación</dt>
-						<dd>Hoy</dd>
-						<dd>Hace 3 días</dd>
-						<dd>Última semana</dd>
-						<dd>Hace 15 días</dd>
-						<dd>Este mes</dd>
+						<dd>Hoy <span id="cant">(25)</span></dd>
+						<dd>Hace 3 días <span id="cant">(56)</span></dd>
+						<dd>Última semana <span id="cant">(102)</span></dd>
+						<dd>Hace 15 días <span id="cant">(223)</span></dd>
+						<dd>Este mes <span id="cant">(410)</span></dd>
 					</dl>
 					<dl>
 						<dt><i class="fas fa-briefcase"></i> Jornada</dt>
-						<dd>Tiempo Completo</dd>
-						<dd>Medio Tiempo</dd>
-						<dd>Home Office</dd>
+						<dd>Tiempo Completo <span id="cant">(302)</span></dd>
+						<dd>Medio Tiempo <span id="cant">(57)</span></dd>
+						<dd>Home Office <span id="cant">(150)</span></dd>
 					</dl>
 					<dl>
 						<dt><i class="fas fa-code"></i> Lenguajes</dt>
-						<dd>HTML</dd>
-						<dd>CSS</dd>
-						<dd>Node.js</dd>
-						<dd>React</dd>
-						<dd>C++</dd>
-						<dd>JAVA</dd>
-						<dd>PHP</dd>
+						<dd>HTML <span id="cant">(56)</span></dd>
+						<dd>CSS <span id="cant">(25)</span></dd>
+						<dd>Node.js <span id="cant">(78)</span></dd>
+						<dd>React <span id="cant">(102)</span></dd>
+						<dd>C++ <span id="cant">(47)</span></dd>
+						<dd>JAVA <span id="cant">(25)</span></dd>
+						<dd>PHP <span id="cant">(92)</span></dd>
 					</dl>
 					<dl>
 						<dt><i class="fas fa-brain"></i> Experiencia</dt>
-						<dd>Junior</dd>
-						<dd>Semi-senior</dd>
-						<dd>Senior</dd>
+						<dd>Junior <span id="cant">(105)</span></dd>
+						<dd>Semi-senior <span id="cant">(79)</span></dd>
+						<dd>Senior <span id="cant">(25)</span></dd>
 					</dl>
 
 				</div>
@@ -155,7 +134,123 @@
 									</ul>
 									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
 										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
+										est sint!</p>
+									<p class="sal">$45K - 60K</p>
+									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+								</div>
+							</div>
+						</a>
+						<a href="/detalle">
+							<div class="item">
+								<div class="img">
+									<img src="https://imgcy.trivago.com/f_auto,q_auto/hardcodedimages/logo_fb.png"
+										alt="">
+								</div>
+								<div class="info">
+									<h2>Desarrollador Web - Full Stack</h2>
+									<ul>
+										<li>Digital House</li>
+										<li>Capital Federal</li>
+										<li>Full Time</li>
+									</ul>
+									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
+										est sint!</p>
+									<p class="sal">$45K - 60K</p>
+									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+								</div>
+							</div>
+						</a>
+						<a href="/detalle">
+							<div class="item">
+								<div class="img">
+									<img src="https://media.licdn.com/dms/image/C4D0BAQEYuLi6DP5oGw/company-logo_200_200/0?e=2159024400&v=beta&t=kY_VVaPthh-JEfhHkYRGoGYZGjwTMUUOgFz-sb5DHiI"
+										alt="">
+								</div>
+								<div class="info">
+									<h2>Desarrollador Web - Full Stack</h2>
+									<ul>
+										<li>Digital House</li>
+										<li>Capital Federal</li>
+										<li>Full Time</li>
+									</ul>
+									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
+										est sint!</p>
+									<p class="sal">$45K - 60K</p>
+									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+								</div>
+							</div>
+						</a>
+						<a href="/detalle">
+							<div class="item">
+								<div class="img">
+									<img src="https://pbs.twimg.com/profile_images/879408429751824384/1I5KApVU_400x400.jpg"
+										alt="">
+								</div>
+								<div class="info">
+									<h2>Desarrollador Web - Full Stack</h2>
+									<ul>
+										<li>Digital House</li>
+										<li>Capital Federal</li>
+										<li>Full Time</li>
+									</ul>
+									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
+										est sint!</p>
+									<p class="sal">$45K - 60K</p>
+									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+								</div>
+							</div>
+						</a>
+						<a href="/detalle">
+							<div class="item">
+								<div class="img">
+									<img src="http://mouse.latercera.com/wp-content/uploads/2017/08/facebook-900x600.jpg"
+										alt="">
+								</div>
+								<div class="info">
+									<h2>Desarrollador Web - Full Stack</h2>
+									<ul>
+										<li>Digital House</li>
+										<li>Capital Federal</li>
+										<li>Full Time</li>
+									</ul>
+									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
+										est sint!</p>
+									<p class="sal">$45K - 60K</p>
+									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+								</div>
+							</div>
+						</a>
+						<a href="/detalle">
+							<div class="item">
+								<div class="img">
+									<img src="https://farmacityar.vteximg.com.br/arquivos/farmalogoinstit.png?v=636706429804500000"
+										alt="">
+								</div>
+								<div class="info">
+									<h2>Desarrollador Web - Full Stack</h2>
+									<ul>
+										<li>Digital House</li>
+										<li>Capital Federal</li>
+										<li>Full Time</li>
+									</ul>
+									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
 										est sint!</p>
 									<p class="sal">$45K - 60K</p>
 									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
@@ -176,7 +271,8 @@
 									</ul>
 									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
 										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
 										est sint!</p>
 									<p class="sal">$45K - 60K</p>
 									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
@@ -186,7 +282,7 @@
 						<a href="/detalle">
 							<div class="item">
 								<div class="img">
-									<img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+									<img src="http://www.altrum.com.ar/wp-content/uploads/2016/08/galicia.jpg" alt="">
 								</div>
 								<div class="info">
 									<h2>Desarrollador Web - Full Stack</h2>
@@ -197,49 +293,8 @@
 									</ul>
 									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
 										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
-										est sint!</p>
-									<p class="sal">$45K - 60K</p>
-									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
-								</div>
-							</div>
-						</a>
-						<a href="/detalle">
-							<div class="item">
-								<div class="img">
-									<img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-								</div>
-								<div class="info">
-									<h2>Desarrollador Web - Full Stack</h2>
-									<ul>
-										<li>Digital House</li>
-										<li>Capital Federal</li>
-										<li>Full Time</li>
-									</ul>
-									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
-										est sint!</p>
-									<p class="sal">$45K - 60K</p>
-									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
-								</div>
-							</div>
-						</a>
-						<a href="/detalle">
-							<div class="item">
-								<div class="img">
-									<img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-								</div>
-								<div class="info">
-									<h2>Desarrollador Web - Full Stack</h2>
-									<ul>
-										<li>Digital House</li>
-										<li>Capital Federal</li>
-										<li>Full Time</li>
-									</ul>
-									<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-										necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
+										cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga
+										eligendi
 										est sint!</p>
 									<p class="sal">$45K - 60K</p>
 									<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
@@ -251,15 +306,9 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-	</script>
+	<footer>
+		<%- include('../partials/footer'); -%>
+	</footer>
 </body>
+
 </html>

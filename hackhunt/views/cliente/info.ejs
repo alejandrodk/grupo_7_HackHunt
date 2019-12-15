@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" href="/css/cliente/info.css" />
+    <link rel="stylesheet" href="/css/headerLog.css" />
+</head>
+<!-- CÓDIGO -->
+<body>
+    <header>
+        <%- include('../partials/headerLog'); -%>
+    </header>    
+<div class="container cv">
+    <div class="row">
+            <div class="col-12 barra-menu wrap">
+                <a href="informacion" id="select">Editar mi CV</a>
+                <a href="postulaciones">Mis postulaciones</a>
+                <a href="favoritos">Favoritos</a>
+                <a href="alertas">Alertas</a>
+                <a href="configuracion">Configuración</a>
+            </div>
+        <div class="col-9 datos personales wrap">
+            <h3>Datos personales</h3>
+            <p id="DatosPersonales"></p>
+            <div class="formulario">
+                <form action="" method="post" class="wrap">
+                    <label for=""><p>Nombre</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>Apellidos</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>DNI</p></label>
+                    <input type="number" name="" id="">
+                    <label for=""><p>Fecha de nacimiento</p></label>
+                    <input type="date" name="" id="">
+                    <div class="genero">
+                        <label for=""><p>Genero</p></label>
+                        <label for="radioH">Hombre</label>
+                        <input type="radio" name="genero" id="" value="H">
+                        <label for="radioM">Mujer</label>
+                        <input type="radio" name="genero" id="" value="M">
+                    </div>
+                    <label for=""><p>Estado Civil</p></label>
+                    <select name="" id="">
+                        <option value="SOL">Soltero</option>
+                        <option value="CAS">Casado</option>
+                    </select>
+                    <label for=""><p>Teléfono</p></label>
+                    <input type="number" name="" id="">
+                    <label for=""><p>Ciudad</p></label>
+                    <select name="" id="">
+                        <option value="CABA">Capital Federal</option>
+                        <option value="GBA">Buenos Aires</option>
+                        <option value="CO">Córdoba</option>
+                        <option value="MDZ">Mendoza</option>
+                        <option value="RO">Rosario</option>
+                    </select>
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 panel">
+            <div class="indice">
+                <h3>índice</h3>
+                <a href="#DatosPersonales">Datos Personales</a>
+                <a href="#DatosProfesionales">Datos Profesionales</a>
+                <a href="#ExperienciaLaboral">Experiencia Laboral</a>
+                <a href="#Formacion">Formación</a>
+                <a href="#Idiomas">Idiomas</a>
+                <a href="#Skills">Skills</a>
+                <a href="#PreferenciaLaboral">Preferencia laboral</a>
+            </div>
+        </div>
+        <div class="col-9 datos profesionales wrap">
+            <h3>Datos Profesionales</h3>
+            <p id="DatosProfesionales"></p>
+            <div class="formulario">
+                <form action="" method="post" class="wrap">
+                    <label for=""><p>Cargo / Profesión o título breve</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>Descripción breve de tu perfil profesional</p></label>
+                    <textarea name="" id="" cols="30" rows="10" maxlength="500"></textarea>
+                    <p>Max 500</p>
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-9 datos experiencias wrap">
+            <h3>Experiencia laboral</h3>
+            <p id="ExperienciaLaboral"></p>
+            <div class="formulario">
+                <form action="" method="post" class="wrap">
+                    <label for=""><p>Empresa</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>Cargo</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>Desde</p></label>
+                    <input type="date" name="" id="">
+                    <label for=""><p>Hasta</p></label>
+                    <input type="date" name="" id="">
+                    <label for=""><p>Descripción</p></label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-9 datos formacion wrap">
+            <h3>Formación</h3>
+            <p id="Formacion"></p>
+            <div class="formulario">
+                <form action="" method="post" class="wrap">
+                    <label for=""><p>Nivel</p></label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Curso</option>
+                        <option value="">Master</option>
+                        <option value="">Post-grado</option>
+                        <option value="">Universitario</option>
+                        <option value="">Técnico</option>
+                        <option value="">Secundario</option>
+                    </select>
+                    <label for=""><p>Institución</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>Título</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>Desde</p></label>
+                    <input type="date" name="" id="">
+                    <label for=""><p>Hasta</p></label>
+                    <input type="date" name="" id="">
+                    <label for=""><p>Descripción</p></label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <div class="repositorios wrap">
+                        <label for=""><p>Repositorio Git</p></label>
+                        <input type="text" name="" id="">
+                        <label for=""><p>Website</p></label>
+                        <input type="text" name="" id="">
+                        <label for=""><p>StackOverflow</p></label>
+                        <input type="text" name="" id="">
+                    </div>
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-9 datos idiomas wrap">
+            <h3>Idiomas</h3>
+            <p id="Idiomas"></p>
+            <div class="formulario">
+                <form action="" method="post" class="wrap">
+                    <label for=""><p>Idioma</p></label>
+                    <input type="text" name="" id="">
+                    <label for=""><p>Nivel</p></label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="BAS">Básico</option>
+                        <option value="INT">Intermedio</option>
+                        <option value="AVA">Avanzado</option>
+                        <option value="NAT">Nativo</option>
+                    </select>
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-9 skills wrap">
+            <p id="Skills"></p>
+        </div>
+        <div class="col-9 datos preferencias wrap">
+            <h3>Preferencia laboral</h3>
+            <p id="PreferenciaLaboral"></p>
+            <form action="" method="post" class="wrap">
+                <label for=""><p>Situación Actual</p></label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">No tengo empleo</option>
+                    <option value="">Tengo empleo</option>
+                </select>
+                <label for="puestoDeseado"><p>Puesto deseado</p></label>
+                <input type="text" name="" id="puestoDeseado" placeholder="Desarrollador Front-End">
+                <button type="submit" id="adItem">+</button>
+                <div class="puestos">
+                    <p>Puestos seleccionados</p>
+                </div>
+                <label for="areaDeseada"><p>Área</p></label>
+                <input type="text" name="" id="areaDeseada" placeholder="Desarrollo Web">
+                <button type="submit" id="adItem">+</button>
+                <div class="areas">
+                    <p>Áreas seleccionadas</p>
+                </div>
+                <label for=""><p>Remuneración Pretendida</p></label>
+                <input type="text" name="" id="" placeholder="*Opcional">
+                <label for="ubicacionesDeseadas"><p>Ubicación/es</p></label>
+                <select name="" id="ubicacionesDeseadas">
+                    <option value="CAP">Capital Federal</option>
+                    <option value="GBA">Buenos Aires</option>
+                </select>
+                <button type="submit" id="adItem">+</button>
+                <div class="ubicaciones">
+                    <p>Ubicaciones seleccionadas</p>
+                </div>
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- CÓDIGO -->
+</body>
+
+</html>

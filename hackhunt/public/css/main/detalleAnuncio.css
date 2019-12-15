@@ -1,49 +1,6 @@
 .container.detalle .cuerpo{
 	margin-bottom: 5%;
 }
-/*HEADER-----------------------------------*/
-.container-fluid.header {
-    background: var(--main-bg-color);
-}
-body{
-	background: var(--main-bg-color-2);
-}
-.container.header .row{
-	padding-top: 5px;
-}
-.container.header .info,
-.container.header .botones{
-	align-items: center;
-}
-.container.header .info a{
-	width: auto;
-}
-.container.header .info a:hover{
-	text-decoration: none;
-}
-.container.header .info h1{
-	color: var(--main-logo);
-	font-size: 25px;
-	font-weight: 200;
-}
-#huntLogo{
-	font-weight: 500;
-}
-.container.header .secciones {
-	justify-content: space-around;
-	align-items: center;
-}
-.container.header .secciones a{
-    color: var(--main-texto-blanco);
-    font-weight: 100;
-    font-size: 15px;
-}
-.container.header .secciones a:hover,
-.container.header .secciones a:hover > i{
-	background: -webkit-linear-gradient(90deg, #e52e71, #ff8a00);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
 /*SEPARADOR------------------------------------*/
 .separador {
 	margin: 2% 0;

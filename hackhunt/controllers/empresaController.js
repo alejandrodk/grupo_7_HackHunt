@@ -1,40 +1,24 @@
-const fs = require("fs");
-const path = require("path");
-
-// ************ Function to Read an HTML File ************
-function readHTML(fileName) {
-    let htmlFile = fs.readFileSync(path.join(__dirname, `/../views/empresa/${fileName}.html`), "utf-8");
-    return htmlFile;
-}
-
 const controller = {
     perfil: (req, res) => {
-        let html = readHTML("perfil");
-        res.send(html);
+        res.render('empresa/perfil', { title: 'Express' });
     },
     info: (req, res) => {
-        let html = readHTML("info");
-        res.send(html);
+        res.render('empresa/info', { title: 'Express' });
     },
     mensajes: (req, res) => {
-        let html = readHTML("mensajes");
-        res.send(html);
+        res.render('empresa/mensajes', { title: 'Express' });
     },
     anuncios: (req, res) => {
-        let html = readHTML("anuncios");
-        res.send(html);
+        res.render('empresa/anuncios', { title: 'Express' });
     },
     anuncioDetalle: (req, res) => {
-        let html = readHTML("anuncioDetalle");
-        res.send(html);
+        res.render('empresa/anuncioDetalle', { title: 'Express' });
     },
     postulantes: (req, res) => {
-        let html = readHTML("postulantes");
-        res.send(html);
+        res.render('empresa/postulantes', { title: 'Express' });
     },
     postulantesDetalle: (req, res) => {
-        let html = readHTML("postulanteCv");
-        res.send(html);
+        res.render('empresa/postulanteCv', { title: 'Express' });
     },
     
 
