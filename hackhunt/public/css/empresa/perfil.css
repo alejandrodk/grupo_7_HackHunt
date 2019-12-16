@@ -1,0 +1,192 @@
+/*BARRA MENU-----------------------------------*/
+.barra-menu{
+	margin: 3% 0;
+}
+.barra-menu a {
+    background: var(--main-texto-blanco);
+    margin-right: 1%;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--main-bg-color);
+    font-weight: 300;
+}
+#select{
+    color: var(--main-texto-blanco);
+    background: var(--main-bg-color);
+    border: solid 2px var(--main-texto-blanco);
+}
+/*INFO-----------------------------------*/
+.container.cuerpo .info .perfil{
+	background: var(--main-texto-blanco);
+    border-radius: 5px;
+    position: relative;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.container.cuerpo .info .perfil .avatar{
+    width: 40%;
+    background: #c5c5c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;	
+}
+.container.cuerpo .info .perfil .avatar .item{
+	width: 100px;
+    height: 100px;
+    background: gray;
+	border-radius: 50%;	
+	overflow: hidden;
+}
+.container.cuerpo .info .perfil .avatar .item img{
+	width: 100%;
+    height: 100%;
+}
+.container.cuerpo .info .perfil .datos{
+	width: 60%;
+    padding: 2%;
+}
+.container.cuerpo .info .perfil .datos p{
+	width: 100%;
+    margin: 0;
+    color: var(--main-bg-color-3);
+}
+.container.cuerpo .info .perfil .datos ul{
+	list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 3%;
+    color: var(--main-bg-color-3);
+}
+.container.cuerpo .info .perfil a{
+	position: absolute;
+    top: 5%;
+	right: 5%;
+	color: var(--main-bg-color-3);
+}
+/**/
+.container.cuerpo .info .estadisticas{
+	margin-top: 6%;
+    padding: 3%;
+    height: 300px;
+    background: var(--main-texto-blanco);
+    border-radius: 5px;
+    position: relative;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.container.cuerpo .info .estadisticas p{
+	font-size: 20px;
+    font-weight: 500;
+}
+.container.cuerpo .info .estadisticas ul{
+	list-style: none;
+    padding: 0;
+}
+/*FUNCIONES-----------------------------------*/
+.container.cuerpo .funciones .busqueda{
+	background: var(--main-texto-blanco);
+    border-radius: 5px;
+    position: relative;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    padding: 2%;
+}
+.container.cuerpo .funciones .busqueda form{
+	width: 100%;
+}
+.container.cuerpo .funciones .busqueda label{
+	width: 100%;
+	margin: 0;
+    color: var(--main-bg-color);
+}
+.container.cuerpo .funciones .busqueda .barra{
+	width: 100%;
+    background: white;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-around;
+}
+.container.cuerpo .funciones .busqueda input{
+	border: solid 1px white;
+    width: 65%;
+}
+.container.cuerpo .funciones .busqueda p{
+	margin: 0;
+    margin-right: 1%;
+}
+.container.cuerpo .funciones .busqueda select{
+	border: solid 1px white;
+}
+.container.cuerpo .funciones .busqueda button{
+	background: none;
+    border: none;
+}
+/**/
+.container.cuerpo .funciones .anuncios,
+.container.cuerpo .funciones .postulaciones{
+	background: var(--main-texto-blanco);
+    margin-top: 3%;
+    border-radius: 5px;
+    position: relative;
+    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    padding: 2%;
+}
+.container.cuerpo .funciones .anuncios strong,
+.container.cuerpo .funciones .postulaciones strong{
+	width: 90%;
+    font-size: 20px;
+    font-weight: 300;
+}
+.container.cuerpo .funciones .anuncios strong ~ a,
+.container.cuerpo .funciones .postulaciones strong ~ a{
+	width: 10%;
+}
+.container.cuerpo .funciones .anuncios .anuncio,
+.container.cuerpo .funciones .postulaciones .anuncio{
+	width: 100%;
+}
+.container.cuerpo .funciones .anuncios .anuncio .item,
+.container.cuerpo .funciones .postulaciones .anuncio .item{
+	color: var(--main-bg-color);
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 1px var(--main-bg-color);
+    padding: 1%;
+}
+.container.cuerpo .funciones .anuncios .anuncio:last-child,
+.container.cuerpo .funciones .postulaciones .anuncio:last-child{
+	border-bottom: solid 1px var(--main-bg-color);	
+}
+.container.cuerpo .funciones .anuncios .anuncio .item:hover,
+.container.cuerpo .funciones .postulaciones .anuncio .item:hover{
+    transform: scale(1.05);
+    background: var(--main-texto-blanco);
+    border: none;
+    border-radius: 5px;
+    -webkit-box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.75);
+}
+.container.cuerpo .funciones .anuncios .anuncio .item h3,
+.container.cuerpo .funciones .postulaciones .anuncio .item h3{
+	width: 70%;
+    font-size: 21px;
+    margin: 0;
+    padding-right: 1%;
+    border-right: solid 1px var(--main-bg-color-3);
+}
+.container.cuerpo .funciones .anuncios .anuncio .item:nth-child(2),
+.container.cuerpo .funciones .postulaciones .anuncio .item:nth-child(2){
+    border-right: solid 1px var(--main-bg-color-3);
+}
+.container.cuerpo .funciones .anuncios .anuncio .item p,
+.container.cuerpo .funciones .postulaciones .anuncio .item p{
+    margin: 0;
+    padding-right: 1%;
+}

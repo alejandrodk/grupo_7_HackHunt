@@ -1,0 +1,114 @@
+body {
+	background: var(--main-bg-color);
+}
+.container > .row {
+	width: 100%;
+	height: 800px;
+	min-height: 800px;
+	justify-content: center;
+	align-items: center;
+}
+/*FORMULARIOS --------------------------*/
+.container .formularios {
+	border-right: solid 2px var(--main-texto-blanco);
+}
+.container .formularios .login h3 {
+	font-weight: 300;
+	font-size: 30px;
+	color: var(--main-texto-blanco);
+}
+.container .formularios .login label {
+	width: 100%;
+	margin: 1% 0;
+	color: var(--main-texto-blanco);
+}
+.container .formularios label p {
+	margin: 0;
+}
+.container .formularios .login input {
+	border-radius: 5px;
+	width: 70%;
+	background: transparent;
+	border: solid 1px var(--main-texto-blanco);
+}
+.container .formularios input:focus {
+	background: var(--main-texto-blanco);
+}
+.container .formularios button {
+	width: 70%;
+	height: 36px;
+	padding: 0;
+	border: solid 2px var(--main-texto-blanco);
+	border-radius: 5px;
+	margin: 5% 0;
+	color: var(--main-texto-blanco);
+	background: var(--main-bg-color);
+}
+.container .formularios button:hover {
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+}
+.container .formularios .lostpas {
+	margin-top: 6%;
+	width: 65%;
+	background: var(--main-texto-blanco);
+	padding: 2%;
+	border-radius: 10px;
+	-webkit-box-shadow: -1px 10px 26px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: -1px 10px 26px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: -1px 10px 26px 0px rgba(0, 0, 0, 0.75);
+}
+.container .formularios .lostpas input {
+	width: 100%;
+	border: solid 1px var(--main-texto-blanco);
+	border-radius: 5px;
+}
+.container .formularios .lostpas button {
+	width: 100%;
+}
+/*INGRESO CON REDES -----------------------*/
+.container .redes {
+	justify-content: center;
+	align-items: start;
+	margin-bottom: 14%;
+}
+.container .redes a {
+	width: 70%;
+	height: 50px;
+	border: solid 2px var(--main-texto-blanco);
+	border-radius: 5px;
+	color: var(--main-texto-blanco);
+	text-align: center;
+	margin: 2%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#facebook:hover {
+	background: rgb(4, 108, 226);
+}
+#github:hover {
+	background: rgb(224, 106, 9);
+}
+#google:hover {
+	background: rgb(212, 17, 17);
+}
+/*REGISTRO ----------------------------------*/
+.container .registro {
+	height: 0%;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+.container .registro a {
+	width: 100%;
+	height: 34px;
+	text-align: center;
+	background: var(--main-texto-blanco);
+	border-radius: 5px;
+	color: var(--main-bg-color);
+}
+.container .registro a:hover {
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+	color: var(--main-texto-blanco);
+}

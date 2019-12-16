@@ -1,0 +1,78 @@
+body {
+	background: var(--main-bg-color);
+}
+.container .registro {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 800px;
+	color: var(--main-texto-blanco);
+}
+.container .registro .formulario {
+	width: 60%;
+	justify-content: center;
+}
+.container .registro label {
+	width: 100%;
+	margin: 1% 0;
+	color: var(--main-texto-blanco);
+}
+.container .registro label p {
+	margin: 0;
+}
+.container .registro input {
+	border-radius: 5px;
+	width: 100%;
+	background: transparent;
+	border: solid 1px var(--main-texto-blanco);
+}
+.container .registro input:focus {
+	background: var(--main-texto-blanco);
+}
+.container .registro button {
+	width: 25%;
+	height: 36px;
+	padding: 0;
+	border: solid 2px var(--main-texto-blanco);
+	border-radius: 5px;
+	margin: 5% 3%;
+	color: var(--main-texto-blanco);
+	background: var(--main-bg-color);
+}
+.container .registro button:hover {
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+}
+.container .formulario form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+/**/
+.container .separador-categoria {
+	padding-top: 15px;
+}
+
+.container .registro a {
+	width: 100%;
+	height: 50px;
+	border: solid 2px var(--main-texto-blanco);
+	border-radius: 5px;
+	color: var(--main-texto-blanco);
+	text-align: center;
+	margin: 2% 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#facebook:hover {
+	background: rgb(4, 108, 226);
+}
+#github:hover {
+	background: rgb(224, 106, 9);
+}
+#google:hover {
+	background: rgb(212, 17, 17);
+}
+.publication-textarea {
+	width: 100%;
+}

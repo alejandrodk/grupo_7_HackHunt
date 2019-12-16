@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head'); -%>
+		<link rel="stylesheet" href="/css/empresa/perfil.css" />
+		<link rel="stylesheet" href="/css/headerLog.css" />
+		<link rel="stylesheet" href="/css/global.css" />
+	</head>
+	<!-- CÓDIGO -->
+	<header>
+		<%- include('../partials/headerLog'); -%>
+	</header>
+	<div class="container-fluid cuerpo">
+		<div class="container cuerpo">
+			<div class="row">
+				<div class="col-12 barra-menu wrap">
+					<a href="perfil/informacion">Editar perfil</a>
+					<a href="anuncio/crear">Crear publicacion</a>
+					<a href="anuncios">Mis publicaciones</a>
+					<a href="perfil/alertas">Alertas</a>
+					<a href="perfil/configuracion">Configuración</a>
+				</div>
+				<div class="col-4 info">
+					<div class="perfil wrap">
+						<div class="avatar">
+							<div class="item">
+								<img src="https://digitalhouse.hiringroom.com/data/accounts/digitalhouse/profile.jpg" alt="" />
+							</div>
+						</div>
+						<div class="datos wrap">
+							<strong><p>Nombre Empresa</p></strong>
+							<p>Industria</p>
+							<p>NombreContacto</p>
+							<ul>
+								<!-- <li><i class="fab fa-git-alt" title="Repositorio Git"></i> /loveThatSong</li> -->
+								<!-- <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> terryLoveYogurt</li> -->
+								<li><i class="fas fa-user" title="Website"></i>www.digitalhouse.com</li>
+							</ul>
+						</div>
+						<a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>
+					</div>
+					<div class="estadisticas wrap">
+						<p class="titulo">Resumen de cuenta</p>
+						<ul>
+							<li>Publicaciones activas: XX</li>
+							<li>Usuarios que se han postulado: XX</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-8 funciones">
+					<div class="busqueda wrap">
+						<form action="" method="post">
+							<label for=""><p>Búsqueda rápida</p></label>
+							<div class="barra wrap">
+								<input type="text" name="" id="busquedaGeneral" />
+								<p>En:</p>
+								<select name="" id="">
+									<option value="CABA">Capital Federal</option>
+									<option value="GBA">Buenos Aires</option>
+									<option value="CO">Córdoba</option>
+									<option value="MDZ">Mendoza</option>
+									<option value="RO">Rosario</option>
+								</select>
+								<button><i class="fas fa-search"></i></button>
+							</div>
+						</form>
+					</div>
+					<div class="sugeridos">
+						<div class="anuncios wrap">
+							<strong><p>Publicaciones por vencer</p></strong>
+							<a href="./">ver más</a>
+							<a class="anuncio" href="/detalle">
+								<div class="item wrap">
+									<h3>Desarrollador Web Full Stack</h3>
+									<p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+									<p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
+									<i class="fab fa-hotjar" style="color: orangered;" title="¡EXCELENTE OPORTUNIDAD!"></i>
+								</div>
+							</a>
+							<a class="anuncio" href="/detalle">
+								<div class="item wrap">
+									<h3>Desarrollador Web Full Stack</h3>
+									<p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+									<p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
+									<i class="fab fa-hotjar" style="color: transparent;" title="¡EXCELENTE OPORTUNIDAD!"></i>
+								</div>
+							</a>
+							<a class="anuncio" href="/detalle">
+								<div class="item wrap">
+									<h3>Desarrollador Web Full Stack</h3>
+									<p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+									<p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
+									<i class="fab fa-hotjar" style="color: transparent;" title="¡EXCELENTE OPORTUNIDAD!"></i>
+								</div>
+							</a>
+						</div>
+						<div class="postulaciones wrap">
+							<strong><p>Últimas publicaciones</p></strong>
+							<a href="/postulaciones">ver más</a>
+							<a class="anuncio" href="/detalle">
+								<div class="item wrap">
+									<h3>Desarrollador Web Full Stack</h3>
+									<p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+									<p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
+									<i class="far fa-eye" title="Visto por la empresa"></i>
+								</div>
+							</a>
+							<a class="anuncio" href="/detalle">
+								<div class="item wrap">
+									<h3>Desarrollador Web Full Stack</h3>
+									<p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+									<p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
+									<i class="far fa-eye" style="color: transparent;" title="Visto por la empresa"></i>
+								</div>
+							</a>
+							<a class="anuncio" href="/detalle">
+								<div class="item wrap">
+									<h3>Desarrollador Web Full Stack</h3>
+									<p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+									<p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
+									<i class="far fa-eye" title="Visto por la empresa"></i>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<%- include('../partials/footer'); -%>
+	</footer>
+
+	<!-- CÓDIGO -->
+
+	<body>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
