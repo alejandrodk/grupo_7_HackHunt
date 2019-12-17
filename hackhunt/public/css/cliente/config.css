@@ -112,6 +112,6 @@
     border: solid 1px transparent;
     border-radius: 5px;
     margin-top: 3%;
-    background: #a8e004;
+    background: var(--main-color-verde);;
     color: var(--main-bg-color);
 }

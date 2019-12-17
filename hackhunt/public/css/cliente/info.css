@@ -102,7 +102,7 @@ body{
     border: solid 1px transparent;
     border-radius: 5px;
     margin: 2%;
-    background: #a8e004;
+    background: var(--main-color-verde);;
     color: var(--main-bg-color);
 }
 /* DATOS PROFESIONALES -----------------------*/

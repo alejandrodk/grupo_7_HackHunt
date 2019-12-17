@@ -104,8 +104,10 @@ body{
     width: 100%;
     height: 34px;
     text-align: center;
-    background: var(--main-texto-blanco);
+    display: block;
+    border: solid 1px transparent;
     border-radius: 5px;
+    background: var(--main-color-verde);
     color: var(--main-bg-color);
 }
 .container .registro a:hover{

@@ -36,7 +36,7 @@ body{
 }
 .container.header .secciones a:hover,
 .container.header .secciones a:hover > i{
-	background: #f83e82;
+	background: var(--main-color-rosa);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
