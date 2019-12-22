@@ -10,7 +10,8 @@ router.get("/perfil", empresaController.perfil);
 router.get("/info", empresaController.info);
 router.get("/mensajes", empresaController.mensajes);
 router.get("/anuncios/", empresaController.anuncios);
-router.get("/anuncio/crear", empresaController.crearPublicacion);
+router.get("/anuncios/crear", empresaController.crearPublicacion);
+router.get("/anuncios/modificar", empresaController.modificarPublicacion);
 router.get("/anuncios/postulantes", empresaController.postulantes);
 router.get("/anuncios/postulantes/CV", empresaController.postulantesDetalle);
 

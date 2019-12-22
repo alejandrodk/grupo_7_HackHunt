@@ -1,78 +1,210 @@
-body {
-	background: var(--main-bg-color);
+.container.detalle .cuerpo{
+	margin-bottom: 5%;
 }
-.container .registro {
-	justify-content: center;
+/*SEPARADOR------------------------------------*/
+.separador {
+	margin: 2% 0;
+}
+.separador .volver{
 	align-items: center;
-	width: 100%;
-	min-height: 800px;
-	color: var(--main-texto-blanco);
 }
-.container .registro .formulario {
-	width: 60%;
-	justify-content: center;
+.separador .volver a{
+	text-decoration: none;
+    color: var(--main-texto-blanco);
+    padding-right: 1%;
+    border-right: solid 1px var(--main-texto-blanco);
 }
-.container .registro label {
-	width: 100%;
-	margin: 1% 0;
-	color: var(--main-texto-blanco);
+.separador .titulo{
+	align-items: center;
 }
-.container .registro label p {
-	margin: 0;
+.separador .titulo p{
+    color: var(--main-texto-blanco);
+    margin: 0;
+    padding-left: 1%;
+    border-left: solid 1px var(--main-texto-blanco);
 }
-.container .registro input {
-	border-radius: 5px;
-	width: 100%;
-	background: transparent;
-	border: solid 1px var(--main-texto-blanco);
+/*DETALLE -------------------------------------*/
+.form-cont div{
+    width: 100%;
 }
-.container .registro input:focus {
-	background: var(--main-texto-blanco);
+.form-cont label,
+.form-cont label p{
+    color: var(--main-bg-color-2);
+    margin: 0;
 }
-.container .registro button {
-	width: 25%;
-	height: 36px;
-	padding: 0;
-	border: solid 2px var(--main-texto-blanco);
-	border-radius: 5px;
-	margin: 5% 3%;
-	color: var(--main-texto-blanco);
-	background: var(--main-bg-color);
+.cuerpo .anuncio {
+    width: 100%;
 }
-.container .registro button:hover {
-	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+.form-cont{
+    background: var(--main-texto-blanco); 
+    border-radius: 10px;
+    margin-bottom: 2%;
 }
-.container .formulario form {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+.form-cont input,
+.form-cont textarea{
+    border: solid 1px white;
+}
+.form-cont .titulo{
+    background: #bfbfbf;
+    align-items: center;
+    padding: 2% 4%;
+    border-radius: 10px;
+}
+.form-cont .titulo label{
+    width: 10%;
+}
+.form-cont .titulo input{
+    width: 90%;
+    border-radius: 5px;
+    border: solid 1px white;
 }
 /**/
-.container .separador-categoria {
-	padding-top: 15px;
+.form-cont .descrp{
+    justify-content: center;
+    padding: 2%;
+    border-bottom: solid 1px var(--main-bg-color-3);  
 }
-
-.container .registro a {
+.form-cont .descrp textarea{
+    width: 95%;
+    border: solid 1px white;
+    border-radius: 10px;
+    height: 150px; 
+}
+/**/
+.form-cont .skills{
+    padding: 2%;
+    justify-content: space-around;
+    border-bottom: solid 1px var(--main-bg-color-3);
+}
+.form-cont .skills label{
+    width: 45%;
+}
+.form-cont .skills textarea{
+    width: 45%;
+    border: solid 1px white;
+    border-radius: 10px;
+    height: 150px;
+}
+/**/
+.form-cont .info{
+    align-items: center;
+    padding: 2%;
+    border-bottom: solid 1px var(--main-bg-color-3); 
+}
+.form-cont .info label,
+.form-cont .info input{
+    margin-bottom: 2%;
+}
+.form-cont .info label:nth-child(even){
+    width: 10%;
+}
+.form-cont .info input:nth-child(even){
+    width: 35%;
+    border-radius: 5px;
+}
+.form-cont .info label:nth-child(odd){
+    width: 15%;
+    padding-left: 1%;
+}
+.form-cont .info input:nth-child(odd){
+    width: 35%;
+}
+.form-cont .info label:first-child{
+    width: 25%!important;
+    padding: 0!important;
+}
+.form-cont .info input:nth-child(2){
+    width: 25%!important;
+    border-radius: 5px!important;
+}
+/**/
+.form-cont .beneficios{
+    padding: 2%;
+}
+.form-cont .beneficios label{
+    width: 100%;
+}
+.form-cont .beneficios textarea{
+    width: 100%;
+    border-radius: 5px;
+    height: 100px;
+}
+.anuncio form button{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background: transparent;
+    color: white;
+    border: solid 2px;
+}
+/*RELACIONADOS -------------------------------*/
+.container.detalle .relacionados{
+	flex-direction: column;
+}
+.container.detalle .relacionados a{
 	width: 100%;
-	height: 50px;
-	border: solid 2px var(--main-texto-blanco);
-	border-radius: 5px;
-	color: var(--main-texto-blanco);
-	text-align: center;
-	margin: 2% 0;
+	height: 150px;
+    padding: 2%;
+	color: var(--main-bg-color-2);
+}
+.container.detalle .relacionados a:hover {
+    transform: scale(1.1);
+}
+.container.detalle .relacionados a:hover {
+	transform: scale(1.1);
+	z-index: 2;
+}
+.container.detalle .relacionados .item{
+	position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+	background: var(--main-texto-blanco);
+	-webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.container.detalle .relacionados .item .img{
+	position: absolute;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+    top: 4%;
+    right: 4%;
+    width: 70px;
+    height: 70px;
+    background: white;
 }
-#facebook:hover {
-	background: rgb(4, 108, 226);
-}
-#github:hover {
-	background: rgb(224, 106, 9);
-}
-#google:hover {
-	background: rgb(212, 17, 17);
-}
-.publication-textarea {
+.container.detalle .relacionados .item img{
 	width: 100%;
+}
+.container.detalle .relacionados .item .info h3{
+	width: 60%;
+    font-size: 15px;
+}
+.container.detalle .relacionados .item .info p{
+	font-size: 15px;
+}
+.container.detalle .relacionados .item .info ul{
+	display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+}
+.container.detalle .relacionados .item li {
+    font-size: 15px;
+}
+/**/
+.postular button{
+	width: 100px;
+    height: 40px;
+	border-radius: 5px;
+	-webkit-background: linear-gradient(90deg, #e52e71, #ff8a00);
+	-moz-background: linear-gradient(90deg, #e52e71, #ff8a00);
+    background: linear-gradient(90deg, #e52e71, #ff8a00);
+    color: white;
+    border: solid 2px;
 }

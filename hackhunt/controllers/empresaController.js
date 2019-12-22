@@ -17,6 +17,9 @@ const controller = {
 	crearPublicacion: (req, res) => {
 		res.render("empresa/crearPublicacion", { title: "Express" });
 	},
+	modificarPublicacion: (req, res) => {
+		res.render("empresa/modificarPublicacion", { title: "Express" })
+	},
 	postulantes: (req, res) => {
 		res.render("empresa/postulantes", { title: "Express" });
 	},
