@@ -55,3 +55,24 @@ body{
     background: #a8e004;
     color: var(--main-bg-color);
 }
+
+/* EXTRA SMALL----------------------------------------------------- */
+@media (max-width: 768px) {
+    .container-fluid.header {
+        padding-bottom: 5%;
+    }
+    .container.header .info a,
+    .container.header .info h2{
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* SMALL-----------------------------------------------------------------*/
+@media (min-width: 769px) and (max-width: 991px) {}
+
+/* MEDIUM---------------------------------------------------------------------------------------*/
+@media (min-width: 992px) and (max-width: 1200px) {}
+
+/* LARGE----------------------------------------------------------------------------------------*/
+@media (min-width: 1201px) {}

@@ -1,0 +1,49 @@
+[{
+    "nombre": "Alejandro ",
+    "apellido": "Barrios",
+    "email": "alejandro@dh.com.ar",
+    "clave": "wfafwafawfaw",
+    "razonSocial": "Digital House",
+    "cuit": "414124214",
+    "telefono": "121421412",
+    "rubro": "Educacion",
+    "tipo": "empresa",
+    "id": 1,
+    "seguidores": []
+}, {
+    "nombre": "pedro",
+    "apellido": "perez",
+    "email": "pedroperez@ml.com",
+    "clave": "wrqfrq333",
+    "razonSocial": "Mercado Libre",
+    "cuit": "414124214",
+    "telefono": "121421412",
+    "rubro": "Ecommerce",
+    "tipo": "empresa",
+    "id": 2,
+    "seguidores": []
+}, {
+    "nombre": "daniella",
+    "apellido": "bracho",
+    "email": "daniella@trivago.com",
+    "clave": "r3qfqfq3q",
+    "razonSocial": "Trivago",
+    "cuit": "414124214",
+    "telefono": "121421412",
+    "rubro": "Ecommerce",
+    "tipo": "empresa",
+    "id": 3,
+    "seguidores": []
+}, {
+    "nombre": "Pepito",
+    "apellido": "perez",
+    "email": "pepito@despegar.com.ar",
+    "clave": "24151j",
+    "razonSocial": "Despegar.com",
+    "cuit": "3564436544",
+    "telefono": "1127508104",
+    "rubro": "Viajes",
+    "tipo": "empresa",
+    "id": 4,
+    "seguidores": []
+}]

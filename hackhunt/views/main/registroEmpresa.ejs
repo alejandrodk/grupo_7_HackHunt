@@ -9,27 +9,26 @@
 			<div class="row">
 				<div class="col-12 registro wrap">
 					<div class="formulario wrap">
-						<form action="" method="post">
+						<form action="/empresa/registro" method="post">
 							<h3 class="separador-categoria">Información del usuario de registro</h3>
-							<label for=""><p>Nombre</p></label>
-							<input type="text" name="" id="" />
-							<label for=""><p>Apellido</p></label>
-							<input type="text" name="" id="" />
-							<label for=""><p>Email</p></label>
-							<input type="email" name="" id="" />
-							<label for=""><p>Clave</p></label>
-							<input type="password" name="" id="" />
+							<label for="nombre"><p>Nombre</p></label>
+							<input type="text" name="nombre" id="nombre" />
+							<label for="apellido"><p>Apellido</p></label>
+							<input type="text" name="apellido" id="apellido" />
+							<label for="email"><p>Email</p></label>
+							<input type="email" name="email" id="email" />
+							<label for="clave"><p>Clave</p></label>
+							<input type="password" name="clave" id="clave" />
 							<h3 class="separador-categoria">Datos de empresa</h3>
-							<label for=""><p>Razon Social</p></label>
-							<input type="text" name="" id="" />
-							<label for=""><p>Cuit</p></label>
-							<input type="number" name="" id="" />
-							<label for=""><p>Teléfono</p></label>
-							<input type="number" name="" id="" />
-							<label for=""><p>Tipo Industria</p></label>
-							<input type="text" name="" id="" />
-							<label for=""><p>Cantidad de Empleados</p></label>
-							<input type="number" name="" id="" />
+							<label for="razon"><p>Razon Social</p></label>
+							<input type="text" name="razon" id="razon" />
+							<label for="cuit"><p>Cuit</p></label>
+							<input type="text" name="cuit" id="cuit" />
+							<label for="telefono"><p>Teléfono</p></label>
+							<input type="number" name="telefono" id="telefono" />
+							<label for="rubro"><p>Rubro</p></label>
+							<input type="text" name="rubro" id="rubro" />
+							<input type="text" name="tipo" value="empresa" style="display: none;">
 							<button type="submit">Comenzar</button>
 							<button type="reset">Limpiar</button>
 						</form>

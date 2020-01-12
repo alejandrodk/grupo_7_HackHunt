@@ -28,8 +28,8 @@
                         <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
                     </div>
                         <div class="cabecera wrap">
-                        <h1>Desarrollador Web Full Stack</h1>
-                        <h2>Digital House</h2>
+                        <h1><%= anuncio.titulo %></h1>
+                        <h2><%= anuncio.empresa %></h2>
                     </div>
                     <div class="info wrap">
                         <div class="item">
@@ -40,11 +40,11 @@
                             <p>Área</p>
                         </div>
                         <div class="item">
-                            <p>Capital Federal</p>
-                            <p>02/10/2019</p>
-                            <p>60K</p>
-                            <p>Full Time</p>
-                            <p>Desarrollo web</p>
+                            <p><%= anuncio.ubicacion %></p>
+                            <p><%= anuncio.publicacion %></p>
+                            <p><%= anuncio.salario %></p>
+                            <p><%= anuncio.jornada %></p>
+                            <p><%= anuncio.area %></p>
                         </div>
                     </div>
                     <div class="skills wrap">
@@ -70,10 +70,7 @@
                         </div>
                     </div>
                     <div class="descp">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, non illum est sunt quas eligendi ad quasi laboriosam officia suscipit animi rem in cumque accusantium repellendus neque possimus fugiat aspernatur magnam natus voluptatum optio commodi eveniet illo. Quis excepturi sed ullam est voluptatem, nesciunt neque rerum. At, maiores consectetur ut dicta amet sit, incidunt accusamus inventore, delectus corrupti nobis ratione. Quisquam dolorum, veritatis ut excepturi, quas similique debitis officia fuga, alias voluptatibus explicabo aperiam earum quibusdam doloremque eius ad sit animi quidem? Expedita tempora debitis recusandae ipsa accusamus similique quia error illo maxime eum in tempore natus eveniet non voluptates, modi dolorem nisi, sunt, quo quae sequi. Fugit suscipit dolorum autem cum architecto, tempore quaerat laboriosam veritatis ipsa magni itaque pariatur illum aliquam maiores, quos ipsam? Officiis perferendis cupiditate corrupti, ad incidunt quos voluptas aspernatur molestias nobis similique amet itaque, culpa accusamus. Maxime, ipsa id itaque explicabo aliquid earum architecto.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, non illum est sunt quas eligendi ad quasi laboriosam officia suscipit animi rem in cumque accusantium repellendus neque possimus fugiat aspernatur magnam natus voluptatum optio commodi eveniet illo. Quis excepturi sed ullam est voluptatem, nesciunt neque rerum. At, maiores consectetur ut dicta amet sit, incidunt accusamus inventore, delectus corrupti nobis ratione. Quisquam dolorum, veritatis ut excepturi, quas similique debitis officia fuga, alias voluptatibus explicabo aperiam earum quibusdam doloremque eius ad sit animi quidem? Expedita tempora debitis recusandae ipsa accusamus similique quia error illo maxime eum in tempore natus eveniet non voluptates, modi dolorem nisi, sunt, quo quae sequi. Fugit suscipit dolorum autem cum architecto, tempore quaerat laboriosam veritatis ipsa magni itaque pariatur illum aliquam maiores, quos ipsam? Officiis perferendis cupiditate corrupti, ad incidunt quos voluptas aspernatur molestias nobis similique amet itaque, culpa accusamus. Maxime, ipsa id itaque explicabo aliquid earum architecto.
-                        </p>
+                        <p> <%= anuncio.descrp %> </p>
                     </div>
                     <div class="postular">
                         <form action="" method="post">

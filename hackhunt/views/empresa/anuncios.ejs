@@ -49,61 +49,36 @@
                 </div>
             </div>
             <div class="col-7 anuncios">
-                <div class="item">
-                    <a href="anuncios/modificar">Modificar</a>
-                    <div class="img">
-                        <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                <% for (const anuncio of anuncios) { %>
+                    <div class="item">
+                        <a href="anuncios/modificar">Modificar</a>
+                        <div class="img">
+                            <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                        </div>
+                        <div class="info">
+                            <h2><%= anuncio.titulo %></h2>
+                            <ul>
+                                <li><%= anuncio.empresa %></li>
+                                <li><%= anuncio.ubicacion %></li>
+                                <li><%= anuncio.jornada %></li>
+                            </ul>
+                            <p class="desc"><%= anuncio.descrp %></p>
+                        </div>
                     </div>
-                    <div class="info">
-                        <h2>Desarrollador Web - Full Stack</h2>
-                        <ul>
-                            <li>Digital House</li>
-                            <li>Capital Federal</li>
-                            <li>Full Time</li>
-                        </ul>
-                        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-                            necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-                            cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
-                            est sint!</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href="anuncios/modificar">Modificar</a>
-                    <div class="img">
-                        <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                    </div>
-                    <div class="info">
-                        <h2>Project Manager</h2>
-                        <ul>
-                            <li>Digital House</li>
-                            <li>Capital Federal</li>
-                            <li>Full Time</li>
-                        </ul>
-                        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-                            necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-                            cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
-                            est sint!</p>
-                    </div>
-                </div>
+                <% } %>
             </div>
-            <div class="col-3 candidatos wrap">
-                <div class="item">
-                    <ul>
-                        <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span>1</span></li>
-                        <li><i class="fas fa-users"></i> Candidatos totales <span> 5</span></li>
-                        <li><i class="fas fa-medal"></i> Solicitudes destacadas <span>2</span></li>
-                        <a href="anuncios/postulantes">Ver candidatos</a>
-                    </ul>
+            <% for (const anuncio of anuncios) { %>
+                <div class="col-3 candidatos wrap">
+                    <div class="item">
+                        <ul>
+                            <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span><%= anuncio.nuevos %></span></li>
+                            <li><i class="fas fa-users"></i> Candidatos totales <span><%= anuncio.candidatos %></span></li>
+                            <li><i class="fas fa-medal"></i> Solicitudes destacadas <span><%= anuncio.destacados %></span></li>
+                            <a href="anuncios/postulantes">Ver candidatos</a>
+                        </ul>
+                    </div>
                 </div>
-                <div class="item">
-                    <ul>
-                        <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span>3</span></li>
-                        <li><i class="fas fa-users"></i> Candidatos totales <span> 2</span></li>
-                        <li><i class="fas fa-medal"></i> Solicitudes destacadas <span>1</span></li>
-                        <a href="anuncios/postulantes">Ver candidatos</a>
-                    </ul>
-                </div>
-            </div>
+            <% } %>
         </div>
     </div>
 </body>

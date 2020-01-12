@@ -51,30 +51,16 @@
                         <div class="anuncios wrap">
                             <strong><p>Tus anuncios</p></strong>
                             <a href="anuncios">ver más</a>
-                            <a class="anuncio" href="/detalle">
-                                <div class="item wrap">
-                                    <h3>Desarrollador Web Full Stack</h3>
-									<p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>
-									<p title="Número de postulantes"> 10</p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
-                                </div>
-                            </a>
-                            <a class="anuncio" href="/detalle">
-                                <div class="item wrap">
-                                    <h3>Desarrollador Web Full Stack</h3>
-									<p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>
-									<p title="Número de postulantes"> 10</p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
-                                </div>
-                            </a>
-                            <a class="anuncio" href="/detalle">
-                                <div class="item wrap">
-                                    <h3>Desarrollador Web Full Stack</h3>
-									<p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>
-									<p title="Número de postulantes"> 10</p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
-                                </div>
-                            </a>                                                        
+                            <% for (let i = 0; i <= 3; i++) { %>
+                                <a class="anuncio" href="/detalle?id=<%= anuncios[i].id %>">
+                                    <div class="item wrap">
+                                        <h3><%= anuncios[i].titulo %></h3>
+                                        <p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>
+                                        <p title="Número de postulantes"> <%= anuncios[i].postulantes %></p>
+                                        <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncios[i].publicacion %></p>
+                                    </div>
+                                </a>         
+                            <% } %>                                         
                         </div>
                     </div>
                 </div>

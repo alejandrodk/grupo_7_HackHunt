@@ -1,0 +1,127 @@
+/*BARRA MENU-----------------------------------*/
+.barra-menu{
+	margin: 3% 0;
+}
+.barra-menu a {
+    background: var(--main-texto-blanco);
+    margin-right: 1%;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--main-bg-color);
+    font-weight: 300;
+}
+#select{
+    color: var(--main-texto-blanco);
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+    border: solid 2px var(--main-texto-blanco);
+}
+/* BARRA */
+.barra{
+    width: 90%;
+    background: var(--main-bg-color);
+    border-radius: 5px;
+    padding: 5px;
+    height: 40px;
+    margin-top:2%;
+    margin-bottom: 2%;
+    padding-left: 2%;
+}
+.barra h2{
+    font-size: 25px;
+    color: var(--main-texto-blanco);
+    font-weight: 200;
+    margin: 0;
+}
+/* INFO GENERALES */
+#titular{
+    width: 100%;
+    font-weight: 100;
+    font-size: 25px;
+    background: var(--main-color-verde);
+    border-radius: 5px;
+    margin: 2% 0%;
+    padding: 3px;
+}
+h4 {
+    color: 
+    #b7b7b7;
+    font-size: 18px;
+    width: 50%;
+}
+h5 {
+    color: 
+    #4c4c4c;
+    font-size: 18px;
+    width: 50%;
+}
+.info-cv{
+    background: var(--main-texto-blanco);
+    border-radius: 10px;
+    padding: 1%;
+}
+/* INFO AVATAR */
+.personales .perfil{
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    background: var(--main-texto-blanco);
+    padding: 2%;
+    border-radius: 5px;   
+    margin-right: 1%;
+}
+.personales .perfil .avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 7%;
+    overflow: hidden;
+}
+.personales .perfil .avatar img{
+    width: 100%;
+}
+.personales .perfil p{
+    width: 100%;
+    margin: 0;
+}
+.personales .perfil ul{
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+.personales .info-cv{
+    width: 64%;
+}
+/* INDICE  */
+.indice {
+    padding: 1%;
+    background: var(--main-bg-color-3);
+    border-radius: 10px;
+}
+.indice h3{
+    color: var(--main-color-verde);
+}
+.indice a{
+    text-decoration: none;
+    color: var(--main-texto-blanco);
+    font-weight: 3;
+}
+.indice a:hover {
+    background: var(--main-bg-color);
+}
+/* INFO PERSONAL */
+
+
+
+/* EXTRA SMALL----------------------------------------------------- */
+@media (max-width: 768px) {}
+
+/* SMALL-----------------------------------------------------------------*/
+@media (min-width: 769px) and (max-width: 991px) {}
+
+/* MEDIUM---------------------------------------------------------------------------------------*/
+@media (min-width: 992px) and (max-width: 1200px) {}
+
+/* LARGE----------------------------------------------------------------------------------------*/
+@media (min-width: 1201px) {}
