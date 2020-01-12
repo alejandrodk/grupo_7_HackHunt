@@ -1,6 +1,9 @@
 # HackHunt
+Tu trabajo como desarrollador más cerca.
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+## Tablero del proyecto
+
+[Trello](https://trello.com/b/pNgA3NJ7/hackhunt)
 
 ## ¿Quienes somos?
 
@@ -54,15 +57,6 @@ Esto ayuda a nuestros candidatos a conseguir oportunidades laborales enfocadas e
 
 [Computrabajo](https://www.computrabajo.com.ar/)
 
-
-### Te interesa colaborar en el proyecto o encontraste un Bug?
-
-No dejes de ayudarnos creando un nuevo [issue!](https://github.com/alejandrodk/grupo_7_HackHunt/issues) describiendo con el mayor detalle que puedas tu idea o inconveniente 
-
-### Todos
-
- - Comenzar a realizar el sitio
- - Terminar el sitio
 
 License
 ----
