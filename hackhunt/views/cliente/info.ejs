@@ -25,30 +25,30 @@
             <p id="DatosPersonales"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for=""><p>Nombre</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>Apellidos</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>DNI</p></label>
-                    <input type="number" name="" id="">
-                    <label for=""><p>Fecha de nacimiento</p></label>
-                    <input type="date" name="" id="">
+                    <label for="nombre"><p>Nombre</p></label>
+                    <input type="text" name="nombre" id="nombre">
+                    <label for="apellido"><p>Apellidos</p></label>
+                    <input type="text" name="apellido" id="apellido">
+                    <label for="dni"><p>DNI</p></label>
+                    <input type="number" name="dni" id="dni">
+                    <label for="fechaNac"><p>Fecha de nacimiento</p></label>
+                    <input type="date" name="fechaNac" id="fechaNac">
                     <div class="genero">
-                        <label for=""><p>Genero</p></label>
+                        <label for="genero"><p>Genero</p></label>
                         <label for="radioH">Hombre</label>
-                        <input type="radio" name="genero" id="" value="H">
+                        <input type="radio" name="genero" id="genero" value="H">
                         <label for="radioM">Mujer</label>
-                        <input type="radio" name="genero" id="" value="M">
+                        <input type="radio" name="genero" id="genero" value="M">
                     </div>
-                    <label for=""><p>Estado Civil</p></label>
-                    <select name="" id="">
+                    <label for="edoCivil"><p>Estado Civil</p></label>
+                    <select name="edoCivil" id="edoCivil">
                         <option value="SOL">Soltero</option>
                         <option value="CAS">Casado</option>
                     </select>
-                    <label for=""><p>Teléfono</p></label>
-                    <input type="number" name="" id="">
-                    <label for=""><p>Ciudad</p></label>
-                    <select name="" id="">
+                    <label for="telefono"><p>Teléfono</p></label>
+                    <input type="number" name="telefono" id="telefono">
+                    <label for="ciudad"><p>Ciudad</p></label>
+                    <select name="ciudad" id="ciudad">
                         <option value="CABA">Capital Federal</option>
                         <option value="GBA">Buenos Aires</option>
                         <option value="CO">Córdoba</option>
@@ -76,12 +76,12 @@
             <p id="DatosProfesionales"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for=""><p>Cargo / Profesión o título breve</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>Nivel</p></label>
-                    <input type="text" name="" id="" placeholder="Jr / Ssr / Sr">
-                    <label for=""><p>Descripción breve de tu perfil profesional</p></label>
-                    <textarea name="" id="" cols="30" rows="10" maxlength="500"></textarea>
+                    <label for="cargo"><p>Cargo / Profesión o título breve</p></label>
+                    <input type="text" name="cargo" id="cargo">
+                    <label for="nivel"><p>Nivel</p></label>
+                    <input type="text" name="nivel" id="nivel" placeholder="Jr / Ssr / Sr">
+                    <label for="desc"><p>Descripción breve de tu perfil profesional</p></label>
+                    <textarea name="desc" id="desc" cols="30" rows="10" maxlength="500"></textarea>
                     <p>Max 500</p>
                     <button type="submit">Guardar</button>
                 </form>
@@ -92,16 +92,16 @@
             <p id="ExperienciaLaboral"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for=""><p>Empresa</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>Cargo</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>Desde</p></label>
-                    <input type="date" name="" id="">
-                    <label for=""><p>Hasta</p></label>
-                    <input type="date" name="" id="">
-                    <label for=""><p>Descripción</p></label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <label for="expempresa"><p>Empresa</p></label>
+                    <input type="text" name="expempresa" id="expempresa">
+                    <label for="expcargo"><p>Cargo</p></label>
+                    <input type="text" name="expcargo" id="expcargo">
+                    <label for="expdesde"><p>Desde</p></label>
+                    <input type="date" name="expdesde" id="expdesde">
+                    <label for="exphasta"><p>Hasta</p></label>
+                    <input type="date" name="exphasta" id="exphasta">
+                    <label for="expdesc"><p>Descripción</p></label>
+                    <textarea name="expdesc" id="expdesc" cols="30" rows="10"></textarea>
                     <button type="submit">Guardar</button>
                 </form>
             </div>

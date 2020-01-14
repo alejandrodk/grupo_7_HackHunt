@@ -114,7 +114,28 @@ body {
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+	.container > .row {
+		height: auto;
+		min-height: auto;
+		padding-top: 15%;
+		margin: 0;
+	}
+	.container .formularios {
+		width: 100%;
+		justify-content: center;
+		border: none;
+	}
+	.container .formularios .login {
+		text-align: center;
+	}
+	.container .formularios .lostpas {
+		width: 100%;
+	}
+	.container .redes {
+		display: none;
+	}
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}

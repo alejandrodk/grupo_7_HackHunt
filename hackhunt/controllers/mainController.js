@@ -1,8 +1,10 @@
 const fs = require('fs');
+var sessionData;
+
+const anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} );
 
 const controller = {
 	home: (req, res) => {
-		let anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} )
 		res.render('main/index', { anuncios: JSON.parse(anuncios) });
 	},
 	busquedaHome: (req, res) => {
@@ -11,15 +13,25 @@ const controller = {
 	},
 	detalleAnuncio: (req, res) => {
 		id = req.query.id;
-		let anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} )
 		res.render('main/detalleAnuncio', { anuncio: JSON.parse(anuncios)[id - 1] });
 	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
 	},
 	validarUsuario: (req,res) => {
-		// hacer validacion del login
-		res.redirect('perfil');
+		let usuariosDB = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
+		let usuarios = JSON.parse(usuariosDB);
+		for (const usuario of usuarios) {
+			if(usuario.email == req.body.correo && usuario.clave == req.body.clave){
+				sessionData = req.session;
+				//creamos una sesion con toda la info del usuario
+				sessionData.usuario = usuario;
+				//res.json(sessionData.usuario); (para ver si la info paso bien)
+				res.redirect('/perfil');
+			} else {
+				res.send('error en el login');
+			}
+		}
 	},
 	registroUsuario: (req, res) => {
 		res.render('main/registroUsuario', { title: 'Express' });

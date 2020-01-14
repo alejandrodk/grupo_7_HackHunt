@@ -184,7 +184,40 @@
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .container.detalle .anuncio{
+        padding-top: 5%;
+    }
+    .container.detalle .anuncio > div {
+        position: relative;
+        margin: auto;
+        top: 0;
+        right: 0;
+    }
+    .container.detalle .anuncio .cabecera h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+    .container.detalle .anuncio .descp {
+        min-height: 200px;
+    }
+
+    .container.detalle .anuncio .postular form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .container.detalle .anuncio .postular{
+        width: 100%;
+    }
+    .container.detalle .anuncio .postular form button {
+        margin: auto;
+        width: 90%;
+    }
+    .container.detalle .relacionados {
+        display: none !important;
+    }
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}

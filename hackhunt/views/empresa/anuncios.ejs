@@ -67,8 +67,8 @@
                     </div>
                 <% } %>
             </div>
+            <div class="col-3 candidatos wrap">
             <% for (const anuncio of anuncios) { %>
-                <div class="col-3 candidatos wrap">
                     <div class="item">
                         <ul>
                             <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span><%= anuncio.nuevos %></span></li>
@@ -77,8 +77,8 @@
                             <a href="anuncios/postulantes">Ver candidatos</a>
                         </ul>
                     </div>
+                    <% } %>
                 </div>
-            <% } %>
         </div>
     </div>
 </body>

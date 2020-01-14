@@ -131,4 +131,24 @@
     "candidatos": 0,
     "destacados": 0,
     "postulantes": []
+}, {
+    "id": 8,
+    "empresa": "",
+    "titulo": "Disenador Grafico",
+    "descrp": "kkegkeagkeaklgemakglneakgneakl",
+    "skillsex": "photoshop\r\nillustrator\r\n",
+    "skillsdes": "after effects",
+    "fecha": "2020-01-17",
+    "publicacion": "12/1/2020",
+    "area": "Diseno",
+    "ubicacion": "Capital Federal",
+    "cargo": "Disenador Grafico",
+    "jornada": "part time",
+    "salario": "15000",
+    "beneficios": "prepaga privada\r\n20 dias de vacaciones",
+    "nuevos": 0,
+    "candidatos": 0,
+    "destacados": 0,
+    "postulantes": [],
+    "favoritos": []
 }]

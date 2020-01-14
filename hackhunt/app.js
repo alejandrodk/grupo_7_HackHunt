@@ -1,6 +1,7 @@
 // ************ Require's ************
 const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
+const session = require('express-session');
 const express = require("express");
 const logger = require("morgan");
 const path = require("path");
@@ -14,7 +15,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
+app.use(session({resave: true, saveUninitialized: true, secret: 'chuleta123', cookie: { maxAge : 60000 }}));
 app.use(methodOverride('_method'));
+
 // ************ Template Engine - (don't touch) ************
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
