@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-12 registro wrap">
 					<div class="formulario wrap">
-						<form action="/empresa/registro" method="post">
+						<form action="/empresa/registro" method="post" enctype="multipart/form-data">
 							<h3 class="separador-categoria">Información del usuario de registro</h3>
 							<label for="nombre"><p>Nombre</p></label>
 							<input type="text" name="nombre" id="nombre" />
@@ -28,6 +28,8 @@
 							<input type="number" name="telefono" id="telefono" />
 							<label for="rubro"><p>Rubro</p></label>
 							<input type="text" name="rubro" id="rubro" />
+							<label for="company_avatar"><p>Subir Avatar</p></label>
+							<input type="file" name="company_avatar" id="company_avatar">
 							<input type="text" name="tipo" value="empresa" style="display: none;">
 							<button type="submit">Comenzar</button>
 							<button type="reset">Limpiar</button>

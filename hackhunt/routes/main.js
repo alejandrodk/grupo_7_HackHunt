@@ -1,7 +1,7 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
-
+const upload = require('../middlewares/multer.js');
 // ************ Controller Require ************
 const mainController = require("../controllers/mainController");
 
@@ -16,7 +16,7 @@ router.post("/registro", mainController.valRegUsuario);
 router.get("/empresa/login", mainController.loginEmpresa);
 router.post("/empresa/login", mainController.validarEmpresa);
 router.get("/empresa/registro", mainController.registroEmpresa);
-router.post("/empresa/registro", mainController.valRegEmpresa);
+router.post("/empresa/registro",upload.single('company_avatar'), mainController.valRegEmpresa);
 router.post("/recuperar", mainController.recuperar);
 router.post("/empresa/recuperar", mainController.recuperarEmpresa);
 
