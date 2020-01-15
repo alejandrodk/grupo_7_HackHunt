@@ -17,7 +17,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(session({resave: true, saveUninitialized: true, secret: 'chuleta123', cookie: { maxAge : 60000 }}));
 app.use(methodOverride('_method'));
-
+app.use((req,res,next)=>
+{
+	if(!req.session.initialised ==true)
+	{
+		req.session.user_id;
+		req.session.user_name = "Invitado";
+	}
+	next();
+})
 // ************ Template Engine - (don't touch) ************
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

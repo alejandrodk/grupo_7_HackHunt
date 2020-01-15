@@ -1,9 +1,10 @@
 const fs = require('fs');
-
+const dbFunctions = require('../helpers/readjson.js');
 const controller = {
 	perfil: (req, res) => {
 		let anuncios = fs.readFileSync('data/anuncios.json', {encoding: 'utf-8'});
-		res.render("empresa/perfil", { anuncios: JSON.parse(anuncios) });
+		let company = dbFunctions.getCompanyById(req.params.id);
+		res.render("empresa/perfil", {empresa: company, anuncios: JSON.parse(anuncios) });
 	},
 	info: (req, res) => {
 		res.render("empresa/info", { title: "Express" });
@@ -12,9 +13,9 @@ const controller = {
 		res.render("empresa/mensajes", { title: "Express" });
 	},
 	anuncios: (req, res) => {
-		let anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} )
+		let anuncios = dbFunctions.getAllAnuncios();
 
-		res.render("empresa/anuncios", { anuncios: JSON.parse(anuncios) });
+		res.render("empresa/anuncios", { anuncios: anuncios.file });
 	},
 	anuncioDetalle: (req, res) => {
 		res.render("empresa/anuncioDetalle", { title: "Express" });
@@ -23,28 +24,19 @@ const controller = {
 		res.render("empresa/crearPublicacion", { title: "Express" });
 	},
 	postearPublicacion : (req,res) => {
-		let contenido = fs.readFileSync('data/anuncios.json', {encoding:'utf-8'});
+		let anu_Json = dbFunctions.getAllAnuncios();
+		 
 		let date = new Date();
-		let fechaAct = `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`
-		let id = (JSON.parse(contenido).length) + 1;
+		let anu_fechaAct = `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`
+		let id = dbFunctions.getNewId(anu_Json);
 		let anuncio = {
 			// identificadores
-			id : id,
+			anu_id : id,
 			// traer empresa de sesion
 			empresa : '', //id de la empresa que publico
 			// info POST
-			titulo : req.body.titulo,
-			descrp : req.body.descrp,
-			skillsex : req.body.skillsex,
-			skillsdes : req.body.skillsdes,
-			fecha : req.body.fecha,
-			publicacion : fechaAct,
-			area : req.body.area,
-			ubicacion : req.body.ubicacion,
-			cargo : req.body.cargo,
-			jornada : req.body.jornada,
-			salario : req.body.salario,
-			beneficios : req.body.beneficios,
+			anu_publicacion : anu_fechaAct,
+
 			// info para empresa
 			nuevos : 0,
 			candidatos : 0,

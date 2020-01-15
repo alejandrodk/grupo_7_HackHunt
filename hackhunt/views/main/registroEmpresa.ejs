@@ -9,26 +9,28 @@
 			<div class="row">
 				<div class="col-12 registro wrap">
 					<div class="formulario wrap">
-						<form action="/empresa/registro" method="post">
+						<form action="/empresa/registro" method="post" enctype="multipart/form-data">
 							<h3 class="separador-categoria">Información del usuario de registro</h3>
-							<label for="nombre"><p>Nombre</p></label>
-							<input type="text" name="nombre" id="nombre" />
-							<label for="apellido"><p>Apellido</p></label>
-							<input type="text" name="apellido" id="apellido" />
-							<label for="email"><p>Email</p></label>
-							<input type="email" name="email" id="email" />
-							<label for="clave"><p>Clave</p></label>
-							<input type="password" name="clave" id="clave" />
+							<label for="cmp_name"><p>Nombre</p></label>
+							<input type="text" name="cmp_name" id="cmp_name" />
+							<label for="cmp_lastname"><p>Apellido</p></label>
+							<input type="text" name="cmp_lastname" id="cmp_lastname" />
+							<label for="cmp_email"><p>Email</p></label>
+							<input type="email" name="cmp_email" id="cmp_email" />
+							<label for="cmp_passwd"><p>Clave</p></label>
+							<input type="password" name="cmp_passwd" id="cmp_passwd" />
 							<h3 class="separador-categoria">Datos de empresa</h3>
-							<label for="razon"><p>Razon Social</p></label>
-							<input type="text" name="razon" id="razon" />
-							<label for="cuit"><p>Cuit</p></label>
-							<input type="text" name="cuit" id="cuit" />
-							<label for="telefono"><p>Teléfono</p></label>
-							<input type="number" name="telefono" id="telefono" />
-							<label for="rubro"><p>Rubro</p></label>
-							<input type="text" name="rubro" id="rubro" />
-							<input type="text" name="tipo" value="empresa" style="display: none;">
+							<label for="cmp_bname"><p>Razon Social</p></label>
+							<input type="text" name="cmp_bname" id="cmp_bname" />
+							<label for="cmp_cuit"><p>Cuit</p></label>
+							<input type="text" name="cmp_cuit" id="cmp_cuit" />
+							<label for="cmp_tel"><p>Teléfono</p></label>
+							<input type="number" name="cmp_tel" id="cmp_tel" />
+							<label for="cmp_sector"><p>Rubro</p></label>
+							<input type="text" name="cmp_sector" id="cmp_sector" />
+							<label for="cmp_avatar"><p>Subir Avatar</p></label>
+							<input type="file" name="cmp_avatar" id="cmp_avatar">
+							<input type="text" name="type" value="company" style="display: none;">
 							<button type="submit">Comenzar</button>
 							<button type="reset">Limpiar</button>
 						</form>
