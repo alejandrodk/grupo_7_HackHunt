@@ -16,7 +16,7 @@ router.post("/registro", mainController.valRegUsuario);
 router.get("/empresa/login", mainController.loginEmpresa);
 router.post("/empresa/login", mainController.validarEmpresa);
 router.get("/empresa/registro", mainController.registroEmpresa);
-router.post("/empresa/registro",upload.single('company_avatar'), mainController.valRegEmpresa);
+router.post("/empresa/registro",upload.single('cmp_avatar'), mainController.valRegEmpresa);
 router.post("/recuperar", mainController.recuperar);
 router.post("/empresa/recuperar", mainController.recuperarEmpresa);
 
