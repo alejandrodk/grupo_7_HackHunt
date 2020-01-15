@@ -62,7 +62,13 @@ const controller = {
 		let contenidoJSON = JSON.stringify(contenido);
 		fs.writeFileSync('data/usuarios.json',contenidoJSON);
 		
-		res.redirect('perfil');
+		res.redirect('registro/cv');
+	},
+	completarCv : (req,res) => {
+		res.render('main/completarRegistro', { title: 'Express' });
+	},
+	valCompletarCv : (req,res) => {
+		// validar info y cargar el CV
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });

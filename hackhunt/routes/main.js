@@ -13,6 +13,8 @@ router.get("/login", mainController.loginUsuario);
 router.post("/login", mainController.validarUsuario);
 router.get("/registro", mainController.registroUsuario);
 router.post("/registro", mainController.valRegUsuario);
+router.get("/registro/cv", mainController.completarCv);
+router.post("/registro/cv", mainController.valCompletarCv);
 router.get("/empresa/login", mainController.loginEmpresa);
 router.post("/empresa/login", mainController.validarEmpresa);
 router.get("/empresa/registro", mainController.registroEmpresa);
