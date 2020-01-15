@@ -21,16 +21,16 @@ function getAllCompanies()
 function getNewId(array)
 {
     let newId = 0;
-    if(array == '')
+    if(array.file == '')
     {
         return 1;
     }
-    if(array.cmp_id != undefined){ 
-    newId = array.pop();
+    if(array.ruta == 'data/empresas.json'){ 
+    newId = array.file[array.file.length -1];
     return newId.cmp_id +1;
     }
-    if(array.user_id != undefined){ 
-    newId = array.pop();
+    if(array.ruta == 'data/usuarios.json'){ 
+    newId = array.file[array.file.length -1];
         return newId.user_id +1;
     }
     return "Error";

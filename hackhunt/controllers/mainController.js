@@ -82,13 +82,15 @@ const controller = {
 		//ruta: con el path del json de las empresas
 		//file: con los datos del json de empresas
 		let allCompanies = dbFunctions.getAllCompanies();
+		
 		//la funcion getNewId recibe como param el json con todas las compañias y devuelve un nuevo id para la neuva empresa
-		var newid = dbFunctions.getNewId(allCompanies.file);
+		var newid = dbFunctions.getNewId(allCompanies);
 		let newCompany = {
 			cmp_id: newid,
-			...req.body
+			...req.body,
+			cmp_avatar: req.file.filename
 		};
-		console.log(newCompany)
+		
 		//la funcion writeFile recibe como primer param el obj nuevo creado y 2do param el obj con todas las compañias.
 		dbFunctions.writeFile(newCompany,allCompanies);
 		
