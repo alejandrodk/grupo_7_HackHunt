@@ -1,15 +1,17 @@
 const fs = require('fs');
 const cmp_path = 'data/empresas.json';
-
+const anu_path = 'data/anuncios.json';
 function getCompanyById(id)
 {
-    let companies = getAllCompanies();
-    let cmp = companies.file.filter(item => item.cmp_id == id);
-    if(cmp == '')
-    {
-        return "No se encontró la empresa";
+
+    let cmp = getAllCompanies().file.filter(item => item.cmp_id == id);
+    if(cmp == ''){
+        return "empresa no encontrada"
     }
-    return cmp[0];
+    else
+    {
+        return cmp[0];
+    }
 }
 
 function getAllCompanies()
@@ -43,6 +45,10 @@ function getNewId(array)
     newId = array.file[array.file.length -1];
         return newId.user_id +1;
     }
+    if(array.ruta == 'data/anuncios.json'){ 
+        newId = array.file[array.file.length -1];
+            return newId.anu_id +1;
+        }
     return "Error";
 }
 
@@ -52,4 +58,18 @@ function writeFile(newFile, db)
     fs.writeFileSync(db.ruta,JSON.stringify(db.file));
 }
 
-module.exports = {getAllCompanies,getNewId, writeFile}
+function getAllAnuncios()
+{
+    let anu_file = fs.readFileSync(anu_path,'utf-8');
+    let anuncios = {file:[],
+                    path: anu_path};
+    if(anu_file != '')
+    {
+        anuncios.file = json.parse(anu_file);
+        return anuncios;
+    }
+    return anuncios;
+}
+
+
+module.exports = {getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios}
