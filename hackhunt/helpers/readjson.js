@@ -30,6 +30,22 @@ function getAllCompanies()
     return cmp_json;
 }
 
+function getAllUsers()
+{
+    let user_file = fs.readFileSync(user_path, {encoding:'utf-8'});
+    let user_json = {ruta:'',
+                    file:[]
+                    };
+    user_json.ruta = user_path;
+    if(user_file != '')
+    {
+        user_json.file = JSON.parse(user_file);
+        return user_json;
+    }
+    
+    return user_json;
+}
+
 function getNewId(array)
 {
     let newId = 0;
