@@ -1,6 +1,7 @@
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
+
 var sessionData;
 
 const anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} );
@@ -29,7 +30,7 @@ const controller = {
 				//creamos una sesion con toda la info del usuario
 				sessionData.usuario = usuario;
 				//res.json(sessionData.usuario); (para ver si la info paso bien)
-				res.redirect('/perfil');
+				return res.redirect('/perfil');
 			} else {
 				res.send('error en el login');
 			}
@@ -64,13 +65,16 @@ const controller = {
 		let contenidoJSON = JSON.stringify(contenido);
 		fs.writeFileSync('data/usuarios.json',contenidoJSON);
 		
-		res.redirect('registro/cv');
+		return res.redirect('registro/cv');
 	},
 	completarCv : (req,res) => {
 		res.render('main/completarRegistro', { title: 'Express' });
 	},
 	valCompletarCv : (req,res) => {
 		// validar info y cargar el CV
+
+		let usuarios = dbFunctions.ge
+		return res.redirect('/perfil');
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });

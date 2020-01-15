@@ -7,21 +7,13 @@
     <link rel="stylesheet" href="/css/headerLog.css" />
 </head>
 <!-- CÓDIGO -->
-
 <body>
     <header>
         <%- include('../partials/headerLog'); -%>
     </header>
     <div class="container cv">
         <div class="row">
-            <div class="col-12 barra-menu wrap">
-                <a href="informacion" id="select">Editar mi CV</a>
-                <a href="postulaciones">Mis postulaciones</a>
-                <a href="favoritos">Favoritos</a>
-                <a href="alertas">Alertas</a>
-                <a href="configuracion">Configuración</a>
-            </div>
-            <form action="/registro/cv" method="post" class="wrap">
+            <form action="/registro/cv" method="post" class="wrap" style="margin-top: 4%;">
                 <div class="col-9 datos personales wrap">
                     <h3>Datos personales</h3>
                     <p id="DatosPersonales"></p>
@@ -236,8 +228,8 @@
                     <div class="ubicaciones">
                         <p>Ubicaciones seleccionadas</p>
                     </div>
+                    <button type="submit">Guardar</button>
                 </div>
-                <button type="submit">Guardar</button>
             </form>
         </div>
     </div>
