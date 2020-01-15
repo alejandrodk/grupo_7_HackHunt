@@ -1,4 +1,5 @@
 const fs = require('fs');
+const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
 var sessionData;
 
@@ -83,15 +84,18 @@ const controller = {
 		//file: con los datos del json de empresas
 		let allCompanies = dbFunctions.getAllCompanies();
 		
-		//la funcion getNewId recibe como param el json con todas las compañias y devuelve un nuevo id para la neuva empresa
+		//la funcion getNewId recibe como param el obj de las empresas
+		// y devuelve un nuevo id para la neuva empresa
 		var newid = dbFunctions.getNewId(allCompanies);
+		req.body.cmp_passwd = bcrypt(req.body.cmp_passwd,12);
 		let newCompany = {
 			cmp_id: newid,
 			...req.body,
 			cmp_avatar: req.file.filename
 		};
 		
-		//la funcion writeFile recibe como primer param el obj nuevo creado y 2do param el obj con todas las compañias.
+		//la funcion writeFile recibe como primer param el obj nuevo creado
+		// y 2do param el obj con todas las compañias.
 		dbFunctions.writeFile(newCompany,allCompanies);
 		
 		res.redirect('/empresa/perfil');

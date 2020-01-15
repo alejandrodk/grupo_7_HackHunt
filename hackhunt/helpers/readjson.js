@@ -1,6 +1,10 @@
 const fs = require('fs');
 const cmp_path = 'data/empresas.json';
 
+function getCompanyById(id)
+{
+    let cmp = getAllCompanies().file.filter(item => item.cmp_id == id)
+}
 
 function getAllCompanies()
 {
