@@ -3,7 +3,7 @@ Tu trabajo como desarrollador más cerca.
 
 ## Tablero del proyecto
 
-[Trello](https://trello.com/b/pNgA3NJ7/hackhunt)
+[Trello](https://trello.com/b/Gkna0BJn/proyecto-digital-house)
 
 ## ¿Quienes somos?
 
