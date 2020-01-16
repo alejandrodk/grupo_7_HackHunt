@@ -28,7 +28,7 @@ const controller = {
 			if(usuario.email == req.body.correo && usuario.clave == req.body.clave){
 				sessionData = req.session;
 				//creamos una sesion con toda la info del usuario
-				sessionData.usuario = usuario;
+				sessionData.user = usuario;
 				//res.json(sessionData.usuario); (para ver si la info paso bien)
 				return res.redirect('/perfil');
 			} else {
@@ -65,15 +65,21 @@ const controller = {
 		let contenidoJSON = JSON.stringify(contenido);
 		fs.writeFileSync('data/usuarios.json',contenidoJSON);
 		
+		req.session.user = usuario;
 		return res.redirect('registro/cv');
 	},
 	completarCv : (req,res) => {
-		res.render('main/completarRegistro', { title: 'Express' });
+		let user = req.session.user;
+		res.render('main/completarRegistro', { user: user });
 	},
 	valCompletarCv : (req,res) => {
 		// validar info y cargar el CV
+		let user_id = req.session.user.id;
+		let usuarios = dbFunctions.getAllUsers().file;
+		let infoCv = {
+			...req.body
+		}
 
-		let usuarios = dbFunctions.ge
 		return res.redirect('/perfil');
 	},
 	loginEmpresa: (req, res) => {
@@ -81,7 +87,7 @@ const controller = {
 	},
 	validarEmpresa: (req,res) => {
 		// hacer validacion del login
-		res.redirect('empresa/perfil');
+		return res.redirect('empresa/perfil');
 	},
 	registroEmpresa: (req, res) => {
 		res.render('main/registroEmpresa', { title: 'Express' });
@@ -109,15 +115,15 @@ const controller = {
 		// y 2do param el obj con todas las compañias.
 		dbFunctions.writeFile(newCompany,allCompanies);
 		
-		res.redirect('/empresa/perfil');
+		return res.redirect('/empresa/perfil');
 	},
 	recuperar: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
-		res.redirect('/perfil');
+		return res.redirect('/perfil');
 	},
 	recuperarEmpresa: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
-		res.redirect('/empresa/perfil');
+		return res.redirect('/empresa/perfil');
 	}
 };
 

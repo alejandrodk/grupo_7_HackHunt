@@ -18,46 +18,46 @@
                     <h3>Datos personales</h3>
                     <p id="DatosPersonales"></p>
                     <div class="formulario wrap">
-                        <label for="nombre">
+                        <label for="user_name">
                             <p>Nombre</p>
                         </label>
-                        <input type="text" name="nombre" id="nombre">
-                        <label for="apellido">
+                        <input type="text" name="user_name" id="user_name" value="<%= user.nombre %>">
+                        <label for="user_lastname">
                             <p>Apellidos</p>
                         </label>
-                        <input type="text" name="apellido" id="apellido">
-                        <label for="dni">
+                        <input type="text" name="user_lastname" id="user_lastname" value="<%= user.apellido %>">
+                        <label for="user_dni">
                             <p>DNI</p>
                         </label>
-                        <input type="number" name="dni" id="dni">
-                        <label for="fechaNac">
+                        <input type="number" name="user_dni" id="user_dni">
+                        <label for="user_datebirth">
                             <p>Fecha de nacimiento</p>
                         </label>
-                        <input type="date" name="fechaNac" id="fechaNac">
+                        <input type="date" name="user_datebirth" id="user_datebirth">
                         <div class="genero">
-                            <label for="genero">
+                            <label for="user_gender">
                                 <p>Genero</p>
                             </label>
                             <label for="radioH">Hombre</label>
-                            <input type="radio" name="genero" id="genero" value="H">
+                            <input type="radio" name="user_gender" id="user_gender" value="H">
                             <label for="radioM">Mujer</label>
-                            <input type="radio" name="genero" id="genero" value="M">
+                            <input type="radio" name="user_gender" id="user_gender" value="M">
                         </div>
-                        <label for="edoCivil">
+                        <label for="user_civilstate">
                             <p>Estado Civil</p>
                         </label>
-                        <select name="edoCivil" id="edoCivil">
+                        <select name="user_civilstate" id="user_civilstate">
                             <option value="SOL">Soltero</option>
                             <option value="CAS">Casado</option>
                         </select>
-                        <label for="telefono">
+                        <label for="user_phone">
                             <p>Teléfono</p>
                         </label>
-                        <input type="number" name="telefono" id="telefono">
-                        <label for="ciudad">
+                        <input type="number" name="user_phone" id="user_phone">
+                        <label for="user_city">
                             <p>Ciudad</p>
                         </label>
-                        <select name="ciudad" id="ciudad">
+                        <select name="user_city" id="user_city">
                             <option value="CABA">Capital Federal</option>
                             <option value="GBA">Buenos Aires</option>
                             <option value="CO">Córdoba</option>
@@ -70,18 +70,18 @@
                     <h3>Datos Profesionales</h3>
                     <p id="DatosProfesionales"></p>
                     <div class="formulario wrap">
-                        <label for="cargo">
+                        <label for="user_position">
                             <p>Cargo / Profesión o título breve</p>
                         </label>
-                        <input type="text" name="cargo" id="cargo">
-                        <label for="nivel">
+                        <input type="text" name="user_position" id="user_position">
+                        <label for="user_level">
                             <p>Nivel</p>
                         </label>
-                        <input type="text" name="nivel" id="nivel" placeholder="Jr / Ssr / Sr">
-                        <label for="desc">
+                        <input type="text" name="user_level" id="user_level" placeholder="Jr / Ssr / Sr">
+                        <label for="user_description">
                             <p>Descripción breve de tu perfil profesional</p>
                         </label>
-                        <textarea name="desc" id="desc" cols="30" rows="10" maxlength="500"></textarea>
+                        <textarea name="user_description" id="user_description" cols="30" rows="10" maxlength="500"></textarea>
                         <p>Max 500</p>
                     </div>
                 </div>
@@ -89,36 +89,36 @@
                     <h3>Experiencia laboral</h3>
                     <p id="ExperienciaLaboral"></p>
                     <div class="formulario wrap">
-                        <label for="expempresa">
+                        <label for="user_experience">
                             <p>Empresa</p>
                         </label>
-                        <input type="text" name="expempresa" id="expempresa">
-                        <label for="expcargo">
+                        <input type="text" name="user_experience" id="user_experience">
+                        <label for="user_cmp_position">
                             <p>Cargo</p>
                         </label>
-                        <input type="text" name="expcargo" id="expcargo">
-                        <label for="expdesde">
+                        <input type="text" name="user_cmp_position" id="user_cmp_position">
+                        <label for="user_experience_since">
                             <p>Desde</p>
                         </label>
-                        <input type="date" name="expdesde" id="expdesde">
-                        <label for="exphasta">
+                        <input type="date" name="user_experience_since" id="user_experience_since">
+                        <label for="user_experience_to">
                             <p>Hasta</p>
                         </label>
-                        <input type="date" name="exphasta" id="exphasta">
-                        <label for="expdesc">
+                        <input type="date" name="user_experience_to" id="user_experience_to">
+                        <label for="user_experience_description">
                             <p>Descripción</p>
                         </label>
-                        <textarea name="expdesc" id="expdesc" cols="30" rows="10"></textarea>
+                        <textarea name="user_experience_description" id="user_experience_description" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="col-9 datos formacion wrap">
                     <h3>Formación</h3>
                     <p id="Formacion"></p>
                     <div class="formulario wrap">
-                        <label for="">
+                        <label for="user_career">
                             <p>Nivel</p>
                         </label>
-                        <select name="" id="">
+                        <select name="user_career" id="user_career">
                             <option value="">Seleccione</option>
                             <option value="">Curso</option>
                             <option value="">Master</option>
@@ -127,39 +127,39 @@
                             <option value="">Técnico</option>
                             <option value="">Secundario</option>
                         </select>
-                        <label for="">
+                        <label for="user_institution">
                             <p>Institución</p>
                         </label>
-                        <input type="text" name="" id="">
-                        <label for="">
+                        <input type="text" name="user_institution" id="user_institution">
+                        <label for="user_career_title">
                             <p>Título</p>
                         </label>
-                        <input type="text" name="" id="">
-                        <label for="">
+                        <input type="text" name="user_career_title" id="user_career_title">
+                        <label for="user_career_since">
                             <p>Desde</p>
                         </label>
-                        <input type="date" name="" id="">
-                        <label for="">
+                        <input type="date" name="user_career_since" id="user_career_since">
+                        <label for="user_career_to">
                             <p>Hasta</p>
                         </label>
-                        <input type="date" name="" id="">
-                        <label for="">
+                        <input type="date" name="user_career_to" id="user_career_to">
+                        <label for="user_career_descp">
                             <p>Descripción</p>
                         </label>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name="user_career_descp" id="user_career_descp" cols="30" rows="10"></textarea>
                         <div class="repositorios wrap">
-                            <label for="">
+                            <label for="user_git">
                                 <p>Repositorio Git</p>
                             </label>
-                            <input type="text" name="" id="">
-                            <label for="">
+                            <input type="text" name="user_git" id="user_git">
+                            <label for="user_website">
                                 <p>Website</p>
                             </label>
-                            <input type="text" name="" id="">
-                            <label for="">
+                            <input type="text" name="user_website" id="user_website">
+                            <label for="user_stack">
                                 <p>StackOverflow</p>
                             </label>
-                            <input type="text" name="" id="">
+                            <input type="text" name="user_stack" id="user_stack">
                         </div>
                     </div>
                 </div>
@@ -167,14 +167,14 @@
                     <h3>Idiomas</h3>
                     <p id="Idiomas"></p>
                     <div class="formulario wrap">
-                        <label for="">
+                        <label for="user_lang">
                             <p>Idioma</p>
                         </label>
-                        <input type="text" name="" id="">
-                        <label for="">
+                        <input type="text" name="user_lang" id="user_lang">
+                        <label for="user_lang_level">
                             <p>Nivel</p>
                         </label>
-                        <select name="" id="">
+                        <select name="user_lang_level" id="user_lang_level">
                             <option value="">Seleccione</option>
                             <option value="BAS">Básico</option>
                             <option value="INT">Intermedio</option>
@@ -189,42 +189,42 @@
                 <div class="col-9 datos preferencias wrap">
                     <h3>Preferencia laboral</h3>
                     <p id="PreferenciaLaboral"></p>
-                    <label for="">
+                    <label for="user_work_sit">
                         <p>Situación Actual</p>
                     </label>
-                    <select name="" id="">
+                    <select name="user_work_sit" id="user_work_sit">
                         <option value="">Seleccione</option>
-                        <option value="">No tengo empleo</option>
-                        <option value="">Tengo empleo</option>
+                        <option value="sin-empleo">No tengo empleo</option>
+                        <option value="con-empleo">Tengo empleo</option>
                     </select>
-                    <label for="puestoDeseado">
+                    <label for="user_work_wish">
                         <p>Puesto deseado</p>
                     </label>
-                    <input type="text" name="" id="puestoDeseado" placeholder="Desarrollador Front-End">
-                    <button type="submit" id="adItem">+</button>
+                    <input type="text" name="user_work_wish" id="user_work_wish" placeholder="Desarrollador Front-End">
+                    <button id="adItem">+</button>
                     <div class="puestos">
                         <p>Puestos seleccionados</p>
                     </div>
-                    <label for="areaDeseada">
+                    <label for="user_wish_area">
                         <p>Área</p>
                     </label>
-                    <input type="text" name="" id="areaDeseada" placeholder="Desarrollo Web">
-                    <button type="submit" id="adItem">+</button>
+                    <input type="text" name="user_wish_area" id="user_wish_area" placeholder="Desarrollo Web">
+                    <button id="adItem">+</button>
                     <div class="areas">
                         <p>Áreas seleccionadas</p>
                     </div>
-                    <label for="">
+                    <label for="user_salary">
                         <p>Remuneración Pretendida</p>
                     </label>
-                    <input type="text" name="" id="" placeholder="*Opcional">
-                    <label for="ubicacionesDeseadas">
+                    <input type="text" name="user_salary" id="user_salary" placeholder="*Opcional">
+                    <label for="user_work_location">
                         <p>Ubicación/es</p>
                     </label>
-                    <select name="" id="ubicacionesDeseadas">
+                    <select name="user_work_location" id="user_work_location">
                         <option value="CAP">Capital Federal</option>
                         <option value="GBA">Buenos Aires</option>
                     </select>
-                    <button type="submit" id="adItem">+</button>
+                    <button id="adItem">+</button>
                     <div class="ubicaciones">
                         <p>Ubicaciones seleccionadas</p>
                     </div>

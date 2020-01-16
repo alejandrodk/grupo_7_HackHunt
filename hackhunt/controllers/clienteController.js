@@ -4,9 +4,9 @@ const controller = {
     perfil: (req, res) => {
         let usuario;
         // validamos que exista una sesion
-        if(req.session.usuario){
+        if(req.session.user){
             //guardamos la info de la sesion para enviarla como objeto
-            usuario = req.session.usuario
+            usuario = req.session.user
         };
         res.render('cliente/perfil', { usuario: usuario });
     },
@@ -36,21 +36,9 @@ const controller = {
         let usuarios = JSON.parse(users);
         
         for (const usuario of usuarios) {
-            if(usuario.nombre == req.session.usuario.nombre){
+            if(usuario.nombre == req.session.user.nombre){
                 info.dni ? usuario.dni = info.dni: usuario.dni = '';
                 info.fechaNac ? usuario.fechaNac = info.fechaNac : usuario.fechaNac = '';
-                /* usuario.genero = info.genero;
-                usuario.edoCivil = info.edoCivil;
-                usuario.telefono = info.telefono;
-                usuario.ciudad = info.ciudad;
-                usuario.cargo = info.cargo;
-                usuario.nivel = info.nivel;
-                usuario.desc = info.desc;
-                usuario.expempresa = info.expempresa;
-                usuario.expcargo = info.expcargo;
-                usuario.expdesde = info.expdesde;
-                usuario.exphasta = info.exphasta;
-                usuario.expdesc = info.expdesc; */
             }
         };
 
