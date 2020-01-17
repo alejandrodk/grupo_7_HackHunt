@@ -57,6 +57,20 @@ Esto ayuda a nuestros candidatos a conseguir oportunidades laborales enfocadas e
 
 [Computrabajo](https://www.computrabajo.com.ar/)
 
+-----------------------------------------------------------------------------------
+### Funciones Especiales
+
+|Helpers            |Descripcion                    |Parametros                   |
+|-------------------|-------------------------------|-----------------------------|
+|getAllCompanies(), getAllUsers(), getAllAnuncios()  |`'devuelve un objeto literal con datos de las companias/usuarios y la ruta del archivo json'`            |            |
+|getCompanyById(id), getUserById(id), getAnuncioById()             |`"Devuelve los datos de la compañia/usuario segun el id dado"`            |Recibe el id buscado            |
+|getNewId(array)             |`devuelve el proximo id disponible para usar`|Recibe un objeto literal obtenido de las funciones getAllCompanies(), getAllUsers(), getAllAnuncios() |
+|writeFile(newItem,db)             |`Inserta en el archivo JSON el nuevo item y guarda nuevamente los datos.`|Recibe (de tipo objeto literal) el nuevo item creado para insertar en la db JSON y el objeto literal obtenido de las funciones getAllCompanies(), getAllUsers(), getAllAnuncios()|
+|Dashes             |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+|Dashes             |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+|Dashes             |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+
+
 
 License
 ----
