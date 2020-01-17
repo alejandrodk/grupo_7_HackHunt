@@ -6,6 +6,7 @@ const locals = ((req,res,next)=>
         res.locals.isAuthenticated = true;
         res.locals.user_id = req.session.user_id;
         res.locals.user_name = req.session.user_name;
+        res.locals.data = req.session.data;
 	}
 	next();
 });

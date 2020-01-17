@@ -58,6 +58,14 @@ const controller = {
 
 		res.redirect(`/detalle?id=${id}`);
 	},
+	modificarPerfil: (req,res)=>
+	{
+		let user = dbFunctions.modifyCompany(req.session.user_id);
+		//aca van los datos para modificar
+		dbFunctions.saveUpdates(user);
+		res.redirect('/perfil');
+		
+	},
 	modificarPublicacion: (req, res) => {
 		res.render("empresa/modificarPublicacion", { title: "Express" })
 	},

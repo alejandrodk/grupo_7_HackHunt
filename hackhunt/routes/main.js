@@ -19,5 +19,7 @@ router.get("/empresa/registro", mainController.registroEmpresa);
 router.post("/empresa/registro",upload.single('cmp_avatar'), mainController.valRegEmpresa);
 router.post("/recuperar", mainController.recuperar);
 router.post("/empresa/recuperar", mainController.recuperarEmpresa);
+router.get("/pruebas",mainController.pruebas);
+router.get("/logout",mainController.logout);
 
 module.exports = router;
