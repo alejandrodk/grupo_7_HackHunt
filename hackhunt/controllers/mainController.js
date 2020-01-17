@@ -28,9 +28,9 @@ const controller = {
 			if(usuario.email == req.body.correo && usuario.clave == req.body.clave){
 				sessionData = req.session;
 				//creamos una sesion con toda la info del usuario
-				sessionData.usuario = usuario;
+				sessionData.user = usuario;
 				//res.json(sessionData.usuario); (para ver si la info paso bien)
-				res.redirect('/perfil');
+				return res.redirect('/perfil');
 			} else {
 				res.send('error en el login');
 			}
@@ -65,7 +65,22 @@ const controller = {
 		let contenidoJSON = JSON.stringify(contenido);
 		fs.writeFileSync('data/usuarios.json',contenidoJSON);
 		
-		res.redirect('perfil');
+		req.session.user = usuario;
+		return res.redirect('registro/cv');
+	},
+	completarCv : (req,res) => {
+		let user = req.session.user;
+		res.render('main/completarRegistro', { user: user });
+	},
+	valCompletarCv : (req,res) => {
+		// validar info y cargar el CV
+		let user_id = req.session.user.id;
+		let usuarios = dbFunctions.getAllUsers().file;
+		let infoCv = {
+			...req.body
+		}
+
+		return res.redirect('/perfil');
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });
@@ -114,7 +129,7 @@ const controller = {
 	},
 	recuperar: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
-		res.redirect('/perfil');
+		return res.redirect('/perfil');
 	},
 	recuperarEmpresa: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
