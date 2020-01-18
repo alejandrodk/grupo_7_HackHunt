@@ -88,15 +88,18 @@ const controller = {
 	validarEmpresa: (req,res) => {
 		let users = dbFunctions.getAllCompanies();
 		let user = users.file.filter(item => item.cmp_email == req.body.cmp_email);
-		let login = loginFunctions.companyLogin(req,user[0],req.body.cmp_passwd);
+		let login = loginFunctions.checkLogin(req,user[0]);
 		if(login)
 		{
 			req.session.data = user[0];
 			req.session.user_email = user[0].cmp_email;
 			return res.redirect('/empresa/perfil');
 		}
+		else
+		{
+			return res.redirect('/empresa/login');
+		}
 		
-		return res.redirect('/empresa/login');
 	},
 	registroEmpresa: (req, res) => {
 		res.render('main/registroEmpresa', { title: 'Express' });
