@@ -1,7 +1,6 @@
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
-const bcrypt = require('bcrypt');
 const {check, validationResult, body} = require('express-validator');
 
 const loginFunctions = require('../helpers/login');
@@ -11,7 +10,9 @@ const anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} );
 
 const controller = {
 	home: (req, res) => {
-		res.render('main/index', { anuncios: JSON.parse(anuncios) });
+		let anu = dbFunctions.getAllAnuncios();
+		
+		res.render('main/index', { anuncios: anu.file });
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
@@ -19,7 +20,8 @@ const controller = {
 	},
 	detalleAnuncio: (req, res) => {
 		id = req.query.id;
-		res.render('main/detalleAnuncio', { anuncio: JSON.parse(anuncios)[id - 1] });
+		let anu = dbFunctions.getAnuncioById(id);
+		res.render('main/detalleAnuncio', { anuncio: anu });
 	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
@@ -45,7 +47,7 @@ const controller = {
 			}
 		}
 	},
-	registroUsuario: (req, res) => {
+	registroUsuario: (req, res) => { 
 		res.render('main/registroUsuario', { title: 'Express' });
 	},
 	valRegUsuario: (req,res) => {
@@ -100,11 +102,12 @@ const controller = {
 	validarEmpresa: (req,res) => {
 		let users = dbFunctions.getAllCompanies();
 		let user = users.file.filter(item => item.cmp_user_email == req.body.cmp_user_email);
-		let login = loginFunctions.companyLogin(req,user[0],req.body.cmp_user_passwd);
-		if(login)
+		let login = loginFunctions.checkLogin(req,user[0]);
+		if(login) 
 		{
 			req.session.data = user[0];
 			req.session.user_email = user[0].cmp_user_email;
+			req.session.type_user = "empresa";
 			return res.redirect('/empresa/perfil');
 		}
 		else

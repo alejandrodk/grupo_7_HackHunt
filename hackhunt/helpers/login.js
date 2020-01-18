@@ -10,7 +10,7 @@ var loginFunctions =
         {
             if(user != '')
             {	
-            login = bcrypt.compareSync(req.body.cmp_passwd,user.cmp_passwd);
+            login = bcrypt.compareSync(req.body.cmp_user_passwd,user.cmp_user_passwd);
             }
             
             if(login)

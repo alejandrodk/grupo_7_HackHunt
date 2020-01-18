@@ -28,6 +28,19 @@ function getUserById(id)
     }
 }
 
+function getAnuncioById(id)
+{
+
+    let anuncio = getAllAnuncios().file.filter(item => item.anu_id == id);
+    if(anuncio == ''){
+        return "anuncio no encontrado"
+    }
+    else
+    {
+        return anuncio[0];
+    }
+}
+
 function getAllCompanies()
 {
     let cmp_file = fs.readFileSync(cmp_path, {encoding:'utf-8'});
@@ -92,10 +105,10 @@ function getAllAnuncios()
 {
     let anu_file = fs.readFileSync(anu_path,'utf-8');
     let anuncios = {file:[],
-                    path: anu_path};
+                    ruta: anu_path};
     if(anu_file != '')
     {
-        anuncios.file = json.parse(anu_file);
+        anuncios.file = JSON.parse(anu_file);
         return anuncios;
     }
     return anuncios;
@@ -171,4 +184,4 @@ function saveUpdates(array)
 
 
 
-module.exports = {getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios, getAllUsers, modifyUser,saveUpdates,getUserById,modifyCompany}
+module.exports = {getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios, getAllUsers, modifyUser,saveUpdates,getUserById,modifyCompany, getAnuncioById}

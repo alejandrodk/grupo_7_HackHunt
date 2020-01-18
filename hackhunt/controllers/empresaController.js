@@ -2,9 +2,9 @@ const fs = require('fs');
 const dbFunctions = require('../helpers/readjson.js');
 const controller = {
 	perfil: (req, res) => {
-		let anuncios = fs.readFileSync('data/anuncios.json', {encoding: 'utf-8'});
+		let anuncios = dbFunctions.getAllAnuncios();
 		let company = dbFunctions.getCompanyById(req.params.id);
-		res.render("empresa/perfil", {empresa: company, anuncios: JSON.parse(anuncios) });
+		res.render("empresa/perfil", {empresa: company, anuncios: anuncios.file });
 	},
 	info: (req, res) => {
 		res.render("empresa/info", { title: "Express" });
@@ -33,10 +33,12 @@ const controller = {
 			// identificadores
 			anu_id : id,
 			// traer empresa de sesion
-			empresa : '', //id de la empresa que publico
+			anu_empresa_id : req.session.user_id, //id de la empresa que publico
+			anu_empresa_name: req.session.data.cmp_name,
+			anu_empresa_avatar: req.session.data.cmp_avatar,
 			// info POST
+			...req.body,
 			anu_publicacion : anu_fechaAct,
-
 			// info para empresa
 			nuevos : 0,
 			candidatos : 0,
@@ -45,16 +47,7 @@ const controller = {
 			favoritos : []
 		}
 
-		if (contenido == ''){
-			contenido = [];
-		} else {
-			contenido = JSON.parse(contenido);
-		}
-		
-		contenido.push(anuncio);
-		
-		let contenidoJSON = JSON.stringify(contenido);
-		fs.writeFileSync('data/anuncios.json',contenidoJSON);
+		dbFunctions.writeFile(anuncio,anu_Json); 
 
 		res.redirect(`/detalle?id=${id}`);
 	},

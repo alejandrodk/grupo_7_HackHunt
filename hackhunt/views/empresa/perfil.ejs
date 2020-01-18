@@ -51,16 +51,18 @@
                         <div class="anuncios wrap">
                             <strong><p>Tus anuncios</p></strong>
                             <a href="anuncios">ver más</a>
-                            <% for (let i = 0; i <= 3; i++) { %>
-                                <a class="anuncio" href="/detalle?id=<%= anuncios[i].id %>">
+                            <%if(anuncios==''){%>
+                            <%}else{%>
+                            <% for (anuncio of anuncios) { %>
+                                <a class="anuncio" href="/detalle?id=<%= anuncio.anu_id %>">
                                     <div class="item wrap">
-                                        <h3><%= anuncios[i].titulo %></h3>
+                                        <h3><%= anuncio.anu_titulo %></h3>
                                         <p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>
-                                        <p title="Número de postulantes"> <%= anuncios[i].postulantes %></p>
-                                        <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncios[i].publicacion %></p>
+                                        <p title="Número de postulantes"> <%= anuncio.anu_postulantes %></p>
+                                        <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.anu_publicacion %></p>
                                     </div>
                                 </a>         
-                            <% } %>                                         
+                            <% } }%>                                         
                         </div>
                     </div>
                 </div>
