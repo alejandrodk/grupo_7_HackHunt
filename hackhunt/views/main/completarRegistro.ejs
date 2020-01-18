@@ -74,14 +74,14 @@
                             <p>Cargo / Profesión o título breve</p>
                         </label>
                         <input type="text" name="user_position" id="user_position">
-                        <label for="user_level">
+                        <label for="user_position_level">
                             <p>Nivel</p>
                         </label>
-                        <input type="text" name="user_level" id="user_level" placeholder="Jr / Ssr / Sr">
-                        <label for="user_description">
+                        <input type="text" name="user_position_level" id="user_position_level" placeholder="Jr / Ssr / Sr">
+                        <label for="user_position_description">
                             <p>Descripción breve de tu perfil profesional</p>
                         </label>
-                        <textarea name="user_description" id="user_description" cols="30" rows="10" maxlength="500"></textarea>
+                        <textarea name="user_position_description" id="user_position_description" cols="30" rows="10" maxlength="500"></textarea>
                         <p>Max 500</p>
                     </div>
                 </div>
@@ -89,23 +89,23 @@
                     <h3>Experiencia laboral</h3>
                     <p id="ExperienciaLaboral"></p>
                     <div class="formulario wrap">
-                        <label for="user_experience">
+                        <label for="user_cmp_experience">
                             <p>Empresa</p>
                         </label>
-                        <input type="text" name="user_experience" id="user_experience">
+                        <input type="text" name="user_cmp_experience" id="user_cmp_experience">
                         <label for="user_cmp_position">
                             <p>Cargo</p>
                         </label>
                         <input type="text" name="user_cmp_position" id="user_cmp_position">
-                        <label for="user_experience_since">
+                        <label for="user_cmp_experience_since">
                             <p>Desde</p>
                         </label>
-                        <input type="date" name="user_experience_since" id="user_experience_since">
-                        <label for="user_experience_to">
+                        <input type="date" name="user_cmp_experience_since" id="user_cmp_experience_since">
+                        <label for="user_cmp_experience_to">
                             <p>Hasta</p>
                         </label>
-                        <input type="date" name="user_experience_to" id="user_experience_to">
-                        <label for="user_experience_description">
+                        <input type="date" name="user_cmp_experience_to" id="user_cmp_experience_to">
+                        <label for="user_cmp_experience_description">
                             <p>Descripción</p>
                         </label>
                         <textarea name="user_experience_description" id="user_experience_description" cols="30" rows="10"></textarea>
@@ -120,12 +120,12 @@
                         </label>
                         <select name="user_career" id="user_career">
                             <option value="">Seleccione</option>
-                            <option value="">Curso</option>
-                            <option value="">Master</option>
-                            <option value="">Post-grado</option>
-                            <option value="">Universitario</option>
-                            <option value="">Técnico</option>
-                            <option value="">Secundario</option>
+                            <option value="curso">Curso</option>
+                            <option value="master">Master</option>
+                            <option value="postgrado">Post-grado</option>
+                            <option value="universitario">Universitario</option>
+                            <option value="tecnico">Técnico</option>
+                            <option value="secundario">Secundario</option>
                         </select>
                         <label for="user_institution">
                             <p>Institución</p>
@@ -143,10 +143,10 @@
                             <p>Hasta</p>
                         </label>
                         <input type="date" name="user_career_to" id="user_career_to">
-                        <label for="user_career_descp">
+                        <label for="user_career_description">
                             <p>Descripción</p>
                         </label>
-                        <textarea name="user_career_descp" id="user_career_descp" cols="30" rows="10"></textarea>
+                        <textarea name="user_career_description" id="user_career_description" cols="30" rows="10"></textarea>
                         <div class="repositorios wrap">
                             <label for="user_git">
                                 <p>Repositorio Git</p>
@@ -194,8 +194,8 @@
                     </label>
                     <select name="user_work_sit" id="user_work_sit">
                         <option value="">Seleccione</option>
-                        <option value="sin-empleo">No tengo empleo</option>
-                        <option value="con-empleo">Tengo empleo</option>
+                        <option value="unemployed">No tengo empleo</option>
+                        <option value="employed">Tengo empleo</option>
                     </select>
                     <label for="user_work_wish">
                         <p>Puesto deseado</p>

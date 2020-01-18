@@ -1,1 +1,82 @@
+<<<<<<< HEAD
+[{
+    "nombre": "alejandro",
+    "apellido": "barrios",
+    "email": "ottoabarriosp@hotmail.com",
+    "clave": "alejandro",
+    "tipo": "user",
+    "id": 1
+}, {
+    "nombre": "daniella",
+    "apellido": "bracho",
+    "email": "daniellabracho96@hotmail.com",
+    "clave": "hbhb4h342",
+    "tipo": "user",
+    "id": 2
+}, {
+    "nombre": "pepito",
+    "apellido": "perez",
+    "email": "pepito@hotmail.com.ar",
+    "clave": "fae4rxr4c4",
+    "tipo": "user",
+    "id": 3
+}, {
+    "nombre": "userPrueba",
+    "apellido": "apellido1",
+    "email": "user@hotmail.com.ar",
+    "clave": "qe3q r3cq",
+    "tipo": "user",
+    "id": 4
+}, {
+    "nombre": "",
+    "apellido": "",
+    "email": "",
+    "clave": "",
+    "tipo": "user",
+    "id": 5
+}, {
+    "nombre": "userprueba",
+    "apellido": "apellidoprueba",
+    "email": "prueba@hotmail.com",
+    "clave": "prueba",
+    "tipo": "user",
+    "id": 6
+}, {
+    "nombre": "userprueba",
+    "apellido": "apellidoprueba",
+    "email": "prueba@hotmail.com",
+    "clave": "prueba",
+    "tipo": "user",
+    "id": 7
+}, {
+    "nombre": "userprueba",
+    "apellido": "apellidoprueba",
+    "email": "prueba@hotmail.com",
+    "clave": "prueba",
+    "tipo": "user",
+    "id": 8
+}, {
+    "nombre": "ale",
+    "apellido": "bar",
+    "email": "ale@ale.com",
+    "clave": "alejandro",
+    "tipo": "user",
+    "id": 9
+}, {
+    "nombre": "ale",
+    "apellido": "bar",
+    "email": "ale@ale.com",
+    "clave": "ale",
+    "tipo": "user",
+    "id": 10
+}, {
+    "nombre": "ale",
+    "apellido": "ap2",
+    "email": "ale2@ale.com",
+    "clave": "alejandro",
+    "tipo": "user",
+    "id": 11
+}]
+=======
 [{"user_name":"carlitos perez","apellido":"barrios","email":"ottoabarriosp@hotmail.com","clave":"alejandro","tipo":"user","user_id":1},{"nombre":"daniella","apellido":"bracho","email":"daniellabracho96@hotmail.com","clave":"hbhb4h342","tipo":"user","id":2},{"nombre":"pepito","apellido":"perez","email":"pepito@hotmail.com.ar","clave":"fae4rxr4c4","tipo":"user","id":3},{"nombre":"userPrueba","apellido":"apellido1","email":"user@hotmail.com.ar","clave":"qe3q r3cq","tipo":"user","id":4}]
+>>>>>>> dbfb14fc8734d1f0bfb8f35bb452a5e697b9744e

@@ -1,6 +1,8 @@
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
+const {check, validationResult, body} = require('express-validator');
+
 const loginFunctions = require('../helpers/login');
 var sessionData;
 
@@ -22,17 +24,23 @@ const controller = {
 		res.render('main/loginUsuario', { title: 'Express' });
 	},
 	validarUsuario: (req,res) => {
-		let usuariosDB = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
-		let usuarios = JSON.parse(usuariosDB);
-		for (const usuario of usuarios) {
-			if(usuario.email == req.body.correo && usuario.clave == req.body.clave){
-				sessionData = req.session;
-				//creamos una sesion con toda la info del usuario
-				sessionData.user = usuario;
-				//res.json(sessionData.usuario); (para ver si la info paso bien)
-				return res.redirect('/perfil');
-			} else {
-				res.send('error en el login');
+		// validar formulario con express-validator
+		let errors_validation = validationResult(req);
+		if(!errors_validation.isEmpty()){
+			return res.render('main/loginUsuario', { error: errors_validation });
+		} else {
+			let usuariosDB = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
+			let usuarios = JSON.parse(usuariosDB);
+			for (const usuario of usuarios) {
+				if(usuario.email == req.body.correo && usuario.clave == req.body.clave){
+					sessionData = req.session;
+					//creamos una sesion con toda la info del usuario
+					sessionData.user = usuario;
+					//res.json(sessionData.usuario); (para ver si la info paso bien)
+					return res.redirect('/perfil');
+				} else {
+					res.send('error en el login');
+				}
 			}
 		}
 	},
@@ -74,13 +82,20 @@ const controller = {
 	},
 	valCompletarCv : (req,res) => {
 		// validar info y cargar el CV
-		let user_id = req.session.user.id;
-		let usuarios = dbFunctions.getAllUsers().file;
+		let user = req.session.user;
+		//let usuarios = dbFunctions.getAllUsers().file;
+
 		let infoCv = {
 			...req.body
-		}
+		};
 
-		return res.redirect('/perfil');
+		let usuariosAct = usuarios.map((userrr) => {
+			if(userrr.id == user.id){
+				user.nombre = req.body.user_name;
+			}
+		})
+		res.json(usuariosAct);
+		//return res.redirect('/perfil');
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });

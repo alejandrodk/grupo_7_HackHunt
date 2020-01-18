@@ -25,30 +25,25 @@
             <p id="DatosPersonales"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for="nombre"><p>Nombre</p></label>
-                    <input type="text" name="nombre" id="nombre">
-                    <label for="apellido"><p>Apellidos</p></label>
-                    <input type="text" name="apellido" id="apellido">
-                    <label for="dni"><p>DNI</p></label>
-                    <input type="number" name="dni" id="dni">
-                    <label for="fechaNac"><p>Fecha de nacimiento</p></label>
-                    <input type="date" name="fechaNac" id="fechaNac">
+                    <label for="cmp_user_name"><p>Nombre</p></label>
+                    <input type="text" name="cmp_user_name" id="cmp_user_name">
+                    <label for="cmp_user_lastname"><p>Apellidos</p></label>
+                    <input type="text" name="cmp_user_lastname" id="cmp_user_lastname">
+                    <label for="cmp_user_dni"><p>DNI</p></label>
+                    <input type="number" name="cmp_user_dni" id="cmp_user_dni">
+                    <label for="cmp_ user_datebirth"><p>Fecha de nacimiento</p></label>
+                    <input type="date" name="cmp_ user_datebirth" id="cmp_ user_datebirth">
                     <div class="genero">
-                        <label for="genero"><p>Genero</p></label>
+                        <label for="cmp_user_gender"><p>Genero</p></label>
                         <label for="radioH">Hombre</label>
-                        <input type="radio" name="genero" id="genero" value="H">
+                        <input type="radio" name="cmp_user_gender" id="cmp_user_gender" value="H">
                         <label for="radioM">Mujer</label>
-                        <input type="radio" name="genero" id="genero" value="M">
+                        <input type="radio" name="cmp_user_gender" id="cmp_user_gender" value="M">
                     </div>
-                    <label for="edoCivil"><p>Estado Civil</p></label>
-                    <select name="edoCivil" id="edoCivil">
-                        <option value="SOL">Soltero</option>
-                        <option value="CAS">Casado</option>
-                    </select>
-                    <label for="telefono"><p>Teléfono</p></label>
-                    <input type="number" name="telefono" id="telefono">
-                    <label for="ciudad"><p>Ciudad</p></label>
-                    <select name="ciudad" id="ciudad">
+                    <label for="cmp_user_phone"><p>Teléfono</p></label>
+                    <input type="number" name="cmp_user_phone" id="cmp_user_phone">
+                    <label for="cmp_user_city"><p>Ciudad</p></label>
+                    <select name="cmp_user_city" id="cmp_user_city">
                         <option value="CABA">Capital Federal</option>
                         <option value="GBA">Buenos Aires</option>
                         <option value="CO">Córdoba</option>
@@ -76,12 +71,12 @@
             <p id="DatosProfesionales"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for="cargo"><p>Cargo / Profesión o título breve</p></label>
-                    <input type="text" name="cargo" id="cargo">
-                    <label for="nivel"><p>Nivel</p></label>
-                    <input type="text" name="nivel" id="nivel" placeholder="Jr / Ssr / Sr">
-                    <label for="desc"><p>Descripción breve de tu perfil profesional</p></label>
-                    <textarea name="desc" id="desc" cols="30" rows="10" maxlength="500"></textarea>
+                    <label for="user_position"><p>Cargo / Profesión o título breve</p></label>
+                    <input type="text" name="user_position" id="user_position">
+                    <label for="user_position_level"><p>Nivel</p></label>
+                    <input type="text" name="user_position_level" id="user_position_level" placeholder="Jr / Ssr / Sr">
+                    <label for="user_position_description"><p>Descripción breve de tu perfil profesional</p></label>
+                    <textarea name="user_position_description" id="user_position_description" cols="30" rows="10" maxlength="500"></textarea>
                     <p>Max 500</p>
                     <button type="submit">Guardar</button>
                 </form>
@@ -92,16 +87,16 @@
             <p id="ExperienciaLaboral"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for="expempresa"><p>Empresa</p></label>
-                    <input type="text" name="expempresa" id="expempresa">
-                    <label for="expcargo"><p>Cargo</p></label>
-                    <input type="text" name="expcargo" id="expcargo">
-                    <label for="expdesde"><p>Desde</p></label>
-                    <input type="date" name="expdesde" id="expdesde">
-                    <label for="exphasta"><p>Hasta</p></label>
-                    <input type="date" name="exphasta" id="exphasta">
-                    <label for="expdesc"><p>Descripción</p></label>
-                    <textarea name="expdesc" id="expdesc" cols="30" rows="10"></textarea>
+                    <label for="user_cmp_experience"><p>Empresa</p></label>
+                    <input type="text" name="user_cmp_experience" id="user_cmp_experience">
+                    <label for="user_cmp_position"><p>Cargo</p></label>
+                    <input type="text" name="user_cmp_position" id="user_cmp_position">
+                    <label for="user_cmp_experience_since"><p>Desde</p></label>
+                    <input type="date" name="user_cmp_experience_since" id="user_cmp_experience_since">
+                    <label for="user_cmp_experience_to"><p>Hasta</p></label>
+                    <input type="date" name="user_cmp_experience_to" id="user_cmp_experience_to">
+                    <label for="user_cmp_experience_description"><p>Descripción</p></label>
+                    <textarea name="user_cmp_experience_description" id="user_cmp_experience_description" cols="30" rows="10"></textarea>
                     <button type="submit">Guardar</button>
                 </form>
             </div>
@@ -111,33 +106,33 @@
             <p id="Formacion"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for=""><p>Nivel</p></label>
-                    <select name="" id="">
+                    <label for="user_career"><p>Nivel</p></label>
+                    <select name="user_career" id="user_career">
                         <option value="">Seleccione</option>
-                        <option value="">Curso</option>
-                        <option value="">Master</option>
-                        <option value="">Post-grado</option>
-                        <option value="">Universitario</option>
-                        <option value="">Técnico</option>
-                        <option value="">Secundario</option>
+                        <option value="curso">Curso</option>
+                        <option value="master">Master</option>
+                        <option value="postgrado">Post-grado</option>
+                        <option value="universitario">Universitario</option>
+                        <option value="tecnico">Técnico</option>
+                        <option value="secundario">Secundario</option>
                     </select>
-                    <label for=""><p>Institución</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>Título</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>Desde</p></label>
-                    <input type="date" name="" id="">
-                    <label for=""><p>Hasta</p></label>
-                    <input type="date" name="" id="">
-                    <label for=""><p>Descripción</p></label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <label for="user_institution"><p>Institución</p></label>
+                    <input type="text" name="user_institution" id="user_institution">
+                    <label for="user_career_title"><p>Título</p></label>
+                    <input type="text" name="user_career_title" id="user_career_title">
+                    <label for="user_career_since"><p>Desde</p></label>
+                    <input type="date" name="user_career_since" id="user_career_since">
+                    <label for="user_career_to"><p>Hasta</p></label>
+                    <input type="date" name="user_career_to" id="user_career_to">
+                    <label for="user_career_description"><p>Descripción</p></label>
+                    <textarea name="user_career_description" id="user_career_description" cols="30" rows="10"></textarea>
                     <div class="repositorios wrap">
-                        <label for=""><p>Repositorio Git</p></label>
-                        <input type="text" name="" id="">
-                        <label for=""><p>Website</p></label>
-                        <input type="text" name="" id="">
-                        <label for=""><p>StackOverflow</p></label>
-                        <input type="text" name="" id="">
+                        <label for="user_git"><p>Repositorio Git</p></label>
+                        <input type="text" name="user_git" id="user_git">
+                        <label for="user_website"><p>Website</p></label>
+                        <input type="text" name="user_website" id="user_website">
+                        <label for="user_stack"><p>StackOverflow</p></label>
+                        <input type="text" name="user_stack" id="user_stack">
                     </div>
                     <button type="submit">Guardar</button>
                 </form>
@@ -148,10 +143,10 @@
             <p id="Idiomas"></p>
             <div class="formulario">
                 <form action="?_method=PUT" method="post" class="wrap">
-                    <label for=""><p>Idioma</p></label>
-                    <input type="text" name="" id="">
-                    <label for=""><p>Nivel</p></label>
-                    <select name="" id="">
+                    <label for="user_lang"><p>Idioma</p></label>
+                    <input type="text" name="user_lang" id="user_lang">
+                    <label for="user_lang_level"><p>Nivel</p></label>
+                    <select name="user_lang_level" id="user_lang_level">
                         <option value="">Seleccione</option>
                         <option value="BAS">Básico</option>
                         <option value="INT">Intermedio</option>
@@ -169,28 +164,28 @@
             <h3>Preferencia laboral</h3>
             <p id="PreferenciaLaboral"></p>
             <form action="?_method=PUT" method="post" class="wrap">
-                <label for=""><p>Situación Actual</p></label>
-                <select name="" id="">
+                <label for="user_work_sit"><p>Situación Actual</p></label>
+                <select name="user_work_sit" id="user_work_sit">
                     <option value="">Seleccione</option>
-                    <option value="">No tengo empleo</option>
-                    <option value="">Tengo empleo</option>
+                    <option value="unemployed">No tengo empleo</option>
+                    <option value="employed">Tengo empleo</option>
                 </select>
-                <label for="puestoDeseado"><p>Puesto deseado</p></label>
-                <input type="text" name="" id="puestoDeseado" placeholder="Desarrollador Front-End">
+                <label for="user_work_wish"><p>Puesto deseado</p></label>
+                <input type="text" name="user_work_wish" id="user_work_wish" placeholder="Desarrollador Front-End">
                 <button type="submit" id="adItem">+</button>
                 <div class="puestos">
                     <p>Puestos seleccionados</p>
                 </div>
-                <label for="areaDeseada"><p>Área</p></label>
-                <input type="text" name="" id="areaDeseada" placeholder="Desarrollo Web">
+                <label for="user_wish_area"><p>Área</p></label>
+                <input type="text" name="user_wish_area" id="user_wish_area" placeholder="Desarrollo Web">
                 <button type="submit" id="adItem">+</button>
                 <div class="areas">
                     <p>Áreas seleccionadas</p>
                 </div>
-                <label for=""><p>Remuneración Pretendida</p></label>
-                <input type="text" name="" id="" placeholder="*Opcional">
-                <label for="ubicacionesDeseadas"><p>Ubicación/es</p></label>
-                <select name="" id="ubicacionesDeseadas">
+                <label for="user_salary"><p>Remuneración Pretendida</p></label>
+                <input type="text" name="user_salary" id="user_salary" placeholder="*Opcional">
+                <label for="user_work_location"><p>Ubicación/es</p></label>
+                <select name="user_work_location" id="user_work_location">
                     <option value="CAP">Capital Federal</option>
                     <option value="GBA">Buenos Aires</option>
                 </select>
