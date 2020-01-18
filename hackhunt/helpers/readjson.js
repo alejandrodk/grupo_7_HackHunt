@@ -1,6 +1,7 @@
 const fs = require('fs');
 const cmp_path = 'data/empresas.json';
 const anu_path = 'data/anuncios.json';
+const user_path = 'data/usuarios.json';
 function getCompanyById(id)
 {
 
@@ -11,6 +12,19 @@ function getCompanyById(id)
     else
     {
         return cmp[0];
+    }
+}
+
+function getUserById(id)
+{
+
+    let user = getAllUsers().file.filter(item => item.user_id == id);
+    if(user == ''){
+        return "usuario no encontrado"
+    }
+    else
+    {
+        return user[0];
     }
 }
 
@@ -87,5 +101,74 @@ function getAllAnuncios()
     return anuncios;
 }
 
+function modifyUser(id)
+{
+    let users = getAllUsers();
+    let user = {ruta: users.ruta,
+    file:[]}
+    user.file = users.file.filter(item => item.user_id == id)[0];
+    return user;
+}
 
-module.exports = {getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios}
+function modifyCompany(id)
+{
+    let empresas = getAllCompanies();
+    let empresa = {ruta: empresas.ruta,
+    file:[]}
+    empresa.file = empresas.file.filter(item => item.cmp_id == id)[0];
+    return empresa;
+}
+
+function saveUpdates(array)
+{
+    if(array.ruta == 'data/usuarios.json'){
+
+        let allUsers = getAllUsers().file;
+         allUsers = allUsers.map(item =>
+            {
+                if(array.file.user_id == item.user_id)
+                {
+                   item ={...array.file} 
+                }
+                return item;
+            });
+            
+        fs.writeFileSync(array.ruta, JSON.stringify(allUsers));
+    }
+
+    if(array.ruta == 'data/empresas.json')
+    {
+        let allCompanies = getAllCompanies().file;
+         allCompanies = allCompanies.map(item =>
+            {
+                if(array.file.cmp_id == item.cmp_id)
+                {
+                    item= {
+                        ...array.file
+                    }
+                }
+                return item;
+            });
+        fs.writeFileSync(array.path, json.stringify(allCompanies));
+    }
+    if(array.ruta == 'data/anuncios.json')
+    {
+        let allAnuncios = getAllAnuncios().file;
+         allAnuncios = allAnuncios.map(item =>
+            {
+                if(array.file.anu_id == item.anu_id)
+                {
+                    item= {
+                        ...array.file
+                    }
+                }
+                return item;
+            });
+        fs.writeFileSync(array.path, json.stringify(allAnuncios));
+    }
+    
+}
+
+
+
+module.exports = {getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios, getAllUsers, modifyUser,saveUpdates,getUserById,modifyCompany}

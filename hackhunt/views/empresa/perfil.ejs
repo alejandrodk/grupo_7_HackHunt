@@ -24,15 +24,16 @@
                     <div class="perfil wrap">
                         <div class="avatar">
                             <div class="item">
-                                <img src="/images/avatars/<%= empresa.cmp_avatar %>" alt="">
+                                
+                                <img src="/images/avatars/<%=data.cmp_avatar %>" alt="">
                             </div>
                         </div>
                         <div class="datos wrap">
-                            <strong><p><%=empresa.cmp_bname%></p></strong>
-                            <p><%=empresa.cmp_sector %></p>
-                            <p><%=empresa.cmp_descrip %>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptas labore porro dignissimos libero aliquid rerum optio accusamus, quibusdam est ipsa incidunt pariatur tempore deleniti ut praesentium natus eveniet aliquam!</p>
+                            <strong><p><%=data.cmp_bname%></p></strong>
+                            <p><%=data.cmp_sector %></p>
+                            <p><%=data.cmp_descrip %>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptas labore porro dignissimos libero aliquid rerum optio accusamus, quibusdam est ipsa incidunt pariatur tempore deleniti ut praesentium natus eveniet aliquam!</p>
                             <ul>
-                                <li><i class="fas fa-user" title="Website"></i> <%=empresa.cmp_website%> www.digitalhouse.com.ar</li>
+                                <li><i class="fas fa-user" title="Website"></i> <%=data.cmp_website%> www.digitalhouse.com.ar</li>
                             </ul>
                         </div>
                         <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>

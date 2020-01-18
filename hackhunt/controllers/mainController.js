@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
 const {check, validationResult, body} = require('express-validator');
 
+const loginFunctions = require('../helpers/login');
 var sessionData;
 
 const anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} );
@@ -100,8 +101,17 @@ const controller = {
 		res.render('main/loginEmpresa', { title: 'Express' });
 	},
 	validarEmpresa: (req,res) => {
-		// hacer validacion del login
-		return res.redirect('empresa/perfil');
+		let users = dbFunctions.getAllCompanies();
+		let user = users.file.filter(item => item.cmp_email == req.body.cmp_email);
+		let login = loginFunctions.companyLogin(req,user[0],req.body.cmp_passwd);
+		if(login)
+		{
+			req.session.data = user[0];
+			req.session.user_email = user[0].cmp_email;
+			return res.redirect('/empresa/perfil');
+		}
+		
+		return res.redirect('/empresa/login');
 	},
 	registroEmpresa: (req, res) => {
 		res.render('main/registroEmpresa', { title: 'Express' });
@@ -117,7 +127,8 @@ const controller = {
 		//la funcion getNewId recibe como param el obj de las empresas
 		// y devuelve un nuevo id para la neuva empresa
 		var newid = dbFunctions.getNewId(allCompanies);
-		req.body.cmp_passwd = bcrypt(req.body.cmp_passwd,12);
+		req.body.cmp_passwd = bcrypt.hashSync(req.body.cmp_passwd,12);
+		console.log(req.body.cmp_passwd);
 		let newCompany = {
 			cmp_id: newid,
 			// trae los datos del form con los nombres del inputs
@@ -129,7 +140,7 @@ const controller = {
 		// y 2do param el obj con todas las compañias.
 		dbFunctions.writeFile(newCompany,allCompanies);
 		
-		return res.redirect('/empresa/perfil');
+		res.redirect('/');
 	},
 	recuperar: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
@@ -137,7 +148,16 @@ const controller = {
 	},
 	recuperarEmpresa: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
-		return res.redirect('/empresa/perfil');
+		res.redirect('/empresa/perfil');
+	},
+	pruebas: (req,res) =>
+	{
+
+	},
+	logout:(req,res)=>
+	{
+		req.session.destroy();
+		res.redirect('/');
 	}
 };
 

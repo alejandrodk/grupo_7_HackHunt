@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [{
     "nombre": "alejandro",
     "apellido": "barrios",
@@ -76,3 +77,6 @@
     "tipo": "user",
     "id": 11
 }]
+=======
+[{"user_name":"carlitos perez","apellido":"barrios","email":"ottoabarriosp@hotmail.com","clave":"alejandro","tipo":"user","user_id":1},{"nombre":"daniella","apellido":"bracho","email":"daniellabracho96@hotmail.com","clave":"hbhb4h342","tipo":"user","id":2},{"nombre":"pepito","apellido":"perez","email":"pepito@hotmail.com.ar","clave":"fae4rxr4c4","tipo":"user","id":3},{"nombre":"userPrueba","apellido":"apellido1","email":"user@hotmail.com.ar","clave":"qe3q r3cq","tipo":"user","id":4}]
+>>>>>>> dbfb14fc8734d1f0bfb8f35bb452a5e697b9744e

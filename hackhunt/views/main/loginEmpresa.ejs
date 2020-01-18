@@ -6,16 +6,20 @@
 	</head>
 	<body>
 		<!-- CÓDIGO -->
+		<% if(locals.error!=''){ %>
+			<div><p><%=locals.error %></p> </div> 
+		<%}  %>
+	
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 formularios wrap">
 					<div class="item login">
 						<h3>Ingresá a tu cuenta</h3>
-						<form action="/empresa/perfil" method="GET">
+						<form action="/empresa/login" method="post">
 							<label for="correo"><p>Email</p></label>
-							<input type="email" name="correo" id="correo" placeholder="" />
-							<label for="clave"><p>Clave</p></label>
-							<input type="password" name="clave" id="clave" />
+							<input type="email" name="cmp_email" id="cmp_email" placeholder="" />
+							<label for="cmp_passwd"><p>Clave</p></label>
+							<input type="password" name="cmp_passwd" id="cmp_passwd" />
 							<button type="submit">POST</button>
 						</form>
 					</div>

@@ -1,12 +1,13 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
-
+const validate = require('../middlewares/valuser');
 // ************ Controller Require ************
 const empresaController = require("../controllers/empresaController");
 
 /* GET - home page. */
-router.get("/perfil/:id", empresaController.perfil);
+router.get("/perfil",validate, empresaController.perfil);
+router.get("/perfil/modificar", empresaController.modificarPerfil);
 router.get("/informacion", empresaController.info);
 router.get("/mensajes", empresaController.mensajes);
 router.get("/anuncios/", empresaController.anuncios);
