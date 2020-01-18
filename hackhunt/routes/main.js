@@ -12,16 +12,25 @@ router.post("/", mainController.busquedaHome);
 router.get("/detalle", mainController.detalleAnuncio);
 router.get("/login", mainController.loginUsuario);
 router.post("/login",[
-    check('correo').isEmail().withMessage('Ingresa un correo válido'),
-    check('correo').isEmpty().withMessage('Has olvidado ingresar tu correo'),
-    check('clave').isEmpty().withMessage('Has olvidado ingresar tu clave'),
-    body('email').custom((value)=>{
+    check('user_passwd').isEmpty().withMessage('Has olvidado ingresar tu clave'),
+    check('user_email').isEmail().withMessage('Ingresa un correo válido'),
+    check('user_email').isEmpty().withMessage('Has olvidado ingresar tu correo'),
+    /*body('usaer_email').custom((value)=>{
         // validar que el email no exista en la DB
         // retornar true o false
-    }).withMessage('El correo ingresado ya existe')
+    }).withMessage('El correo ingresado ya existe')*/
 ] ,mainController.validarUsuario);
 router.get("/registro", mainController.registroUsuario);
-router.post("/registro", mainController.valRegUsuario);
+router.post("/registro",[
+    check('user_name'),
+    check('user_name'),
+    check('user_lastname'),
+    check('user_lastname'),
+    check('user_email'),
+    check('user_email'),
+    check('user_passwd'),
+    check('user_passwd'),
+], mainController.valRegUsuario);
 router.get("/registro/cv", mainController.completarCv);
 router.post("/registro/cv", mainController.valCompletarCv);
 router.get("/empresa/login", mainController.loginEmpresa);

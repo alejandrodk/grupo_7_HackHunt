@@ -1,7 +1,6 @@
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
-const bcrypt = require('bcrypt');
 const {check, validationResult, body} = require('express-validator');
 
 const loginFunctions = require('../helpers/login');
@@ -26,9 +25,11 @@ const controller = {
 	},
 	validarUsuario: (req,res) => {
 		// validar formulario con express-validator
-		let errors_validation = validationResult(req);
-		if(!errors_validation.isEmpty()){
-			return res.render('main/loginUsuario', { error: errors_validation });
+		let errors = validationResult(req);
+		if(!errors.isEmpty()){
+			console.log(errors);
+			return res.render('main/loginUsuario', { errors: errors });
+			// falta mostrar errores en la vista
 		} else {
 			let usuariosDB = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
 			let usuarios = JSON.parse(usuariosDB);
@@ -36,6 +37,7 @@ const controller = {
 				if(usuario.user_email == req.body.user_email && (bcrypt.compareSync(usuario.user_passwd, req.body.user_passwd))){
 					sessionData = req.session;
 					//creamos una sesion con toda la info del usuario
+					delete usuario.user_passwd;
 					sessionData.user = usuario;
 					//res.json(sessionData.usuario); (para ver si la info paso bien)
 					return res.redirect('/perfil');
@@ -50,24 +52,29 @@ const controller = {
 	},
 	valRegUsuario: (req,res) => {
 		// Guardar info en la DB y redireccionar al perfil
-		let contenido = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
-		let id;
+		let contenidoJSON = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
+		let id = 0;
 		
-		if (contenido == ''){
+		if (contenidoJSON == ''){
 			contenido = [];
 			id = 1 } 
 		else {
-			contenido = JSON.parse(contenido);
-			id = contenido.length + 1 }
-
+			contenido = JSON.parse(contenidoJSON);
+			let cont = {
+				ruta: 'data/usuarios.json',
+				file: contenido
+			}
+			id = dbFunctions.getNewId(cont);
+		}
+		req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
+		req.body.user_id = id;
 		let usuario = {
-			user_passwd : bcrypt.hashSync(req.body.user_passwd,10),
-			...req.body,
+			...req.body
 		};
 
 		contenido.push(usuario);
 		
-		let contenidoJSON = JSON.stringify(contenido);
+		contenidoJSON = JSON.stringify(contenido);
 		fs.writeFileSync('data/usuarios.json',contenidoJSON);
 		
 		req.session.user = usuario;
@@ -79,20 +86,16 @@ const controller = {
 	},
 	valCompletarCv : (req,res) => {
 		// validar info y cargar el CV
-		let user = req.session.user;
-		//let usuarios = dbFunctions.getAllUsers().file;
-
-		let infoCv = {
-			...req.body
+		req.body.user_id = req.body.user_id;
+		let user_info = {
+			ruta: 'data/usuarios.json',
+			file: {
+				...req.body,
+			}
 		};
 
-		let usuariosAct = usuarios.map((userrr) => {
-			if(userrr.id == user.id){
-				user.nombre = req.body.user_name;
-			}
-		})
-		res.json(usuariosAct);
-		//return res.redirect('/perfil');
+		dbFunctions.saveUpdates(user_info);
+		return res.redirect('/login');
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });
