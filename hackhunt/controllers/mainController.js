@@ -1,6 +1,7 @@
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
+const bcrypt = require('bcrypt');
 const {check, validationResult, body} = require('express-validator');
 
 const loginFunctions = require('../helpers/login');
@@ -32,7 +33,7 @@ const controller = {
 			let usuariosDB = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
 			let usuarios = JSON.parse(usuariosDB);
 			for (const usuario of usuarios) {
-				if(usuario.email == req.body.correo && usuario.clave == req.body.clave){
+				if(usuario.user_email == req.body.user_email && (bcrypt.compareSync(usuario.user_passwd, req.body.user_passwd))){
 					sessionData = req.session;
 					//creamos una sesion con toda la info del usuario
 					sessionData.user = usuario;
@@ -60,12 +61,8 @@ const controller = {
 			id = contenido.length + 1 }
 
 		let usuario = {
-			nombre : req.body.nombre,
-			apellido : req.body.apellido,
-			email : req.body.email,
-			clave : req.body.clave,
-			tipo : 'user',
-			id : id
+			user_passwd : bcrypt.hashSync(req.body.user_passwd,10),
+			...req.body,
 		};
 
 		contenido.push(usuario);
@@ -102,12 +99,12 @@ const controller = {
 	},
 	validarEmpresa: (req,res) => {
 		let users = dbFunctions.getAllCompanies();
-		let user = users.file.filter(item => item.cmp_email == req.body.cmp_email);
-		let login = loginFunctions.companyLogin(req,user[0],req.body.cmp_passwd);
+		let user = users.file.filter(item => item.cmp_user_email == req.body.cmp_user_email);
+		let login = loginFunctions.companyLogin(req,user[0],req.body.cmp_user_passwd);
 		if(login)
 		{
 			req.session.data = user[0];
-			req.session.user_email = user[0].cmp_email;
+			req.session.user_email = user[0].cmp_user_email;
 			return res.redirect('/empresa/perfil');
 		}
 		
@@ -127,8 +124,7 @@ const controller = {
 		//la funcion getNewId recibe como param el obj de las empresas
 		// y devuelve un nuevo id para la neuva empresa
 		var newid = dbFunctions.getNewId(allCompanies);
-		req.body.cmp_passwd = bcrypt.hashSync(req.body.cmp_passwd,12);
-		console.log(req.body.cmp_passwd);
+		req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
 		let newCompany = {
 			cmp_id: newid,
 			// trae los datos del form con los nombres del inputs
