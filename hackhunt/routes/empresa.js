@@ -7,7 +7,7 @@ const empresaController = require("../controllers/empresaController");
 
 /* GET - home page. */
 router.get("/perfil/:id", empresaController.perfil);
-router.get("/info", empresaController.info);
+router.get("/informacion", empresaController.info);
 router.get("/mensajes", empresaController.mensajes);
 router.get("/anuncios/", empresaController.anuncios);
 router.get("/anuncios/crear", empresaController.crearPublicacion);

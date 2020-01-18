@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const upload = require('../middlewares/multer.js');
+const {check, validationResult, body} = require('express-validator');
 // ************ Controller Require ************
 const mainController = require("../controllers/mainController");
 
@@ -10,7 +11,15 @@ router.get("/", mainController.home); //agregar querystrings a los filtros de la
 router.post("/", mainController.busquedaHome);
 router.get("/detalle", mainController.detalleAnuncio);
 router.get("/login", mainController.loginUsuario);
-router.post("/login", mainController.validarUsuario);
+router.post("/login",[
+    check('correo').isEmail().withMessage('Ingresa un correo válido'),
+    check('correo').isEmpty().withMessage('Has olvidado ingresar tu correo'),
+    check('clave').isEmpty().withMessage('Has olvidado ingresar tu clave'),
+    body('email').custom((value)=>{
+        // validar que el email no exista en la DB
+        // retornar true o false
+    }).withMessage('El correo ingresado ya existe')
+] ,mainController.validarUsuario);
 router.get("/registro", mainController.registroUsuario);
 router.post("/registro", mainController.valRegUsuario);
 router.get("/registro/cv", mainController.completarCv);
