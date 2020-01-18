@@ -1,4 +1,5 @@
 const fs = require('fs');
+const dbFunctions = require('../helpers/readjson.js');
 
 const controller = {
     perfil: (req, res) => {
@@ -26,7 +27,8 @@ const controller = {
         res.render('cliente/alertas' , { title: 'Alertas '});
     },
     info: (req, res) => {
-        res.render('cliente/info', { title: 'CV' });
+        user = dbFunctions.modifyUser(req.session.user_id)
+        res.render('cliente/info', { user: user });
     },
     actInfo: (req, res) => {
         // consultar DB y traer la info en los inputs

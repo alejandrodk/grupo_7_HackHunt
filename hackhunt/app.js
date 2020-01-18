@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
-app.use(session({resave: true, saveUninitialized: true, secret: 'chuleta123', cookie: { maxAge : 60000000 }}));
+app.use(session({resave: true, saveUninitialized: true, secret: 'chuleta123'}));
 app.use(methodOverride('_method'));
 app.use(auth);
 // ************ Template Engine - (don't touch) ************
