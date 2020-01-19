@@ -31,7 +31,7 @@ function getUserById(id)
 function getAnuncioById(id)
 {
 
-    let anuncio = getAllAnuncios().file.filter(item => item.anu_id == id);
+    let anuncio = getAllAnuncios().file.filter(item => item.adv_id == id);
     if(anuncio == ''){
         return "anuncio no encontrado"
     }
@@ -90,7 +90,7 @@ function getNewId(array)
     }
     if(array.ruta == 'data/anuncios.json'){ 
         newId = array.file[array.file.length -1];
-            return parseInt(newId.anu_id) +1;
+            return parseInt(newId.adv_id) +1;
         }
     return "Error";
 }
@@ -137,7 +137,7 @@ function modifyAnuncio(id)
     let anuncios = getAllAnuncios();
     let anuncio = {ruta: anuncios.ruta,
     file:[]}
-    anuncio.file = anuncios.file.filter(item => item.anu_id == id)[0];
+    anuncio.file = anuncios.file.filter(item => item.adv_id == id)[0];
     return anuncio;
 }
 
@@ -181,7 +181,7 @@ function saveUpdates(array)
          allAnuncios = allAnuncios.map(item =>
             {
                
-                if(array.file.anu_id == item.anu_id)
+                if(array.file.adv_id == item.adv_id)
                 {
                     
                     item= {
@@ -212,7 +212,7 @@ function saveUpdates(array)
             ruta: 'data/anuncios.json',
             file: []
         }
-        anuncios.file = getAllAnuncios().file.filter(item => item.anu_id != id);
+        anuncios.file = getAllAnuncios().file.filter(item => item.adv_id != id);
         
         fs.writeFileSync(anuncios.ruta,anuncios.file);
     }

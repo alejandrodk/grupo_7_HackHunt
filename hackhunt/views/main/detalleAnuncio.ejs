@@ -10,7 +10,13 @@
 <!-- CÓDIGO -->
 <body>
     <header>
-	    <%- include('../partials/headerLog'); -%>
+        <% if(type_user == "empresa"){%>
+			<%- include('../partials/headerEmp'); -%>
+		<%} if(type_user == "usuario"){%>
+			<%- include('../partials/headerLog'); -%>
+		<%}if(type_user == "guest"){%>
+			<%- include('../partials/header'); -%>
+		<%}%>
     </header>
     <div class="container-fluid cuerpo">
         <div class="container detalle">
@@ -22,14 +28,20 @@
                     <p>Empleos similares</p>
                 </div>
             </div>
+
+
             <div class="row cuerpo">
+
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncio wrap">
+                    <% if(anuncio == "anuncio no encontrado"){ %>
+                        <p class="not_found">Anuncio No encontrado</p>
+                        <% }else{%>
                     <div class="avatar">
-                        <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                        <img src="/images/avatars/<%= anuncio.adv_cmp_avatar %>" alt="">
                     </div>
                         <div class="cabecera wrap">
-                        <h1><%= anuncio.anu_titulo %></h1>
-                        <h2><%= anuncio.anu_empresa_name %></h2>
+                        <h1><%= anuncio.adv_title %></h1>
+                        <h2><%= anuncio.adv_cmp_name %></h2>
                     </div> 
                     <div class="info wrap">
                         <div class="item">
@@ -40,11 +52,11 @@
                             <p>Área</p>
                         </div>
                         <div class="item">
-                            <p><%= anuncio.anu_ubicacion %></p>
-                            <p><%= anuncio.anu_fechacontr %></p>
-                            <p><%= anuncio.anu_salario %></p>
-                            <p><%= anuncio.anu_jornada %></p>
-                            <p><%= anuncio.anu_area %></p>
+                            <p><%= anuncio.adv_location %></p>
+                            <p><%= anuncio.adv_date_contract %></p>
+                            <p><%= anuncio.adv_salary %></p>
+                            <p><%= anuncio.adv_working_day %></p>
+                            <p><%= anuncio.adv_area %></p>
                         </div>
                     </div>
                     <div class="skills wrap">
@@ -70,7 +82,7 @@
                         </div>
                     </div>
                     <div class="descp">
-                        <p> <%= anuncio.anu_descrp %> </p>
+                        <p> <%= anuncio.adv_description %> </p>
                     </div>
                     <div class="postular">
                         <form action="" method="post">
@@ -79,6 +91,7 @@
                     </div>
                 </div>
                 
+
                 <div class="col-3 relacionados wrap">
                     <a href="/detalle">
                         <div class="item">
@@ -156,6 +169,7 @@
                         </div>
                     </a>
                 </div>
+                <%  } %>
             </div>
        </div>
     </div>
