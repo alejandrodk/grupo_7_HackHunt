@@ -26,10 +26,11 @@ const controller = {
 	validarUsuario: (req,res) => {
 		// validar formulario con express-validator
 		let errors = validationResult(req);
+		console.log("llegue hasta aqui");
 		if(errors.isEmpty()){
 			let users = dbFunctions.getAllUsers();
 			let user = users.file.filter(item => item.user_email == req.body.user_email);
-			let login = loginFunctions.checkLogin(req,user[0],req.body.user_passwd);
+			let login = loginFunctions.checkLogin(req,user[0]);
 			
 			if(login){
 				req.session.data = user[0];
@@ -37,11 +38,11 @@ const controller = {
 				req.session.type_user = "cliente";
 				return res.redirect('/perfil');
 			} else {
-				res.send('error en el login');
+				res.send('error en el login'); 
 			}
 
 		} else {
-			console.log(errors);
+			//console.log(errors);
 			res.render('main/loginUsuario', { errors: errors });
 			// falta mostrar errores en la vista
 		}
