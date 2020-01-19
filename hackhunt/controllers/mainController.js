@@ -4,9 +4,6 @@ const dbFunctions = require('../helpers/readjson.js');
 const {check, validationResult, body} = require('express-validator');
 
 const loginFunctions = require('../helpers/login');
-var sessionData;
-
-const anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} );
 
 const controller = {
 	home: (req, res) => {
@@ -32,11 +29,12 @@ const controller = {
 		if(errors.isEmpty()){
 			let users = dbFunctions.getAllUsers();
 			let user = users.file.filter(item => item.user_email == req.body.user_email);
-			let login = loginFunctions.userLogin(req,user[0],req.body.user_passwd);
+			let login = loginFunctions.checkLogin(req,user[0],req.body.user_passwd);
 			
 			if(login){
 				req.session.data = user[0];
 				req.session.user_email = user[0].user_email;
+				req.session.type_user = "cliente";
 				return res.redirect('/perfil');
 			} else {
 				res.send('error en el login');
@@ -52,28 +50,16 @@ const controller = {
 		res.render('main/registroUsuario', { title: 'Express' });
 	},
 	valRegUsuario: (req,res) => {
-		// Guardar info en la DB y redireccionar al perfil
-		/*let contenidoJSON = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
-		let id = 0;
-		
-		if (contenidoJSON == ''){
-			contenido = [];
-			id = 1 } 
-		else {
-			contenido = JSON.parse(contenidoJSON);
-			let cont = {
-				ruta: 'data/usuarios.json',
-				file: contenido
-			}*/
-			let usuarios = dbFunctions.getAllUsers();
-			id = dbFunctions.getNewId(usuarios);
-		
+
+		let usuarios = dbFunctions.getAllUsers();
+		id = dbFunctions.getNewId(usuarios); 
 		
 		req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
 		
 		let usuario = {
 			user_id: id,
-			...req.body
+			...req.body,
+			user_avatar:req.file.filename
 		};
 
 		

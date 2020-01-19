@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-12 registro wrap">
                 <div class="formulario wrap">
-                    <form action="/registro" method="post">
+                    <form action="/registro" method="post" enctype="multipart/form-data">
                     <label for="user_name"><p>Nombre</p></label>
                     <input type="text" name="user_name" id="user_name" required>
                     <label for="user_lastname"><p>Apellido</p></label>
@@ -20,10 +20,9 @@
                     <input type="email" name="user_email" id="user_email" required>
                     <label for="user_passwd"><p>Clave</p></label>
                     <input type="password" name="user_passwd" id="user_passwd" required>
-                    <p>o registrate usando</p>
-                    <a id="facebook" href="">Facebook</a>
-                    <a id="github" href="">Git Hub</a>
-                    <a id="google" href="">Google</a>
+                    <input type="text" name="type" id="type" value="cliente" style="display: none;">
+                    <label for="user_avatar"><p>Subir Avatar</p></label>
+                    <input type="file" name="user_avatar" id="user_avatar">
                     <button type="submit">Comenzar</button>
                     <button type="reset">Limpiar</button>
                 </form>

@@ -28,7 +28,7 @@ router.post("/registro",[
     check('user_email'),
     check('user_passwd'),
     check('user_passwd'),
-], mainController.valRegUsuario);
+],upload.single('user_avatar') ,mainController.valRegUsuario);
 router.get("/registro/cv", mainController.completarCv);
 router.post("/registro/cv", mainController.valCompletarCv);
 router.get("/empresa/login", mainController.loginEmpresa);
