@@ -23,15 +23,16 @@
             <h3>Datos del representante</h3>
             <p id="DatosPersonales"></p>
             <div class="formulario">
-                <form action="?_method=PUT" method="post" class="wrap">
+               
+                <form action="/empresa/informacion/<%=empresa.cmp_id%>" method="post" class="wrap" enctype="multipart/form-data">
                     <label for="cmp_user_name"><p>Nombre</p></label>
-                    <input type="text" name="cmp_user_name" id="cmp_user_name">
+                    <input type="text" name="cmp_user_name" id="cmp_user_name" value="<%=empresa.cmp_user_name%>">
                     <label for="cmp_user_lastname"><p>Apellidos</p></label>
-                    <input type="text" name="cmp_user_lastname" id="cmp_user_lastname">
+                    <input type="text" name="cmp_user_lastname" id="cmp_user_lastname"  value="<%=empresa.cmp_user_lastname%>">
                     <label for="cmp_user_dni"><p>DNI</p></label>
-                    <input type="number" name="cmp_user_dni" id="cmp_user_dni">
+                    <input type="number" name="cmp_user_dni" id="cmp_user_dni"  value="<%=empresa.cmp_user_dni%>">
                     <label for="cmp_user_datebirth"><p>Fecha de nacimiento</p></label>
-                    <input type="date" name="cmp_user_datebirth" id="cmp_user_datebirth">
+                    <input type="date" name="cmp_user_datebirth" id="cmp_user_datebirth"value="<%=empresa.cmp_user_datebirth%>">
                     <div class="genero">
                         <label for="cmp_user_gender"><p>Genero</p></label>
                         <label for="radioH">Hombre</label>
@@ -40,15 +41,16 @@
                         <input type="radio" name="cmp_user_gender" id="cmp_user_gender" value="M">
                     </div>
                     <label for="cmp_user_phone"><p>Teléfono</p></label>
-                    <input type="number" name="cmp_user_phone" id="cmp_user_phone">
+                    <input type="number" name="cmp_user_phone" id="cmp_user_phone" value="<%=empresa.cmp_user_phone%>">
                     <label for="cmp_user_city"><p>Ciudad</p></label>
-                    <select name="cmp_user_city" id="cmp_user_city">
+                    <select name="cmp_user_city" id="cmp_user_city" value="<%=empresa.cmp_user_city%>"> 
                         <option value="CABA">Capital Federal</option>
                         <option value="GBA">Buenos Aires</option>
                         <option value="CO">Córdoba</option>
                         <option value="MDZ">Mendoza</option>
                         <option value="RO">Rosario</option>
                     </select>
+                    <input type="file" name="cmp_avatar" id="cmp_avatar" hidden>
                     <button type="submit">Guardar</button>
                 </form>
             </div>
@@ -57,26 +59,26 @@
             <h3>Datos de la Empresa</h3>
             <p id="DatosProfesionales"></p>
             <div class="formulario">
-                <form action="?_method=PUT" method="post" class="wrap">
+                <form action="/empresa/informacion/<%=empresa.cmp_id%>" method="post" class="wrap" enctype="multipart/form-data">
                     <label for="cmp_name"><p>Nombre / Razon Social</p></label>
-                    <input type="text" name="cmp_name" id="cmp_name" />
+                    <input type="text" name="cmp_name" id="cmp_name" value="<%=empresa.cmp_name%>"/>
                     <label for="cmp_cuit"><p>Cuit</p></label>
-                    <input type="text" name="cmp_cuit" id="cmp_cuit" />
+                    <input type="text" name="cmp_cuit" id="cmp_cuit" value="<%=empresa.cmp_cuit%>" />
                     <label for="cmp_tel"><p>Teléfono</p></label>
-                    <input type="number" name="cmp_tel" id="cmp_tel" />
+                    <input type="number" name="cmp_tel" id="cmp_tel" value="<%=empresa.cmp_tel%>" />
                     <label for="cmp_sector"><p>Rubro</p></label>
-                    <input type="text" name="cmp_sector" id="cmp_sector" />
+                    <input type="text" name="cmp_sector" id="cmp_sector" value="<%=empresa.cmp_sector%>" />
                     <label for="cmp_description"><p>Descripción</p></label>
-                    <textarea name="cmp_description" id="cmp_description" cols="30" rows="10"></textarea>
-                    <p>Max 500</p>
+                    <textarea name="cmp_description" id="cmp_description" cols="30" rows="10"> <%=empresa.cmp_description%></textarea>
+                    <p>Max 72</p>
                     <label for="cmp_website"><p>Website</p></label>
-                    <input type="text" name="cmp_website" id="cmp_website">
+                    <input type="text" name="cmp_website" id="cmp_website" value="<%=empresa.cmp_website%>" >
                     <label for="cmp_linkedin"><p>Linkedin</p></label>
-                    <input type="text" name="cmp_linkedin" id="cmp_linkedin">
+                    <input type="text" name="cmp_linkedin" id="cmp_linkedin" value="<%=empresa.cmp_linkedin%>">
                     <label for="cmp_facebook"><p>Facebook</p></label>
-                    <input type="text" name="cmp_facebook" id="cmp_facebook">
+                    <input type="text" name="cmp_facebook" id="cmp_facebook" value="<%=empresa.cmp_facebook%>">
                     <label for="cmp_instagram"><p>Instagram</p></label>
-                    <input type="text" name="cmp_instagram" id="cmp_instagram">
+                    <input type="text" name="cmp_instagram" id="cmp_instagram" value="<%=empresa.cmp_instagram%>">
                     <label for="cmp_avatar"><p>Subir Avatar</p></label>
                     <input type="file" name="cmp_avatar" id="cmp_avatar">
                     <button type="submit">Guardar</button>

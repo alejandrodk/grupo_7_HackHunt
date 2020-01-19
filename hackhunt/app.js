@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
-app.use(session({resave: true, saveUninitialized: true, secret: 'chuleta123', expires: new Date(Date.now() + (30 * 86400 * 1000))}));
+app.use(session({resave: true, saveUninitialized: true, secret: 'chuleta123', cookie: { expires: new Date(Date.now()+ 84600000 )}}));
 app.use(methodOverride('_method'));
 app.use(auth);
 
