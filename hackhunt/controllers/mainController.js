@@ -55,7 +55,7 @@ const controller = {
 	},
 	valRegUsuario: (req,res) => {
 		// Guardar info en la DB y redireccionar al perfil
-		let contenidoJSON = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
+		/*let contenidoJSON = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
 		let id = 0;
 		
 		if (contenidoJSON == ''){
@@ -66,19 +66,20 @@ const controller = {
 			let cont = {
 				ruta: 'data/usuarios.json',
 				file: contenido
-			}
-			id = dbFunctions.getNewId(cont);
-		}
+			}*/
+			let usuarios = dbFunctions.getAllUsers();
+			id = dbFunctions.getNewId(usuarios);
+		
+		
 		req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
-		req.body.user_id = id;
+		
 		let usuario = {
+			user_id: id,
 			...req.body
 		};
 
-		contenido.push(usuario);
 		
-		contenidoJSON = JSON.stringify(contenido);
-		fs.writeFileSync('data/usuarios.json',contenidoJSON);
+		dbFunctions.writeFile(usuario,usuarios);
 		
 		req.session.user = usuario;
 		return res.redirect('registro/cv');

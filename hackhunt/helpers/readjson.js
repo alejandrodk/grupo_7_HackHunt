@@ -82,15 +82,15 @@ function getNewId(array)
     }
     if(array.ruta == 'data/empresas.json'){ 
     newId = array.file[array.file.length -1];
-    return newId.cmp_id +1;
+    return parseInt(newId.cmp_id) +1;
     }
     if(array.ruta == 'data/usuarios.json'){ 
     newId = array.file[array.file.length -1];
-        return newId.user_id +1;
+        return parseInt(newId.user_id) +1;
     }
     if(array.ruta == 'data/anuncios.json'){ 
         newId = array.file[array.file.length -1];
-            return newId.anu_id +1;
+            return parseInt(newId.anu_id) +1;
         }
     return "Error";
 }
