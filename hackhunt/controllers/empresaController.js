@@ -52,22 +52,40 @@ const controller = {
 
 		dbFunctions.writeFile(anuncio,anu_Json); 
 
-		res.redirect(`/detalle?id=${id}`);
+		return res.redirect(`/detalle?id=${id}`);
 	},
 	modificarPerfil: (req,res)=>
 	{
 		let user = dbFunctions.modifyCompany(req.session.user_id);
 		//aca van los datos para modificar
 		dbFunctions.saveUpdates(user);
-		res.redirect('/perfil');
+		return res.redirect('/perfil');
 		
 	},
 	modificarPublicacion: (req, res) => {
-		res.render("empresa/modificarPublicacion", { title: "Express" })
+
+		let publicacion = dbFunctions.getAnuncioById(req.params.id);
+		res.render("empresa/modificarPublicacion", { publicacion:publicacion, title: "Express" })
 	},
 	actualizarPublicacion: (req, res) => {
 		// actualizar info en la DB y enviar a la vista previa 
-		res.redirect("/detalle")
+		let anuncio = dbFunctions.modifyAnuncio(req.params.id);
+		
+		anuncio.file = {
+			anu_id: anuncio.file.anu_id,
+			anu_empresa_id: anuncio.file.anu_empresa_id,
+			anu_empresa_name: anuncio.file.anu_empresa_name,
+			anu_empresa_avatar: anuncio.file.anu_empresa_avatar,
+			...req.body
+		}
+		dbFunctions.saveUpdates(anuncio);
+		return res.redirect("/empresa/perfil");
+	},
+
+	borrarPublicacion: (req,res) =>
+	{
+		dbFunctions.deleteAnuncio(req.params.id);
+		return res.redirect("/empresa/perfil");
 	},
 	postulantes: (req, res) => {
 		res.render("empresa/postulantes", { title: "Express" });

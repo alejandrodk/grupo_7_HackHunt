@@ -50,18 +50,19 @@
             <div class="col-7 anuncios">
                 <% for (const anuncio of anuncios) { %>
                     <div class="item">
-                        <a href="anuncios/modificar/<%=anuncio.anu_id%>">Modificar</a>
+                        <a class="mod" href="anuncios/modificar/<%=anuncio.anu_id%>">Modificar</a>
+                        <a class="del" href="anuncios/delete/<%=anuncio.anu_id%>">Eliminar</a>
                         <div class="img">
-                            <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                            <img src="/images/avatars/<%=anuncio.anu_empresa_avatar%>" alt="">
                         </div>
                         <div class="info">
-                            <h2><%= anuncio.titulo %></h2>
+                            <h2><%= anuncio.anu_titulo %></h2>
                             <ul>
-                                <li><%= anuncio.empresa %></li>
-                                <li><%= anuncio.ubicacion %></li>
-                                <li><%= anuncio.jornada %></li>
+                                <li><%= anuncio.anu_empresa_name %></li>
+                                <li><%= anuncio.anu_ubicacion %></li>
+                                <li><%= anuncio.anu_jornada %></li>
                             </ul>
-                            <p class="desc"><%= anuncio.descrp %></p>
+                            <p class="desc"><%= anuncio.anu_descrp %></p>
                         </div>
                     </div>
                 <% } %>
@@ -70,9 +71,9 @@
             <% for (const anuncio of anuncios) { %>
                     <div class="item">
                         <ul>
-                            <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span><%= anuncio.nuevos %></span></li>
-                            <li><i class="fas fa-users"></i> Candidatos totales <span><%= anuncio.candidatos %></span></li>
-                            <li><i class="fas fa-medal"></i> Solicitudes destacadas <span><%= anuncio.destacados %></span></li>
+                            <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span><%= anuncio.anu_nuevos %></span></li>
+                            <li><i class="fas fa-users"></i> Candidatos totales <span><%= anuncio.anu_candidatos %></span></li>
+                            <li><i class="fas fa-medal"></i> Solicitudes destacadas <span><%= anuncio.anu_destacados %></span></li>
                             <a href="anuncios/postulantes">Ver candidatos</a>
                         </ul>
                     </div>

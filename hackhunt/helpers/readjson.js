@@ -132,6 +132,15 @@ function modifyCompany(id)
     return empresa;
 }
 
+function modifyAnuncio(id)
+{
+    let anuncios = getAllAnuncios();
+    let anuncio = {ruta: anuncios.ruta,
+    file:[]}
+    anuncio.file = anuncios.file.filter(item => item.anu_id == id)[0];
+    return anuncio;
+}
+
 function saveUpdates(array)
 {
     if(array.ruta == 'data/usuarios.json'){
@@ -162,26 +171,64 @@ function saveUpdates(array)
                 }
                 return item;
             });
-        fs.writeFileSync(array.path, json.stringify(allCompanies));
+
+        fs.writeFileSync(array.ruta, JSON.stringify(allCompanies));
     }
     if(array.ruta == 'data/anuncios.json')
     {
         let allAnuncios = getAllAnuncios().file;
+      
          allAnuncios = allAnuncios.map(item =>
             {
+               
                 if(array.file.anu_id == item.anu_id)
                 {
+                    
                     item= {
                         ...array.file
                     }
                 }
                 return item;
             });
-        fs.writeFileSync(array.path, json.stringify(allAnuncios));
+        fs.writeFileSync(array.ruta, JSON.stringify(allAnuncios));
     }
-    
 }
 
+    function deleteUser(id)
+    {
+        let users =
+        {
+            ruta: 'data/usuarios.json',
+            file: []
+        }
+        users.file = getAllUsers().file.filter(item => item.user_id != id);
+        fs.writeFileSync(users.ruta,users.file);
+    }
+
+    function deleteAnuncio(id)
+    {
+        let anuncios =
+        {
+            ruta: 'data/anuncios.json',
+            file: []
+        }
+        anuncios.file = getAllAnuncios().file.filter(item => item.anu_id != id);
+        
+        fs.writeFileSync(anuncios.ruta,anuncios.file);
+    }
+
+    function deleteCompany(id)
+    {
+        let empresas =
+        {
+            ruta: 'data/empresas.json',
+            file: []
+        }
+        empresas.file = getAllCompanies().file.filter(item => item.cmp_id != id);
+        fs.writeFileSync(empresas.ruta,empresas.file);
+    }
+    
 
 
-module.exports = {getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios, getAllUsers, modifyUser,saveUpdates,getUserById,modifyCompany, getAnuncioById}
+
+module.exports = {deleteAnuncio,deleteCompany,deleteUser, modifyAnuncio, getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios, getAllUsers, modifyUser,saveUpdates,getUserById,modifyCompany, getAnuncioById}
