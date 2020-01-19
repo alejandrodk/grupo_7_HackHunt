@@ -29,13 +29,13 @@
                             </div>
                         </div>
                         <div class="datos wrap">
-                            <strong><p><%= usuario.nombre %></p></strong>
-                            <p>Profesión</p>
-                            <p>Jr/Ssr/Sr</p>
+                            <strong><p><%= data.user_name %></p></strong>
+                            <p><%= data.user_position %></p>
+                            <p><%= data.user_position_level %></p>
                             <ul>
-                                <li><i class="fab fa-git-alt" title="Repositorio Git"></i> /loveThatSong</li>
-                                <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> terryLoveYogurt</li>
-                                <li><i class="fas fa-user" title="Website"></i> www.oldspice.com</li>
+                                <li><i class="fab fa-git-alt" title="Repositorio Git"></i> <%= data.user_git %></li>
+                                <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> <%= data.user_stack %></li>
+                                <li><i class="fas fa-user" title="Website"></i> <%= data.user_website %></li>
                             </ul>
                         </div>
                         <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>

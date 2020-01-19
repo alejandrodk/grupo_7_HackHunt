@@ -3,13 +3,10 @@ const dbFunctions = require('../helpers/readjson.js');
 
 const controller = {
     perfil: (req, res) => {
-        let usuario;
-        // validamos que exista una sesion
-        if(req.session.user){
-            //guardamos la info de la sesion para enviarla como objeto
-            usuario = req.session.user
-        };
-        res.render('cliente/perfil', { usuario: usuario });
+        console.log(req.params);
+        
+        let usuario = dbFunctions.getUserById(req.params.id);
+        res.render('cliente/perfil', { user: usuario });
     },
     postulaciones: (req, res) => {
         res.render('cliente/postulaciones', { title: 'Postulaciones' });
