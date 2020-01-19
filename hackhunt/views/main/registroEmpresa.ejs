@@ -28,11 +28,16 @@
 							<input type="number" name="cmp_tel" id="cmp_tel" />
 							<label for="cmp_sector"><p>Rubro</p></label>
 							<input type="text" name="cmp_sector" id="cmp_sector" />
+							<label for="cmp_web"><p>Pagina Web</p></label>
+							<input type="text" name="cmp_web" id="cmp_website" />
 							<label for="cmp_avatar"><p>Subir Avatar</p></label>
-							<input type="file" name="cmp_avatar" id="cmp_avatar">
+							<input type="file" name="cmp_avatar" id="cmp_avatar" required>
+							<label for="cmp_description"><p>Detalle de la Empresa</p></label>
+							<textarea name="cmp_description" rows="3" cols="80" id="cmp_description" maxlength="72" required></textarea>
+							<label><small style="color:darkgrey;float:right">maximo 72 caracteres</small></label>
 							<input type="text" name="type" value="company" style="display: none;">
 							<button type="submit">Comenzar</button>
-							<button type="reset">Limpiar</button>
+							<button type="reset">Limpiar</button> 
 						</form>
 					</div>
 				</div>

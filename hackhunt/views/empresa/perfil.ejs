@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 
 <head>
@@ -29,11 +29,11 @@
                             </div>
                         </div>
                         <div class="datos wrap">
-                            <strong><p><%=data.cmp_bname%></p></strong>
+                            <strong><p><%=data.cmp_name%></p></strong>
                             <p><%=data.cmp_sector %></p>
-                            <p><%=data.cmp_descrip %>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptas labore porro dignissimos libero aliquid rerum optio accusamus, quibusdam est ipsa incidunt pariatur tempore deleniti ut praesentium natus eveniet aliquam!</p>
+                            <p><%=data.cmp_description %></p>
                             <ul>
-                                <li><i class="fas fa-user" title="Website"></i> <%=data.cmp_website%> www.digitalhouse.com.ar</li>
+                                <li><i class="fas fa-user" title="Website"></i> <%=data.cmp_web%></li>
                             </ul>
                         </div>
                         <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>
@@ -54,12 +54,12 @@
                             <%if(anuncios==''){%>
                             <%}else{%>
                             <% for (anuncio of anuncios) { %>
-                                <a class="anuncio" href="/detalle?id=<%= anuncio.anu_id %>">
+                                <a class="anuncio" href="/detalle?id=<%= anuncio.adv_id %>">
                                     <div class="item wrap">
-                                        <h3><%= anuncio.anu_titulo %></h3>
+                                        <h3><%= anuncio.adv_title %></h3>
                                         <p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>
-                                        <p title="Número de postulantes"> <%= anuncio.anu_postulantes %></p>
-                                        <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.anu_publicacion %></p>
+                                        <p title="Número de postulantes"> <%= anuncio.postulantes.length %></p>
+                                        <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
                                     </div>
                                 </a>         
                             <% } }%>                                         

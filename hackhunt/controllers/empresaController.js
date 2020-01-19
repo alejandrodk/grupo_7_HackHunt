@@ -10,7 +10,29 @@ const controller = {
 		res.render('empresaconfig');
 	},
 	info: (req, res) => {
-		res.render("empresa/info", { title: "Express" });
+		let empresa = dbFunctions.getCompanyById(req.session.data.cmp_id);
+		delete empresa.cmp_user_passwd;
+		res.render("empresa/info", {empresa:empresa, title: "Express" });
+	},
+	modificarInfo: (req,res)=>{
+		let empresa = dbFunctions.modifyCompany(req.params.id);
+		console.log(req.file);
+		if(typeof req.file == 'undefined')
+		{
+			req.body.cmp_avatar == empresa.file.cmp_avatar;
+		}
+		else
+		{
+			
+			req.body.cmp_avatar = req.file.filename;
+		}
+		 empresa.file = {
+			...empresa.file,
+			...req.body
+		
+		}
+		dbFunctions.saveUpdates(empresa);
+		return res.redirect('/empresa/informacion'); 
 	},
 	mensajes: (req, res) => {
 		res.render("empresa/mensajes", { title: "Express" });

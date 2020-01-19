@@ -8,7 +8,7 @@
 </head>
 <body>
 	<header>
-		<% if(type_user == "empresa"){%>
+		<% if(type_user == "company"){%>
 			<%- include('../partials/headerEmp'); -%>
 		<%} if(type_user == "usuario"){%>
 			<%- include('../partials/headerLog'); -%>
@@ -119,20 +119,20 @@
 
 					<div class="anuncios">
 						<% for (anuncio of anuncios) { %>
-							<a href="/detalle?id=<%= anuncio.anu_id %>">
+							<a href="/detalle?id=<%= anuncio.adv_id %>">
 								<div class="item">
 									<div class="img">
-										<img src="/images/avatars/<%=anuncio.anu_empresa_avatar%>" alt="">
+										<img src="/images/avatars/<%=anuncio.adv_cmp_avatar%>" alt="">
 									</div>
 									<div class="info">
-										<h2><%= anuncio.anu_titulo %></h2>
+										<h2><%= anuncio.adv_title %></h2>
 										<ul>
-											<li><%= anuncio.anu_name_empresa %></li>
-											<li><%= anuncio.anu_ubicacion %></li>
-											<li><%= anuncio.anu_jornada %></li>
+											<li><%= anuncio.adv_cmp_name %></li>
+											<li><%= anuncio.adv_location %></li>
+											<li><%= anuncio.adv_working_day %></li>
 										</ul>
-										<p class="desc"><%= anuncio.anu_descrp %></p>
-										<p class="sal">$<%= anuncio.anu_salario %></p>
+										<p class="desc"><%= anuncio.adv_description %></p>
+										<p class="sal">$<%= anuncio.adv_salary %></p>
 										<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
 									</div>
 								</div>
