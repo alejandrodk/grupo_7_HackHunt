@@ -59,7 +59,7 @@ function getAllCompanies()
 
 function getAllUsers()
 {
-    let user_file = fs.readFileSync(user_path, {encoding:'utf-8'});
+    let user_file = fs.readFileSync(user_path, 'utf-8');
     let user_json = {ruta:'',
                     file:[]
                     };
