@@ -10,7 +10,9 @@ const anuncios = fs.readFileSync('data/anuncios.json', {encoding : 'utf-8'} );
 
 const controller = {
 	home: (req, res) => {
-		res.render('main/index', { anuncios: JSON.parse(anuncios) });
+		let anu = dbFunctions.getAllAnuncios();
+		
+		res.render('main/index', { anuncios: anu.file });
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
@@ -18,7 +20,8 @@ const controller = {
 	},
 	detalleAnuncio: (req, res) => {
 		id = req.query.id;
-		res.render('main/detalleAnuncio', { anuncio: JSON.parse(anuncios)[id - 1] });
+		let anu = dbFunctions.getAnuncioById(id);
+		res.render('main/detalleAnuncio', { anuncio: anu });
 	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
@@ -45,12 +48,12 @@ const controller = {
 			// falta mostrar errores en la vista
 		}
 	},
-	registroUsuario: (req, res) => {
+	registroUsuario: (req, res) => { 
 		res.render('main/registroUsuario', { title: 'Express' });
 	},
 	valRegUsuario: (req,res) => {
 		// Guardar info en la DB y redireccionar al perfil
-		let contenidoJSON = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
+		/*let contenidoJSON = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
 		let id = 0;
 		
 		if (contenidoJSON == ''){
@@ -61,19 +64,20 @@ const controller = {
 			let cont = {
 				ruta: 'data/usuarios.json',
 				file: contenido
-			}
-			id = dbFunctions.getNewId(cont);
-		}
+			}*/
+			let usuarios = dbFunctions.getAllUsers();
+			id = dbFunctions.getNewId(usuarios);
+		
+		
 		req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
-		req.body.user_id = id;
+		
 		let usuario = {
+			user_id: id,
 			...req.body
 		};
 
-		contenido.push(usuario);
 		
-		contenidoJSON = JSON.stringify(contenido);
-		fs.writeFileSync('data/usuarios.json',contenidoJSON);
+		dbFunctions.writeFile(usuario,usuarios);
 		
 		req.session.user = usuario;
 		return res.redirect('registro/cv');
@@ -104,15 +108,19 @@ const controller = {
 	validarEmpresa: (req,res) => {
 		let users = dbFunctions.getAllCompanies();
 		let user = users.file.filter(item => item.cmp_user_email == req.body.cmp_user_email);
-		let login = loginFunctions.companyLogin(req,user[0],req.body.cmp_user_passwd);
-		if(login)
+		let login = loginFunctions.checkLogin(req,user[0]);
+		if(login) 
 		{
 			req.session.data = user[0];
 			req.session.user_email = user[0].cmp_user_email;
+			req.session.type_user = "empresa";
 			return res.redirect('/empresa/perfil');
 		}
+		else
+		{
+			return res.redirect('/empresa/login');
+		}
 		
-		return res.redirect('/empresa/login');
 	},
 	registroEmpresa: (req, res) => {
 		res.render('main/registroEmpresa', { title: 'Express' });

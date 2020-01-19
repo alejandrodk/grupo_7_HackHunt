@@ -28,6 +28,19 @@ function getUserById(id)
     }
 }
 
+function getAnuncioById(id)
+{
+
+    let anuncio = getAllAnuncios().file.filter(item => item.anu_id == id);
+    if(anuncio == ''){
+        return "anuncio no encontrado"
+    }
+    else
+    {
+        return anuncio[0];
+    }
+}
+
 function getAllCompanies()
 {
     let cmp_file = fs.readFileSync(cmp_path, {encoding:'utf-8'});
@@ -69,15 +82,15 @@ function getNewId(array)
     }
     if(array.ruta == 'data/empresas.json'){ 
     newId = array.file[array.file.length -1];
-    return newId.cmp_id +1;
+    return parseInt(newId.cmp_id) +1;
     }
     if(array.ruta == 'data/usuarios.json'){ 
     newId = array.file[array.file.length -1];
-        return newId.user_id +1;
+        return parseInt(newId.user_id) +1;
     }
     if(array.ruta == 'data/anuncios.json'){ 
         newId = array.file[array.file.length -1];
-            return newId.anu_id +1;
+            return parseInt(newId.anu_id) +1;
         }
     return "Error";
 }
@@ -92,10 +105,10 @@ function getAllAnuncios()
 {
     let anu_file = fs.readFileSync(anu_path,'utf-8');
     let anuncios = {file:[],
-                    path: anu_path};
+                    ruta: anu_path};
     if(anu_file != '')
     {
-        anuncios.file = json.parse(anu_file);
+        anuncios.file = JSON.parse(anu_file);
         return anuncios;
     }
     return anuncios;
@@ -117,6 +130,15 @@ function modifyCompany(id)
     file:[]}
     empresa.file = empresas.file.filter(item => item.cmp_id == id)[0];
     return empresa;
+}
+
+function modifyAnuncio(id)
+{
+    let anuncios = getAllAnuncios();
+    let anuncio = {ruta: anuncios.ruta,
+    file:[]}
+    anuncio.file = anuncios.file.filter(item => item.anu_id == id)[0];
+    return anuncio;
 }
 
 function saveUpdates(array)
@@ -149,26 +171,64 @@ function saveUpdates(array)
                 }
                 return item;
             });
-        fs.writeFileSync(array.path, json.stringify(allCompanies));
+
+        fs.writeFileSync(array.ruta, JSON.stringify(allCompanies));
     }
     if(array.ruta == 'data/anuncios.json')
     {
         let allAnuncios = getAllAnuncios().file;
+      
          allAnuncios = allAnuncios.map(item =>
             {
+               
                 if(array.file.anu_id == item.anu_id)
                 {
+                    
                     item= {
                         ...array.file
                     }
                 }
                 return item;
             });
-        fs.writeFileSync(array.path, json.stringify(allAnuncios));
+        fs.writeFileSync(array.ruta, JSON.stringify(allAnuncios));
     }
-    
 }
 
+    function deleteUser(id)
+    {
+        let users =
+        {
+            ruta: 'data/usuarios.json',
+            file: []
+        }
+        users.file = getAllUsers().file.filter(item => item.user_id != id);
+        fs.writeFileSync(users.ruta,users.file);
+    }
+
+    function deleteAnuncio(id)
+    {
+        let anuncios =
+        {
+            ruta: 'data/anuncios.json',
+            file: []
+        }
+        anuncios.file = getAllAnuncios().file.filter(item => item.anu_id != id);
+        
+        fs.writeFileSync(anuncios.ruta,anuncios.file);
+    }
+
+    function deleteCompany(id)
+    {
+        let empresas =
+        {
+            ruta: 'data/empresas.json',
+            file: []
+        }
+        empresas.file = getAllCompanies().file.filter(item => item.cmp_id != id);
+        fs.writeFileSync(empresas.ruta,empresas.file);
+    }
+    
 
 
-module.exports = {getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios, getAllUsers, modifyUser,saveUpdates,getUserById,modifyCompany}
+
+module.exports = {deleteAnuncio,deleteCompany,deleteUser, modifyAnuncio, getAllCompanies,getNewId, writeFile,getCompanyById, getAllAnuncios, getAllUsers, modifyUser,saveUpdates,getUserById,modifyCompany, getAnuncioById}

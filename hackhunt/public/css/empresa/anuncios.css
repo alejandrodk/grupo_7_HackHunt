@@ -149,7 +149,16 @@
     margin: 0;
     overflow: hidden;
 }
-.container.post .anuncios .item>a{
+.container.post .anuncios .item>.mod{
+    position: absolute;
+    top: 5%;
+    right: 14%;
+    background: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: solid 1px var(--main-bg-color);
+}
+.container.post .anuncios .item>.del{
     position: absolute;
     top: 5%;
     right: 2%;

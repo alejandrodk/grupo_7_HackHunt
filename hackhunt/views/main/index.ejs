@@ -4,10 +4,18 @@
 <head>
 	<%- include('../partials/head'); -%>
 	<link rel="stylesheet" href="/css/main/app.css" />
+	<link rel="stylesheet" href="/css/headerLog.css" />
 </head>
 <body>
 	<header>
-		<%- include('../partials/header'); -%>
+		<% if(type_user == "empresa"){%>
+			<%- include('../partials/headerEmp'); -%>
+		<%} if(type_user == "usuario"){%>
+			<%- include('../partials/headerLog'); -%>
+		<%}if(type_user == "guest"){%>
+			<%- include('../partials/header'); -%>
+		<%}%>
+		
 	</header>
 	<div class="container-fluid buscador wrap">
 		<div class="container">
@@ -108,22 +116,23 @@
 							<dd><i class="fas fa-magic"></i> Skills</dd>
 						</dl>
 					</div>
+
 					<div class="anuncios">
-						<% for (const anuncio of anuncios) { %>
-							<a href="/detalle?id=<%= anuncio.id %>">
+						<% for (anuncio of anuncios) { %>
+							<a href="/detalle?id=<%= anuncio.anu_id %>">
 								<div class="item">
 									<div class="img">
-										<img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+										<img src="/images/avatars/<%=anuncio.anu_empresa_avatar%>" alt="">
 									</div>
 									<div class="info">
-										<h2><%= anuncio.titulo %></h2>
+										<h2><%= anuncio.anu_titulo %></h2>
 										<ul>
-											<li><%= anuncio.empresa %></li>
-											<li><%= anuncio.ubicacion %></li>
-											<li><%= anuncio.jornada %></li>
+											<li><%= anuncio.anu_name_empresa %></li>
+											<li><%= anuncio.anu_ubicacion %></li>
+											<li><%= anuncio.anu_jornada %></li>
 										</ul>
-										<p class="desc"><%= anuncio.descrp %></p>
-										<p class="sal">$<%= anuncio.salario %></p>
+										<p class="desc"><%= anuncio.anu_descrp %></p>
+										<p class="sal">$<%= anuncio.anu_salario %></p>
 										<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
 									</div>
 								</div>

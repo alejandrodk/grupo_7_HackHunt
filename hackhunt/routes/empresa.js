@@ -14,9 +14,9 @@ router.get("/mensajes", empresaController.mensajes);
 router.get("/anuncios/", empresaController.anuncios);
 router.get("/anuncios/crear", empresaController.crearPublicacion);
 router.post("/anuncios/crear", empresaController.postearPublicacion);
-router.get("/anuncios/modificar", empresaController.modificarPublicacion);
-router.put("/anuncios/modificar", empresaController.actualizarPublicacion);
-// agregar boton eliminar anuncio
+router.get("/anuncios/modificar/:id", empresaController.modificarPublicacion);
+router.post("/anuncios/modificar/:id", empresaController.actualizarPublicacion);
+router.get("/anuncios/delete/:id", empresaController.borrarPublicacion);
 router.get("/anuncios/postulantes", empresaController.postulantes);
 router.get("/anuncios/postulantes/CV", empresaController.postulantesDetalle);
 

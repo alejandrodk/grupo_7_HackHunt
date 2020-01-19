@@ -2,9 +2,9 @@ const fs = require('fs');
 const dbFunctions = require('../helpers/readjson.js');
 const controller = {
 	perfil: (req, res) => {
-		let anuncios = fs.readFileSync('data/anuncios.json', {encoding: 'utf-8'});
+		let anuncios = dbFunctions.getAllAnuncios();
 		let company = dbFunctions.getCompanyById(req.params.id);
-		res.render("empresa/perfil", {empresa: company, anuncios: JSON.parse(anuncios) });
+		res.render("empresa/perfil", {empresa: company, anuncios: anuncios.file });
 	},
 	configuracion: (req, res) => {
 		res.render('empresaconfig');
@@ -36,10 +36,12 @@ const controller = {
 			// identificadores
 			adv_id : id,
 			// traer empresa de sesion
-			adv_cmp : '', //id de la empresa que publico
+			adv_cmp_id : req.session.user_id, //id de la empresa que publico
+			adv_cmp_name: req.session.data.cmp_name,
+			adv_cmp_avatar: req.session.data.cmp_avatar,
 			// info POST
-			adv_publicaction : adv_fechaAct,
-
+			...req.body,
+			adv_publication : adv_fechaAct,
 			// info para empresa
 			nuevos : 0,
 			candidatos : 0,
@@ -48,33 +50,42 @@ const controller = {
 			favoritos : []
 		}
 
-		if (contenido == ''){
-			contenido = [];
-		} else {
-			contenido = JSON.parse(contenido);
-		}
-		
-		contenido.push(anuncio);
-		
-		let contenidoJSON = JSON.stringify(contenido);
-		fs.writeFileSync('data/anuncios.json',contenidoJSON);
+		dbFunctions.writeFile(anuncio,adv_Json); 
 
-		res.redirect(`/detalle?id=${id}`);
+		return res.redirect(`/detalle?id=${id}`);
 	},
 	modificarPerfil: (req,res)=>
 	{
 		let user = dbFunctions.modifyCompany(req.session.user_id);
 		//aca van los datos para modificar
 		dbFunctions.saveUpdates(user);
-		res.redirect('/perfil');
+		return res.redirect('/perfil');
 		
 	},
 	modificarPublicacion: (req, res) => {
-		res.render("empresa/modificarPublicacion", { title: "Express" })
+
+		let publicacion = dbFunctions.getAnuncioById(req.params.id);
+		res.render("empresa/modificarPublicacion", { publicacion:publicacion, title: "Express" })
 	},
 	actualizarPublicacion: (req, res) => {
 		// actualizar info en la DB y enviar a la vista previa 
-		res.redirect("/detalle")
+		let anuncio = dbFunctions.modifyAnuncio(req.params.id);
+		
+		anuncio.file = {
+			anu_id: anuncio.file.anu_id,
+			anu_empresa_id: anuncio.file.anu_empresa_id,
+			anu_empresa_name: anuncio.file.anu_empresa_name,
+			anu_empresa_avatar: anuncio.file.anu_empresa_avatar,
+			...req.body
+		}
+		dbFunctions.saveUpdates(anuncio);
+		return res.redirect("/empresa/perfil");
+	},
+
+	borrarPublicacion: (req,res) =>
+	{
+		dbFunctions.deleteAnuncio(req.params.id);
+		return res.redirect("/empresa/perfil");
 	},
 	postulantes: (req, res) => {
 		res.render("empresa/postulantes", { title: "Express" });
