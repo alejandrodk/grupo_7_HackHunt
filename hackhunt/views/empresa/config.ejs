@@ -7,16 +7,15 @@
 </head>
 <body>
     <header>
-        <%- include('../partials/headerLog'); -%>
+        <%- include('../partials/headerEmp'); -%>
     </header>  
     <div class="container config">
         <div class="row">
             <div class="col-12 barra-menu wrap">
-                <a href="/perfil/informacion">Editar mi CV</a>
-                <a href="/perfil/postulaciones">Mis postulaciones</a>
-                <a href="/perfil/favoritos">Favoritos</a>
-                <a href="/perfil/alertas">Alertas</a>
-                <a href="/perfil/configuracion" id="select">Configuración</a>
+                <a href="/empresa/anuncios/crear">Nuevo anuncio</a>
+                <a href="/empresa/anuncios">Mis anuncios</a>
+                <a href="/empresa/informacion">Editar información</a>
+                <a href="/empresa/perfil/configuracion">Configuración</a>
             </div>
             <div class="col-12 barra">
                 <h2>Mi cuenta</h2>
@@ -63,24 +62,24 @@
                     <h4>Modificar notificaciones</h4>
                     <form action="?_method=PUT" method="post">
                         <div class="item">
-                            <input type="checkbox" name="user_promotions" id="user_promotions">
+                            <input type="checkbox" name="cmp_promotions" id="cmp_promotions">
                             <label for="">Recibir novedades y promociones</label>
                             <p>Consejos, promociones y nuevas funciones</p>
                         </div>
                         <div class="item">
-                            <input type="checkbox" name="user_adversings" id="user_adversings">
-                            <label for="">Envío de avisos recomendados</label>
-                            <p>Envío semanal de ofertas laborales que se ajustan a mis búsquedas / CV.</p>
+                            <input type="checkbox" name="cmp_adversings" id="cmp_adversings">
+                            <label for="">Envío de perfiles recomendados</label>
+                            <p>Envío semanal de perfiles que se ajustan a mis búsquedas.</p>
                         </div>
                         <div class="item">
-                            <input type="checkbox" name="user_stadistics" id="user_stadistics">
+                            <input type="checkbox" name="cmp_stadistics" id="cmp_stadistics">
                             <label for="">Resumen de Actividad</label>
-                            <p>Envío mensual de un resumen sobre la actividad entre las empresas y mi CV.</p>
+                            <p>Envío mensual de un resumen sobre la actividad entre los usuarios y mis anuncios</p>
                         </div>
                         <div class="item">
-                            <input type="checkbox" name="user_special_adversings" id="user_special_adversings">
-                            <label for="">Avisos destacados</label>
-                            <p>Envío de avisos en los que tengo mayores posibilidades.</p>
+                            <input type="checkbox" name="cmp_special_adversings" id="cmp_special_adversings">
+                            <label for="">Perfiles destacados</label>
+                            <p>Envío de perfiles que mejor se adaptan a mis anuncios</p>
                         </div>
                         <button type="submit">Guardar preferencias</button>
                     </form>
@@ -99,12 +98,12 @@
                 <div class="item privacidad">
                     <h4>Visualización de perfil</h4>
                     <form action="?_method=PUT" method="post">
-                        <input type="radio" name="user_profile_visibility" id="user_profile_visibility" value="true">
-                        <label for="user_profile_visibility">Público</label>
-                        <p>Además de los avisos en los que me postulé, el CV es visible en otras búsquedas que realizan las empresas.</p>
-                        <input type="radio" name="user_profile_visibility" id="user_profile_visibility" value="false">
-                        <label for="user_profile_visibility">Privado</label>
-                        <p>El CV aparece visible únicamente en los avisos que me postulé.</p>
+                        <input type="radio" name="cmp_profile_visibility" id="cmp_profile_visibility" value="true">
+                        <label for="cmp_profile_visibility">Público</label>
+                        <p>Mi perfil de empresa sera visible para todos los usuarios</p>
+                        <input type="radio" name="cmp_profile_visibility" id="cmp_profile_visibility" value="false">
+                        <label for="cmp_profile_visibility">Privado</label>
+                        <p>Mi perfil de empresa sera visible solo para los usuarios a quienes contacte</p>
                         <button type="submit">Guardar preferencias</button>
                     </form>
                 </div>

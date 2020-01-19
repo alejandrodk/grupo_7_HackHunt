@@ -26,25 +26,23 @@ const controller = {
 	validarUsuario: (req,res) => {
 		// validar formulario con express-validator
 		let errors = validationResult(req);
-		if(!errors.isEmpty()){
-			console.log(errors);
-			return res.render('main/loginUsuario', { errors: errors });
-			// falta mostrar errores en la vista
-		} else {
-			let usuariosDB = fs.readFileSync('data/usuarios.json', {encoding:'utf-8'});
-			let usuarios = JSON.parse(usuariosDB);
-			for (const usuario of usuarios) {
-				if(usuario.user_email == req.body.user_email && (bcrypt.compareSync(usuario.user_passwd, req.body.user_passwd))){
-					sessionData = req.session;
-					//creamos una sesion con toda la info del usuario
-					delete usuario.user_passwd;
-					sessionData.user = usuario;
-					//res.json(sessionData.usuario); (para ver si la info paso bien)
-					return res.redirect('/perfil');
-				} else {
-					res.send('error en el login');
-				}
+		if(errors.isEmpty()){
+			let users = dbFunctions.getAllUsers();
+			let user = users.file.filter(item => item.user_email == req.body.user_email);
+			let login = loginFunctions.userLogin(req,user[0],req.body.user_passwd);
+			
+			if(login){
+				req.session.data = user[0];
+				req.session.user_email = user[0].user_email;
+				return res.redirect('/perfil');
+			} else {
+				res.send('error en el login');
 			}
+
+		} else {
+			console.log(errors);
+			res.render('main/loginUsuario', { errors: errors });
+			// falta mostrar errores en la vista
 		}
 	},
 	registroUsuario: (req, res) => {
@@ -86,10 +84,13 @@ const controller = {
 	},
 	valCompletarCv : (req,res) => {
 		// validar info y cargar el CV
-		req.body.user_id = req.body.user_id;
+		let user = dbFunctions.modifyUser(req.body.user_id).file;
+		delete user.user_name;
+		delete user.user_lastname;
 		let user_info = {
 			ruta: 'data/usuarios.json',
 			file: {
+				...user,
 				...req.body,
 			}
 		};

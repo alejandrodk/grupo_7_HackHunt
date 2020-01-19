@@ -6,6 +6,9 @@ const controller = {
 		let company = dbFunctions.getCompanyById(req.params.id);
 		res.render("empresa/perfil", {empresa: company, anuncios: JSON.parse(anuncios) });
 	},
+	configuracion: (req, res) => {
+		res.render('empresaconfig');
+	},
 	info: (req, res) => {
 		res.render("empresa/info", { title: "Express" });
 	},
