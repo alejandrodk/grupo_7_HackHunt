@@ -22,38 +22,38 @@
             <div class="row cuerpo">
                 <div class="col-9 wrap">
 					<div class="anuncio wrap">
-						<form action="?_method=PUT" method="post">
+						<form action="/empresa/anuncios/modificar?_method=PUT" method="post">
 							<div class="form-cont wrap">
 								<div class="titulo wrap">
-									<label for=""><p>Título</p></label>
-									<input type="text" name="" id="">
+									<label for="adv_title"><p>Título</p></label>
+									<input type="text" name="adv_title" id="adv_title">
 								</div>
 								<div class="descrp wrap">
-									<textarea name="" id="" cols="30" rows="10" placeholder="Descripción"></textarea>
+									<textarea name="adv_description" id="adv_description" cols="30" rows="10" placeholder="Descripción"></textarea>
 								</div>
 								<div class="skills wrap">
-									<label for=""><p>Skills Excluyentes</p></label>
-									<label for=""><p>Skills Deseables</p></label>
-									<textarea name="" id="" cols="30" rows="10"></textarea>
-									<textarea name="" id="" cols="30" rows="10"></textarea>
+									<label for="adv_skills"><p>Skills Excluyentes</p></label>
+									<label for="adv_skills_optional"><p>Skills Deseables</p></label>
+									<textarea name="adv_skills" id="adv_skills" cols="30" rows="10"></textarea>
+									<textarea name="adv_skills_optional" id="adv_skills_optional" cols="30" rows="10"></textarea>
 								</div>
 								<div class="info wrap">
-									<label for=""><p>Fecha de contratación</p></label>
-									<input type="date" name="" id="">
-									<label for=""><p>Área</p></label>
-									<input type="text" name="" id="">
-									<label for=""><p>Ubicación</p></label>
-									<input type="text" name="" id="">
-									<label for=""><p>Cargo</p></label>
-									<input type="text" name="" id="">
-									<label for=""><p>Jornada</p></label>
-									<input type="text" name="" id="">
-									<label for=""><p>Salario</p></label>
-									<input type="text" name="" id="">
+									<label for="adv_date_contract"><p>Fecha de contratación</p></label>
+									<input type="date" name="adv_date_contract" id="adv_date_contract">
+									<label for="adv_area"><p>Área</p></label>
+									<input type="text" name="adv_area" id="adv_area">
+									<label for="adv_location"><p>Ubicación</p></label>
+									<input type="text" name="adv_location" id="adv_location">
+									<label for="adv_position"><p>Cargo</p></label>
+									<input type="text" name="adv_position" id="adv_position">
+									<label for="adv_working_day"><p>Jornada</p></label>
+									<input type="text" name="adv_working_day" id="adv_working_day">
+									<label for="adv_salary"><p>Salario</p></label>
+									<input type="text" name="adv_salary" id="adv_salary">
 								</div>
 								<div class="beneficios">
-									<label for=""><p>Beneficios (opcional)</p></label>
-									<textarea name="" id="" cols="30" rows="10"></textarea>
+									<label for="adv_advantage"><p>Beneficios (opcional)</p></label>
+									<textarea name="adv_advantage" id="adv_advantage" cols="30" rows="10"></textarea>
 								</div>
 							</div>
 							<button type="submit">Guardar</button>

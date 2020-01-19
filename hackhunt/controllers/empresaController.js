@@ -27,18 +27,18 @@ const controller = {
 		res.render("empresa/crearPublicacion", { title: "Express" });
 	},
 	postearPublicacion : (req,res) => {
-		let anu_Json = dbFunctions.getAllAnuncios();
+		let adv_Json = dbFunctions.getAllAnuncios();
 		 
 		let date = new Date();
-		let anu_fechaAct = `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`
-		let id = dbFunctions.getNewId(anu_Json);
+		let adv_fechaAct = `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`
+		let id = dbFunctions.getNewId(adv_Json);
 		let anuncio = {
 			// identificadores
-			anu_id : id,
+			adv_id : id,
 			// traer empresa de sesion
-			empresa : '', //id de la empresa que publico
+			adv_cmp : '', //id de la empresa que publico
 			// info POST
-			anu_publicacion : anu_fechaAct,
+			adv_publicaction : adv_fechaAct,
 
 			// info para empresa
 			nuevos : 0,
