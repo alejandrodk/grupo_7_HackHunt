@@ -5,8 +5,8 @@ var loginFunctions =
 {
     checkLogin: (req,user) =>
     {
-        console.log("llegue hasta aqui",login);
-        let login = false;
+        
+        var login = false;
         if(req.url == '/empresa/login')
         {
             if(user != '')

@@ -25,13 +25,13 @@ const controller = {
 	},
 	validarUsuario: (req,res) => {
 		// validar formulario con express-validator
-		let errors = validationResult(req);
-		console.log("llegue hasta aqui");
-		if(errors.isEmpty()){
+		//let errors = validationResult(req);
+		
+		//if(errors.isEmpty()){
 			let users = dbFunctions.getAllUsers();
 			let user = users.file.filter(item => item.user_email == req.body.user_email);
 			let login = loginFunctions.checkLogin(req,user[0]);
-			
+			console.log("llegue hasta aqui",login);
 			if(login){
 				req.session.data = user[0];
 				req.session.user_email = user[0].user_email;
@@ -41,11 +41,11 @@ const controller = {
 				res.send('error en el login'); 
 			}
 
-		} else {
+		//} else {
 			//console.log(errors);
-			res.render('main/loginUsuario', { errors: errors });
+		//	res.render('main/loginUsuario', { errors: errors });
 			// falta mostrar errores en la vista
-		}
+		//}
 	},
 	registroUsuario: (req, res) => { 
 		res.render('main/registroUsuario', { title: 'Express' });
