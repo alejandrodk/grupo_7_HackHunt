@@ -1,19 +1,20 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
+const soloCliente = require('../middlewares/soloCliente');
 
 // ************ Controller Require ************
 const clienteController = require("../controllers/clienteController");
 
 /* GET - home page. */
-router.get("/", clienteController.perfil);
-router.get("/postulaciones", clienteController.postulaciones);
-router.get("/favoritos", clienteController.favoritos);
-router.get("/alertas", clienteController.alertas);
-router.get("/informacion", clienteController.info);
-router.put("/informacion", clienteController.actInfo);
-router.get("/configuracion", clienteController.configuracion);
+router.get("/",soloCliente, clienteController.perfil);
+router.get("/postulaciones",soloCliente, clienteController.postulaciones);
+router.get("/favoritos",soloCliente, clienteController.favoritos);
+router.get("/alertas",soloCliente, clienteController.alertas);
+router.get("/informacion",soloCliente, clienteController.info);
+router.put("/informacion",soloCliente, clienteController.actInfo);
+router.get("/configuracion",soloCliente, clienteController.configuracion);
 router.put("/configuracion", clienteController.actConfig);
-router.get("/mensajes", clienteController.mensajes);
+router.get("/mensajes",soloCliente, clienteController.mensajes);
 
 module.exports = router;

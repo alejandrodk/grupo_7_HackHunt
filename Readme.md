@@ -66,8 +66,10 @@ Esto ayuda a nuestros candidatos a conseguir oportunidades laborales enfocadas e
 |getCompanyById(id), getUserById(id), getAnuncioById()             |`"Devuelve los datos de la compañia/usuario segun el id dado"`            |Recibe el id buscado            |
 |getNewId(array)             |`devuelve el proximo id disponible para usar`|Recibe un objeto literal obtenido de las funciones getAllCompanies(), getAllUsers(), getAllAnuncios() |
 |writeFile(newItem,db)             |`Inserta en el archivo JSON el nuevo item y guarda nuevamente los datos.`|Recibe (de tipo objeto literal) el nuevo item creado para insertar en la db JSON y el objeto literal obtenido de las funciones getAllCompanies(), getAllUsers(), getAllAnuncios()|
-|Dashes             |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
-|Dashes             |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+|modifyUser(id)             |`devuelve un objeto literal que contiene los datos del usuario y la ruta en sus propiedades .file y .ruta respectivamente`|Recibe como parametro el id a buscar|
+|modifyCompany(id)             |`devuelve un objeto literal que contiene los datos de la empresa y la ruta en sus propiedades .file y .ruta respectivamente`|Recibe como parametro el id a buscar|
+|modifyAnuncio(id)             |`devuelve un objeto literal que contiene los datos del anuncio y la ruta en sus propiedades .file y .ruta respectivamente`|Recibe como parametro el id a buscar|
+|saveUpdates(array)             |`guarda datos modificados tanto para empresa, cliente o anuncio `|Esta función recibe un objeto literal con las propiedades .file y .ruta el cual tiene los datos modificados en .file|
 |Dashes             |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
 
 

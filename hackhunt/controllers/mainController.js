@@ -101,6 +101,7 @@ const controller = {
 			req.session.data = user[0];
 			req.session.user_email = user[0].cmp_user_email;
 			req.session.type_user = user[0].type;
+			console.log(req.session.type_user);
 			return res.redirect('/empresa/perfil');
 		}
 		else
@@ -152,7 +153,7 @@ const controller = {
 	logout:(req,res)=>
 	{
 		req.session.destroy();
-		res.redirect('/');
+		return res.redirect('/');
 	}
 };
 
