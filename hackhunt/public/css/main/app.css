@@ -1,8 +1,9 @@
 /*BUSCADOR-----------------------------------*/
 .container-fluid.buscador {
-    background: var(--main-bg-color-2);
+	background: var(--main-bg-color-2);
 	height: 200px;
 	align-items: center;
+	box-shadow: -1px 22px 72px 0px rgba(0,0,0,0.55);
 }
 .container-fluid.buscador .barra{
     background-color: white;
@@ -39,15 +40,19 @@
     background-position: bottom;
     background-size: 1500px;
 }
-.container-fluid.cuerpo .filtros > p{
-	width: 15%;
+.container-fluid.cuerpo .filtros > p {
+	width: 13%;
 	color: var(--main-texto-blanco);
 	margin: auto;
+	padding: 11px;
+	border-radius: 5px;
+	text-align: center;
+	background: var(--main-bg-color-2);
+	box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container-fluid.cuerpo .filtros{
 	height: 100px;
     align-items: center;
-    background: var(--main-bg-color);
 }
 .filtrosAct{
 	width: 85%;

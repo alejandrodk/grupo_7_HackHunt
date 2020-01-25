@@ -8,6 +8,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 registro wrap">
+					<% if(typeof errors != 'undefined'){ %>
+						<div class="item errors">
+							<ul>
+								<% for(let i = 0; i < errors.length; i++){ %>
+								<li><%= errors[i].msg %></li>
+								<% } %>
+							</ul>
+						</div>
+						<% } %>
 					<div class="formulario wrap">
 						<form action="/empresa/registro" method="post" enctype="multipart/form-data">
 							<h3 class="separador-categoria">Información de contacto del representante</h3>
@@ -33,7 +42,7 @@
 							<label for="cmp_avatar"><p>Subir Avatar</p></label>
 							<input type="file" name="cmp_avatar" id="cmp_avatar" required>
 							<label for="cmp_description"><p>Detalle de la Empresa</p></label>
-							<textarea name="cmp_description" rows="3" cols="80" id="cmp_description" maxlength="72" required></textarea>
+							<textarea name="cmp_description" rows="3" cols="80" id="cmp_description" maxlength="72"></textarea>
 							<label><small style="color:darkgrey;float:right">maximo 72 caracteres</small></label>
 							<input type="text" name="type" value="company" style="display: none;">
 							<button type="submit">Comenzar</button>

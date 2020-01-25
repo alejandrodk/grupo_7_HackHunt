@@ -13,6 +13,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 formularios wrap">
+					<% if(typeof errors != 'undefined'){ %>
+						<div class="item errors">
+							<ul>
+								<% for(let i = 0; i < errors.length; i++){ %>
+								<li><%= errors[i].msg %></li>
+								<% } %>
+							</ul>
+						</div>
+						<% } %>
 					<div class="item login">
 						<h3>Ingresá a tu cuenta</h3>
 						<form action="/empresa/login" method="post">

@@ -25,9 +25,9 @@ const controller = {
 	},
 	validarUsuario: (req,res) => {
 		// validar formulario con express-validator
-		//let errors = validationResult(req);
-		
-		//if(errors.isEmpty()){
+		const errors = validationResult(req);
+
+		if(errors.isEmpty()){
 			let users = dbFunctions.getAllUsers();
 			let user = users.file.filter(item => item.user_email == req.body.user_email);
 			let login = loginFunctions.checkLogin(req,user[0]);
@@ -41,33 +41,37 @@ const controller = {
 				res.send('error en el login'); 
 			}
 
-		//} else {
-			//console.log(errors);
-		//	res.render('main/loginUsuario', { errors: errors });
-			// falta mostrar errores en la vista
-		//}
+		} else {
+		res.render('main/loginUsuario', { errors: errors.array() });
+		}
 	},
 	registroUsuario: (req, res) => { 
 		res.render('main/registroUsuario', { title: 'Express' });
 	},
 	valRegUsuario: (req,res) => {
+		const errors = validationResult(req);
 
-		let usuarios = dbFunctions.getAllUsers();
-		id = dbFunctions.getNewId(usuarios); 
-		
-		req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
-		
-		let usuario = {
-			user_id: id,
-			...req.body,
-			user_avatar:req.file.filename
-		};
+		if(errors.isEmpty()){
 
-		
-		dbFunctions.writeFile(usuario,usuarios);
-		
-		req.session.user = usuario;
-		return res.redirect('registro/cv');
+			let usuarios = dbFunctions.getAllUsers();
+			id = dbFunctions.getNewId(usuarios); 
+			
+			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
+			
+			let usuario = {
+				user_id: id,
+				...req.body,
+				user_avatar:req.file.filename
+			};
+	
+			
+			dbFunctions.writeFile(usuario,usuarios);
+			
+			req.session.user = usuario;
+			return res.redirect('registro/cv');
+		} else {
+			res.render('main/registroUsuario', { errors: errors.array() });
+		}
 	},
 	completarCv : (req,res) => {
 		let user = req.session.user;
@@ -93,20 +97,26 @@ const controller = {
 		res.render('main/loginEmpresa', { title: 'Express' });
 	},
 	validarEmpresa: (req,res) => {
-		let users = dbFunctions.getAllCompanies();
-		let user = users.file.filter(item => item.cmp_user_email == req.body.cmp_user_email);
-		let login = loginFunctions.checkLogin(req,user[0]);
-		if(login) 
-		{
-			req.session.data = user[0];
-			req.session.user_email = user[0].cmp_user_email;
-			req.session.type_user = user[0].type;
-			console.log(req.session.type_user);
-			return res.redirect('/empresa/perfil');
-		}
-		else
-		{
-			return res.redirect('/empresa/login');
+		const errors = validationResult(req);
+
+		if(errors.isEmpty()){
+			let users = dbFunctions.getAllCompanies();
+			let user = users.file.filter(item => item.cmp_user_email == req.body.cmp_user_email);
+			let login = loginFunctions.checkLogin(req,user[0]);
+			if(login) 
+			{
+				req.session.data = user[0];
+				req.session.user_email = user[0].cmp_user_email;
+				req.session.type_user = user[0].type;
+				console.log(req.session.type_user);
+				return res.redirect('/empresa/perfil');
+			}
+			else
+			{
+				return res.redirect('/empresa/login');
+			}
+		} else{
+			res.render('main/loginEmpresa', { errors: errors.array() });
 		}
 		
 	},
@@ -114,29 +124,25 @@ const controller = {
 		res.render('main/registroEmpresa', { title: 'Express' });
 	},
 	valRegEmpresa: (req,res) => {
-		
-		// Guardar info en la DB y redireccionar al perfil
-		//la funcion getAllCompanies devuelve un obj con las prop:
-		//ruta: con el path del json de las empresas
-		//file: con los datos del json de empresas
-		let allCompanies = dbFunctions.getAllCompanies();
-		
-		//la funcion getNewId recibe como param el obj de las empresas
-		// y devuelve un nuevo id para la neuva empresa
-		var newid = dbFunctions.getNewId(allCompanies);
-		req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
-		let newCompany = {
-			cmp_id: newid,
-			// trae los datos del form con los nombres del inputs
-			...req.body,
-			cmp_avatar: req.file.filename
-		};
-		
-		//la funcion writeFile recibe como primer param el obj nuevo creado
-		// y 2do param el obj con todas las compañias.
-		dbFunctions.writeFile(newCompany,allCompanies);
-		
-		res.redirect('/');
+		const errors = validationResult(req);
+
+		if(errors.isEmpty()){
+
+			let allCompanies = dbFunctions.getAllCompanies();
+			var newid = dbFunctions.getNewId(allCompanies);
+			req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
+			let newCompany = {
+				cmp_id: newid,
+				...req.body,
+				cmp_avatar: req.file.filename
+			};
+			
+			dbFunctions.writeFile(newCompany,allCompanies);
+			
+			res.redirect('/');
+		} else {
+			res.render('main/registroEmpresa', { errors: errors.array() });
+		}
 	},
 	recuperar: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
