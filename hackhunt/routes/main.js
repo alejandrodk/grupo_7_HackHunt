@@ -48,7 +48,7 @@ router.post("/empresa/login", [
     check('cmp_user_passwd')
         .notEmpty().withMessage('Debes ingresar una clave').bail()
         .isLength({ min: 3 }).withMessage('Ingresa una clave válida'),
-    //validar que exista el usuario
+    //validar que exista el usuario 
 ], mainController.validarEmpresa);
 router.get("/empresa/registro", soloGuest, mainController.registroEmpresa);
 router.post("/empresa/registro", upload.single('cmp_avatar'), [

@@ -118,7 +118,7 @@ const controller = {
 		} else{
 			res.render('main/loginEmpresa', { errors: errors.array() });
 		}
-		
+		 
 	},
 	registroEmpresa: (req, res) => {
 		res.render('main/registroEmpresa', { title: 'Express' });
