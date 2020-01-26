@@ -6,6 +6,7 @@ const express = require("express");
 const logger = require("morgan");
 const path = require("path");
 const methodOverride = require('method-override');
+const cookieValidate = require('./middlewares/cookieValidate');
 const auth = require('./middlewares/auth');
 
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(session({resave: true, saveUninitialized: true, secret: 'chuleta123',_expires: 600000}));
 app.use(methodOverride('_method'));
+app.use(cookieValidate);
 app.use(auth);
 
 // ************ Template Engine - (don't touch) ************

@@ -2,9 +2,7 @@ const fs = require('fs');
 const dbFunctions = require('../helpers/readjson.js');
 
 const controller = {
-    perfil: (req, res) => {
-        console.log(req.params);
-        
+    perfil: (req, res) => {  
         let usuario = dbFunctions.getUserById(req.params.id);
         res.render('cliente/perfil', { user: usuario });
     },

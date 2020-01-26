@@ -36,6 +36,9 @@ const controller = {
 				req.session.data = user[0];
 				req.session.user_email = user[0].user_email;
 				req.session.type_user = "cliente";
+
+				res.cookie('user_id',bcrypt.hashSync(req.session.data.user_id,10),{maxAge:60000000});
+
 				return res.redirect('/perfil');
 			} else {
 				res.send('error en el login'); 
@@ -159,6 +162,8 @@ const controller = {
 	logout:(req,res)=>
 	{
 		req.session.destroy();
+		res.cookie('user_id',null, { maxAge: -1});
+		
 		return res.redirect('/');
 	}
 };

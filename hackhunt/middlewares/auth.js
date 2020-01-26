@@ -1,6 +1,5 @@
 const locals = ((req,res,next)=>
 {
-    
     res.locals.type_user = "guest";
 	if(req.session.user_email)
 	{
@@ -8,6 +7,7 @@ const locals = ((req,res,next)=>
         res.locals.user_name = req.session.user_name;
         res.locals.data = req.session.data;
         res.locals.type_user = req.session.type_user;
+
         return next();
     }
     else
