@@ -52,7 +52,7 @@ router.post("/empresa/login", [
 ], mainController.validarEmpresa);
 router.get("/empresa/registro", soloGuest, mainController.registroEmpresa);
 router.post("/empresa/registro", upload.single('cmp_avatar'), [
-    check('user_cmp_name')
+    check('cmp_user_name')
         .notEmpty().withMessage('Debes ingresar un nombre').bail()
         .isString().withMessage('Ingresa un nombre válido')
         .isLength({ min: 3 }).withMessage('Tu nombre debe tener más de 3 caracteres'),
