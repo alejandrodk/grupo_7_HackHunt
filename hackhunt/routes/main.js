@@ -51,7 +51,17 @@ router.post("/empresa/login", [
     //validar que exista el usuario 
 ], mainController.validarEmpresa);
 router.get("/empresa/registro", soloGuest, mainController.registroEmpresa);
-router.post("/empresa/registro", upload.single('cmp_avatar'), [
+router.post("/empresa/registro", upload.single('cmp_avatar'), mainController.valRegEmpresa);
+// enviar mail con link para recuperar clave
+router.post("/recuperar", mainController.recuperar);
+router.post("/empresa/recuperar", mainController.recuperarEmpresa);
+router.get("/pruebas", mainController.pruebas);
+router.get("/logout", mainController.logout);
+
+module.exports = router;
+
+/*
+, [
     check('cmp_user_name')
         .notEmpty().withMessage('Debes ingresar un nombre').bail()
         .isString().withMessage('Ingresa un nombre válido')
@@ -67,11 +77,4 @@ router.post("/empresa/registro", upload.single('cmp_avatar'), [
         .notEmpty().withMessage('Debes ingresar una contraseña').bail()
         .isLength({ min: 5 }).withMessage('Tu contraseña debe tener al menos 5 caracteres'),
         // agregar validaciones de los datos propios de la empresa
-], mainController.valRegEmpresa);
-// enviar mail con link para recuperar clave
-router.post("/recuperar", mainController.recuperar);
-router.post("/empresa/recuperar", mainController.recuperarEmpresa);
-router.get("/pruebas", mainController.pruebas);
-router.get("/logout", mainController.logout);
-
-module.exports = router;
+]*/

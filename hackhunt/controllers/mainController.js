@@ -2,6 +2,8 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
 const {check, validationResult, body} = require('express-validator');
+const db = require('../database/models');
+
 
 const loginFunctions = require('../helpers/login');
 
@@ -127,7 +129,7 @@ const controller = {
 		res.render('main/registroEmpresa', { title: 'Express' });
 	},
 	valRegEmpresa: (req,res) => {
-		const errors = validationResult(req);
+		/*const errors = validationResult(req);
 
 		if(errors.isEmpty()){
 
@@ -145,7 +147,43 @@ const controller = {
 			res.redirect('/');
 		} else {
 			res.render('main/registroEmpresa', { errors: errors.array() });
-		}
+		}*/
+
+	
+
+		 db.Empresa.findOne({
+			 where:{cmp_user_email:req.body.cmp_user_email}
+		 })
+		 .then(resultado => {
+			
+			 if(resultado == null)
+			 {
+				
+				req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
+				const user = db.Empresa.create({...req.body,cmp_avatar:req.file.filename})
+				return user;
+			}
+			 else
+			 {
+				 res.render('main/registroEmpresa',{errors:[{msg:"Email en uso"}]})
+			 }
+			 
+		 })
+		 .then(user => {
+			req.session.user_email = req.body.cmp_user_email;
+			req.session.type_user = 'company';
+			
+			req.session.data = user;
+			return res.redirect('/empresa/perfil');
+		})
+		 .catch(error =>{
+			 console.log(error);
+		 })
+		
+		
+		
+
+		
 	},
 	recuperar: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
