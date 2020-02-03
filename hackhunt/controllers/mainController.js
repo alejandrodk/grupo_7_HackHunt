@@ -43,7 +43,7 @@ const controller = {
 
 				return res.redirect('/perfil');
 			} else {
-				res.send('error en el login'); 
+				return res.redirect('/login'); 
 			}
 
 		} else {
