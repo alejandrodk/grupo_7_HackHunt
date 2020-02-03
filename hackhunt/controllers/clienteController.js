@@ -1,5 +1,6 @@
 const fs = require('fs');
 const dbFunctions = require('../helpers/readjson.js');
+const db = require('../database/models');
 
 const controller = {
     perfil: (req, res) => {  
