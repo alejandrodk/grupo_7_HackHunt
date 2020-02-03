@@ -102,7 +102,7 @@ const controller = {
 		res.render('main/loginEmpresa', { title: 'Express' });
 	},
 	validarEmpresa: (req,res) => {
-		const errors = validationResult(req);
+		/*const errors = validationResult(req);
 
 		if(errors.isEmpty()){
 			let users = dbFunctions.getAllCompanies();
@@ -122,7 +122,32 @@ const controller = {
 			}
 		} else{
 			res.render('main/loginEmpresa', { errors: errors.array() });
-		}
+		}*/
+
+		db.Empresa.findOne({
+			where: {
+				cmp_user_email: req.body.cmp_user_email,
+			}
+		}).then(empresa=>{
+			
+			if(empresa)
+			{
+				
+				if(bcrypt.compareSync(req.body.cmp_user_passwd,empresa.cmp_user_passwd)){
+					req.session.user_email = req.body.cmp_user_email;
+					req.session.type_user = 'company';
+					req.session.data = empresa;
+			return res.redirect('/empresa/perfil');
+					
+				} 
+				else
+				{
+					
+				return	res.render('main/registroEmpresa',{errors:[{msg:"Usuario y/o contraseña erroneo"}]})
+				}
+			}
+			return res.render('main/registroEmpresa',{errors:[{msg:"Usuario y/o contraseña erroneo"}]})
+		})
 		 
 	},
 	registroEmpresa: (req, res) => {
@@ -150,32 +175,35 @@ const controller = {
 		}*/
 
 	
-
+		//busco si hay un cliente con el mismo email que se quiere registrar.
 		 db.Empresa.findOne({
 			 where:{cmp_user_email:req.body.cmp_user_email}
 		 })
 		 .then(resultado => {
-			
+			 //verifico si no existe registro en la db con el mismo email
 			 if(resultado == null)
 			 {
-				
+				 //hasheo el passwd y creo el nuevo usuario. se guarda en la db
 				req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
 				const user = db.Empresa.create({...req.body,cmp_avatar:req.file.filename})
 				return user;
 			}
 			 else
 			 {
+				 //si existe registro con el email, se vuelve al form con el error.
 				 res.render('main/registroEmpresa',{errors:[{msg:"Email en uso"}]})
 			 }
 			 
 		 })
 		 .then(user => {
+			 //cuando termina de crearse el usuario nuevo, se pasan los datos a sesion y se redirecciona.
 			req.session.user_email = req.body.cmp_user_email;
 			req.session.type_user = 'company';
 			
 			req.session.data = user;
 			return res.redirect('/empresa/perfil');
 		})
+		//si algo falla, se ve en consola el/los errores.
 		 .catch(error =>{
 			 console.log(error);
 		 })

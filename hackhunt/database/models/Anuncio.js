@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const Anuncios = sequelize.define(alias,cols,{  timestamps: false});
+    
     let alias = 'anuncios';
     let cols = {
         adv_id : {
@@ -58,5 +58,6 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         }
     }
+    const Anuncios = sequelize.define(alias,cols,{  timestamps: false});
     return Anuncios;
 }

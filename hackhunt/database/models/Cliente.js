@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING
         }
     }
-
+    const cliente = sequelize.define(alias,cols,{  timestamps: false});
     Cliente.associate = function(modelos){
         Cliente.belongsToMany(modelos.User_skill, {
             as : 'clientes',

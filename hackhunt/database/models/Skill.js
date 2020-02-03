@@ -12,5 +12,6 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         }
     }
+    const Skill = sequelize.define(alias,cols,{  timestamps: false});
     return Skill;
 }

@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const Cliente_cv = sequelize.define(alias,cols,{  timestamps: false});
+   
     let alias = 'clienteCv';
     let cols = {
         user_id : {
@@ -86,5 +86,6 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         }
     }
+    const Cliente_cv = sequelize.define(alias,cols,{  timestamps: false});
     return Cliente_cv;
 }
