@@ -2,8 +2,10 @@ module.exports = (sequelize, dataTypes) => {
     
     let alias = 'anuncios';
     let cols = {
-        adv_id : {
-
+        id : {
+            primaryKey: true,
+            autoIncrement: true,
+            type: dataTypes.INTEGER
         },
         adv_cmp : {
             type: dataTypes.STRING,

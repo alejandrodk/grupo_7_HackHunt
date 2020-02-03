@@ -1,4 +1,4 @@
-Favoritosmodule.exports = (sequelize, dataTypes) => {
+module.exports = (sequelize, dataTypes) => {
     
     let alias = 'postulantes';
     let cols = {
