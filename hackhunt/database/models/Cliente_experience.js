@@ -1,9 +1,10 @@
 module.exports = (sequelize, dataTypes) => {
     
-    let alias = 'ClienteEducation';
+    let alias = 'clienteexperience';
     let cols = {
         user_id : {
             primaryKey: true,
+            type: dataTypes.INTEGER
         },
         user_cmp_experience : {
             type: dataTypes.STRING,

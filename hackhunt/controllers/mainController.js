@@ -33,7 +33,7 @@ const controller = {
 			let users = dbFunctions.getAllUsers();
 			let user = users.file.filter(item => item.user_email == req.body.user_email);
 			let login = loginFunctions.checkLogin(req,user[0]);
-			console.log("llegue hasta aqui",login);
+			
 			if(login){
 				req.session.data = user[0];
 				req.session.user_email = user[0].user_email;
@@ -102,7 +102,7 @@ const controller = {
 		res.render('main/loginEmpresa', { title: 'Express' });
 	},
 	validarEmpresa: (req,res) => {
-		/*const errors = validationResult(req);
+		const errors = validationResult(req);
 
 		if(errors.isEmpty()){
 			let users = dbFunctions.getAllCompanies();
@@ -111,9 +111,11 @@ const controller = {
 			if(login) 
 			{
 				req.session.data = user[0];
+				console.log(req.session.data)
 				req.session.user_email = user[0].cmp_user_email;
 				req.session.type_user = user[0].type;
-				console.log(req.session.type_user);
+				res.cookie('user_id',bcrypt.hashSync(req.session.data.cmp_user_id,12),{maxAge:60000000});
+
 				return res.redirect('/empresa/perfil');
 			}
 			else
@@ -122,8 +124,8 @@ const controller = {
 			}
 		} else{
 			res.render('main/loginEmpresa', { errors: errors.array() });
-		}*/
-
+		}
+		/*
 		db.Empresa.findOne({
 			where: {
 				cmp_user_email: req.body.cmp_user_email,
@@ -148,13 +150,13 @@ const controller = {
 			}
 			return res.render('main/registroEmpresa',{errors:[{msg:"Usuario y/o contraseña erroneo"}]})
 		})
-		 
+		 */
 	},
 	registroEmpresa: (req, res) => {
 		res.render('main/registroEmpresa', { title: 'Express' });
 	},
 	valRegEmpresa: (req,res) => {
-		/*const errors = validationResult(req);
+		const errors = validationResult(req);
 
 		if(errors.isEmpty()){
 
@@ -172,9 +174,9 @@ const controller = {
 			res.redirect('/');
 		} else {
 			res.render('main/registroEmpresa', { errors: errors.array() });
-		}*/
+		}
 
-	
+		/*
 		//busco si hay un cliente con el mismo email que se quiere registrar.
 		 db.Empresa.findOne({
 			 where:{cmp_user_email:req.body.cmp_user_email}
@@ -211,7 +213,7 @@ const controller = {
 		
 		
 
-		
+		*/
 	},
 	recuperar: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta

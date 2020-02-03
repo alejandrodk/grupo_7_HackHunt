@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const cliente = sequelize.define(alias,cols,{  timestamps: false});
+    
     let alias = 'Cliente';
     let cols = {
         id : {
@@ -27,16 +27,12 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING
         }
     }
-    const cliente = sequelize.define(alias,cols,{  timestamps: false});
-    Cliente.associate = function(modelos){
-        Cliente.belongsToMany(modelos.User_skill, {
-            as : 'clientes',
-            through : 'user_skills',
-            foreignKey : 'user_id',
-            otherKey : 'skill_id',
-            timestamps : false
-        })
-    }
+    const Cliente = sequelize.define(alias,cols,{  timestamps: false});
 
-    return cliente;
+
+    Cliente.associate = function(models) {
+        Cliente.belongsTo(models.user_skills, {foreignKey: 'user_id'})
+    };
+
+    return Cliente;
 }

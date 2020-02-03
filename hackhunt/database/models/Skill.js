@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const Skill = sequelize.define(alias,cols,{  timestamps: false});
+    
     let alias = 'skills';
     let cols = {
         skill_id : {

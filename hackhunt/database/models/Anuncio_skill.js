@@ -4,13 +4,15 @@ module.exports = (sequelize, dataTypes) => {
     let cols = {
         anuncio_id : {
             
-
+            type: dataTypes.INTEGER,
+            allowNull:false
         },
         skill_id : {
-            
+            type: dataTypes.INTEGER,
+            allowNull:false
         },
         condicion : {
-            
+            type: dataTypes.STRING
         }
     }
     

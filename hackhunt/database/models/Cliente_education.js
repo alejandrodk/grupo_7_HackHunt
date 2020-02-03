@@ -1,9 +1,10 @@
 module.exports = (sequelize, dataTypes) => {
-    const Cliente_education = sequelize.define(alias,cols,{  timestamps: false});
+    
     let alias = 'ClienteEducation';
-    let cols = {
-        user_id : {
+    let cols = {/*
+       user_id : {
             primaryKey: true,
+            type: dataTypes.INTEGER,
         },
         user_career : {
             type: dataTypes.STRING,
@@ -26,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         user_career_description : {
             type: dataTypes.STRING
-        }
+        }*/
     }
     const Cliente_education = sequelize.define(alias,cols,{  timestamps: false});
     return Cliente_education;

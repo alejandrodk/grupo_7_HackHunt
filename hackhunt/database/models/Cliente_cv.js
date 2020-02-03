@@ -2,13 +2,13 @@ module.exports = (sequelize, dataTypes) => {
    
     let alias = 'clienteCv';
     let cols = {
-        user_id : {
+        /*user_id : {
             type: dataTypes.INTEGER,
             references: {
-                model: cliente,
+                model: Cliente,
                 key: id
             }
-        },
+        },*/
         user_dni : {
             type: dataTypes.STRING,
             allowNull: false
