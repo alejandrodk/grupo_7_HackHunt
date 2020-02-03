@@ -27,5 +27,16 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING
         }
     }
+
+    Cliente.associate = function(modelos){
+        Cliente.belongsToMany(modelos.User_skill, {
+            as : 'clientes',
+            through : 'user_skills',
+            foreignKey : 'user_id',
+            otherKey : 'skill_id',
+            timestamps : false
+        })
+    }
+
     return cliente;
 }
