@@ -38,8 +38,8 @@ const controller = {
 				req.session.data = user[0];
 				req.session.user_email = user[0].user_email;
 				req.session.type_user = "cliente";
-
-				res.cookie('user_id',bcrypt.hashSync(req.session.data.user_id,10),{maxAge:60000000});
+				
+				res.cookie('user_id', bcrypt.hashSync(req.session.data.user_id,10),{maxAge: 1000 * 60 * 30 });
 
 				return res.redirect('/perfil');
 			} else {
@@ -111,10 +111,12 @@ const controller = {
 			if(login) 
 			{
 				req.session.data = user[0];
-				console.log(req.session.data)
 				req.session.user_email = user[0].cmp_user_email;
 				req.session.type_user = user[0].type;
-				res.cookie('user_id',bcrypt.hashSync(req.session.data.cmp_user_id,12),{maxAge:60000000});
+				
+				hashed_id = bcrypt.hashSync("fede" ,12);
+				
+				res.cookie('user_id',hashed_id,{maxAge:60000000});
 
 				return res.redirect('/empresa/perfil');
 			}
@@ -230,7 +232,8 @@ const controller = {
 	logout:(req,res)=>
 	{
 		req.session.destroy();
-		res.cookie('user_id',null, { maxAge: -1});
+		res.cookie('user_id', null, { maxAge: -1 });
+		
 		
 		return res.redirect('/');
 	}
