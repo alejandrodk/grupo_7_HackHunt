@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     
-    let alias = 'clienteexperience';
+    let alias = 'cliente_experience';
     let cols = {
         user_id : {
             primaryKey: true,
@@ -27,5 +27,13 @@ module.exports = (sequelize, dataTypes) => {
         }
     }
     const Cliente_education = sequelize.define(alias,cols,{  timestamps: false});
+
+    Cliente_experience.associate = function(models) {
+        Cliente_experience.belongsTo(models.clientes, {
+            as: 'cliente',
+            foreignKey: 'user_id'
+        })
+    };
+    
     return Cliente_education;
 }

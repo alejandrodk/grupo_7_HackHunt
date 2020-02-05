@@ -1,14 +1,10 @@
 module.exports = (sequelize, dataTypes) => {
    
-    let alias = 'clienteCv';
+    let alias = 'cliente_cv';
     let cols = {
-        /*user_id : {
-            type: dataTypes.INTEGER,
-            references: {
-                model: Cliente,
-                key: id
-            }
-        },*/
+        user_id : {
+            type: dataTypes.INTEGER
+        },
         user_dni : {
             type: dataTypes.STRING,
             allowNull: false
@@ -87,5 +83,13 @@ module.exports = (sequelize, dataTypes) => {
         }
     }
     const Cliente_cv = sequelize.define(alias,cols,{  timestamps: false});
+
+    Cliente_cv.associate = function(models) {
+        Cliente_cv.belongsTo(models.clientes, {
+            as: 'cliente',
+            foreignKey: 'user_id'
+        })
+    };
+    
     return Cliente_cv;
 }
