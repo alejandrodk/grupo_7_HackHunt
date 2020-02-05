@@ -1,6 +1,21 @@
 body{
     background: var(--main-bg-color);
 }
+/*ERRORES --------------------------*/ 
+.item.errors {
+	width: 100%;
+	border-radius: 10px;
+	background: var(--main-texto-blanco);
+	padding: 2%;
+	margin-bottom: 4%;
+}
+.item.errors li {
+	color: var(--main-bg-color);
+	font-size: 19px;
+	/* list-style: none; */
+	margin: 0;
+	padding: 0;
+}
 /*BARRA MENU-----------------------------------*/
 .barra-menu{
 	margin: 3% 0;

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
-const {check, validationResult, body} = require('express-validator');
+const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
 
 
@@ -62,11 +62,11 @@ const controller = {
 			id = dbFunctions.getNewId(usuarios); 
 			
 			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
-			
+
 			let usuario = {
 				user_id: id,
 				...req.body,
-				user_avatar:req.file.filename
+				user_avatar: req.file.filename,
 			};
 	
 			
@@ -83,20 +83,25 @@ const controller = {
 		res.render('main/completarRegistro', { user: user });
 	},
 	valCompletarCv : (req,res) => {
-		// validar info y cargar el CV
-		let user = dbFunctions.modifyUser(req.body.user_id).file;
-		delete user.user_name;
-		delete user.user_lastname;
-		let user_info = {
-			ruta: 'data/usuarios.json',
-			file: {
-				...user,
-				...req.body,
-			}
-		};
-
-		dbFunctions.saveUpdates(user_info);
-		return res.redirect('/login');
+		const errors = validationResult(req);
+		//if(errors.isEmpty()){
+			// validar info y cargar el CV
+			let user = dbFunctions.modifyUser(req.body.user_id).file;
+			delete user.user_name;
+			delete user.user_lastname;
+			let user_info = {
+				ruta: 'data/usuarios.json',
+				file: {
+					...user,
+					...req.body,
+				}
+			};
+	
+			dbFunctions.saveUpdates(user_info);
+			return res.redirect('/login');
+		//} else {
+		//	res.render('main/completarRegistro', { errors: errors.array(), user: user });
+		//	}
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });
