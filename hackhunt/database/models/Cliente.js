@@ -35,34 +35,40 @@ module.exports = (sequelize, dataTypes) => {
             as: 'cliente_cv',
             foreignKey: 'user_id'
         }),
-        Cliente.belongsTo(models.cliente_education,{
+        Cliente.hasMany(models.cliente_education,{
             as: 'cliente_education',
             foreignKey : 'user_id'
         }),
-        Cliente.belongsTo(model.cliente_experience,{
+        Cliente.hasMany(model.cliente_experience,{
             as : 'cliente_experience',
             foreignKey : 'user_id'
         }),
         Cliente.belongsToMany(model.anuncios,{
             as : 'favorito',
             through : 'favoritos',
-            foreignKey  : 'adv_id',
-            otherKey : 'cli_id',
+            foreignKey  : 'cli_id',
+            otherKey : 'adv_id',
             timestamps : false
         }),
         Cliente.belongsToMany(model.anuncios,{
             as : 'postulante',
             through : 'postulantes',
-            foreignKey  : 'adv_id',
-            otherKey : 'cli_id',
+            foreignKey  : 'cli_id',
+            otherKey : 'adv_cli',
             timestamps : false
         }),
         Cliente.belongsToMany(model.skills,{
             as : 'skill',
             through : 'user_skills',
-            foreignKey : '',
-            otherKey : '',
+            foreignKey : 'user_id',
+            otherKey : 'skill_id',
             timestamps : false
+        }),
+        Cliente.belongsToMany(model.empresas,{
+            as : 'empresa',
+            through : 'seguidos',
+            foreignKey : 'user_id',
+            otherKey : 'cmp_id'
         })
     };
 
