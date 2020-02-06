@@ -13,5 +13,21 @@ module.exports = (sequelize, dataTypes) => {
         }
     }
     const Skill = sequelize.define(alias,cols,{  timestamps: false});
+
+    Skill.associate = function(models){
+        Skill.belongsToMany(model.clientes,{
+            as : 'cliente',
+            through : 'user_skills',
+            foreignKey : 'skill_id',
+            otherKey : 'user_id'
+        }),
+        Skill.belongsToMany(model.anuncios,{
+            as : 'anuncio',
+            through : 'anuncios_skills',
+            foreignKey : 'skill_id',
+            otherKey : 'anuncio_id'
+        })
+    }
+
     return Skill;
 }
