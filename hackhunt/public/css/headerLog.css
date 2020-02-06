@@ -25,6 +25,9 @@ body{
 #huntLogo{
 	font-weight: 500;
 }
+.menu-mobile {
+	display: none;
+}
 .container.header .secciones {
 	justify-content: space-around;
 	align-items: center;
@@ -45,6 +48,15 @@ body{
 /* EXTRA SMALL----------------------------------------------------- */
 @media (max-width: 768px) {
 	.container.header .info {
+		width: 90%;
+	}
+	.menu-mobile {
+		color: var(--main-texto-blanco);
+		width: 10%;
+		margin: auto;
+		display: block !important;
+	}
+	.container.header .info {
 		justify-content: center;
 	}
 	.container.header .secciones a{
@@ -53,10 +65,19 @@ body{
 }
 
 /* SMALL-----------------------------------------------------------------*/
-@media (min-width: 769px) and (max-width: 991px) {}
+@media (min-width: 769px) and (max-width: 991px) {
+	.container.header .secciones {
+		display: none !important;
+	}
+	.container.header .info {
+		width: 90%;
+	}
+}
 
 /* MEDIUM---------------------------------------------------------------------------------------*/
-@media (min-width: 992px) and (max-width: 1200px) {}
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
 
 /* LARGE----------------------------------------------------------------------------------------*/
 @media (min-width: 1201px) {}

@@ -92,7 +92,22 @@ body {
 
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+	.container .registro .formulario {
+		width: 100%;
+	}
+	.container .formulario form {
+		width: 100%;
+		padding: 5%;
+	}
+	.container .formulario form h3{
+		font-size: 25px;
+		text-align: center;
+	}
+	.container .registro button {
+		width: 40%;
+	}
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}
