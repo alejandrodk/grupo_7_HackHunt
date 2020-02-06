@@ -65,7 +65,7 @@ module.exports = (sequelize, dataTypes) => {
     Anuncio.associate = function(modelos)
     {
         Anuncio.belongsTo(modelos.Empresa,{
-            as: "empresas",
+            as: "empresa",
             foreignKey: "adv_cmp"
         });
     }

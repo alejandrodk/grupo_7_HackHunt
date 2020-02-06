@@ -26,14 +26,14 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING
         }
     }
-    const Cliente_education = sequelize.define(alias,cols,{  timestamps: false});
+    const Cliente_experience = sequelize.define(alias,cols,{  timestamps: false});
 
-    Cliente_experience.associate = function(models) {
-        Cliente_experience.belongsTo(models.clientes, {
+    Cliente_experience.associate = function(modelos) {
+        Cliente_experience.belongsTo(modelos.clientes, {
             as: 'cliente',
-            foreignKey: 'user_id'
+            primaryKey: 'id'
         })
     };
     
-    return Cliente_education;
+    return Cliente_experience;
 }
