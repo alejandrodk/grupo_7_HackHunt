@@ -35,6 +35,8 @@ router.post("/empresa/recuperar", mainController.recuperarEmpresa);
 router.get("/pruebas", mainController.pruebas);
 router.get("/logout", mainController.logout);
 
+router.get("/pruebas", mainController.pruebas);
+
 module.exports = router;
 
 /*

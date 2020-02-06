@@ -241,6 +241,14 @@ const controller = {
 		
 		
 		return res.redirect('/');
+	},
+
+	pruebas:(req,res) =>
+	{
+		db.Empresas.findAll()
+		.then(result => {
+			res.send(result);
+		})
 	}
 };
 

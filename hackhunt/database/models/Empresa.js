@@ -55,5 +55,14 @@ module.exports = (sequelize, dataTypes) =>
     }
     
     const Empresa = sequelize.define(alias,cols,{  timestamps: false});
+
+    Empresa.associate = function(modelos)
+    {
+        Empresa.hasMany(modelos.Anuncio,{
+            as: "Anuncios",
+            foreignKey: "adv_cmp"
+        });
+    }
+
     return Empresa;
 }

@@ -60,6 +60,15 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         }
     }
-    const Anuncios = sequelize.define(alias,cols,{  timestamps: false});
-    return Anuncios;
+    const Anuncio = sequelize.define(alias,cols,{  timestamps: false});
+
+    Anuncio.associate = function(modelos)
+    {
+        Anuncio.belongsTo(modelos.Empresa,{
+            as: "empresas",
+            foreignKey: "adv_cmp"
+        });
+    }
+
+    return Anuncio;
 }
