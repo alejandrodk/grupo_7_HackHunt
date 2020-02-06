@@ -62,13 +62,12 @@ module.exports = (sequelize, dataTypes) => {
     }
     const Anuncio = sequelize.define(alias,cols,{  timestamps: false});
 
-    Anuncio.associate = function(modelos)
-    {
-        Anuncio.belongsTo(modelos.Empresa,{
+    Anuncio.associate = function(modelos){
+        Anuncio.belongsTo(modelos.empresas,{
             as: "empresa",
             foreignKey: "adv_cmp"
         });
-    }
+    };
 
     return Anuncio;
 }

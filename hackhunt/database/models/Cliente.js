@@ -42,7 +42,7 @@ module.exports = (sequelize, dataTypes) => {
         Cliente.hasMany(modelos.cliente_experience,{
             as : 'cliente_experience',
             foreignKey : 'user_id'
-        }),
+        })
         Cliente.belongsToMany(modelos.anuncios,{
             as : 'favorito',
             through : 'favoritos',
@@ -68,7 +68,8 @@ module.exports = (sequelize, dataTypes) => {
             as : 'empresa',
             through : 'seguidos',
             foreignKey : 'user_id',
-            otherKey : 'cmp_id'
+            otherKey : 'cmp_id',
+            timestamps : false
         })
     };
 

@@ -14,20 +14,20 @@ module.exports = (sequelize, dataTypes) => {
     }
     const Skill = sequelize.define(alias,cols,{  timestamps: false});
 
-    Skill.associate = function(models){
-        Skill.belongsToMany(model.clientes,{
+    Skill.associate = function(modelos){
+        Skill.belongsToMany(modelos.clientes,{
             as : 'cliente',
             through : 'user_skills',
             foreignKey : 'skill_id',
             otherKey : 'user_id'
         }),
-        Skill.belongsToMany(model.anuncios,{
+        Skill.belongsToMany(modelos.anuncios,{
             as : 'anuncio',
             through : 'anuncios_skills',
             foreignKey : 'skill_id',
             otherKey : 'anuncio_id'
         })
-    }
+    };
 
     return Skill;
 }

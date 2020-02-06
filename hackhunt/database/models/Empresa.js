@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, dataTypes) =>
 {
-    let alias = "Empresa";
+    let alias = "empresas";
     let cols = {
         id: {
             primaryKey: true,
@@ -58,7 +58,7 @@ module.exports = (sequelize, dataTypes) =>
 
     Empresa.associate = function(modelos)
     {
-        Empresa.hasMany(modelos.Anuncio,{
+        Empresa.hasMany(modelos.anuncios,{
             as: "Anuncios",
             foreignKey: "adv_cmp"
         });

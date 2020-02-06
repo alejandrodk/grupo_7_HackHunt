@@ -84,8 +84,8 @@ module.exports = (sequelize, dataTypes) => {
     }
     const Cliente_cv = sequelize.define(alias,cols,{  timestamps: false});
 
-    Cliente_cv.associate = function(models) {
-        Cliente_cv.belongsTo(models.clientes, {
+   Cliente_cv.associate = function(modelos) {
+        Cliente_cv.belongsTo(modelos.clientes, {
             as: 'cliente',
             foreignKey: 'user_id'
         })
