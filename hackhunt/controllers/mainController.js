@@ -5,6 +5,7 @@ const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
 
 
+
 const loginFunctions = require('../helpers/login');
 
 const controller = {
@@ -107,7 +108,7 @@ const controller = {
 		res.render('main/loginEmpresa', { title: 'Express' });
 	},
 	validarEmpresa: (req,res) => {
-		const errors = validationResult(req);
+		/*const errors = validationResult(req);
 
 		if(errors.isEmpty()){
 			let users = dbFunctions.getAllCompanies();
@@ -131,9 +132,9 @@ const controller = {
 			}
 		} else{
 			res.render('main/loginEmpresa', { errors: errors.array() });
-		}
-		/*
-		db.Empresa.findOne({
+		}*/
+		
+		db.empresas.findOne({
 			where: {
 				cmp_user_email: req.body.cmp_user_email,
 			}
@@ -143,10 +144,15 @@ const controller = {
 			{
 				
 				if(bcrypt.compareSync(req.body.cmp_user_passwd,empresa.cmp_user_passwd)){
-					req.session.user_email = req.body.cmp_user_email;
+					delete empresa.cmp_user_passw;
+					delete empresa.cmp_cuit;
+					delete empresa.cmp_tel;
+					delete empresa.cmp_sector;
+					
 					req.session.type_user = 'company';
 					req.session.data = empresa;
-			return res.redirect('/empresa/perfil');
+					res.cookie('user_id', bcrypt.hashSync(toString(empresa.id),12),{maxAge: 1000 * 60 * 30 });
+			        return res.redirect('/empresa/perfil');
 					
 				} 
 				else
@@ -157,13 +163,16 @@ const controller = {
 			}
 			return res.render('main/registroEmpresa',{errors:[{msg:"Usuario y/o contraseña erroneo"}]})
 		})
-		 */
+		.catch(error => {
+			console.log(error);
+		})
+		 
 	},
 	registroEmpresa: (req, res) => {
 		res.render('main/registroEmpresa', { title: 'Express' });
 	},
 	valRegEmpresa: (req,res) => {
-		const errors = validationResult(req);
+		/*const errors = validationResult(req);
 
 		if(errors.isEmpty()){
 
@@ -181,11 +190,11 @@ const controller = {
 			res.redirect('/');
 		} else {
 			res.render('main/registroEmpresa', { errors: errors.array() });
-		}
+		}*/
 
-		/*
+		
 		//busco si hay un cliente con el mismo email que se quiere registrar.
-		 db.Empresa.findOne({
+		 db.empresas.findOne({
 			 where:{cmp_user_email:req.body.cmp_user_email}
 		 })
 		 .then(resultado => {
@@ -194,7 +203,7 @@ const controller = {
 			 {
 				 //hasheo el passwd y creo el nuevo usuario. se guarda en la db
 				req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
-				const user = db.Empresa.create({...req.body,cmp_avatar:req.file.filename})
+				const user = db.empresas.create({...req.body,cmp_avatar:req.file.filename})
 				return user;
 			}
 			 else
@@ -204,23 +213,21 @@ const controller = {
 			 }
 			 
 		 })
-		 .then(user => {
+		 .then(empresa => {
 			 //cuando termina de crearse el usuario nuevo, se pasan los datos a sesion y se redirecciona.
-			req.session.user_email = req.body.cmp_user_email;
+			 		delete empresa.cmp_user_passw;
+					delete empresa.cmp_cuit;
+					delete empresa.cmp_tel;
+					delete empresa.cmp_sector;
 			req.session.type_user = 'company';
-			
-			req.session.data = user;
+			req.session.data = empresa;
+			res.cookie('user_id', bcrypt.hashSync(empresa.id,12),{maxAge: 1000 * 60 * 30 });
 			return res.redirect('/empresa/perfil');
 		})
 		//si algo falla, se ve en consola el/los errores.
 		 .catch(error =>{
 			 console.log(error);
 		 })
-		
-		
-		
-
-		*/
 	},
 	recuperar: (req,res) => {
 		// consultar info en DB y enviar al correo los datos de la cuenta
@@ -230,10 +237,7 @@ const controller = {
 		// consultar info en DB y enviar al correo los datos de la cuenta
 		res.redirect('/empresa/perfil');
 	},
-	pruebas: (req,res) =>
-	{
 
-	},
 	logout:(req,res)=>
 	{
 		req.session.destroy();
@@ -245,9 +249,13 @@ const controller = {
 
 	pruebas:(req,res) =>
 	{
-		db.Empresas.findAll()
+		/*db.clientes.findAll()
 		.then(result => {
-			res.send(result);
+			res.send(result)
+		})*/
+		db.sequelize.query('select * from empresas')
+		.then(result =>{
+			res.send(result[0]);
 		})
 	}
 };

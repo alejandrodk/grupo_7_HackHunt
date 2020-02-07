@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const upload = require('../middlewares/multer.js');
-const soloGuest = require('../middlewares/guest');
+const soloGuest = require('../middlewares/soloGuest');
 const { check, body } = require('express-validator');
 const validator = require('../helpers/form_validators');
 

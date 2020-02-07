@@ -51,7 +51,7 @@ const controller = {
 		res.render("empresa/crearPublicacion", { title: "Express" });
 	},
 	postearPublicacion : (req,res) => {
-		let adv_Json = dbFunctions.getAllAnuncios();
+		/*let adv_Json = dbFunctions.getAllAnuncios();
 		 
 		let date = new Date();
 		let adv_fechaAct = `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`
@@ -74,9 +74,14 @@ const controller = {
 			favoritos : []
 		}
 
-		dbFunctions.writeFile(anuncio,adv_Json); 
+		dbFunctions.writeFile(anuncio,adv_Json); */
+		req.body.cmp_id = req.session.data.id;
+		db.anuncios.create(req.body)
+		.then(respuesta =>{
+			console.log(respuesta);
+		})
 
-		return res.redirect(`/detalle?id=${id}`);
+		//return res.redirect(`/detalle?id=${id}`);
 	},
 	modificarPerfil: (req,res)=>
 	{
