@@ -181,7 +181,51 @@
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .barra-menu a {
+        margin: 2%;
+    }
+    .container.post .barra{
+        display: none;
+    }
+    .container.post .detalle .item:first-child,
+    .container.post .stats .detalle .item,
+    .container.post .detalle .item:last-child {
+        width: 30%;
+    }
+    .container.post .stats .detalle .item p {
+        font-size: 19px;
+    }
+    .container.post .panel{
+        margin-bottom: 3%;
+    }
+    .container.post .panel .filtro h3 {
+        text-align: center;
+        border-bottom: solid 1px var(--main-bg-color);
+        padding-bottom: 3%;
+    }
+    .container.post .panel .filtro ul {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .container.post .panel .filtro ul li{
+        width: 50%;
+    }
+    .container.post .anuncios .item .info ul{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .container.post .anuncios .item .info li{
+        width: 50%;
+        margin: 0;
+    }
+    .container.post .anuncios .item .info .desc{
+        display: none;
+    }
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}

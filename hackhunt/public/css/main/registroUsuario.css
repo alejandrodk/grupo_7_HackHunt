@@ -87,7 +87,11 @@ body{
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .container .registro button{
+        width: 44% !important;
+    }
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}

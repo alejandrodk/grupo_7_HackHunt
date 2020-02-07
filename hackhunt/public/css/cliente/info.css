@@ -169,7 +169,22 @@ body{
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    #adItem {
+        width: 10%;
+        margin-top: auto;
+    }
+    .container.cv h3 {
+        background: var(--main-color-verde);
+        color: var(--main-bg-color);
+    }
+    .container.cv .panel .indice{
+        display: none;
+    }
+    .barra-menu a {
+        margin: 2%;
+    }
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}

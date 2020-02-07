@@ -117,7 +117,11 @@
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .barra-menu a {
+        margin: 2%;
+    }
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}

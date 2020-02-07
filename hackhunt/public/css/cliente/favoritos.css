@@ -145,7 +145,24 @@
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .barra-menu a {
+        margin: 2%;
+    }
+    .container.fav .panel{
+        margin-bottom: 5%;
+    }
+    .container.fav .panel .seguidas {
+        height: 200px;
+        overflow: scroll;
+    }
+    .container.fav .anuncios .item .info .desc {
+        display: none;
+    }
+    .container.fav .barra h2 {
+        text-align: center;
+    }
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}
