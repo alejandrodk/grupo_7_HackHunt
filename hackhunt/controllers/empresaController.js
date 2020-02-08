@@ -5,8 +5,15 @@ const db = require('../database/models');
 const controller = {
 	perfil: (req, res) => {
 		let anuncios = dbFunctions.getAllAnuncios();
-		let company = dbFunctions.getCompanyById(req.params.id);
-		res.render("empresa/perfil", {empresa: company, anuncios: anuncios.file });
+		/*let company = dbFunctions.getCompanyById(req.params.id);*/
+		db.empresas.findByPk(req.session.data.id,{
+			attributes: {exclude: ['cmp_user_passwd']}
+		})
+		.then(result => {
+			
+			return res.render("empresa/perfil", {empresa: result, anuncios: anuncios.file });
+		})
+
 	},
 	configuracion: (req, res) => {
 		res.render('empresaconfig');

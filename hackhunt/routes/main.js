@@ -3,14 +3,16 @@ const express = require("express");
 const router = express.Router();
 const upload = require('../middlewares/multer.js');
 const soloGuest = require('../middlewares/soloGuest');
+const auth = require('../middlewares/auth');
+const cookies_mid = require('../middlewares/cookieValidate');
 const { check, body } = require('express-validator');
 const validator = require('../helpers/form_validators');
 
 // ************ Controller Require ************
 const mainController = require("../controllers/mainController");
 
-// ************ Router's ************
-router.get("/", mainController.home); //agregar querystrings a los filtros de la busqueda
+// ************ Router's ************ 
+router.get("/",  cookies_mid, auth,mainController.home); //agregar querystrings a los filtros de la busqueda
 router.post("/", mainController.busquedaHome);
 router.get("/detalle", mainController.detalleAnuncio);
 
@@ -35,7 +37,6 @@ router.post("/empresa/recuperar", mainController.recuperarEmpresa);
 router.get("/pruebas", mainController.pruebas);
 router.get("/logout", mainController.logout);
 
-router.get("/pruebas", mainController.pruebas);
 
 module.exports = router;
 

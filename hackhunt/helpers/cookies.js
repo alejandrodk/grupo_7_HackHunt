@@ -5,44 +5,50 @@ const db = require('../database/models');
 cookieUser = 
 {
     findAll: type => {
-        if(type == "company")
+        
+            
+        
+         if(bcrypt.compareSync("company",type))
         {
-            db.empresas.findAll({
+            let data = db.empresas.findAll({
                 attributes:['id']
             })
-            .then(result => {
-                return result[0];
-            })
+            
+            return data;    
         }
-        if(type == "cliente")
+    
+        
+       
+        if(bcrypt.compareSync("cliente",type))
         {
-            db.clientes.findAll({
+            let data = db.clientes.findAll({
                 attributes: ['id']
             })
-            .then(result => {
-                return result [0];
-            })
+            
+                data.push({type:"cliente"})
+          return data;
         }
+        
     }
     ,
     userExists: (id_array,user_id,type_user) => {
         for(let i = 0; i<id_array.length;i++)
         {
-            if(bcrypt.compareSync(id_array[i],user_id))
+            let a = toString(id_array[i].id);
+            if(bcrypt.compareSync(a,user_id))
             {
-                return cookieUser.userData(user_id,type_user);
+                return cookieUser.userData(id_array[i].id,type_user);
             }
     }
 },
     userData: (id, type_user) => {
-        if(type_user == "company")
+        if(bcrypt.compareSync("company",type_user))
         {
-            db.empresas.findByPk(id,{
+            let  user_info = db.empresas.findByPk(id,{
                 attributes:['id','cmp_user_name','cmp_name','cmp_avatar']
             })
-            .then(result => {
-                return result[0];
-            });
+                return user_info;
+            
         }
         if(type_user == "cliente")
         {
@@ -55,8 +61,10 @@ cookieUser =
         }
     }
 
+
+
+
     
 }
-
 module.exports = cookieUser;
 

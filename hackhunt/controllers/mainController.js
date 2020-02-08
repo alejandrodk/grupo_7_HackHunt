@@ -12,7 +12,7 @@ const controller = {
 	home: (req, res) => {
 		let anu = dbFunctions.getAllAnuncios();
 		
-		res.render('main/index', { anuncios: anu.file });
+		return res.render('main/index', { anuncios: anu.file });
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
@@ -152,6 +152,7 @@ const controller = {
 					req.session.type_user = 'company';
 					req.session.data = empresa;
 					res.cookie('user_id', bcrypt.hashSync(toString(empresa.id),12),{maxAge: 1000 * 60 * 30 });
+					res.cookie('type_user', bcrypt.hashSync("company",12),{maxAge: 1000 * 60 * 30 });
 			        return res.redirect('/empresa/perfil');
 					
 				} 
@@ -242,7 +243,7 @@ const controller = {
 	{
 		req.session.destroy();
 		res.cookie('user_id', null, { maxAge: -1 });
-		
+		res.cookie('type_user', null, { maxAge: -1 });
 		
 		return res.redirect('/');
 	},
