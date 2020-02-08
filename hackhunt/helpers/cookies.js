@@ -5,30 +5,20 @@ const db = require('../database/models');
 cookieUser = 
 {
     findAll: type => {
-        
-            
-        
          if(bcrypt.compareSync("company",type))
         {
             let data = db.empresas.findAll({
                 attributes:['id']
-            })
-            
-            return data;    
+            })   
+            return data;
         }
-    
-        
-       
         if(bcrypt.compareSync("cliente",type))
         {
             let data = db.clientes.findAll({
                 attributes: ['id']
             })
-            
-                data.push({type:"cliente"})
           return data;
         }
-        
     }
     ,
     userExists: (id_array,user_id,type_user) => {
@@ -50,14 +40,12 @@ cookieUser =
                 return user_info;
             
         }
-        if(type_user == "cliente")
+        if(bcrypt.compareSync("cliente",type_user))
         {
-            db.clientes.findByPk(id,{
+            let user_info = db.clientes.findByPk(id,{
                 attributes: ['user_id','user_name','user_email','user_avatar']
             })
-            .then(result => {
-                return result[0];
-            })
+            return user_info;
         }
     }
 

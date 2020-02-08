@@ -10,30 +10,25 @@ module.exports = (req,res,next) => {
         
          cookie_helper.findAll(type_user)
          .then(result => {
-             
               cookie_helper.userExists(result,user_id,type_user)
              .then(user_data => {
                  
                 req.session.data = user_data;
                 if(bcrypt.compareSync("company",type_user)){
-
                     req.session.type_user = "company";
                 }
                 else
                 {
                     req.session.type_user = "cliente";  
                 }
-              return next();
-             })
-            
+                    return next(); 
+                 })
             })
-
-
-    }
-    else
-    {
-        return next();
-    }
+        }
+         else
+         {
+         return next();
+         }
     
     
 }
