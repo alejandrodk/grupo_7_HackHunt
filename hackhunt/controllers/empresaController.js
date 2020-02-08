@@ -5,8 +5,15 @@ const db = require('../database/models');
 const controller = {
 	perfil: (req, res) => {
 		let anuncios = dbFunctions.getAllAnuncios();
-		let company = dbFunctions.getCompanyById(req.params.id);
-		res.render("empresa/perfil", {empresa: company, anuncios: anuncios.file });
+		/*let company = dbFunctions.getCompanyById(req.params.id);*/
+		db.empresas.findByPk(req.session.data.id,{
+			attributes: {exclude: ['cmp_user_passwd']}
+		})
+		.then(result => {
+			
+			return res.render("empresa/perfil", {empresa: result, anuncios: anuncios.file });
+		})
+
 	},
 	configuracion: (req, res) => {
 		res.render('empresaconfig');
@@ -51,7 +58,7 @@ const controller = {
 		res.render("empresa/crearPublicacion", { title: "Express" });
 	},
 	postearPublicacion : (req,res) => {
-		let adv_Json = dbFunctions.getAllAnuncios();
+		/*let adv_Json = dbFunctions.getAllAnuncios();
 		 
 		let date = new Date();
 		let adv_fechaAct = `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`
@@ -74,9 +81,14 @@ const controller = {
 			favoritos : []
 		}
 
-		dbFunctions.writeFile(anuncio,adv_Json); 
+		dbFunctions.writeFile(anuncio,adv_Json); */
+		req.body.cmp_id = req.session.data.id;
+		db.anuncios.create(req.body)
+		.then(respuesta =>{
+			console.log(respuesta);
+		})
 
-		return res.redirect(`/detalle?id=${id}`);
+		//return res.redirect(`/detalle?id=${id}`);
 	},
 	modificarPerfil: (req,res)=>
 	{
