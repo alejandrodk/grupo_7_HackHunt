@@ -14,19 +14,20 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        user_experience_since : {
+        user_cmp_experience_since : {
             type: dataTypes.STRING,
-            allowNull: false
         },
-        user_experience_to : {
+        user_cmp_experience_to : {
             type: dataTypes.STRING,
-            allowNull: false
         },
         user_experience_description: {
             type: dataTypes.STRING
         }
     }
-    const Cliente_experience = sequelize.define(alias,cols,{  timestamps: false});
+    const Cliente_experience = sequelize.define(alias,cols,{  
+        timestamps: false,
+        tableName : 'clientes_experience'
+    });
 
     Cliente_experience.associate = function(modelos) {
         Cliente_experience.belongsTo(modelos.clientes, {

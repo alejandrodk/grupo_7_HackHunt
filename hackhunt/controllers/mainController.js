@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
 const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
+const userCv = require('../helpers/user_cv.js');
 
 
 const loginFunctions = require('../helpers/login');
@@ -10,7 +11,6 @@ const loginFunctions = require('../helpers/login');
 const controller = {
 	home: (req, res) => {
 		let anu = dbFunctions.getAllAnuncios();
-		
 		res.render('main/index', { anuncios: anu.file });
 	},
 	busquedaHome: (req, res) => {
@@ -30,21 +30,23 @@ const controller = {
 		const errors = validationResult(req);
 
 		if(errors.isEmpty()){
-			let users = dbFunctions.getAllUsers();
-			let user = users.file.filter(item => item.user_email == req.body.user_email);
-			let login = loginFunctions.checkLogin(req,user[0]);
-			
-			if(login){
-				req.session.data = user[0];
-				req.session.user_email = user[0].user_email;
-				req.session.type_user = "cliente";
-				
-				res.cookie('user_id', bcrypt.hashSync(req.session.data.user_id,10),{maxAge: 1000 * 60 * 30 });
 
-				return res.redirect('/perfil');
-			} else {
-				return res.redirect('/login'); 
-			}
+			db.clientes.findOne({
+				where : {
+					user_email : req.body.user_email
+				}
+			}) .then( user => {
+				if(bcrypt.compareSync(req.body.user_passwd,user.user_passwd)){
+
+					req.session.user = user;
+					res.cookie('user_id', bcrypt.hashSync(toString(user.user_id),10),{maxAge: 1000 * 60 * 30 });
+					res.cookie('user_type','cliente',{maxAge: 1000 * 60 * 30 });
+	
+					return res.redirect('/perfil');
+				} else{
+					return res.redirect('/login'); 
+				}
+			})
 
 		} else {
 		res.render('main/loginUsuario', { errors: errors.array() });
@@ -56,49 +58,48 @@ const controller = {
 	valRegUsuario: (req,res) => {
 		const errors = validationResult(req);
 
-		if(errors.isEmpty()){
+		if(errors.isEmpty()){	
 
-			let usuarios = dbFunctions.getAllUsers();
-			id = dbFunctions.getNewId(usuarios); 
-			
 			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
+			req.body.user_type = 'cliente';
 
-			let usuario = {
-				user_id: id,
-				...req.body,
-				user_avatar: req.file.filename,
-			};
-	
-			
-			dbFunctions.writeFile(usuario,usuarios);
-			
-			req.session.user = usuario;
+			db.clientes.create({ ...req.body, user_avatar : req.file.filename });
+
+			delete req.body.user_passwd
+			let user = { ...req.body }
+			req.session.user = user;
+
 			return res.redirect('registro/cv');
+
 		} else {
 			res.render('main/registroUsuario', { errors: errors.array() });
 		}
 	},
 	completarCv : (req,res) => {
-		let user = req.session.user;
-		res.render('main/completarRegistro', { user: user });
+		res.render('main/completarRegistro', { title: 'Completar tu registro' });
 	},
 	valCompletarCv : (req,res) => {
 		const errors = validationResult(req);
 		//if(errors.isEmpty()){
-			// validar info y cargar el CV
-			let user = dbFunctions.modifyUser(req.body.user_id).file;
-			delete user.user_name;
-			delete user.user_lastname;
-			let user_info = {
-				ruta: 'data/usuarios.json',
-				file: {
-					...user,
-					...req.body,
+
+			db.clientes.findOne({
+				where : {
+					user_email : req.session.user.user_email
 				}
-			};
+			}) .then(user => {
+				let id = user.user_id
+
+				let clienteCv = userCv.infoPersonal(req.body,id);
+				let clienteExp = userCv.infoLaboral(req.body,id);
+				let clienteEduc = userCv.infoEducacion(req.body,id);
 	
-			dbFunctions.saveUpdates(user_info);
-			return res.redirect('/login');
+				db.cliente_cv.create({ ...clienteCv });
+				db.cliente_experience.create({ ...clienteExp });
+				db.cliente_education.create({ ...clienteEduc });
+
+				return res.redirect('/login');
+			})
+
 		//} else {
 		//	res.render('main/completarRegistro', { errors: errors.array(), user: user });
 		//	}

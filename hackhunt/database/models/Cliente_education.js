@@ -29,7 +29,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING
         }
     }
-    const Cliente_education = sequelize.define(alias,cols,{  timestamps: false});
+    const Cliente_education = sequelize.define(alias,cols,{  
+        timestamps: false,
+        tableName : 'clientes_education'
+    });
 
     Cliente_education.associate = function(models) {
         Cliente_education.belongsTo(models.clientes, {

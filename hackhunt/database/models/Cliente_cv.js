@@ -10,7 +10,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         user_datebirth : {
-            type: dataTypes.DATE,
+            type: dataTypes.STRING,
             allowNull: false
         },
         user_gender : {
@@ -82,7 +82,10 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         }
     }
-    const Cliente_cv = sequelize.define(alias,cols,{  timestamps: false});
+    const Cliente_cv = sequelize.define(alias,cols,{  
+        timestamps: false,
+        tableName : 'clientes_cv'
+    });
 
    Cliente_cv.associate = function(modelos) {
         Cliente_cv.belongsTo(modelos.clientes, {

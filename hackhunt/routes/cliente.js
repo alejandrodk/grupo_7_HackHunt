@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const soloCliente = require('../middlewares/soloCliente');
-const validator = require('../helpers/form_validators');
+const validator = require('../middlewares/form_validators');
 
 // ************ Controller Require ************
 const clienteController = require("../controllers/clienteController");
