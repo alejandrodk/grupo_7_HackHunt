@@ -4,8 +4,16 @@ const db = require('../database/models');
 
 const controller = {
     perfil: (req, res) => {  
-        let usuario = dbFunctions.getUserById(req.params.id);
-        res.render('cliente/perfil', { user: usuario });
+        db.clientes.findOne({
+            where : {
+                user_email : req.session.user.user_email
+            }
+        }) .then( user => {
+            user = user.get({ plain: true });
+            res.render('cliente/perfil', { user: user });
+        }) .catch(error => {
+            res.send(error)
+        })
     },
     postulaciones: (req, res) => {
         res.render('cliente/postulaciones', { title: 'Postulaciones' });
@@ -23,8 +31,14 @@ const controller = {
         res.render('cliente/alertas' , { title: 'Alertas '});
     },
     info: (req, res) => {
-        user = dbFunctions.modifyUser(req.session.user_id)
-        res.render('cliente/info', { user: user });
+        db.clientes.findOne({
+            where : {
+                user_id : req.session.user.user_id
+            }
+        }) .then (user => {
+            user = user.get({ plain: true });
+            res.render('cliente/info', { user: user });
+        })
     },
     actInfo: (req, res) => {
         // consultar DB y traer la info en los inputs

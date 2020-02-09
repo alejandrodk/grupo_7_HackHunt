@@ -1,34 +1,35 @@
 
 const cookie_helper = require('../helpers/cookies');
 const bcrypt = require('bcrypt');
-module.exports = (req,res,next) => {
+const db = require('../database/models');
 
+module.exports = (req,res,next) => {
+    console.log('----------------Cookie validate--------------')
  
     if(req.cookies.user_id != undefined && req.cookies.type_user != undefined){
+        console.log('cookie id encontrada: ' + req.cookies.user_id);
+        console.log('tipo de usuario: ' + req.cookies.type_user);
         let type_user = req.cookies.type_user;
         let user_id = req.cookies.user_id;
         
-         cookie_helper.findAll(type_user)
-         .then(result => {
-              cookie_helper.userExists(result,user_id,type_user)
-             .then(user_data => {
-                 
-                req.session.data = user_data;
-                if(bcrypt.compareSync("company",type_user)){
-                    req.session.type_user = "company";
-                }
-                else
-                {
-                    req.session.type_user = "cliente";  
-                }
-                    return next(); 
-                 })
+        if(type_user == 'cliente'){
+            db.clientes.findAll()
+            .then( data => {
+                data.forEach(usuario => {
+                    usuario = usuario.get({ plain:true })
+                    if(bcrypt.compareSync(toString(usuario.user_id),user_id)){
+                        req.session.type_user = "cliente"; 
+                        delete usuario.user_passwd;
+                        req.session.user = usuario;
+                        return next()
+                    }
+                });
             })
-        }
-         else
-         {
-         return next();
-         }
-    
-    
+        } 
+    } else {
+        console.log('cookie id no encontrada');
+        console.log('tipo de usuario no encontrado');
+          
+        return next();
+    }
 }

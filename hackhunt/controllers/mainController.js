@@ -5,19 +5,11 @@ const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
 const userCv = require('../helpers/user_cv.js');
 
-
-
-const loginFunctions = require('../helpers/login');
-
 const controller = {
 	home: (req, res) => {
 		let anu = dbFunctions.getAllAnuncios();
-<<<<<<< HEAD
-		res.render('main/index', { anuncios: anu.file });
-=======
 		
 		return res.render('main/index', { anuncios: anu.file });
->>>>>>> 97a28754c5b225d768cec41dc14e345f6b505bcc
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
@@ -32,6 +24,8 @@ const controller = {
 		res.render('main/loginUsuario', { title: 'Express' });
 	},
 	validarUsuario: (req,res) => {
+		console.log('--------- Main controller ------------');
+		
 		// validar formulario con express-validator
 		const errors = validationResult(req);
 
@@ -42,17 +36,23 @@ const controller = {
 					user_email : req.body.user_email
 				}
 			}) .then( user => {
+				user = user.get({ plain: true });
+				console.log('usuario: ' + user.user_email)
 				if(bcrypt.compareSync(req.body.user_passwd,user.user_passwd)){
-
+					console.log('contrasena correcta')
 					req.session.user = user;
+					req.session.type_user = 'cliente';
+					console.log('sesion creada con usuario: ' + req.session.user.user_name)
 					res.cookie('user_id', bcrypt.hashSync(toString(user.user_id),10),{maxAge: 1000 * 60 * 30 });
-					res.cookie('user_type','cliente',{maxAge: 1000 * 60 * 30 });
-	
+					console.log('cookie creada');
+					res.cookie('type_user','cliente',{maxAge: 1000 * 60 * 30 });
+					
 					return res.redirect('/perfil');
 				} else{
+					console.log('error en el login')
 					return res.redirect('/login'); 
 				}
-			})
+			}) .catch( error => { res.send(error) })
 
 		} else {
 		res.render('main/loginUsuario', { errors: errors.array() });
@@ -67,7 +67,7 @@ const controller = {
 		if(errors.isEmpty()){	
 
 			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
-			req.body.user_type = 'cliente';
+			req.body.type_user = 'cliente';
 
 			db.clientes.create({ ...req.body, user_avatar : req.file.filename });
 

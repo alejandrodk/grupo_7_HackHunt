@@ -6,6 +6,7 @@ const express = require("express");
 const logger = require("morgan");
 const path = require("path");
 const methodOverride = require('method-override');
+// ******* Middlewares  require ********
 const cookieValidate = require('./middlewares/cookieValidate');
 const auth = require('./middlewares/auth');
 
