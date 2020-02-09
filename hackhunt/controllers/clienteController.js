@@ -40,24 +40,14 @@ const controller = {
         });
     },
     info: (req, res) => {
-        db.clientes.findOne({
-                where: {
-                    user_id: req.session.user.user_id
-                },
-                include : ['cliente_cv','cliente_education']
-            })
+        db.clientes.findOne({ where: { user_id: req.session.user.user_id },
+                include : ['cliente_cv','cliente_education'] })
             .then(user => {
                 db.skills.findAll()
                 .then(skills => {
-                    console.log(skills);
-                    db.user_skill.findAll({
-                        where : {
-                            user_id : req.session.user.user_id
-                        },
-                        include : ['skill'],
-                    })
+                    db.user_skill.findAll({ where : { user_id : req.session.user.user_id } })
                     .then(user_skills => {
-                        console.log(user_skills);
+                        // falta agregarle los nombres de los skills
                         res.render('cliente/info', { 
                             user: user, 
                             skills : skills,

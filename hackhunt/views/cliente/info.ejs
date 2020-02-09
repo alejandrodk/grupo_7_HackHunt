@@ -173,9 +173,11 @@
                 </form>
                 <div class="areas">
                     <p>Tus Skills</p>
-                    <div class="item">
-
-                    </div>
+                    <% user_skills.forEach(skill => { %>                     
+                        <div class="item">
+                            <h2><%= skill.skill_id  %> </h2>
+                        </div>
+                    <% }) %>
                 </div>
             </div>
         </div>

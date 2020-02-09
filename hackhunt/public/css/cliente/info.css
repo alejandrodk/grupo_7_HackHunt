@@ -120,6 +120,28 @@ body{
     background: var(--main-color-verde);;
     color: var(--main-bg-color);
 }
+/* SKILLS ----------------------*/
+.container.cv .datos.skills .areas{
+    display: flex;
+    flex-wrap: wrap;
+}
+.container.cv .datos.skills .areas p {
+	width: 100%;
+}
+.container.cv .datos.skills .areas .item {
+	width: auto;
+	background: var(--main-color-verde);
+	height: 35px;
+	padding: 1% 2%;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	margin: 1%;
+}
+.container.cv .datos.skills .areas .item h2 {
+	font-size: 20px;
+	text-align: center;
+}
 /* DATOS PROFESIONALES -----------------------*/
 
 .container.cv .datos.profesionales {
