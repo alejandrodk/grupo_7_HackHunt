@@ -1,6 +1,6 @@
 const soloGuest = (req,res,next)=>
 {
-    if(req.session.type_user == 'company')
+    if(req.session.type_user == 'empresa')
     {
         return res.redirect('/empresa/perfil');
     }

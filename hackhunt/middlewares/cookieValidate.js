@@ -15,21 +15,22 @@ module.exports = (req,res,next) => {
         if(type_user == 'cliente'){
             db.clientes.findAll()
             .then( data => {
-                data.forEach(usuario => {
-                    usuario = usuario.get({ plain:true })
-                    if(bcrypt.compareSync(toString(usuario.user_id),user_id)){
+                for(let i = 0; i<data.length;i++){
+          
+                    if(bcrypt.compareSync(toString(data[i].user_id),user_id)){
                         req.session.type_user = "cliente"; 
-                        delete usuario.user_passwd;
-                        req.session.user = usuario;
-                        return next()
+                        delete data[i].user_passwd;
+                        req.session.user = data[i];
+                         return next();
                     }
+                }
                 });
-            })
-        } 
+            };
+         
     } else {
         console.log('cookie id no encontrada');
         console.log('tipo de usuario no encontrado');
           
-        return next();
+       return next();
     }
 }

@@ -8,7 +8,7 @@ const userCv = require('../helpers/user_cv.js');
 const controller = {
 	home: (req, res) => {
 		let anu = dbFunctions.getAllAnuncios();
-		
+	
 		return res.render('main/index', { anuncios: anu.file });
 	},
 	busquedaHome: (req, res) => {
@@ -33,7 +33,7 @@ const controller = {
 
 			db.clientes.findOne({ where : { user_email : req.body.user_email } })
 			.then( user => {
-				console.log('usuario: ' + user.user_email)
+				
 				if(bcrypt.compareSync(req.body.user_passwd,user.user_passwd)){
 					console.log('contrasena correcta')
 					req.session.user = user;
@@ -48,10 +48,10 @@ const controller = {
 					console.log('error en el login')
 					return res.redirect('/login'); 
 				}
-			}) .catch( error => { res.send(error) })
+			}) .catch( error => { console.log(error) })
 
 		} else {
-		res.render('main/loginUsuario', { errors: errors.array() });
+		return res.render('main/loginUsuario', { errors: errors.array() });
 		}
 	},
 	registroUsuario: (req, res) => { 
@@ -255,7 +255,7 @@ const controller = {
 		.then(result => {
 			res.send(result)
 		})*/
-		db.sequelize.query('select * from empresas')
+		db.sequelize.query('select * from clientes')
 		.then(result =>{
 			res.send(result[0]);
 		})

@@ -4,16 +4,17 @@ const db = require('../database/models');
 
 const controller = {
     perfil: (req, res) => {  
-        db.clientes.findOne({
+        db.clientes.findOne({ 
             where : {
                 user_email : req.session.user.user_email
             }
         }) .then( user => {
-            user = user.get({ plain: true });
-            res.render('cliente/perfil', { user: user });
+        
+           return res.render('cliente/perfil', { user: user });
         }) .catch(error => {
-            res.send(error)
+           return res.send(error)
         })
+     
     },
     postulaciones: (req, res) => {
         res.render('cliente/postulaciones', { title: 'Postulaciones' });
