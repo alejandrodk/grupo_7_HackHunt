@@ -31,12 +31,8 @@ const controller = {
 
 		if(errors.isEmpty()){
 
-			db.clientes.findOne({
-				where : {
-					user_email : req.body.user_email
-				}
-			}) .then( user => {
-				user = user.get({ plain: true });
+			db.clientes.findOne({ where : { user_email : req.body.user_email } })
+			.then( user => {
 				console.log('usuario: ' + user.user_email)
 				if(bcrypt.compareSync(req.body.user_passwd,user.user_passwd)){
 					console.log('contrasena correcta')
@@ -67,14 +63,13 @@ const controller = {
 		if(errors.isEmpty()){	
 
 			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
-			req.body.type_user = 'cliente';
-
-			db.clientes.create({ ...req.body, user_avatar : req.file.filename });
-
+			let user_avatar = req.file ? req.file.filename : 'user_avatar_default.jpg';
+			db.clientes.create({ ...req.body, user_avatar : user_avatar });
+			
 			delete req.body.user_passwd
 			let user = { ...req.body }
 			req.session.user = user;
-
+			req.session.type_user = 'cliente'
 			return res.redirect('registro/cv');
 
 		} else {
