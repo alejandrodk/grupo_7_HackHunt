@@ -1,4 +1,3 @@
-const fs = require('fs');
 const bcrypt = require('bcrypt');
 const dbFunctions = require('../helpers/readjson.js');
 const { validationResult, body} = require('express-validator');

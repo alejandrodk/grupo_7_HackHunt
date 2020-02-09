@@ -1,68 +1,90 @@
-const fs = require('fs');
-const dbFunctions = require('../helpers/readjson.js');
 const db = require('../database/models');
-
+const actUserCv = require('../helpers/act_user_cv.js');
 const controller = {
-    perfil: (req, res) => {  
-        db.clientes.findOne({ 
-            where : {
-                user_email : req.session.user.user_email
-            }
-        }) .then( user => {
-        
-           return res.render('cliente/perfil', { user: user });
-        }) .catch(error => {
-           return res.send(error)
-        })
-     
+    perfil: (req, res) => {
+        db.clientes.findOne({
+                where: {
+                    user_id: req.session.user.user_id
+                },
+                include: ['cliente_cv']
+            })
+            .then(user => {
+                return res.render('cliente/perfil', {
+                    user: user
+                })
+            })
+            .catch(error => {
+                return res.send(error)
+            })
+
     },
     postulaciones: (req, res) => {
-        res.render('cliente/postulaciones', { title: 'Postulaciones' });
+        res.render('cliente/postulaciones', {
+            title: 'Postulaciones'
+        });
     },
     favoritos: (req, res) => {
-        if(req.query){
+        if (req.query) {
             //si existe el queryString refinar la busqueda por empresa
         }
-        res.render('cliente/favoritos', { title: 'Favoritos' });
+        res.render('cliente/favoritos', {
+            title: 'Favoritos'
+        });
     },
-    alertas : (req, res) => {
-        if(req.query){
+    alertas: (req, res) => {
+        if (req.query) {
             //si existe el queryString refinar la busqueda por empresa
         }
-        res.render('cliente/alertas' , { title: 'Alertas '});
+        res.render('cliente/alertas', {
+            title: 'Alertas '
+        });
     },
     info: (req, res) => {
         db.clientes.findOne({
-            where : {
-                user_id : req.session.user.user_id
-            }
-        }) .then (user => {
-            user = user.get({ plain: true });
-            res.render('cliente/info', { user: user });
-        })
+                where: {
+                    user_id: req.session.user.user_id
+                },
+                include : ['cliente_cv','cliente_education']
+            })
+            .then(user => {
+                db.skills.findAll()
+                .then(skills => {
+                    console.log(skills);
+                    db.user_skill.findAll({
+                        where : {
+                            user_id : req.session.user.user_id
+                        },
+                        include : ['skill'],
+                    })
+                    .then(user_skills => {
+                        console.log(user_skills);
+                        res.render('cliente/info', { 
+                            user: user, 
+                            skills : skills,
+                            user_skills : user_skills
+                        });
+                    })
+                })
+            })
     },
     actInfo: (req, res) => {
-        // consultar DB y traer la info en los inputs
-        // actualizar info en la DB
-        info = req.body;
-        const users = fs.readFileSync('data/usuarios.json',{encoding : 'utf-8'});
-        let usuarios = JSON.parse(users);
-        
-        for (const usuario of usuarios) {
-            if(usuario.nombre == req.session.user.nombre){
-                info.dni ? usuario.dni = info.dni: usuario.dni = '';
-                info.fechaNac ? usuario.fechaNac = info.fechaNac : usuario.fechaNac = '';
-            }
-        };
+        // 
+        let tipoForm = req.query.form;
+        let contentForm = req.body;
+        let idUser = req.session.user.user_id;
 
-        // falta poder actualizar los datos en la DB
+        actUserCv.actualizarCv(tipoForm,contentForm,idUser);
         res.redirect('/perfil/informacion');
     },
     mensajes: (req, res) => {
-        res.render('cliente/mensajes', { title: 'Mensajes' });
+        res.render('cliente/mensajes', {
+            title: 'Mensajes'
+        });
     },
-     configuracion: (req, res) => {
-        res.render('cliente/config', { title: 'Config' });
+    configuracion: (req, res) => {
+        res.render('cliente/config', {
+            title: 'Config'
+        });
     },
     actConfig: (req, res) => {
         // consultar DB y traer la info en los inputs que apliquen

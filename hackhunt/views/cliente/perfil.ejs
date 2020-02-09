@@ -31,12 +31,12 @@
                         </div>
                         <div class="datos wrap">
                             <strong><p><%= user.user_name %></p></strong>
-                            <p><%= user.user_position %></p>
-                            <p><%= user.user_position_level %></p>
+                            <p><%= user.cliente_cv.user_position %></p>
+                            <p><%= user.cliente_cv.user_position_level %></p>
                             <ul>
-                                <li><i class="fab fa-git-alt" title="Repositorio Git"></i> <%= user.user_git %></li>
-                                <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> <%= user.user_stack %></li>
-                                <li><i class="fas fa-user" title="Website"></i> <%= user.user_website %></li>
+                                <li><i class="fab fa-git-alt" title="Repositorio Git"></i> <%= user.cliente_cv.user_git %></li>
+                                <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> <%= user.cliente_cv.user_stack %></li>
+                                <li><i class="fas fa-user" title="Website"></i> <%= user.cliente_cv.user_website %></li>
                             </ul>
                         </div>
                         <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>

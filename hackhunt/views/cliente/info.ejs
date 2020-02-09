@@ -24,15 +24,15 @@
             <h3>Datos personales</h3>
             <p id="DatosPersonales"></p>
             <div class="formulario">
-                <form action="?_method=PUT" method="post" class="wrap">
+                <form action="?_method=PATCH&form=personal" method="post" class="wrap">
                     <label for="user_name"><p>Nombre</p></label>
-                    <input type="text" name="user_name" id="user_name" value="<%= user.user_name %>">
+                    <input type="text" name="user_name" id="user_name" value="<%= user.user_name %>" disabled>
                     <label for="user_lastname"><p>Apellidos</p></label>
-                    <input type="text" name="user_lastname" id="user_lastname" value="<%= user.user_lastname %>">
+                    <input type="text" name="user_lastname" id="user_lastname" value="<%= user.user_lastname %>" disabled>
                     <label for="user_dni"><p>DNI</p></label>
-                    <input type="number" name="user_dni" id="user_dni" value="<%= user.user_dni %>">
+                    <input type="number" name="user_dni" id="user_dni" value="<%= user.cliente_cv.user_dni %>" disabled>
                     <label for=" user_datebirth"><p>Fecha de nacimiento</p></label>
-                    <input type="date" name=" user_datebirth" id=" user_datebirth" value="<%= user.user_datebirth %>">
+                    <input type="date" name=" user_datebirth" id=" user_datebirth" value="<%= user.cliente_cv.user_datebirth %>" disabled>
                     <div class="genero">
                         <label for="user_gender"><p>Genero</p></label>
                         <label for="radioH">Hombre</label>
@@ -41,7 +41,7 @@
                         <input type="radio" name="user_gender" id="user_gender" value="M">
                     </div>
                     <label for="user_phone"><p>Teléfono</p></label>
-                    <input type="number" name="user_phone" id="user_phone" value="<%= user.user_phone %>">
+                    <input type="number" name="user_phone" id="user_phone" value="<%= user.cliente_cv.user_phone %>">
                     <label for="user_city"><p>Ciudad</p></label>
                     <select name="user_city" id="user_city">
                         <option value="CABA">Capital Federal</option>
@@ -70,13 +70,13 @@
             <h3>Datos Profesionales</h3>
             <p id="DatosProfesionales"></p>
             <div class="formulario">
-                <form action="?_method=PUT" method="post" class="wrap">
+                <form action="?_method=PATCH&form=profesional" method="post" class="wrap">
                     <label for="user_position"><p>Cargo / Profesión o título breve</p></label>
-                    <input type="text" name="user_position" id="user_position" value="<%= user.user_position %>">
+                    <input type="text" name="user_position" id="user_position" value="<%= user.cliente_cv.user_position %>">
                     <label for="user_position_level"><p>Nivel</p></label>
-                    <input type="text" name="user_position_level" id="user_position_level" placeholder="Jr / Ssr / Sr" value="<%= user.user_position_level %>">
+                    <input type="text" name="user_position_level" id="user_position_level" placeholder="Jr / Ssr / Sr" value="<%= user.cliente_cv.user_position_level %>">
                     <label for="user_position_description"><p>Descripción breve de tu perfil profesional</p></label>
-                    <textarea name="user_position_description" id="user_position_description" cols="30" rows="10" maxlength="500"><%= user.user_position_description %></textarea>
+                    <textarea name="user_position_description" id="user_position_description" cols="30" rows="10" maxlength="500"><%= user.cliente_cv.user_position_description %></textarea>
                     <p>Max 500</p>
                     <button type="submit">Guardar</button>
                 </form>
@@ -86,7 +86,7 @@
             <h3>Experiencia laboral</h3>
             <p id="ExperienciaLaboral"></p>
             <div class="formulario">
-                <form action="?_method=PUT" method="post" class="wrap">
+                <form action="?_method=PATCH&form=laboral" method="post" class="wrap">
                     <label for="user_cmp_experience"><p>Empresa</p></label>
                     <input type="text" name="user_cmp_experience" id="user_cmp_experience" value="<%= user.user_cmp_experience %>">
                     <label for="user_cmp_position"><p>Cargo</p></label>
@@ -105,7 +105,7 @@
             <h3>Formación</h3>
             <p id="Formacion"></p>
             <div class="formulario">
-                <form action="?_method=PUT" method="post" class="wrap">
+                <form action="?_method=PATCH&form=formacion" method="post" class="wrap">
                     <label for="user_career"><p>Nivel</p></label>
                     <select name="user_career" id="user_career">
                         <option value="">Seleccione</option>
@@ -117,22 +117,22 @@
                         <option value="secundario">Secundario</option>
                     </select>
                     <label for="user_institution"><p>Institución</p></label>
-                    <input type="text" name="user_institution" id="user_institution" value="<%= user.user_institution %>">
+                    <input type="text" name="user_institution" id="user_institution" value="<%= user.cliente_education[0].user_institution %>">
                     <label for="user_career_title"><p>Título</p></label>
-                    <input type="text" name="user_career_title" id="user_career_title" value="<%= user.user_career_title %>">
+                    <input type="text" name="user_career_title" id="user_career_title" value="<%= user.cliente_education[0].user_career_title %>">
                     <label for="user_career_since"><p>Desde</p></label>
-                    <input type="date" name="user_career_since" id="user_career_since" value="<%= user.user_career_since %>">
+                    <input type="date" name="user_career_since" id="user_career_since" value="<%= user.cliente_education[0].user_career_since %>">
                     <label for="user_career_to"><p>Hasta</p></label>
-                    <input type="date" name="user_career_to" id="user_career_to" value="<%= user.user_career_to %>">
+                    <input type="date" name="user_career_to" id="user_career_to" value="<%= user.cliente_education[0].user_career_to %>">
                     <label for="user_career_description"><p>Descripción</p></label>
-                    <textarea name="user_career_description" id="user_career_description" cols="30" rows="10"><%= user.user_career_description %></textarea>
+                    <textarea name="user_career_description" id="user_career_description" cols="30" rows="10"><%= user.cliente_education[0].user_career_description %></textarea>
                     <div class="repositorios wrap">
                         <label for="user_git"><p>Repositorio Git</p></label>
-                        <input type="text" name="user_git" id="user_git" value="<%= user.user_git %>">
+                        <input type="text" name="user_git" id="user_git" value="<%= user.cliente_cv.user_git %>">
                         <label for="user_website"><p>Website</p></label>
-                        <input type="text" name="user_website" id="user_website" value="<%= user.user_website %>">
+                        <input type="text" name="user_website" id="user_website" value="<%= user.cliente_cv.user_website %>">
                         <label for="user_stack"><p>StackOverflow</p></label>
-                        <input type="text" name="user_stack" id="user_stack" value="<%= user.user_stack %>">
+                        <input type="text" name="user_stack" id="user_stack" value="<%= user.cliente_cv.user_stack %>">
                     </div>
                     <button type="submit">Guardar</button>
                 </form>
@@ -142,9 +142,9 @@
             <h3>Idiomas</h3>
             <p id="Idiomas"></p>
             <div class="formulario">
-                <form action="?_method=PUT" method="post" class="wrap">
+                <form action="?_method=PATCH&form=lang" method="post" class="wrap">
                     <label for="user_lang"><p>Idioma</p></label>
-                    <input type="text" name="user_lang" id="user_lang" value="<%= user.user_lang %>">
+                    <input type="text" name="user_lang" id="user_lang" value="<%= user.cliente_cv.user_lang %>">
                     <label for="user_lang_level"><p>Nivel</p></label>
                     <select name="user_lang_level" id="user_lang_level">
                         <option value="">Seleccione</option>
@@ -157,13 +157,32 @@
                 </form>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 skills wrap">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos skills wrap">
+            <h3>Skills</h3>
             <p id="Skills"></p>
+            <div class="formulario">
+                <form action="?_method=PATCH&form=skills" method="post" class="wrap">
+                    <label for="skill_id"><p>Skills</p></label>
+                    <select name="skill_id" id="skill_id">
+                        <option value="">Agregar Skill</option>
+                        <% skills.forEach(skill => { %>
+                            <option value="<%= skill.skill_id %>"><%= skill.skill_name %></option>
+                        <% }) %> 
+                    </select>
+                    <button type="submit" id="adItem">+</button>
+                </form>
+                <div class="areas">
+                    <p>Tus Skills</p>
+                    <div class="item">
+
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos preferencias wrap">
             <h3>Preferencia laboral</h3>
             <p id="PreferenciaLaboral"></p>
-            <form action="?_method=PUT" method="post" class="wrap">
+            <form action="?_method=PATCH&form=pref" method="post" class="wrap">
                 <label for="user_work_sit"><p>Situación Actual</p></label>
                 <select name="user_work_sit" id="user_work_sit">
                     <option value="">Seleccione</option>
@@ -171,28 +190,28 @@
                     <option value="employed">Tengo empleo</option>
                 </select>
                 <label for="user_work_wish"><p>Puesto deseado</p></label>
-                <input type="text" name="user_work_wish" id="user_work_wish" placeholder="Desarrollador Front-End" value="<%= user.user_work_wish %>">
-                <button type="submit" id="adItem">+</button>
+                <input type="text" name="user_work_wish" id="user_work_wish" placeholder="Desarrollador Front-End" value="<%= user.cliente_cv.user_work_wish %>">
+                <!--<button type="submit" id="adItem">+</button>
                 <div class="puestos">
                     <p>Puestos seleccionados</p>
-                </div>
+                </div>-->
                 <label for="user_wish_area"><p>Área</p></label>
-                <input type="text" name="user_wish_area" id="user_wish_area" placeholder="Desarrollo Web" value="<%= user.user_wish_area %>">
-                <button type="submit" id="adItem">+</button>
+                <input type="text" name="user_wish_area" id="user_wish_area" placeholder="Desarrollo Web" value="<%= user.cliente_cv.user_wish_area %>">
+                <!--<button type="submit" id="adItem">+</button>
                 <div class="areas">
                     <p>Áreas seleccionadas</p>
-                </div>
+                </div>-->
                 <label for="user_salary"><p>Remuneración Pretendida</p></label>
-                <input type="text" name="user_salary" id="user_salary" placeholder="*Opcional" value="<%= user.user_salary %>">
+                <input type="text" name="user_salary" id="user_salary" placeholder="*Opcional" value="<%= user.cliente_cv.user_salary %>">
                 <label for="user_work_location"><p>Ubicación/es</p></label>
                 <select name="user_work_location" id="user_work_location">
                     <option value="CAP">Capital Federal</option>
                     <option value="GBA">Buenos Aires</option>
                 </select>
-                <button type="submit" id="adItem">+</button>
+                <!--<button type="submit" id="adItem">+</button>
                 <div class="ubicaciones">
                     <p>Ubicaciones seleccionadas</p>
-                </div>
+                </div>-->
                 <button type="submit">Guardar</button>
             </form>
         </div>
