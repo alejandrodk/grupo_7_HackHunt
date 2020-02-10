@@ -14,7 +14,7 @@ router.get("/favoritos",soloCliente, clienteController.favoritos);
 router.get("/alertas",soloCliente, clienteController.alertas);
 
 router.get("/informacion",soloCliente, clienteController.info);
-router.put("/informacion",soloCliente, clienteController.actInfo);
+router.patch("/informacion",soloCliente, clienteController.actInfo);
 
 router.get("/configuracion",soloCliente, clienteController.configuracion);
 router.put("/configuracion", clienteController.actConfig);

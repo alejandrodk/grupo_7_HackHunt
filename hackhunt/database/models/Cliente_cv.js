@@ -3,6 +3,7 @@ module.exports = (sequelize, dataTypes) => {
     let alias = 'cliente_cv';
     let cols = {
         user_id : {
+            primaryKey: true,
             type: dataTypes.INTEGER
         },
         user_dni : {

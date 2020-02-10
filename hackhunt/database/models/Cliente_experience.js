@@ -32,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
     Cliente_experience.associate = function(modelos) {
         Cliente_experience.belongsTo(modelos.clientes, {
             as: 'cliente',
-            primaryKey: 'id'
+            primaryKey: 'user_id'
         })
     };
     
