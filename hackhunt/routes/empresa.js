@@ -8,12 +8,12 @@ const upload = require('../middlewares/multer.js');
 const empresaController = require("../controllers/empresaController");
 
 /* GET - home page. */
-router.get("/perfil",auth,soloEmpresa, empresaController.perfil);
-router.get("/perfil/modificar",auth, soloEmpresa, empresaController.modificarPerfil);
-router.get("/perfil/configuracion",auth, soloEmpresa, empresaController.configuracion);
-router.get("/informacion",auth, soloEmpresa,empresaController.info);
+router.get("/perfil", empresaController.perfil);
+router.get("/perfil/modificar", soloEmpresa, empresaController.modificarPerfil);
+router.get("/perfil/configuracion",soloEmpresa, empresaController.configuracion);
+router.get("/informacion",soloEmpresa,empresaController.info);
 router.post("/informacion/:id",upload.single('cmp_avatar'),auth, soloEmpresa, empresaController.modificarInfo);
-router.get("/mensajes",auth, soloEmpresa, empresaController.mensajes);
+router.get("/mensajes", soloEmpresa, empresaController.mensajes);
 router.get("/anuncios/", empresaController.anuncios);
 router.get("/anuncios/crear",auth, soloEmpresa, empresaController.crearPublicacion);
 router.post("/anuncios/crear",auth, soloEmpresa, empresaController.postearPublicacion);

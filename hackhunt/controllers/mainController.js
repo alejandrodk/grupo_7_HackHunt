@@ -9,7 +9,7 @@ const controller = {
 	home: (req, res) => {
 		let anu = dbFunctions.getAllAnuncios();
 	
-		return res.render('main/index', { anuncios: anu.file });
+		res.render('main/index', { anuncios: anu.file });
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
@@ -145,15 +145,15 @@ const controller = {
 			{
 				
 				if(bcrypt.compareSync(req.body.cmp_user_passwd,empresa.cmp_user_passwd)){
-					delete empresa.cmp_user_passw;
+					delete empresa.cmp_user_passwd;
 					delete empresa.cmp_cuit;
 					delete empresa.cmp_tel;
 					delete empresa.cmp_sector;
 					
-					req.session.type_user = 'company';
-					req.session.data = empresa;
+					req.session.type_user = 'empresa';
+					req.session.user = empresa;
 					res.cookie('user_id', bcrypt.hashSync(toString(empresa.id),12),{maxAge: 1000 * 60 * 30 });
-					res.cookie('type_user', bcrypt.hashSync("company",12),{maxAge: 1000 * 60 * 30 });
+					res.cookie('type_user', "empresa",{maxAge: 1000 * 60 * 30 });
 			        return res.redirect('/empresa/perfil');
 					
 				} 
@@ -223,7 +223,7 @@ const controller = {
 					delete empresa.cmp_sector;
 			req.session.type_user = 'company';
 			req.session.data = empresa;
-			res.cookie('user_id', bcrypt.hashSync(empresa.id,12),{maxAge: 1000 * 60 * 30 });
+			res.cookie('user_id', bcrypt.hashSync(toString(empresa.id),12),{maxAge: 1000 * 60 * 30 });
 			return res.redirect('/empresa/perfil');
 		})
 		//si algo falla, se ve en consola el/los errores.
@@ -255,7 +255,7 @@ const controller = {
 		.then(result => {
 			res.send(result)
 		})*/
-		db.sequelize.query('select * from clientes')
+		db.sequelize.query('select * from empresas')
 		.then(result =>{
 			res.send(result[0]);
 		})

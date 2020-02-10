@@ -1,8 +1,8 @@
-const locals = ((req,res,next)=>
+const locals = (req,res,next)=>
 {
         console.log('---------------- auth --------------')
     res.locals.type_user = "guest";
-    console.log('conectado como "guest"');
+    
 	if(req.session.user){
         if(req.session.type_user == 'cliente'){
             console.log('sesion recuperada como: ' + req.session.user.user_name);
@@ -19,6 +19,6 @@ const locals = ((req,res,next)=>
         return next();
     }
 	
-});
+};
 
 module.exports = locals;

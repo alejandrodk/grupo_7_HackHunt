@@ -6,13 +6,15 @@ const controller = {
 	perfil: (req, res) => {
 		let anuncios = dbFunctions.getAllAnuncios();
 		/*let company = dbFunctions.getCompanyById(req.params.id);*/
-		db.empresas.findByPk(req.session.data.id,{
+	
+		db.empresas.findByPk(req.session.user.id,{
 			attributes: {exclude: ['cmp_user_passwd']}
 		})
 		.then(result => {
-			
+			console.log("llegue aqui 1")
 			return res.render("empresa/perfil", {empresa: result, anuncios: anuncios.file });
 		})
+
 
 	},
 	configuracion: (req, res) => {

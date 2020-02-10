@@ -12,7 +12,7 @@ const validator = require('../middlewares/form_validators');
 const mainController = require("../controllers/mainController");
 
 // ************ Router's ************ 
-router.get("/", cookies_mid,auth,mainController.home); //agregar querystrings a los filtros de la busqueda
+router.get("/", mainController.home); //agregar querystrings a los filtros de la busqueda
 router.post("/", mainController.busquedaHome);
 router.get("/detalle", mainController.detalleAnuncio);
 
