@@ -41,7 +41,7 @@ const controller = {
     },
     info: (req, res) => {
         db.clientes.findOne({ where: { user_id: req.session.user.user_id },
-                include : ['cliente_cv','cliente_education'] })
+                include : ['cliente_cv','cliente_education','cliente_experience'] })
             .then(user => {
                 db.skills.findAll()
                 .then(skills => {

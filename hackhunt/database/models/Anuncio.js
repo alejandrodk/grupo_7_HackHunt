@@ -7,9 +7,9 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true,
             type: dataTypes.INTEGER
         },
-        adv_cmp : {
+        cmp_id : {
             type: dataTypes.STRING,
-            allowNull: false
+            //allowNull: false
         },
         adv_publication : {
             type: dataTypes.DATE,
@@ -64,8 +64,8 @@ module.exports = (sequelize, dataTypes) => {
 
     Anuncio.associate = function(modelos){
         Anuncio.belongsTo(modelos.empresas,{
-            as: "empresa",
-            foreignKey: "adv_cmp"
+            as: "empresas",
+            foreignKey: "id"
         });
     };
 

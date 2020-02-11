@@ -47,11 +47,13 @@ const controller = {
 	},
 	mensajes: (req, res) => {
 		res.render("empresa/mensajes", { title: "Express" });
-	},
+	}, 
 	anuncios: (req, res) => {
-		let anuncios = dbFunctions.getAllAnuncios();
-
-		res.render("empresa/anuncios", { anuncios: anuncios.file });
+		db.anuncios.findAll({where:{cmp_id:req.session.user.id}})
+		.then(result => {
+			 
+			res.render("empresa/anuncios", { anuncios: result });
+		})
 	},
 	anuncioDetalle: (req, res) => {
 		res.render("empresa/anuncioDetalle", { title: "Express" });
@@ -60,38 +62,18 @@ const controller = {
 		res.render("empresa/crearPublicacion", { title: "Express" });
 	},
 	postearPublicacion : (req,res) => {
-		/*let adv_Json = dbFunctions.getAllAnuncios();
-		 
-		let date = new Date();
-		let adv_fechaAct = `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`
-		let id = dbFunctions.getNewId(adv_Json);
-		let anuncio = {
-			// identificadores
-			adv_id : id,
-			// traer empresa de sesion
-			adv_cmp_id : req.session.user_id, //id de la empresa que publico
-			adv_cmp_name: req.session.data.cmp_name,
-			adv_cmp_avatar: req.session.data.cmp_avatar,
-			// info POST
-			...req.body,
-			adv_publication : adv_fechaAct,
-			// info para empresa
-			nuevos : 0,
-			candidatos : 0,
-			destacados : 0,
-			postulantes : [],
-			favoritos : []
-		}
-
-		dbFunctions.writeFile(anuncio,adv_Json); */
-		req.body.cmp_id = req.session.data.id;
+		
+		
+		req.body.adv_publication = "20/02/1991";
 		db.anuncios.create(req.body)
 		.then(respuesta =>{
-			console.log(respuesta);
+			
+			respuesta.addEmpresas(1)
+			return res.send(respuesa)
 		})
 
 		//return res.redirect(`/detalle?id=${id}`);
-	},
+	}, 
 	modificarPerfil: (req,res)=>
 	{
 		let user = dbFunctions.modifyCompany(req.session.user_id);

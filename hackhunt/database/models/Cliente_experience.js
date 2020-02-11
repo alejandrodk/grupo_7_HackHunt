@@ -2,8 +2,8 @@ module.exports = (sequelize, dataTypes) => {
     
     let alias = 'cliente_experience';
     let cols = {
-        user_id : {
-            primaryKey: true,
+        user_id: {
+            foreignKey: true,
             type: dataTypes.INTEGER
         },
         user_cmp_experience : {
@@ -17,7 +17,7 @@ module.exports = (sequelize, dataTypes) => {
         user_cmp_experience_since : {
             type: dataTypes.STRING,
         },
-        user_cmp_experience_to : {
+        user_cmp_experience_to: {
             type: dataTypes.STRING,
         },
         user_experience_description: {
@@ -32,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
     Cliente_experience.associate = function(modelos) {
         Cliente_experience.belongsTo(modelos.clientes, {
             as: 'cliente',
-            primaryKey: 'user_id'
+            foreignKey: 'user_id'
         })
     };
     

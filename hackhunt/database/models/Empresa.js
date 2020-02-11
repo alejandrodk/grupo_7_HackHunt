@@ -59,8 +59,8 @@ module.exports = (sequelize, dataTypes) =>
     Empresa.associate = function(modelos)
     {
         Empresa.hasMany(modelos.anuncios,{
-            as: "Anuncios",
-            foreignKey: "adv_cmp"
+            as: "anuncios",
+            foreignKey: "cmp_id"
         });
     }
 

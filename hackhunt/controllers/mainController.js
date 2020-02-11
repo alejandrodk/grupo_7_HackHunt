@@ -254,10 +254,11 @@ const controller = {
 		.then(result => {
 			res.send(result)
 		})*/
-		db.sequelize.query('select * from empresas')
-		.then(result =>{
-			res.send(result[0]);
-		})
+		db.anuncios.findOne({ where: { id: 1 }})
+			.then(result =>{
+				res.send(result)
+			})
+			
 	}
 };
 
