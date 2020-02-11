@@ -2,10 +2,12 @@
 
 - Como equipo.
 
-Como equipo hemos aprendido a dividir las responsabilidades tomando en cuenta las fortalezas de cada uno para encarar el proyecto de la manera más eficiente posible.
+Para el Sprint #4 logramos organizarnos de mejor forma, dividiendo nuestras tareas y mejorando la comunicación como equipo.
 
 - Acerca del proyecto
 
-El proyecto que se eligió para desarrollar es un proyecto extenso, y a medida que adelantamos surgen ideas nuevas para mejorarlo. Ha sido importante priorizar las necesidades principales del proyecto por encima de las ideas que van surgiendo y prescindir de las menos importantes para así cumplir con los requisitos pautados en cada sprint.
+Estamos contentos con el progreso del proyecto, hemos logrado organizarnos de tal forma que nos permite tener tiempo suficiente para revisar y ajustar cada sección del proyecto.
 
-Nos sentimos contentos con la forma que va tomando el proyecto y hemos logrado adelantar en gran medida en comparación con el sprint anterior.
+Nos sentimos tranquilos con las entregas de los Sprints ya que como equipo intentamos realizar las consignas de cada sprint lo más rapido posible una vez recibidas para así tener tiempo libre para optimizar.
+
+Esperamos que el proyecto siga al ritmo que lleva y nos contenta la forma que va tomando, siempre en vista de nuevos retos y nuevos conocimientos para aplicar.
