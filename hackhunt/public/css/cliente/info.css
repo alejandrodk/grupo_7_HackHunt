@@ -191,7 +191,7 @@ body{
 .ubicaciones {
     width: 100%;
     border-radius: 10px;
-    height: 150px;
+    min-height: 150px;
     background: white;
     margin: 1% 0;
     padding: 1%;
