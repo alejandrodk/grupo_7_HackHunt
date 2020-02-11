@@ -42,7 +42,7 @@ module.exports = (sequelize, dataTypes) => {
         Cliente.hasMany(modelos.cliente_experience,{
             as : 'cliente_experience',
             foreignKey : 'user_id'
-        })
+        }),
         Cliente.belongsToMany(modelos.anuncios,{
             as : 'favorito',
             through : 'favoritos',
@@ -59,7 +59,7 @@ module.exports = (sequelize, dataTypes) => {
         }),
         Cliente.belongsToMany(modelos.skills,{
             as : 'skill',
-            through : 'user_skills',
+            through : 'user_skill',
             foreignKey : 'user_id',
             otherKey : 'skill_id',
             timestamps : false

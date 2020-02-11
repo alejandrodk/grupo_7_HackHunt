@@ -22,7 +22,7 @@ const auth = ((req,res,next) => {
                         req.session.type_user = "cliente"; 
                         delete data[i].user_passwd;
                         req.session.user = data[i];
-                          next();
+                        return next();
                     }
                 }
                 });
@@ -37,14 +37,14 @@ const auth = ((req,res,next) => {
                             delete data[i].cmp_user_passwd;
                             req.session.user = data[i];
                             console.log("se crea req.session.user " + data[i].id);    
-                             next();
+                            return next();
                         }
                     }
                     });
                 }
     } 
     else{
-        next();
+       return next();
     }
           
        
