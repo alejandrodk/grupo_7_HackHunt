@@ -16,7 +16,7 @@ module.exports = {
           },
           key: 'id'
         },
-        allowNull: false
+        
       },
       adv_publication: {
         type: Sequelize.STRING,

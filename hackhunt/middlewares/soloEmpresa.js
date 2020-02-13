@@ -2,7 +2,7 @@ const soloEmpresa = (req,res,next)=>
 {
     if(req.session.type_user != 'empresa')
     {
-        return res.redirect({error: "No tiene acceso a la sección solicitada."},'/');
+        return res.redirect('/');
     }
     else
     {

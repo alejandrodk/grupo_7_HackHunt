@@ -8,11 +8,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER
         },
         cmp_id : {
-            type: dataTypes.STRING,
-            //allowNull: false
+            type: dataTypes.INTEGER,
         },
         adv_publication : {
-            type: dataTypes.DATE,
+            type: dataTypes.STRING,
             allowNull: false
         },
         adv_title : {
@@ -22,17 +21,10 @@ module.exports = (sequelize, dataTypes) => {
         adv_description : {
             type: dataTypes.STRING(500),
             allowNull: false
-        },
-        adv_skills : {
-            type: dataTypes.STRING,
-            allowNull: false
-        },
-        adv_skills_optionals : {
-            type: dataTypes.STRING,
-            allowNull: false
+
         },
         adv_date_contract : {
-            type: dataTypes.DATE,
+            type: dataTypes.STRING,
             allowNull: false
         },
         adv_area : {
@@ -60,14 +52,23 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         }
     }
-    const Anuncio = sequelize.define(alias,cols,{  timestamps: false});
+    const anuncio = sequelize.define(alias,cols,{ tableName:'anuncios', timestamps: false});
 
-    Anuncio.associate = function(modelos){
-        Anuncio.belongsTo(modelos.empresas,{
+    anuncio.associate = function(models){
+        anuncio.belongsTo(models.empresas,{
             as: "empresas",
             foreignKey: "id"
-        });
-    };
+        }),
 
-    return Anuncio;
+            anuncio.belongsToMany(models.skills,{
+                as : 'skills',
+            through : 'anuncio_skill',
+            foreignKey  : 'anuncio_id',
+            otherKey : 'skill_id',
+            timestamps : false
+            })
+        
+    }
+
+    return anuncio;
 }

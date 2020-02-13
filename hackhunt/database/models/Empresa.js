@@ -54,15 +54,15 @@ module.exports = (sequelize, dataTypes) =>
       
     }
     
-    const Empresa = sequelize.define(alias,cols,{  timestamps: false});
+    const empresa = sequelize.define(alias,cols,{  timestamps: false});
 
-    Empresa.associate = function(modelos)
+    empresa.associate = function(models)
     {
-        Empresa.hasMany(modelos.anuncios,{
+        empresa.hasMany(models.anuncios,{
             as: "anuncios",
             foreignKey: "cmp_id"
         });
     }
 
-    return Empresa;
+    return empresa;
 }

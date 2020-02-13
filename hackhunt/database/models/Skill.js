@@ -22,11 +22,12 @@ module.exports = (sequelize, dataTypes) => {
             otherKey : 'user_id'
         }),
         Skill.belongsToMany(modelos.anuncios,{
-            as : 'anuncio',
-            through : 'anuncios_skills',
+            as : 'anuncios',
+            through : 'anuncio_skill',
             foreignKey : 'skill_id',
             otherKey : 'anuncio_id'
         })
+        
     };
 
     return Skill;

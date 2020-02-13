@@ -4,16 +4,19 @@ const db = require('../database/models');
 
 const controller = {
 	perfil: (req, res) => {
-		let anuncios = dbFunctions.getAllAnuncios();
-		/*let company = dbFunctions.getCompanyById(req.params.id);*/
-	
+		let empresa;
 		db.empresas.findByPk(req.session.user.id,{
 			attributes: {exclude: ['cmp_user_passwd']}
 		})
 		.then(result => {
-			console.log("llegue aqui 1")
-			return res.render("empresa/perfil", {empresa: result, anuncios: anuncios.file });
-		})
+			empresa = result;
+			return result.getAnuncios();
+			 
+			})
+			.then(resultado =>{
+				
+				return res.render("empresa/perfil", {empresa: empresa, anuncios:resultado });
+			})
 
 
 	},
@@ -59,18 +62,44 @@ const controller = {
 		res.render("empresa/anuncioDetalle", { title: "Express" });
 	},
 	crearPublicacion: (req, res) => {
-		res.render("empresa/crearPublicacion", { title: "Express" });
+		db.skills.findAll()
+		.then(skills =>{
+			res.render("empresa/crearPublicacion", { title: "Express", skills: skills });
+		})
 	},
 	postearPublicacion : (req,res) => {
 		
-		
-		req.body.adv_publication = "20/02/1991";
-		db.anuncios.create(req.body)
-		.then(respuesta =>{
+		db.empresas.findByPk(req.session.user.id)
+		.then(empresa =>{
 			
-			respuesta.addEmpresas(1)
-			return res.send(respuesa)
-		})
+			let fecha = new Date().toLocaleDateString().slice(0,10).split('-');
+			req.body.adv_publication = fecha[2] + '/' + fecha[1] + '/' + fecha[0];
+			let skills = req.body.adv_skills;
+			delete req.body.adv_skills;
+			db.anuncios.create(req.body)
+			.then( anuncio =>{
+				 empresa.addAnuncios(anuncio)				
+				return anuncio
+			})
+				 .then(anuncio =>{
+					for(let i = 0; i<skills.length;i++){
+
+						anuncio.addSkills(skills[i])
+					}
+
+					})
+					 .then(()=>{
+						 return res.redirect('/empresa/perfil');
+						 
+					 })
+					})
+						 .catch(err =>{
+							 console.log(err);
+						 
+			})
+		
+			
+		
 
 		//return res.redirect(`/detalle?id=${id}`);
 	}, 

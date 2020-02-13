@@ -128,6 +128,17 @@ body {
 	color: var(--main-texto-blanco);
 }
 
+.item2 {
+    display: flex;
+    align-items: last baseline;
+}
+
+.remember-item {
+    display: block !important;
+    width: auto !important;
+    margin-right: 12px;
+}
+
 /* EXTRA SMALL----------------------------------------------------- */
 @media (max-width: 768px) {
 	.container > .row {
@@ -149,6 +160,18 @@ body {
 	}
 	.container .redes {
 		display: none;
+	}
+	.remember
+	{
+		width: 30% !important;
+	}
+	.item2
+	{
+		justify-content: center;
+	}
+	.remember-item
+	{
+		margin-right: 0;
 	}
 }
 

@@ -254,10 +254,15 @@ const controller = {
 		.then(result => {
 			res.send(result)
 		})*/
-		db.anuncios.findOne({ where: { id: 1 }})
+		/*db.anuncios.findAll()
 			.then(result =>{
 				res.send(result)
-			})
+			})*/
+			//let a  = new Date().toJSON().slice(0,10).replace(/-/g,'/')
+			
+			let a = new Date().toLocaleDateString().slice(0,10).split('-');
+			a = a[2] + '/' + a[1] + '/' + a[0];
+			
 			
 	}
 };
