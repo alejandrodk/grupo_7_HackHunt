@@ -22,7 +22,11 @@ const auth = ((req,res,next) => {
                         req.session.type_user = "cliente"; 
                         delete data[i].user_passwd;
                         req.session.user = data[i];
+<<<<<<< HEAD
                           return next();
+=======
+                        return next();
+>>>>>>> 4ecc4c046566925bec369dbe5275ac958d040d87
                     }
                 }
                 });
@@ -37,7 +41,11 @@ const auth = ((req,res,next) => {
                             delete data[i].cmp_user_passwd;
                             req.session.user = data[i];
                             console.log("se crea req.session.user " + data[i].id);    
+<<<<<<< HEAD
                              return next();
+=======
+                            return next();
+>>>>>>> 4ecc4c046566925bec369dbe5275ac958d040d87
                         }
                     }
                     });

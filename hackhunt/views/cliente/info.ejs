@@ -173,9 +173,10 @@
                 </form>
                 <div class="areas">
                     <p>Tus Skills</p>
-                    <% user_skills.forEach(skill => { %>                     
+                    <% user.skill.forEach(skill => { %>                     
                         <div class="item">
-                            <h2><%= skill.skill_id  %> </h2>
+                            <a href="/perfil/informacion/skill_delete/<%= skill.skill_id %>" id="deleteSkill">X</a>
+                            <h2><%= skill.skill_name  %> </h2>
                         </div>
                     <% }) %>
                 </div>

@@ -41,19 +41,14 @@ const controller = {
     },
     info: (req, res) => {
         db.clientes.findOne({ where: { user_id: req.session.user.user_id },
-                include : ['cliente_cv','cliente_education','cliente_experience'] })
+                include : ['cliente_cv','cliente_education', 'skill'] })
             .then(user => {
                 db.skills.findAll()
                 .then(skills => {
-                    db.user_skill.findAll({ where : { user_id : req.session.user.user_id } })
-                    .then(user_skills => {
-                        // falta agregarle los nombres de los skills
-                        res.render('cliente/info', { 
-                            user: user, 
-                            skills : skills,
-                            user_skills : user_skills
-                        });
-                    })
+                    res.render('cliente/info', { 
+                        user: user, 
+                        skills : skills,
+                    });
                 })
             })
     },
@@ -63,8 +58,17 @@ const controller = {
         let contentForm = req.body;
         let idUser = req.session.user.user_id;
 
-        actUserCv.actualizarCv(tipoForm,contentForm,idUser);
-        res.redirect('/perfil/informacion');
+        let urlAncla = actUserCv.actualizarCv(tipoForm,contentForm,idUser);
+        res.redirect('/perfil/informacion' + urlAncla);
+    },
+    borrarSkill : (req, res) => {
+        db.user_skill.destroy({
+            where : {
+                skill_id : req.params.skill_id,
+                user_id : req.session.user.user_id
+            }
+        })
+        res.redirect('/perfil/informacion#Skills');
     },
     mensajes: (req, res) => {
         res.render('cliente/mensajes', {

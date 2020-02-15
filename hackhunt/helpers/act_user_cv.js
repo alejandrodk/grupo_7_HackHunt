@@ -11,6 +11,7 @@ module.exports = {
                     user_id : id
                 }
             })
+            return '#DatosPersonales';
         }
         if(form == 'profesional'){
             db.cliente_cv.update({
@@ -20,6 +21,7 @@ module.exports = {
                     user_id : id
                 }
             })
+            return '#DatosProfesionales';
         }
         if(form == 'laboral'){
             db.cliente_experience.update({
@@ -29,6 +31,7 @@ module.exports = {
                     user_id : id
                 }
             })
+            return '#ExperienciaLaboral';
         }
         if(form == 'formacion'){
             db.cliente_education.update({
@@ -52,6 +55,7 @@ module.exports = {
                     user_id : id
                 }
             })
+            return '#Formacion';
         }
         if(form == 'lang'){
             db.cliente_cv.update({
@@ -61,6 +65,7 @@ module.exports = {
                     user_id : id
                 }
             })
+            return '#Idiomas';
         }
         if(form == 'pref'){
             db.cliente_cv.update({
@@ -69,13 +74,15 @@ module.exports = {
                 where : {
                     user_id : id
                 }
-            }) 
+            })
+            return '#PreferenciaLaboral'; 
         }
         if(form == 'skills'){
             db.user_skill.create({
                 user_id : id,
                 skill_id : info.skill_id
             })
+            return '#Skills';
         } 
 
     }

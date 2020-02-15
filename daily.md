@@ -1,17 +1,17 @@
-# Daily (Sprint 3)
+# Daily (Sprint 4)
 
 - Qué hizo ayer
 
-Como equipo hicimos un repaso por las diferentes etapas del proyecto para conocer los puntos necesarios para cumplir en cada etapa (Sprint).
-
-Una vez definidas las tareas necesarias, hicimos una división de responsabilidades las cuales nos permitieron en poco tiempo adelantar gran parte de lo que se venía atrasando en el proyecto.
+Hicimos una revisión completa del proyecto para conocer los puntos fuertes del mismo y los puntos que podríamos mejorar una vez realizadas las tareas necesarias para cumplir con el sprint.
 
 - Si se encontró con algún impedimento
 
-Principalmente nos enfocamos en cumplir con las tareas de mayor importancia para el funcionamiento del sitio, completar las vistas e implementar datos variables en todo nuestro sitio (O en la mayor parte posible) así que tuvimos que ir dejando a un lado las tareas de menor importancia como cambios estéticos o funciones específicas que no interfieren en el correcto uso del sitio.
+Para este sprint tuvimos muy pocos inconvenientes, al tener adelantado gran parte del proyecto nos sentimos mas cómodos con el tiempo y pudimos realizar las tareas asignadas en el tiempo establecido.
+
+Además, nos tomamos el tiempo de mejorar secciones de nuestro proyecto que creimos convenientes y "limpiar" código que nos parecía poco eficiente.
 
 - Qué va a hacer hoy
 
-Para este sprint nos sentimos cómodos con el trabajo realizado y lo que se adelantó con respecto al sprint anterior, sin embargo, entendemos que aún hay funciones importantes por resolver y que tenemos como prioridad.
+Mantener el ritmo del proyecto para seguir trabajando sin presión, lo que nos permite tomarnos el tiempo de evaluar el total del proyecto e identificar posibles mejoras en el mismo.
 
-Una vez resueltas y pasado el debido proceso de testeo, podemos seguir con actualizaciones de menor importancia como cambios estéticos y funciones adicionales.
+Como equipo, mantener la comunicación ya que la misma ha sido clave para el progreso del proyecto.

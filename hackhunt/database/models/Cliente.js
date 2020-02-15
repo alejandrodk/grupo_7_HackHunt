@@ -59,7 +59,7 @@ module.exports = (sequelize, dataTypes) => {
         }),
         Cliente.belongsToMany(modelos.skills,{
             as : 'skill',
-            through : 'user_skills',
+            through : 'user_skill',
             foreignKey : 'user_id',
             otherKey : 'skill_id',
             timestamps : false
