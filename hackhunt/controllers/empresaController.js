@@ -24,39 +24,42 @@ const controller = {
 		res.render('empresaconfig');
 	},
 	info: (req, res) => {
-		let empresa = dbFunctions.getCompanyById(req.session.data.cmp_id);
-		delete empresa.cmp_user_passwd;
-		res.render("empresa/info", {empresa:empresa, title: "Express" });
+		db.empresas.findByPk(req.session.user.id)
+		.then(empresa =>{
+			delete empresa.cmp_user_passwd;
+			res.render("empresa/info", {empresa:empresa, title: "Express" });
+		})
 	},
 	modificarInfo: (req,res)=>{
-		let empresa = dbFunctions.modifyCompany(req.params.id);
-		console.log(req.file);
-		if(typeof req.file == 'undefined')
-		{
-			req.body.cmp_avatar == empresa.file.cmp_avatar;
-		}
-		else
-		{
-			
-			req.body.cmp_avatar = req.file.filename;
-		}
-		 empresa.file = {
-			...empresa.file,
-			...req.body
+		db.empresas.update(req.body,{
+			where:{id:req.session.user.id}
+		})
+		.then(()=>{
+
+			return res.redirect('/empresa/informacion'); 
+		})
 		
-		}
-		dbFunctions.saveUpdates(empresa);
-		return res.redirect('/empresa/informacion'); 
 	},
 	mensajes: (req, res) => {
 		res.render("empresa/mensajes", { title: "Express" });
 	}, 
 	anuncios: (req, res) => {
-		db.anuncios.findAll({where:{cmp_id:req.session.user.id}})
+		db.anuncios.findAll(
+			{
+				raw:true,
+			 where:{cmp_id:req.session.user.id},
+			 attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
+			 include:[{
+				 model: db.empresas, 
+				 as: 'empresas',
+				 attributes: []
+				}]
+			})
 		.then(result => {
-			 
+			
 			res.render("empresa/anuncios", { anuncios: result });
 		})
+
 	},
 	anuncioDetalle: (req, res) => {
 		res.render("empresa/anuncioDetalle", { title: "Express" });

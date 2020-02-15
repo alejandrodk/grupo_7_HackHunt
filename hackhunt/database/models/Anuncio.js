@@ -57,7 +57,7 @@ module.exports = (sequelize, dataTypes) => {
     anuncio.associate = function(models){
         anuncio.belongsTo(models.empresas,{
             as: "empresas",
-            foreignKey: "id"
+            foreignKey: "cmp_id",
         }),
 
             anuncio.belongsToMany(models.skills,{

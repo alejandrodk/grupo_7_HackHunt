@@ -34,11 +34,6 @@ module.exports = {
         allowNull: false
     },
 
-    adv_skills: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-
     adv_skills_optionals: {
         type: Sequelize.STRING,
     },

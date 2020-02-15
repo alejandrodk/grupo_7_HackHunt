@@ -36,7 +36,9 @@
                     <div class="genero">
                         <label for="cmp_user_gender"><p>Genero</p></label>
                         <label for="radioH">Hombre</label>
-                        <input type="radio" name="cmp_user_gender" id="cmp_user_gender" value="H">
+
+                            <input type="radio" name="cmp_user_gender" checked id="cmp_user_gender" value="H">
+                       
                         <label for="radioM">Mujer</label>
                         <input type="radio" name="cmp_user_gender" id="cmp_user_gender" value="M">
                     </div>
@@ -51,15 +53,13 @@
                         <option value="RO">Rosario</option>
                     </select>
                     <input type="file" name="cmp_avatar" id="cmp_avatar" hidden>
-                    <button type="submit">Guardar</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-9 datos profesionales wrap">
+                    
+        
+        
             <h3>Datos de la Empresa</h3>
             <p id="DatosProfesionales"></p>
-            <div class="formulario">
-                <form action="/empresa/informacion/<%=empresa.cmp_id%>" method="post" class="wrap" enctype="multipart/form-data">
+        
+                
                     <label for="cmp_name"><p>Nombre / Razon Social</p></label>
                     <input type="text" name="cmp_name" id="cmp_name" value="<%=empresa.cmp_name%>"/>
                     <label for="cmp_cuit"><p>Cuit</p></label>
@@ -68,9 +68,8 @@
                     <input type="number" name="cmp_tel" id="cmp_tel" value="<%=empresa.cmp_tel%>" />
                     <label for="cmp_sector"><p>Rubro</p></label>
                     <input type="text" name="cmp_sector" id="cmp_sector" value="<%=empresa.cmp_sector%>" />
-                    <label for="cmp_description"><p>Descripción</p></label>
+                    <label for="cmp_description"><p>Descripción <small>Max 72 caracteres</small></p></label>
                     <textarea name="cmp_description" id="cmp_description" cols="30" rows="10"> <%=empresa.cmp_description%></textarea>
-                    <p>Max 72</p>
                     <label for="cmp_website"><p>Website</p></label>
                     <input type="text" name="cmp_website" id="cmp_website" value="<%=empresa.cmp_website%>" >
                     <label for="cmp_linkedin"><p>Linkedin</p></label>
@@ -79,10 +78,12 @@
                     <input type="text" name="cmp_facebook" id="cmp_facebook" value="<%=empresa.cmp_facebook%>">
                     <label for="cmp_instagram"><p>Instagram</p></label>
                     <input type="text" name="cmp_instagram" id="cmp_instagram" value="<%=empresa.cmp_instagram%>">
-                    <label for="cmp_avatar"><p>Subir Avatar</p></label>
+                    <label for="cmp_avatar"><p>Subir Avatar <small>(dejar vacío para mantener el avatar actual)</small></p></label>
                     <input type="file" name="cmp_avatar" id="cmp_avatar">
                     <button type="submit">Guardar</button>
+                
                 </form>
+            
             </div>
         </div>
 

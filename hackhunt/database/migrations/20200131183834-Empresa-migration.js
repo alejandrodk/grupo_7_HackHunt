@@ -16,6 +16,17 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
     },
+    cmp_user_gender: {
+      type: Sequelize.STRING,
+  },
+  cmp_user_dni:
+  {
+      type: Sequelize.INTEGER,
+  },
+  cmp_user_datebirth: {
+      type: Sequelize.STRING,
+      
+  },
 
     cmp_user_email: {
         type: Sequelize.STRING,
@@ -27,6 +38,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
     },
+    cmp_user_phone:{
+      type: dataTypes.STRING
+  },
+  cmp_user_city:{
+      type: dataTypes.STRING,
+  },
 
     cmp_name: {
         type: Sequelize.STRING,
@@ -46,6 +63,22 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
     },
+    cmp_website: {
+      type: dataTypes.STRING
+  },
+  cmp_linkedin: {
+      type: dataTypes.STRING
+  },
+  cmp_facebook: {
+      type: dataTypes.STRING
+  },
+  cmp_instagram: {
+      type: dataTypes.STRING
+  },
+  cmp_description: 
+        {
+            type:dataTypes.TEXT
+        },
 
     cmp_avatar: {
         type: Sequelize.STRING
