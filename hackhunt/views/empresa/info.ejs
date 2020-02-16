@@ -19,11 +19,10 @@
                 <a href="/empresa/informacion" id="select">Editar información</a>
                 <a href="/empresa/perfil/configuracion">Configuración</a>
             </div>
-        <div class="col-9 datos personales wrap">
+        <div class="col-xs-12 col-sx-12 col-md-9 col-lg-9 datos personales wrap">
             <h3>Datos del representante</h3>
             <p id="DatosPersonales"></p>
             <div class="formulario">
-               
                 <form action="/empresa/informacion/<%=empresa.cmp_id%>" method="post" class="wrap" enctype="multipart/form-data">
                     <label for="cmp_user_name"><p>Nombre</p></label>
                     <input type="text" name="cmp_user_name" id="cmp_user_name" value="<%=empresa.cmp_user_name%>">
@@ -36,9 +35,7 @@
                     <div class="genero">
                         <label for="cmp_user_gender"><p>Genero</p></label>
                         <label for="radioH">Hombre</label>
-
                             <input type="radio" name="cmp_user_gender" checked id="cmp_user_gender" value="H">
-                       
                         <label for="radioM">Mujer</label>
                         <input type="radio" name="cmp_user_gender" id="cmp_user_gender" value="M">
                     </div>
@@ -53,13 +50,8 @@
                         <option value="RO">Rosario</option>
                     </select>
                     <input type="file" name="cmp_avatar" id="cmp_avatar" hidden>
-                    
-        
-        
             <h3>Datos de la Empresa</h3>
             <p id="DatosProfesionales"></p>
-        
-                
                     <label for="cmp_name"><p>Nombre / Razon Social</p></label>
                     <input type="text" name="cmp_name" id="cmp_name" value="<%=empresa.cmp_name%>"/>
                     <label for="cmp_cuit"><p>Cuit</p></label>

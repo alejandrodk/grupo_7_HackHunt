@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2 panel">
+            <div class="col-xs-12 col-sx-12 col-md-2 col-lg-2 panel">
                 <div class="filtro">
                     <!-- consultar si conviene utilizar listas o inputs para filtros -->
                     <h3>Mostrar</h3>
@@ -47,7 +47,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-7 anuncios">
+            <div class="col-xs-12 col-sx-12 col-md-7 col-lg-7 anuncios">
                 <% for (const anuncio of anuncios) { %> 
                     <div class="item">
                         <a class="mod" href="anuncios/modificar/<%=anuncio.id%>">Modificar</a>
@@ -67,7 +67,7 @@
                     </div>
                 <% } %>
             </div>
-            <div class="col-3 candidatos wrap">
+            <div class="col-xs-12 col-sx-12 col-md-3 col-lg-3 candidatos wrap">
             <% for (const anuncio of anuncios) { %>
                     <div class="item">
                         <ul>

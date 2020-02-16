@@ -79,6 +79,10 @@
 .form-cont .skills label{
     width: 45%;
 }
+.form-cont .skills select {
+    width: 50%;
+    padding: 0 1%;
+}
 .form-cont .skills textarea{
     width: 45%;
     border: solid 1px white;
@@ -110,12 +114,12 @@
     width: 35%;
 }
 .form-cont .info label:first-child{
-    width: 25%!important;
-    padding: 0!important;
+    width: 25%;
+    padding: 0;
 }
 .form-cont .info input:nth-child(2){
-    width: 25%!important;
-    border-radius: 5px!important;
+    width: 25%;
+    border-radius: 5px;
 }
 /**/
 .form-cont .beneficios{
@@ -210,7 +214,48 @@
 }
 
 /* EXTRA SMALL----------------------------------------------------- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .separador .titulo {
+        display: none !important;
+    }
+    .container.detalle .relacionados{
+        display: none !important;
+    }
+    .form-cont label{
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .form-cont input{
+        width: 100% !important;
+    }
+    .form-cont .descrp,
+    .form-cont .skills {
+        border-bottom: none;
+    }
+    .form-cont .skills label{
+        width: 100%;
+        text-align: center;
+    }
+    .form-cont .skills label:nth-child(1) {
+        order: -1;
+    }
+    .form-cont .skills label:nth-child(2) {
+        order: 1;
+    }
+    .form-cont .skills select{
+        width: 100%;
+        border: solid 1px white;
+        border-radius: 5px;
+    }
+    .form-cont .skills select:nth-child(1) {
+        order: 0;
+    }
+    .form-cont .skills select:nth-child(2) {
+        order: 2;
+    }
+
+
+}
 
 /* SMALL-----------------------------------------------------------------*/
 @media (min-width: 769px) and (max-width: 991px) {}
