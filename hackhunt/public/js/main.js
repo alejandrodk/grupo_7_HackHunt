@@ -8,6 +8,8 @@ if(urlQuery.has('page')){
     if(urlQuery.get('page') == 0){
         buttonAnterior.style.display = 'none';
     }
+} else {
+    buttonAnterior.style.display = 'none';
 }
 
 
