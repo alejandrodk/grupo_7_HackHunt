@@ -14,34 +14,29 @@ const auth = ((req,res,next) => {
             db.clientes.findAll()
             .then( data => {
                 for(let i = 0; i<data.length;i++){
-          
                     if(bcrypt.compareSync(data[i].user_id.toString(),user_id)){
                         req.session.type_user = "cliente"; 
                         delete data[i].user_passwd;
                         req.session.user = data[i];
-                          return next();
+                        return next();
                     }
                 }
-                });
-            }
-            if(type_user == 'empresa'){
-                db.empresas.findAll()
+            });
+        }
+        if(type_user == 'empresa'){
+            db.empresas.findAll()
                 .then( data => {
-                   
                     for(let i = 0; i<data.length;i++){
-                       
-                  
                     if(bcrypt.compareSync(data[i].id.toString(),user_id)){
-                            
-                            req.session.type_user = "empresa"; 
-                            delete data[i].cmp_user_passwd;
-                            req.session.user = data[i];
-                            console.log("se crea req.session.user " + data[i].id);    
-                             return next();
+                         req.session.type_user = "empresa"; 
+                         delete data[i].cmp_user_passwd;
+                         req.session.user = data[i];
+                         console.log("se crea req.session.user " + data[i].id);    
+                        return next();
                         }
                     }
-                
-            })
+                }
+            )
         }
     } 
     else {
