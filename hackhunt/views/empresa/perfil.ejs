@@ -58,7 +58,7 @@
                             <%if(anuncios==''){%>
                             <%}else{%>
                             <% for (anuncio of anuncios) { %>
-                                <a class="anuncio" href="/detalle?id=<%= anuncio.adv_id %>">
+                                <a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                     <div class="item wrap">
                                         <h3><%= anuncio.adv_title %></h3>
                                         <p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>

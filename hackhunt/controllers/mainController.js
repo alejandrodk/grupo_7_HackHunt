@@ -31,7 +31,7 @@ const controller = {
 				include:[{model:db.empresas, as:'empresas',attributes:[]}]
 			})
 		.then(resultado =>{
-		
+			
 			res.render('main/detalleAnuncio', { anuncio: resultado });
 		})
 
@@ -232,9 +232,9 @@ const controller = {
 		.then(result => {
 			res.send(result)
 		})*/
-		db.empresas.findAll()
+		db.anuncios.findAll()
 			.then(result =>{
-				res.send(result)
+			return	res.send(result)
 			})
 			//let a  = new Date().toJSON().slice(0,10).replace(/-/g,'/')
 			
