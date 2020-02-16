@@ -15,6 +15,7 @@ const mainController = require("../controllers/mainController");
 router.get("/", mainController.home); //agregar querystrings a los filtros de la busqueda
 router.post("/", mainController.busquedaHome);
 router.get("/detalle", mainController.detalleAnuncio);
+router.get('/postulacion', mainController.postulacion);
 
 router.get("/login", soloGuest, mainController.loginUsuario);
 router.post("/login", validator.user_login, mainController.validarUsuario);

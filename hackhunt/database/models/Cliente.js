@@ -51,10 +51,10 @@ module.exports = (sequelize, dataTypes) => {
             timestamps : false
         }),
         Cliente.belongsToMany(modelos.anuncios,{
-            as : 'postulante',
+            as : 'candidato',
             through : 'postulantes',
             foreignKey  : 'cli_id',
-            otherKey : 'adv_cli',
+            otherKey : 'adv_id',
             timestamps : false
         }),
         Cliente.belongsToMany(modelos.skills,{

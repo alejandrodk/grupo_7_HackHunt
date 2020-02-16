@@ -59,14 +59,20 @@ module.exports = (sequelize, dataTypes) => {
             as: "empresas",
             foreignKey: "cmp_id",
         }),
-
-            anuncio.belongsToMany(models.skills,{
+        anuncio.belongsToMany(models.clientes,{
+            as : 'candidatos',
+            through : 'postulantes',
+            foreignKey : 'adv_id',
+            otherKey : 'cli_id',
+            timestamps : false
+        }),
+        anuncio.belongsToMany(models.skills,{
                 as : 'skills',
             through : 'anuncio_skill',
             foreignKey  : 'anuncio_id',
             otherKey : 'skill_id',
             timestamps : false
-            })
+        })
         
     }
 

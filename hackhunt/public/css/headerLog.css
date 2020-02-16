@@ -25,9 +25,6 @@ body{
 #huntLogo{
 	font-weight: 500;
 }
-.menu-mobile {
-	display: none;
-}
 .container.header .secciones {
 	justify-content: space-around;
 	align-items: center;
@@ -44,16 +41,44 @@ body{
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
-
+/* MENU MOBILE */
+.menu-mobile-icon {
+	display: none;
+}
+.container.header .secciones.mobile{
+	height: 0px;
+	overflow: hidden;
+}
+.container.header .secciones.mobile a {
+	width: 100%;
+	font-size: 18px;
+	text-align: center;
+}
+.container.header .secciones.mobile a:hover{
+	background-color: var(--main-bg-color-2);
+}
+.container.header .secciones.mobile{
+	display: none !important;
+}
+.activeMenu{
+	height: auto !important;
+	transition: all 1s;
+}
 /* EXTRA SMALL----------------------------------------------------- */
 @media (max-width: 768px) {
-	.container.header .info {
-		width: 90%;
+	.container.header .secciones {
+		display: none !important;
 	}
-	.menu-mobile {
+	.container.header .info {
+		width: 90% !important;
+	}
+	.menu-mobile-icon {
 		color: var(--main-texto-blanco);
 		width: 10%;
 		margin: auto;
+		display: block !important;
+	}
+	.container.header .secciones.mobile{
 		display: block !important;
 	}
 	.container.header .info {
@@ -68,6 +93,9 @@ body{
 @media (min-width: 769px) and (max-width: 991px) {
 	.container.header .secciones {
 		display: none !important;
+	}
+	.container.header .secciones.mobile{
+		display: block !important;
 	}
 	.container.header .info {
 		width: 90%;

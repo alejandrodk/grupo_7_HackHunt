@@ -179,7 +179,7 @@
     font-size: 15px;
 }
 /**/
-.postular button{
+.postular a{
 	width: 100px;
     height: 40px;
 	border-radius: 5px;
@@ -188,6 +188,7 @@
     background: linear-gradient(90deg, #e52e71, #ff8a00);
     color: white;
     border: solid 2px;
+    text-align: center;
 }
 
 /* EXTRA SMALL----------------------------------------------------- */

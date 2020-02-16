@@ -2,16 +2,18 @@ const db = require('../database/models');
 const actUserCv = require('../helpers/act_user_cv.js');
 const controller = {
     perfil: (req, res) => {
-        db.clientes.findOne({
-                where: {
-                    user_id: req.session.user.user_id
-                },
-                include: ['cliente_cv']
-            })
+        db.clientes.findOne({ where: { user_id: req.session.user.user_id },
+            include: ['cliente_cv'] })
             .then(user => {
-                return res.render('cliente/perfil', {
-                    user: user
-                })
+                db.postulantes.findAll({ where : { cli_id : user.user_id },
+                include: ['anuncios']})
+                    .then(postulaciones => {
+                        //return res.send(postulaciones)
+                        return res.render('cliente/perfil', {
+                            user: user,
+                            anuncios: postulaciones
+                        })
+                    })
             })
             .catch(error => {
                 return res.send(error)

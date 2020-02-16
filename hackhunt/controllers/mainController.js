@@ -36,6 +36,17 @@ const controller = {
 		})
 
 	},
+	postulacion: (req, res) => {
+		let anuncioId = req.query.anuncioId;
+		let userId = req.session.user.user_id;
+		db.postulantes.create({
+			adv_id : anuncioId,
+			cli_id : userId
+		})
+		.then(result => {
+			return res.redirect('/perfil/postulaciones')
+		})
+	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
 	},

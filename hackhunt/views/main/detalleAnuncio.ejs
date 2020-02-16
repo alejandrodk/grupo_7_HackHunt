@@ -5,6 +5,7 @@
     <%- include('../partials/head'); -%>
     <!--Luego hay que hacer una validación de sesión iniciada para mostrar un header u otro-->
     <link rel="stylesheet" href="/css/headerLog.css" />
+    <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/main/detalleAnuncio.css" />
 </head>
@@ -86,75 +87,11 @@
                         <p> <%= anuncio.adv_description %> </p>
                     </div>
                     <div class="postular">
-                        <form action="" method="post">
-                            <button type="submit">Postularme</button>
-                        </form>
+                        <a href="postulacion?anuncioId=<%= anuncio.id %>">Postularme</a>
                     </div>
                     <%  } %>
                 </div>
-                
-
                 <div class="col-3 relacionados wrap">
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
                     <a href="/detalle">
                         <div class="item">
                             <div class="img">
