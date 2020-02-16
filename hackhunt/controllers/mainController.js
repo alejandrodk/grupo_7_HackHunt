@@ -6,18 +6,6 @@ const mainHelps = require('../helpers/mainHelpers');
 
 const controller = {
 	home: (req, res) => {
-<<<<<<< HEAD
-		db.anuncios.findAll({
-			raw:true,
-			attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
-			include:[{model:db.empresas, as: 'empresas',attributes:[]}]
-		})
-		.then(resultado =>{
-			
-			res.render('main/index', { anuncios: resultado });
-		})
-	
-=======
 		let page = req.query.page != undefined ? req.query.page : 0;
 		let pagination = mainHelps.pagination(page);
 
@@ -29,7 +17,6 @@ const controller = {
 		.then(anuncios => {				
 			res.render('main/index', { anuncios, page });
 		})
->>>>>>> 6f789ac420f2a687638dbfdfeacd6c18a1f86712
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
