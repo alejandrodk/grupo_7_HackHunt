@@ -39,7 +39,7 @@ module.exports = {
     },
 
     adv_date_contract: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
     },
     
     adv_area: {
