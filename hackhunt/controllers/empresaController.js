@@ -115,9 +115,21 @@ const controller = {
 		
 	},
 	modificarPublicacion: (req, res) => {
+		let anuncios;
+		db.anuncios.findByPk(req.params.id,{
+			
+			include:[{model:db.skills,as:'skills',attributes:['skill_name']
+			}]
+		})
 
-		let publicacion = dbFunctions.getAnuncioById(req.params.id);
-		res.render("empresa/modificarPublicacion", { publicacion:publicacion, title: "Express" })
+		.then(resultado =>{
+			anuncios = resultado;
+			db.skills.findAll()
+			.then(skills=>{
+
+				return res.render("empresa/modificarPublicacion", { publicacion:anuncios,skills:skills, title: "Express" })
+			})
+		})
 	},
 	actualizarPublicacion: (req, res) => {
 		// actualizar info en la DB y enviar a la vista previa 

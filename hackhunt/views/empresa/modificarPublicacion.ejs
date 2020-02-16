@@ -35,8 +35,25 @@
 								<div class="skills wrap">
 									<label for="adv_skills"><p>Skills Excluyentes</p></label>
 									<label for="adv_skills_optionals"><p>Skills Deseables</p></label>
-									<textarea name="adv_skills" id="adv_skills" cols="30" rows="10"><%= publicacion.adv_skills%></textarea>
-									<textarea name="adv_skills_optionals" id="adv_skills_optionals" cols="30" rows="10"><%=publicacion.adv_skills_optionals%></textarea>
+									
+                                        <select name="adv_skills" id="adv_skills" multiple>
+										   <% for (let a = 0; a<publicacion.skills.length; a++){ %>
+											<% for(let i =0; i<skills.length; i++){ %>
+												<% if(skills[i].skill_name == publicacion.skills[a].skill_name){ %>		
+                                                <option value="<%= skills[i].skill_id %>" selected ="selected"><%= skills[i].skill_name %></option>
+											<%}else{%>
+												<option value="<%= skills[i].skill_id %>"><%= skills[i].skill_name %></option>
+											<%}}}%>
+
+                                        </select> 
+                                    
+									
+                                        <select name="adv_skills_optionals" id="adv_skills_optionals" multiple>
+                                            <% for(let i =0; i<skills.length; i++){ %>
+                                                
+                                                <option value="<%= skills[i].skill_id %>"><%= skills[i].skill_name %></option>
+                                            <%}%>
+                                        </select>
 								</div>
 								<div class="info wrap">
 									<label for="adv_date_contract"><p>Fecha de contratación</p></label>

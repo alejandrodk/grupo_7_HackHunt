@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-
+        
             <div class="row cuerpo">
 
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncio wrap">
@@ -37,9 +37,9 @@
                         <p class="not_found">Anuncio No encontrado</p>
                         <% }else{%>
                     <div class="avatar">
-                        <img src="/images/avatars/<%= anuncio.adv_cmp_avatar %>" alt="">
+                        <img src="/images/avatars/<%= anuncio.cmp_avatar %>" alt="">
                     </div>
-                        <div class="cabecera wrap">
+                    <div class="cabecera wrap">
                         <h1><%= anuncio.adv_title %></h1>
                         <h2><%= anuncio.adv_cmp_name %></h2>
                     </div> 
@@ -89,6 +89,7 @@
                             <button type="submit">Postularme</button>
                         </form>
                     </div>
+                    <%  } %>
                 </div>
                 
 
@@ -169,7 +170,7 @@
                         </div>
                     </a>
                 </div>
-                <%  } %>
+                
             </div>
        </div>
     </div>

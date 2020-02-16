@@ -6,18 +6,33 @@ const userCv = require('../helpers/user_cv.js');
 
 const controller = {
 	home: (req, res) => {
-		let anu = dbFunctions.getAllAnuncios();
+		db.anuncios.findAll({
+			raw:true,
+			attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
+			include:[{model:db.empresas, as: 'empresas',attributes:[]}]
+		})
+		.then(resultado =>{
+			
+			res.render('main/index', { anuncios: resultado });
+		})
 	
-		res.render('main/index', { anuncios: anu.file });
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
 		res.redirect('/');
 	},
 	detalleAnuncio: (req, res) => {
-		id = req.query.id;
-		let anu = dbFunctions.getAnuncioById(id);
-		res.render('main/detalleAnuncio', { anuncio: anu });
+		
+		db.anuncios.findByPk(req.query.id,
+			{
+				raw:true,
+				attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
+				include:[{model:db.empresas, as:'empresas',attributes:[]}]
+			})
+		.then(resultado =>{
+		
+			res.render('main/detalleAnuncio', { anuncio: resultado });
+		})
 	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
@@ -38,7 +53,7 @@ const controller = {
 					req.session.user = user;
 					req.session.type_user = 'cliente';
 					console.log('sesion creada con usuario: ' + req.session.user.user_name)
-					res.cookie('user_id', bcrypt.hashSync(toString(user.user_id),10),{maxAge: 1000 * 60 * 30 });
+					res.cookie('user_id', bcrypt.hashSync(user.user_id.toString(),10),{maxAge: 1000 * 60 * 30 });
 					console.log('cookie creada');
 					res.cookie('type_user','cliente',{maxAge: 1000 * 60 * 30 });
 					
@@ -151,7 +166,8 @@ const controller = {
 					
 					req.session.type_user = 'empresa';
 					req.session.user = empresa;
-					res.cookie('user_id', bcrypt.hashSync(toString(empresa.id),12),{maxAge: 1000 * 60 * 30 });
+					
+					res.cookie('user_id', bcrypt.hashSync(empresa.id.toString(),12),{maxAge: 1000 * 60 * 30 });
 					res.cookie('type_user', "empresa",{maxAge: 1000 * 60 * 30 });
 			        return res.redirect('/empresa/perfil');
 					
@@ -222,7 +238,7 @@ const controller = {
 					delete empresa.cmp_sector;
 			req.session.type_user = 'company';
 			req.session.data = empresa;
-			res.cookie('user_id', bcrypt.hashSync(toString(empresa.id),12),{maxAge: 1000 * 60 * 30 });
+			res.cookie('user_id', bcrypt.hashSync(empresa.id.toString(),12),{maxAge: 1000 * 60 * 30 });
 			return res.redirect('/empresa/perfil');
 		})
 		//si algo falla, se ve en consola el/los errores.
@@ -254,14 +270,13 @@ const controller = {
 		.then(result => {
 			res.send(result)
 		})*/
-		/*db.anuncios.findAll()
+		db.empresas.findAll()
 			.then(result =>{
 				res.send(result)
-			})*/
+			})
 			//let a  = new Date().toJSON().slice(0,10).replace(/-/g,'/')
 			
-			let a = new Date().toLocaleDateString().slice(0,10).split('-');
-			a = a[2] + '/' + a[1] + '/' + a[0];
+		
 			
 			
 	}

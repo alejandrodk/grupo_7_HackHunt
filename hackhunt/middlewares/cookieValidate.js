@@ -18,15 +18,11 @@ const auth = ((req,res,next) => {
             .then( data => {
                 for(let i = 0; i<data.length;i++){
           
-                    if(bcrypt.compareSync(toString(data[i].user_id),user_id)){
+                    if(bcrypt.compareSync(data[i].user_id.toString(),user_id)){
                         req.session.type_user = "cliente"; 
                         delete data[i].user_passwd;
                         req.session.user = data[i];
-<<<<<<< HEAD
                           return next();
-=======
-                        return next();
->>>>>>> 4ecc4c046566925bec369dbe5275ac958d040d87
                     }
                 }
                 });
@@ -36,16 +32,15 @@ const auth = ((req,res,next) => {
                 .then( data => {
                    
                     for(let i = 0; i<data.length;i++){
-                        if(bcrypt.compareSync(toString(data[i].id),user_id)){
+                       
+                  
+                    if(bcrypt.compareSync(data[i].id.toString(),user_id)){
+                            
                             req.session.type_user = "empresa"; 
                             delete data[i].cmp_user_passwd;
                             req.session.user = data[i];
                             console.log("se crea req.session.user " + data[i].id);    
-<<<<<<< HEAD
                              return next();
-=======
-                            return next();
->>>>>>> 4ecc4c046566925bec369dbe5275ac958d040d87
                         }
                     }
                     });
