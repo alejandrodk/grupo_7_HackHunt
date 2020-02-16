@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt');
-const dbFunctions = require('../helpers/readjson.js');
 const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
 const userCv = require('../helpers/user_cv.js');
+const mainHelps = require('../helpers/mainHelpers');
 
 const controller = {
 	home: (req, res) => {
+<<<<<<< HEAD
 		db.anuncios.findAll({
 			raw:true,
 			attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
@@ -16,6 +17,19 @@ const controller = {
 			res.render('main/index', { anuncios: resultado });
 		})
 	
+=======
+		let page = req.query.page != undefined ? req.query.page : 0;
+		let pagination = mainHelps.pagination(page);
+
+		db.anuncios.findAll({
+			offset : pagination.offset,
+			limit : pagination.limit,
+			include : ['empresas']
+		})
+		.then(anuncios => {				
+			res.render('main/index', { anuncios, page });
+		})
+>>>>>>> 6f789ac420f2a687638dbfdfeacd6c18a1f86712
 	},
 	busquedaHome: (req, res) => {
 		// traer datos enviados en la barra de busqueda y mostrar resultados
@@ -33,6 +47,7 @@ const controller = {
 		
 			res.render('main/detalleAnuncio', { anuncio: resultado });
 		})
+
 	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
@@ -123,32 +138,7 @@ const controller = {
 		res.render('main/loginEmpresa', { title: 'Express' });
 	},
 	validarEmpresa: (req,res) => {
-		/*const errors = validationResult(req);
 
-		if(errors.isEmpty()){
-			let users = dbFunctions.getAllCompanies();
-			let user = users.file.filter(item => item.cmp_user_email == req.body.cmp_user_email);
-			let login = loginFunctions.checkLogin(req,user[0]);
-			if(login) 
-			{
-				req.session.data = user[0];
-				req.session.user_email = user[0].cmp_user_email;
-				req.session.type_user = user[0].type;
-				
-				hashed_id = bcrypt.hashSync("fede" ,12);
-				
-				res.cookie('user_id',hashed_id,{maxAge:60000000});
-
-				return res.redirect('/empresa/perfil');
-			}
-			else
-			{
-				return res.redirect('/empresa/login');
-			}
-		} else{
-			res.render('main/loginEmpresa', { errors: errors.array() });
-		}*/
-		
 		db.empresas.findOne({
 			where: {
 				cmp_user_email: req.body.cmp_user_email,
@@ -189,49 +179,24 @@ const controller = {
 		res.render('main/registroEmpresa', { title: 'Express' });
 	},
 	valRegEmpresa: (req,res) => {
-		/*const errors = validationResult(req);
 
-		if(errors.isEmpty()){
-
-			let allCompanies = dbFunctions.getAllCompanies();
-			var newid = dbFunctions.getNewId(allCompanies);
-			req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
-			let newCompany = {
-				cmp_id: newid,
-				...req.body,
-				cmp_avatar: req.file.filename
-			};
-			
-			dbFunctions.writeFile(newCompany,allCompanies);
-			
-			res.redirect('/');
-		} else {
-			res.render('main/registroEmpresa', { errors: errors.array() });
-		}*/
-
-		
-		//busco si hay un cliente con el mismo email que se quiere registrar.
 		 db.empresas.findOne({
 			 where:{cmp_user_email:req.body.cmp_user_email}
 		 })
 		 .then(resultado => {
-			 //verifico si no existe registro en la db con el mismo email
 			 if(resultado == null)
 			 {
-				 //hasheo el passwd y creo el nuevo usuario. se guarda en la db
 				req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
 				const user = db.empresas.create({...req.body,cmp_avatar:req.file.filename})
 				return user;
 			}
 			 else
 			 {
-				 //si existe registro con el email, se vuelve al form con el error.
 				 res.render('main/registroEmpresa',{errors:[{msg:"Email en uso"}]})
 			 }
 			 
 		 })
 		 .then(empresa => {
-			 //cuando termina de crearse el usuario nuevo, se pasan los datos a sesion y se redirecciona.
 			 		delete empresa.cmp_user_passw;
 					delete empresa.cmp_cuit;
 					delete empresa.cmp_tel;
@@ -241,7 +206,6 @@ const controller = {
 			res.cookie('user_id', bcrypt.hashSync(empresa.id.toString(),12),{maxAge: 1000 * 60 * 30 });
 			return res.redirect('/empresa/perfil');
 		})
-		//si algo falla, se ve en consola el/los errores.
 		 .catch(error =>{
 			 console.log(error);
 		 })

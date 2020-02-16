@@ -1,8 +1,5 @@
-
-
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
-
 
 const auth = ((req,res,next) => {
     console.log('----------------Cookie validate--------------')
@@ -43,15 +40,13 @@ const auth = ((req,res,next) => {
                              return next();
                         }
                     }
-                    });
                 }
+            })
+        }
     } 
-    else{
+    else {
        return next();
     }
-          
-       
-    
 });
 
 module.exports = auth;

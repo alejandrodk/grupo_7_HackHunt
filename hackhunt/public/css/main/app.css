@@ -186,7 +186,19 @@
     text-align: right;
 }
 
-
+/*PAGINACION*/
+.pagination {
+	width: 100%;
+	justify-content: center;
+}
+.pagination a {
+	margin: 1%;
+	background: var(--main-color-verde);
+	padding: 1%;
+	border-radius: 5px;
+	text-decoration: none;
+	color: var(--main-bg-color);
+}
 /* EXTRA SMALL----------------------------------------------------- */
 @media (max-width: 768px) {
     /*BARRA BUSQUEDA */
