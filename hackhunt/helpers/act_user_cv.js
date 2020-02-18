@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const bcrypt = require('bcrypt');
 
 module.exports = {
     actualizarCv : (form,info,id) => {
@@ -85,5 +86,37 @@ module.exports = {
             return '#Skills';
         } 
 
+    },
+    actualizarConfig : (form,info,id,passwd,res) => {
+        if(form == 'mail'){
+            db.clientes.update({
+                user_email : info.user_email
+            },{
+                where : {
+                    user_id : id
+                }
+            })
+            return '#email';
+        }
+        if(form == 'passwd'){
+            if(bcrypt.compareSync(info.user_last_passwd,passwd)){
+                if(info.user_new_passwd === info.user_repeat_passwd){
+
+                    db.clientes.update({
+                        user_passwd : bcrypt.hashSync(info.user_new_passwd,10)
+                    },{
+                        where : {
+                            user_id : id
+                        }
+                    })
+                    console.log('Password actualizado');
+                    return '#passwd';
+                } else {
+                    res.send('Las contrasenas no son iguales')
+                }
+            } else {
+                res.send('La contrasena anterior es errada')
+            }
+        }
     }
 }
