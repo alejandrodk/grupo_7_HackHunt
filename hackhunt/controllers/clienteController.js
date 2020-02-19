@@ -1,6 +1,7 @@
 const db = require('../database/models');
 const sequelize = db.sequelize;
 const actUserCv = require('../helpers/act_user_cv.js');
+
 const controller = {
     perfil: (req, res) => {
         /*db.clientes.findOne({ where: { user_id: req.session.user.user_id },
@@ -98,14 +99,22 @@ const controller = {
         });
     },
     configuracion: (req, res) => {
-        res.render('cliente/config', {
-            title: 'Config'
-        });
+        db.clientes.findOne({ where : { user_id : req.session.user.user_id}})
+        .then(user => {
+            res.render('cliente/config', {
+                user
+            });
+        })
     },
     actConfig: (req, res) => {
-        // consultar DB y traer la info en los inputs que apliquen
-        // actualizar informacion en la DB
-        res.redirect('/perfil/configuracion');
+        let tipoForm = req.query.form;
+        let contentForm = req.body;
+        let idUser = req.session.user.user_id;
+        db.clientes.findOne({where: { user_id : req.session.user.user_id}})
+        .then(result => {
+            let urlAncla = actUserCv.actualizarConfig(tipoForm,contentForm,idUser,result.user_passwd,res);
+            res.redirect('/perfil/configuracion/' + urlAncla);
+        })
     },
 
 };

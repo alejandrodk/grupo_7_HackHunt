@@ -38,20 +38,22 @@
                     <p id="perfil"></p>
                 </div>
                 <div class="item perfil">
+                    <p id="email"></p>
                     <h4>Cambiar Email</h4>
                     <p>Ingresá la nueva dirección email para tu cuenta</p>
-                    <form action="?_method=PUT" method="post">
-                        <input type="email" name="" id="">
+                    <form action="?_method=PATCH&form=mail" method="post">
+                        <input type="email" name="user_email" id="user_email" value="<%= user.user_email %>">
                         <button type="submit">Cambiar Email</button>
                     </form>
                 </div>
                 <div class="item clave">
+                    <p id="passwd"></p>
                     <h4>Cambiar contraseña</h4>
                     <p>Ingresá tu contraseña actual seguida de tu nueva contraseña</p>
-                    <form action="?_method=PUT" method="post">
-                        <input type="password" name="" id="" placeholder="Contraseña anterior">
-                        <input type="password" name="" id="" placeholder="Nueva contraseña">
-                        <input type="password" name="" id="" placeholder="Repetir contraseña">
+                    <form action="?_method=PATCH&form=passwd" method="post">
+                        <input type="password" name="user_last_passwd" id="user_last_passwd" placeholder="Contraseña anterior">
+                        <input type="password" name="user_new_passwd" id="user_new_passwd" placeholder="Nueva contraseña">
+                        <input type="password" name="user_repeat_passwd" id="user_repeat_passwd" placeholder="Repetir contraseña">
                         <button type="submit">Cambiar contraseña</button>
                     </form>
                 </div>
