@@ -24,14 +24,14 @@ const controller = {
 	},
 	detalleAnuncio: (req, res) => {
 		
-		db.anuncios.findByPk(req.query.id,
+		db.anuncios.findByPk(82,
 			{
 				raw:true,
 				attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
 				include:[{model:db.empresas, as:'empresas',attributes:[]}]
 			})
 		.then(resultado =>{
-			
+			 
 			res.render('main/detalleAnuncio', { anuncio: resultado });
 		})
 

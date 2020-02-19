@@ -99,16 +99,17 @@
                         <div class="postulaciones wrap">
                             <strong><p>Últimas postulaciones</p></strong>
                             <a href="/postulaciones">ver más</a>
-                            <% for(let anuncio of anuncios){ %>
-                                <a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
-                                    <div class="item wrap">
-                                        <h3><%= anuncio.adv_title %></h3>
-                                        <p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
-                                        <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%=  %></p>
-                                        <i class="far fa-eye" title="Visto por la empresa"></i>
-                                    </div>
-                                </a> 
-                            <% } %>                                                   
+                      
+                           <% for(let anuncio of user.candidato){ %>
+                            <a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
+                                <div class="item wrap">
+                                    <h3><%= anuncio.adv_title %>  <%=anuncio.created_at%></h3>
+                                    <p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%=  %></p>
+                                    <i class="far fa-eye" title="Visto por la empresa"></i>
+                                </div>
+                            </a> 
+                        <% } %>                                                 
                         </div>
                     </div>
                 </div>

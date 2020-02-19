@@ -148,8 +148,13 @@ const controller = {
 
 	borrarPublicacion: (req,res) =>
 	{
-		dbFunctions.deleteAnuncio(req.params.id);
-		return res.redirect("/empresa/perfil");
+		db.anuncios.destroy({
+			where: {id: req.params.id}
+		})
+		.then(()=>{
+
+			return res.redirect("/empresa/perfil");
+		})
 	},
 	postulantes: (req, res) => {
 		res.render("empresa/postulantes", { title: "Express" });
