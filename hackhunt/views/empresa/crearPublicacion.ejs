@@ -79,81 +79,25 @@
 					</div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 relacionados wrap">
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                    <% for(let i = 0; i< anuncios.length;i++){ %>
+
+                        <a href="/detalle">
+                            <div class="item">
+                                <div class="img">
+                                    <img src="/images/avatars/<%=anuncios[i].cmp_avatar %>" alt="">
+                                </div>
+                                <div class="info">
+                                    <h3>Desarrollador Web - Full Stack</h3>
+                                    <p>Digital House</p>
+                                    <ul>
+                                        <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
+                                        <li><i class="fas fa-briefcase"></i> Full Time</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detalle">
-                        <div class="item">
-                            <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
-                            </div>
-                            <div class="info">
-                                <h3>Desarrollador Web - Full Stack</h3>
-                                <p>Digital House</p>
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    <% } %>
+                    
                 </div>
             </div>
        </div>

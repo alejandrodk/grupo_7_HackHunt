@@ -67,7 +67,18 @@ const controller = {
 	crearPublicacion: (req, res) => {
 		db.skills.findAll()
 		.then(skills =>{
-			res.render("empresa/crearPublicacion", { title: "Express", skills: skills });
+			db.anuncios.findAll(
+				{
+					raw:true,
+					where:{cmp_id:req.session.user.id},
+					attributes:{include:[db.Sequelize.col("empresas.cmp_avatar")]}, 
+					include:[{model:db.empresas,as:"empresas",attributes:[]}]
+				}
+			)
+			.then(anuncios =>{
+				
+				res.render("empresa/crearPublicacion", { title: "Express", skills: skills, anuncios:anuncios });
+			})
 		})
 	},
 	postearPublicacion : (req,res) => {
