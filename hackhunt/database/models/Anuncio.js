@@ -50,6 +50,9 @@ module.exports = (sequelize, dataTypes) => {
         adv_advantage : {
             type: dataTypes.STRING,
             allowNull: false
+        },
+        skills : {
+            type: dataTypes.STRING,
         }
     }
     const anuncio = sequelize.define(alias,cols,{ tableName:'anuncios', timestamps: false});
@@ -65,14 +68,14 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey : 'adv_id',
             otherKey : 'cli_id',
             timestamps : false
-        }),
-        anuncio.belongsToMany(models.skills,{
+        })
+      /*   anuncio.belongsToMany(models.skills,{
                 as : 'skills',
             through : 'anuncio_skill',
             foreignKey  : 'anuncio_id',
             otherKey : 'skill_id',
             timestamps : false
-        })
+        }) */
         
     }
 

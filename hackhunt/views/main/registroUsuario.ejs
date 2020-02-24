@@ -4,6 +4,8 @@
 <head>
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/main/registroUsuario.css" />
+    <script src="/js/validations/userRegisterValidation.js"></script>
+    <script src="/js/validations/validator.min.js"></script>
 </head>
 <body>
 <!-- CÓDIGO -->
@@ -20,19 +22,25 @@
                     </div> 
                     <% } %>
                 <div class="formulario wrap">
-                    <form action="/registro" method="post" enctype="multipart/form-data">
+                    <form action="/registro" method="post" enctype="multipart/form-data" id="registerForm">
                     <label for="user_name"><p>Nombre</p></label>
-                    <input type="text" name="user_name" id="user_name">
+                    <input type="text" name="user_name" id="user_name" data-name="Nombre">
+                    <p style="color: white;"></p>
                     <label for="user_lastname"><p>Apellido</p></label>
-                    <input type="text" name="user_lastname" id="user_lastname">
+                    <input type="text" name="user_lastname" id="user_lastname" data-name="Apellido">
+                    <p style="color: white;"></p>
                     <label for="user_email"><p>Email</p></label>
-                    <input type="email" name="user_email" id="user_email">
+                    <input type="email" name="user_email" id="user_email" data-name="Email">
+                    <p style="color: white;"></p>
                     <label for="user_passwd"><p>Clave</p></label>
-                    <input type="password" name="user_passwd" id="user_passwd">
+                    <input type="password" name="user_passwd" id="user_passwd" data-name="Clave">
+                    <p style="color: white;"></p>
                     <label for="user_avatar"><p>Subir Avatar</p></label>
-                    <input type="file" name="user_avatar" id="user_avatar">
+                    <input type="file" name="user_avatar" id="user_avatar" data-name="Avatar">
+                    <p style="color: white;"></p>
                     <button type="submit">Comenzar</button>
                     <button type="reset">Limpiar</button>
+                    <p id="errorMsg" style="color: white;"></p>
                 </form>
                 </div>
             </div>

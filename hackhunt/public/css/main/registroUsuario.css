@@ -41,9 +41,11 @@ body{
     width: 100%;
     background: transparent;
     border: solid 1px var(--main-texto-blanco);
+    color: var(--main-texto-blanco);
 }
 .container .registro input:focus {
     background: var(--main-texto-blanco);
+    color: var(--main-bg-color);
 }
 .container .registro button{
     width: 25%;
@@ -85,7 +87,12 @@ body{
 #google:hover {
     background: rgb(212, 17, 17) ; 
 }
-
+.is-invalid{
+    border:solid 2px var(--main-color-rosa) !important;
+}
+.is-valid{
+    border:solid 2px var(--main-color-verde) !important;
+}
 /* EXTRA SMALL----------------------------------------------------- */
 @media (max-width: 768px) {
     .container .registro button{

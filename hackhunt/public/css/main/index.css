@@ -67,16 +67,22 @@
     height: 35px;
 	border-radius: 8px;
 }
-.filtrosAct .item a {
+.filtrosAct .item a{
+    text-decoration: none;
+    color: var(--main-bg-color);
+}
+.filtrosAct .item #deleteFilter {
     position: absolute;
-    top: -13px;
-    right: 0;
-    background: white;
-    width: 15px;
-    height: 15px;
-    font-size: 11px;
-    border-radius: 50%;
-    text-align: center;
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	top: -10px;
+	right: -5px;
+	font-size: 10px;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	background: var(--main-color-rosa);
 }
 /*MENU LATERAL*/
 .container-fluid.cuerpo .menu dl{
@@ -94,6 +100,11 @@
 }
 .container-fluid.cuerpo .menu dd{
 	padding-left: 5px;
+}
+.container-fluid.cuerpo .menu dd a{
+    text-decoration: none;
+    color: var(--main-bg-color);
+    font-size: 15px;
 }
 #cant {
     color: gray;
@@ -119,6 +130,11 @@
 }
 .container-fluid.cuerpo .resultados .barra dd{
     margin: 1%;
+}
+.container-fluid.cuerpo .resultados .barra dd a{
+    text-decoration: none;
+    color: var(--main-bg-color);
+    font-size: 15px;
 }
 /*RESULTADOS - ANUNCIOS*/
 .container-fluid.cuerpo .resultados .anuncios a{

@@ -3,17 +3,20 @@ const express = require("express");
 const router = express.Router();
 const upload = require('../middlewares/multer.js');
 const soloGuest = require('../middlewares/soloGuest');
-const auth = require('../middlewares/auth');
-const cookies_mid = require('../middlewares/cookieValidate');
 const { check, body } = require('express-validator');
 const validator = require('../middlewares/form_validators');
+const filtrarBusqueda = require('../middlewares/filtrarBusqueda');
 
 // ************ Controller Require ************
 const mainController = require("../controllers/mainController");
 
 // ************ Router's ************ 
-router.get("/", mainController.home); //agregar querystrings a los filtros de la busqueda
-router.post("/", mainController.busquedaHome);
+router.get("/", filtrarBusqueda , mainController.home); 
+router.get("/publicacion/:dateFilter", filtrarBusqueda , mainController.home);
+router.get("/jornada/:workdayFilter", filtrarBusqueda , mainController.home);
+router.get("/skill/:skillFilter", filtrarBusqueda , mainController.home);
+router.get("/experiencia/:levelFilter", filtrarBusqueda , mainController.home);
+
 router.get("/detalle", mainController.detalleAnuncio);
 router.get('/postulacion', mainController.postulacion);
 

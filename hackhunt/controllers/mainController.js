@@ -2,25 +2,22 @@ const bcrypt = require('bcrypt');
 const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
 const userCv = require('../helpers/user_cv.js');
-const mainHelps = require('../helpers/mainHelpers');
+const busquedaAnuncios = require('../helpers/busquedaFilter');
 
 const controller = {
 	home: (req, res) => {
-		let page = req.query.page != undefined ? req.query.page : 0;
-		let pagination = mainHelps.pagination(page);
+		let 
+			page = req.query.page != undefined ? req.query.page : 0;
+			busquedas = req.session.busquedas != undefined ? req.session.busquedas.filtros : [];
 
-		db.anuncios.findAll({
-			offset : pagination.offset,
-			limit : pagination.limit,
-			include : ['empresas']
+		busquedaAnuncios(req)
+		.then(anuncios => {
+			res.render('main/index',{
+				busquedas,
+				anuncios,
+				page
+			})
 		})
-		.then(anuncios => {				
-			res.render('main/index', { anuncios, page });
-		})
-	},
-	busquedaHome: (req, res) => {
-		// traer datos enviados en la barra de busqueda y mostrar resultados
-		res.redirect('/');
 	},
 	detalleAnuncio: (req, res) => {
 		
