@@ -4,6 +4,8 @@
 <head>
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/main/loginUsuario.css" />
+    <script src="/js/validations/userLoginValidation.js"></script>
+    <script src="/js/validations/validator.min.js"></script>
 </head>
 
 <body>
@@ -22,16 +24,19 @@
                 <% } %>
                 <div class="item login">
                     <h3>Ingresá a tu cuenta</h3>
-                    <form action="login" method="POST">
+                    <form action="login" method="POST" id="loginForm">
                         <label for="user_email">
                             <p>Correo</p>
                         </label>
-                        <input type="email" name="user_email" id="user_email" placeholder="">
+                        <input type="email" name="user_email" id="user_email" placeholder="" data-name="Email">
+                        <p class="errorMsgEmail" style="color: white;"></p>
                         <label for="user_passwd">
                             <p>Clave</p>
                         </label>
-                        <input type="password" name="user_passwd" id="user_passwd">
-                        <button type="submit">POST</button>
+                        <input type="password" name="user_passwd" id="user_passwd" data-name="Clave">
+                        <p class="errorMsgPasswd" style="color: white;"></p>
+                        <button type="submit" id="submitForm">POST</button>
+                        <p id="errorMsg" style="color: white;"></p>
                     </form>
                 </div>
                 <div class="item lostpas">

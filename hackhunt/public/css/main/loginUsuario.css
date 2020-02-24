@@ -44,10 +44,12 @@ body{
     border-radius: 5px;
     width: 70%;
     background: transparent;
+    color: var(--main-texto-blanco);
     border: solid 1px var(--main-texto-blanco);
 }
 .container .formularios input:focus {
     background: var(--main-texto-blanco);
+    color: var(--main-bg-color);
 }
 .container .formularios button{
     width: 70%;
@@ -130,7 +132,12 @@ body{
     color: var(--main-texto-blanco);
 }
 
-
+.is-invalid{
+    border:solid 2px var(--main-color-rosa) !important;
+}
+.is-valid{
+    border:solid 2px var(--main-color-verde) !important;
+}
 /* EXTRA SMALL----------------------------------------------------- */
 @media (max-width: 768px) {
     .container > .row{
