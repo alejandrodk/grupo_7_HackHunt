@@ -4,7 +4,8 @@ window.onload = function () {
     let formInputs = Array.from(form.elements);
      
 	formInputs.pop();
-	formInputs.pop();
+    formInputs.pop();
+    formInputs.pop();
 	
 
 	let errores = {};
@@ -73,4 +74,3 @@ window.onload = function () {
  		
 	})
 }
-

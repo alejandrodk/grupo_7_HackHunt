@@ -49,6 +49,12 @@ body {
 .container .formularios input:focus {
 	background: var(--main-texto-blanco);
 }
+.is-invalid{
+    border:solid 2px var(--main-color-rosa) !important;
+}
+.is-valid{
+    border:solid 2px var(--main-color-verde) !important;
+}
 .container .formularios button {
 	width: 70%;
 	height: 36px;

@@ -45,6 +45,12 @@ body {
 .container .registro input:focus {
 	background: var(--main-texto-blanco);
 }
+.is-invalid{
+    border:solid 2px var(--main-color-rosa) !important;
+}
+.is-valid{
+    border:solid 2px var(--main-color-verde) !important;
+}
 .container .registro button {
 	width: 25%;
 	height: 36px;

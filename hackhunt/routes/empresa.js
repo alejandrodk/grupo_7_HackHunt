@@ -19,6 +19,7 @@ router.get("/anuncios/crear",soloEmpresa, empresaController.crearPublicacion);
 router.post("/anuncios/crear", soloEmpresa, empresaController.postearPublicacion);
 router.get("/anuncios/modificar/:id",soloEmpresa, empresaController.modificarPublicacion);
 router.post("/anuncios/modificar/:id",soloEmpresa, empresaController.actualizarPublicacion);
+router.patch("/anuncios/modificar/skills",soloEmpresa,empresaController.adv_modificarSkills)
 router.get("/anuncios/delete/:id",soloEmpresa, empresaController.borrarPublicacion);
 router.get("/anuncios/postulantes",soloEmpresa, empresaController.postulantes);
 router.get("/anuncios/postulantes/CV", soloEmpresa, empresaController.postulantesDetalle);

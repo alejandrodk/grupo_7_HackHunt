@@ -1,11 +1,10 @@
 window.onload = function () {
     let errorMsg = document.querySelector('#errorMsg');
-	let form = document.querySelector('#registerForm');
-    let formInputs = Array.from(form.elements);
-     
-	formInputs.pop();
-	formInputs.pop();
-	
+	let form = document.querySelector('#loginForm');
+	let formInputs = Array.from(form.elements);
+    formInputs.pop();
+    formInputs.pop();
+    formInputs.pop();
 
 	let errores = {};
 
@@ -71,6 +70,6 @@ window.onload = function () {
             errorMsg.innerHTML = 'Uno o mas campos contienen errores'
 		}
  		
-	})
+	}) 
 }
 

@@ -3,6 +3,8 @@
 	<head>
 		<%- include('../partials/head'); -%>
 		<link rel="stylesheet" href="/css/main/registroEmpresa.css" />
+		<script src="/js/validations/empresaRegisterValidation.js"></script>
+    <script src="/js/validations/validator.min.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -18,34 +20,46 @@
 						</div>
 						<% } %>
 					<div class="formulario wrap">
-						<form action="/empresa/registro" method="post" enctype="multipart/form-data">
+						<form action="/empresa/registro" method="post" enctype="multipart/form-data" id="registerForm">
 							<h3 class="separador-categoria">Información de contacto del representante</h3>
 							<label for="cmp_user_name"><p>Nombre</p></label>
-							<input type="text" name="cmp_user_name" id="cmp_user_name" />
+							<input type="text" name="cmp_user_name" id="cmp_user_name" data-name="Nombre" />
+							<p style="color: white;"></p>
 							<label for="cmp_user_lastname"><p>Apellido</p></label>
-							<input type="text" name="cmp_user_lastname" id="cmp_user_lastname" />
+							<input type="text" name="cmp_user_lastname" id="cmp_user_lastname" data-name="Apellido"/>
+							<p style="color: white;"></p>
 							<label for="cmp_user_email"><p>Email</p></label>
-							<input type="email" name="cmp_user_email" id="cmp_user_email" />
+							<input type="email" name="cmp_user_email" id="cmp_user_email" data-name="Email"/>
+							<p style="color: white;"></p>
 							<label for="cmp_user_passwd"><p>Clave</p></label>
-							<input type="password" name="cmp_user_passwd" id="cmp_user_passwd" />
+							<input type="password" name="cmp_user_passwd" id="cmp_user_passwd" data-name="Clave"/>
+							<p style="color: white;"></p>
+							
 							<h3 class="separador-categoria">Datos de empresa</h3>
 							<label for="cmp_name"><p>Razon Social</p></label>
-							<input type="text" name="cmp_name" id="cmp_name" />
+							<input type="text" name="cmp_name" id="cmp_name" data-name="Razon Social"/>
+							<p style="color: white;"></p>
 							<label for="cmp_cuit"><p>Cuit</p></label>
-							<input type="text" name="cmp_cuit" id="cmp_cuit" />
+							<input type="text" name="cmp_cuit" id="cmp_cuit" data-name="Cuit"/>
+							<p style="color: white;"></p>
 							<label for="cmp_tel"><p>Teléfono</p></label>
-							<input type="number" name="cmp_tel" id="cmp_tel" />
+							<input type="number" name="cmp_tel" id="cmp_tel" data-name="Teléfono"/>
+							<p style="color: white;"></p>
 							<label for="cmp_sector"><p>Rubro</p></label>
-							<input type="text" name="cmp_sector" id="cmp_sector" />
+							<input type="text" name="cmp_sector" id="cmp_sector" data-name="Rubro"/>
+							<p style="color: white;"></p>
 							<label for="cmp_web"><p>Pagina Web</p></label>
-							<input type="text" name="cmp_website" id="cmp_website" />
+							<input type="text" name="cmp_website" id="cmp_website" data-name="Página Web"/>
+							<p style="color: white;"></p>
 							<label for="cmp_avatar"><p>Subir Avatar</p></label>
-							<input type="file" name="cmp_avatar" id="cmp_avatar" required >
+							<input type="file" name="cmp_avatar" id="cmp_avatar" data-name="Avatar">
+							<p style="color: white;"></p>
 							<label for="cmp_description"><p>Detalle de la Empresa</p></label>
 							<textarea name="cmp_description" rows="3" cols="80" id="cmp_description" maxlength="72"></textarea>
 							<label><small style="color:darkgrey;float:right">maximo 72 caracteres</small></label>
 							<button type="submit">Comenzar</button>
 							<button type="reset">Limpiar</button>  
+							<p id="errorMsg" style="color: white;"></p>
 						</form>
 					</div>
 				</div>

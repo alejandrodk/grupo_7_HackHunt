@@ -6,7 +6,8 @@
     <!--Luego hay que hacer una validación de sesión iniciada para mostrar un header u otro-->
 	<link rel="stylesheet" href="/css/headerLog.css" />
 	<link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/empresa/crearPublicacion.css" />
+	<link rel="stylesheet" href="/css/empresa/crearPublicacion.css" />
+	 
 </head>
 <!-- CÓDIGO -->
 <body>
@@ -23,7 +24,7 @@
             <div class="row cuerpo">
                 <div class="col-9 wrap">
 					<div class="anuncio wrap"> 
-						<form action="/empresa/anuncios/modificar/<%=publicacion.adv_id%>" method="post">
+						<form action="/empresa/anuncios/modificar/<%=publicacion.id%>" method="post">
 							<div class="form-cont wrap">
 								<div class="titulo wrap">
 									<label for="adv_title"><p>Título</p></label>
@@ -32,28 +33,34 @@
 								<div class="descrp wrap">
 									<textarea name="adv_description" id="adv_description" cols="30" rows="10" placeholder="Descripción"><%= publicacion.adv_description %></textarea>
 								</div>
-								<div class="skills wrap">
-									<label for="adv_skills"><p>Skills Excluyentes</p></label>
-									<label for="adv_skills_optionals"><p>Skills Deseables</p></label>
+								<div class=" datos skills wrap">
+									<div class="titulo wrap">
+									<label for="skills"><p>Skills</p></label>
+								</div>
+									<div class="formulario">
+										
+											<label for="">Agregar Skill</label>
+											<select name="skill_id" id="skill_id">
+												
+												<% skills.forEach(skill => { %>
+													<option value="<%= skill.skill_id %>"><%= skill.skill_name %></option>
+												<% }) %> 
+											</select>
+											<span id="adItem">+</span>
+										
+									</div>
 									
-                                        <select name="adv_skills" id="adv_skills" multiple>
-										   <% for (let a = 0; a<publicacion.skills.length; a++){ %>
-											<% for(let i =0; i<skills.length; i++){ %>
-												<% if(skills[i].skill_name == publicacion.skills[a].skill_name){ %>		
-                                                <option value="<%= skills[i].skill_id %>" selected ="selected"><%= skills[i].skill_name %></option>
-											<%}else{%>
-												<option value="<%= skills[i].skill_id %>"><%= skills[i].skill_name %></option>
-											<%}}}%>
-
-                                        </select> 
-                                    
+										<div class="areas">
+											<p>Tus Skills</p>
+											<% publicacion.adv_skills.forEach(skill => { %>                     
+												<div class="item">
+													<a id="deleteSkill">X</a>
+													<h2 id="<%=skill.skill_id%>"><%= skill.skill_name  %> </h2>
+												</div>
+												<input type="hidden" name="elskill" value="<%=skill.skill_id%>" class="hiddenSkill">
+											<% }) %>
+										</div>
 									
-                                        <select name="adv_skills_optionals" id="adv_skills_optionals" multiple>
-                                            <% for(let i =0; i<skills.length; i++){ %>
-                                                
-                                                <option value="<%= skills[i].skill_id %>"><%= skills[i].skill_name %></option>
-                                            <%}%>
-                                        </select>
 								</div>
 								<div class="info wrap">
 									<label for="adv_date_contract"><p>Fecha de contratación</p></label>
@@ -86,5 +93,71 @@
         <%- include('../partials/footer'); -%>
     </footer>
 <!-- CÓDIGO -->
+	<script>
+		window.onload = function() {
+		var skills = document.getElementById('skill_id');
+		var addButton = document.getElementById('adItem');
+		var areas = document.querySelector('.areas');
+		var form = document.querySelector(".formulario");
+		deleteSkill();
+		addButton.addEventListener('click', function(){
+			let checkHidden = document.querySelectorAll('.hiddenSkill');
+			let ass = 0;
+			for(let i = 0; i< checkHidden.length; i++)
+			{
+				if(checkHidden[i].value == skills.value)
+				{
+					ass = 1;
+				}
+			}
+			if(ass==0){
+
+				var div = document.createElement('DIV');
+				div.setAttribute('class','item');
+				div.setAttribute('id',skills.value);
+				
+				var hiddenInput = document.createElement('INPUT');
+				hiddenInput.setAttribute('name','elskill');
+				hiddenInput.setAttribute('class','hiddenSkill');
+				hiddenInput.setAttribute('type','hidden');
+				hiddenInput.value = skills.value;
+				form.appendChild(hiddenInput);
+	
+				var a = document.createElement('A')
+				a.setAttribute('id','deleteSkill');
+				a.innerHTML = "X";
+	
+				var h2 = document.createElement('H2');
+				h2.setAttribute('id',skills.value);
+				h2.innerHTML = skills[skills.selectedIndex].innerHTML;
+	
+				areas.appendChild(div);
+				div.appendChild(a);
+				div.appendChild(h2);
+	
+				deleteSkill();
+			
+			}
+		})
+		function deleteSkill()
+		{
+			let hidInput = document.querySelectorAll('.hiddenSkill');
+			var del = document.querySelectorAll('#deleteSkill');
+			for(var i = 0; i<del.length;i++){
+				del[i].addEventListener('click',function(){
+					for(let n = 0;n<hidInput.length;n++)
+					{
+						if(hidInput[n].value == this.parentNode.children[1].getAttribute('id')){
+							hidInput[n].remove();
+						}
+					}
+					this.parentNode.remove();
+					
+				})
+			}
+		}
+		
+	}
+	</script>
 </body>
 </html>

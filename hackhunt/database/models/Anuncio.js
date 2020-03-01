@@ -69,13 +69,13 @@ module.exports = (sequelize, dataTypes) => {
             otherKey : 'cli_id',
             timestamps : false
         })
-      /*   anuncio.belongsToMany(models.skills,{
-                as : 'skills',
+        anuncio.belongsToMany(models.skills,{
+                as : 'adv_skills',
             through : 'anuncio_skill',
             foreignKey  : 'anuncio_id',
             otherKey : 'skill_id',
             timestamps : false
-        }) */
+        }) 
         
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <%- include('../partials/head'); -%>
@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/empresa/crearPublicacion.css" />
+    <script src="/js/validations/crearAnuncioValidation.js"></script>
+    <script src="/js/validations/validator.min.js"></script>
 </head>
 <!-- CÓDIGO -->
 <body>
@@ -26,7 +28,8 @@
             <div class="row cuerpo">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 wrap">
 					<div class="anuncio wrap">
-						<form action="/empresa/anuncios/crear" method="post">
+                        <form action="/empresa/anuncios/crear" method="post" id="loginForm
+                        ">
 							<div class="form-cont wrap">
 								<div class="titulo wrap">
 									<label for="adv_title"><p>Título</p></label>

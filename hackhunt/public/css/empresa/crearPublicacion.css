@@ -23,6 +23,42 @@
     padding-left: 1%;
     border-left: solid 1px var(--main-texto-blanco);
 }
+/* SKILLS ----------------------*/
+#deleteSkill {
+	position: absolute;
+	top: -10px;
+	right: -5px;
+	background: var(--main-texto-blanco);
+	border-radius: 50%;
+	font-size: 14px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	text-decoration: none;
+	color: var(--main-bg-color);
+}
+.datos.skills .areas{
+    display: flex;
+    flex-wrap: wrap;
+}
+.datos.skills .areas p {
+	width: 100%;
+}
+.datos.skills .areas .item { 
+	width: auto;
+	background: var(--main-color-verde);
+	height: 35px;
+	padding: 1% 2%;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+    margin: 1%;
+    position: relative;
+}
+.datos.skills .areas .item h2 {
+	font-size: 20px;
+	text-align: center;
+}
 /*DETALLE -------------------------------------*/
 .form-cont div{
     width: 100%;
@@ -140,6 +176,12 @@
     background: transparent;
     color: white;
     border: solid 2px;
+}
+.is-invalid{
+    border:solid 2px var(--main-color-rosa) !important;
+}
+.is-valid{
+    border:solid 2px var(--main-color-verde) !important;
 }
 /*RELACIONADOS -------------------------------*/
 .container.detalle .relacionados{

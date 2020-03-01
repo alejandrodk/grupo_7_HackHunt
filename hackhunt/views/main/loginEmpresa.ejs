@@ -3,6 +3,8 @@
 	<head>
 		<%- include('../partials/head'); -%>
 		<link rel="stylesheet" href="/css/main/loginEmpresa.css" />
+		<script src="/js/validations/empresaLoginValidation.js"></script>
+		<script src="/js/validations/validator.min.js"></script>
 	</head>
 	<body>
 		<!-- CÓDIGO -->
@@ -18,21 +20,24 @@
 								<% for(let i = 0; i < errors.length; i++){ %>
 								<li><%= errors[i].msg %></li>
 								<% } %>
-							</ul>
+							</ul> 
 						</div>
 						<% } %>
 					<div class="item login">
 						<h3>Ingresá a tu cuenta</h3>
-						<form action="/empresa/login" method="post">
+						<form action="/empresa/login" method="post" id="loginForm">
 							<label for="cmp_user_email"><p>Email</p></label>
-							<input type="email" name="cmp_user_email" id="cmp_user_email" placeholder="" />
+							<input type="email" name="cmp_user_email" id="cmp_user_email" placeholder="" data-name="Email"/>
+							<p class="errorMsgEmail" style="color: white;"></p>
 							<label for="cmp_user_passwd"><p>Clave</p></label>
-							<input type="password" name="cmp_user_passwd" id="cmp_user_passwd" />
+							<input type="password" name="cmp_user_passwd" id="cmp_user_passwd" data-name="Contraseña"/>
+							<p class="errorMsgPasswd" style="color: white;"></p>
 							<div class="item2">
 							<input type="checkbox" id="remember" name="remember" class="remember-item">
 							<label for="remember" class="remember"><p>Recordarme</p></label>
 							</div>
 							<button type="submit">POST</button>
+							<p id="errorMsg" style="color: white;"></p>
 						</form>
 					</div>
 					<div class="item lostpas">

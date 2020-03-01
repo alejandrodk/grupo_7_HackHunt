@@ -129,32 +129,34 @@ const controller = {
 		let anuncios;
 		db.anuncios.findByPk(req.params.id,{
 			
-			include:[{model:db.skills,as:'skills',attributes:['skill_name']
-			}]
+			include:['adv_skills']
+			
 		})
 
 		.then(resultado =>{
 			anuncios = resultado;
 			db.skills.findAll()
 			.then(skills=>{
-
-				return res.render("empresa/modificarPublicacion", { publicacion:anuncios,skills:skills, title: "Express" })
+				
+				 res.render("empresa/modificarPublicacion", { publicacion:anuncios,skills:skills, title: "Express" })
 			})
 		})
 	},
+	adv_modificarSkills: (req,res) => {
+		
+	},
 	actualizarPublicacion: (req, res) => {
 		// actualizar info en la DB y enviar a la vista previa 
-		let anuncio = dbFunctions.modifyAnuncio(req.params.id);
 		
-		anuncio.file = {
-			anu_id: anuncio.file.anu_id,
-			anu_empresa_id: anuncio.file.anu_empresa_id,
-			anu_empresa_name: anuncio.file.anu_empresa_name,
-			anu_empresa_avatar: anuncio.file.anu_empresa_avatar,
-			...req.body
-		}
-		dbFunctions.saveUpdates(anuncio);
-		return res.redirect("/empresa/perfil");
+		db.anuncios.findOne({where:{cmp_id:req.session.user.id}})
+			.then(anuncio => {
+				for(let i = 0; i<req.body.elskill.length;i++){
+
+					anuncio.addAdv_skills(req.body.elskill[i]);
+				}
+
+				return res.redirect("/empresa/perfil");
+			})
 	},
 
 	borrarPublicacion: (req,res) =>
@@ -189,6 +191,11 @@ const controller = {
 			idiomas: idiomas,
 			skills: skills
 		 });
+	},
+
+	ajax:(req,res)=> 
+	{
+		console.log(req.body)
 	}
 };
 
