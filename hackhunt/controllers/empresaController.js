@@ -31,6 +31,9 @@ const controller = {
 		})
 	},
 	modificarInfo: (req,res)=>{
+		if(req.file.filename){
+			req.body.cmp_avatar = req.file.filename;
+		}
 		db.empresas.update(req.body,{
 			where:{id:req.session.user.id}
 		})
@@ -46,17 +49,20 @@ const controller = {
 	anuncios: (req, res) => {
 		db.anuncios.findAll(
 			{
-				raw:true,
+				//raw:true,
 			 where:{cmp_id:req.session.user.id},
 			 attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
 			 include:[{
 				 model: db.empresas, 
 				 as: 'empresas',
-				 attributes: []
-				}]
+				 attributes: ['cmp_avatar']
+				},
+				{
+					model:db.clientes,
+					as:'candidatos'},]
 			})
 		.then(result => {
-			
+			//return res.send(result)
 			res.render("empresa/anuncios", { anuncios: result });
 		})
 
@@ -88,7 +94,7 @@ const controller = {
 			
 			let fecha = new Date().toLocaleDateString().slice(0,10).split('-');
 			req.body.adv_publication = fecha[2] + '/' + fecha[1] + '/' + fecha[0];
-			let skills = req.body.adv_skills;
+			let skills = req.body.elskill;
 			delete req.body.adv_skills;
 			db.anuncios.create(req.body)
 			.then( anuncio =>{
@@ -98,7 +104,7 @@ const controller = {
 				 .then(anuncio =>{
 					for(let i = 0; i<skills.length;i++){
 
-						anuncio.addSkills(skills[i])
+						anuncio.addAdv_skills(skills[i])
 					}
 
 					})
@@ -154,7 +160,8 @@ const controller = {
 
 					anuncio.addAdv_skills(req.body.elskill[i]);
 				}
-
+				delete req.body.elskill;
+				anuncio.update(req.body);
 				return res.redirect("/empresa/perfil");
 			})
 	},

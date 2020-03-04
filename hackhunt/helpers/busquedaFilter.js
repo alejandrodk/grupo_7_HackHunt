@@ -25,11 +25,13 @@ module.exports = (req) => {
             {adv_advantage: {[Op.like]: '%'+ search.trim() +'%' }},
             {skills: {[Op.like]: '%'+ search.trim() +'%' }},
             {adv_location: {[Op.like]: '%'+ ubication +'%' }},
-            ]
+            ],
+            
         }
     }
-    // retornar la consulta
+    // retornar la consulta  
     return db.anuncios.findAll({
+                
                 where : where,
 		    	offset : pagination.offset,
 		    	limit : pagination.limit,
@@ -37,7 +39,8 @@ module.exports = (req) => {
                     model: db.empresas, 
                     as: 'empresas',
                     attributes: ['cmp_name','cmp_avatar']
-                   }]
+                   },
+                   {model:db.skills, as:'adv_skills'} ]
 		    })
 
 }

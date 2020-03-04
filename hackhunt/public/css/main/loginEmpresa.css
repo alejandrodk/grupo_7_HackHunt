@@ -42,7 +42,7 @@ body {
 }
 .container .formularios .login input {
 	border-radius: 5px;
-	width: 70%;
+	width: 100%;
 	background: transparent;
 	border: solid 1px var(--main-texto-blanco);
 }

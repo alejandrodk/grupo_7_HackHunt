@@ -175,6 +175,13 @@ body{
     margin-top: 1%;
     color: var(--main-texto-blanco);
 }
+
+.is-invalid{
+    border:solid 2px var(--main-color-rosa) !important;
+}
+.is-valid{
+    border:solid 2px var(--main-color-verde) !important;
+}
 /**/
 #puestoDeseado,
 #areaDeseada,

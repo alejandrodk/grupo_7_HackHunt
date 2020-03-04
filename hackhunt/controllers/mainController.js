@@ -10,8 +10,9 @@ const controller = {
 			page = req.query.page != undefined ? req.query.page : 0;
 			busquedas = req.session.busquedas != undefined ? req.session.busquedas.filtros : [];
 
-		busquedaAnuncios(req)
+		busquedaAnuncios(req) 
 		.then(anuncios => {
+			return res.send(anuncios)
 			res.render('main/index',{
 				busquedas,
 				anuncios,
@@ -21,14 +22,14 @@ const controller = {
 	},
 	detalleAnuncio: (req, res) => {
 		
-		db.anuncios.findByPk(82,
+		db.anuncios.findByPk(req.query.id,
 			{
 				raw:true,
 				attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
 				include:[{model:db.empresas, as:'empresas',attributes:[]}]
 			})
 		.then(resultado =>{
-			 
+			
 			res.render('main/detalleAnuncio', { anuncio: resultado });
 		})
 
