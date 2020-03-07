@@ -70,8 +70,8 @@ module.exports = (sequelize, dataTypes) => {
             timestamps : false
         }),
         anuncio.belongsToMany(models.clientes,{
-            as : 'cliente',
-            through : 'favoritos',
+            as : 'clientes',
+            through : 'userFavoritos',
             foreignKey : 'adv_id',
             otherKey : 'user_id',
             timestamps : false
@@ -90,8 +90,6 @@ module.exports = (sequelize, dataTypes) => {
     anuncio.prototype.compareSkills = function(userSkills)
     {
         let skills;
-
-
             skills = this.adv_skills.filter(skill =>{
                 for(let i = 0; i<userSkills.length; i++)
                 {

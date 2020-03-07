@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     
-    let alias = 'favoritos';
+    let alias = 'userFavoritos';
     let cols = {
         id : {
             primaryKey: true,
@@ -9,25 +9,14 @@ module.exports = (sequelize, dataTypes) => {
         },
         user_id : {
             type: dataTypes.INTEGER,
-/*             allowNull: false */
+            allowNull: false
         },
         adv_id : {
             type: dataTypes.INTEGER,
-/*             allowNull: false */
+            allowNull: false
         }
     }
     const Favoritos = sequelize.define(alias,cols,{  timestamps: false, tableName: 'favoritos'});
 
-    /* Favoritos.associate = function(modelos){
-        Favoritos.hasMany(modelos.clientes,{
-            as: 'cliente',
-            foreignKey : 'user_id'
-        }),
-        Favoritos.hasMany(modelos.anuncios,{
-            as: 'anuncio',
-            foreignKey : 'adv_id'
-        })
-    };
- */
     return Favoritos;
 }

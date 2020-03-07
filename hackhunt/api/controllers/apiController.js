@@ -1,13 +1,16 @@
 const db = require('../../database/models');
+const Sequelize = require("sequelize")
+const Op = Sequelize.Op;
 
 module.exports = {
 
     addFavorite : (req, res) => {
- 
-        let { user, adv } = req.body;
 
-        db.favoritos.create({
-            id : 1,
+        let adv = req.body.adv_id;
+        let user = req.body.user_id;
+
+        db.userFavoritos.create({
+            id : null,
             user_id : user,
             adv_id : adv
         })
@@ -24,12 +27,13 @@ module.exports = {
 
     },
     removeFavorite : (req, res) => {
-        let { adv, user } = req.body;
+        
+        let adv = req.body.adv_id;
+        let user = req.body.user_id;
 
-        db.favoritos.destroy({
+        db.userFavoritos.destroy({
             where : {
-                user_id : user,
-                adv_id : adv
+                [Op.and]: [{ adv_id: adv }, { user_id: user }]
             }
         })
         .then( result => {

@@ -1,7 +1,4 @@
 let adds = document.querySelectorAll('#add-favorite');
-let anuncio = document.querySelector('.anuncio');
-let anuncioId = anuncio.getAttribute('data-id');
-let cliente = anuncio.getAttribute('data-user');
 
 function setState(item){
     item.classList.remove('far');
@@ -17,6 +14,9 @@ function removeState(item){
 
 for (const item of adds) {
     item.addEventListener('click', function(){
+
+        let anuncioId = item.getAttribute('data-id');
+        let cliente = item.getAttribute('data-user');
 
         if(item.classList.contains('far')){
             setState(item);

@@ -107,8 +107,8 @@
 
 					<div class="anuncios">
 						<% for (anuncio of anuncios) { %>
-							<div class="anuncio" data-id="<%= anuncio.id %>" data-user="<% if(user){ %><%= user %><% } %>">
-								<i class="far fa-heart fa-lg" id="add-favorite"></i>
+							<div class="anuncio">
+								<i class="far fa-heart fa-lg" id="add-favorite" data-id="<%= anuncio.id %>" data-user="<% if(user){ %><%= user %><% } %>"></i>
 								<a href="/detalle?id=<%= anuncio.id %>">
 									<div class="item">
 										<div class="img">
