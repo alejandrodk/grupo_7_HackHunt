@@ -14,7 +14,8 @@ module.exports = (sequelize, dataTypes) => {
         cli_id : {
             allowNull: false,
             type: dataTypes.INTEGER
-        }
+        },
+        visto: dataTypes.STRING
     }
     const postulante = sequelize.define(alias,cols,{  timestamps: false, tableName: 'postulantes'});
 

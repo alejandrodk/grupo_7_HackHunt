@@ -10,31 +10,51 @@ const controller = {
 			page = req.query.page != undefined ? req.query.page : 0;
 			busquedas = req.session.busquedas != undefined ? req.session.busquedas.filtros : [];
 			user = req.session.user != undefined ? req.session.user.user_id : null;
-		busquedaAnuncios(req)
+		busquedaAnuncios(req) 
 		.then(anuncios => {
-			res.render('main/index',{
-				busquedas,
-				anuncios,
-				page,
-				user
-			})
+			if(req.session.type_user == 'cliente'){
+			
+				db.clientes.findByPk(req.session.user.user_id,
+					{
+						include:[{model:db.skills, as:'skill'}]
+					})
+					.then(cliente => {
+						//return res.send(cliente)
+						return res.render('main/index',{ 
+							busquedas,
+							anuncios,
+							page,
+							cliente,
+							user
+						})
+					})
+			}
+			else{
+
+				return res.render('main/index',{ 
+					busquedas,
+					anuncios,
+					page,
+					user
+				}) 
+			}
 		})
 	},
 	detalleAnuncio: (req, res) => {
 		
-		db.anuncios.findByPk(82,
+		db.anuncios.findByPk(req.query.id,
 			{
 				raw:true,
 				attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
 				include:[{model:db.empresas, as:'empresas',attributes:[]}]
 			})
 		.then(resultado =>{
-			 
+			
 			res.render('main/detalleAnuncio', { anuncio: resultado });
 		})
 
 	},
-	postulacion: (req, res) => {
+	postulacion: (req, res) => { 
 		let anuncioId = req.query.anuncioId;
 		let userId = req.session.user.user_id;
 		db.postulantes.create({

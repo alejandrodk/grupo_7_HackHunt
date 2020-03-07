@@ -5,6 +5,8 @@
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/cliente/info.css" />
     <link rel="stylesheet" href="/css/headerLog.css" />
+    <script src="/js/validations/empresaInfoValidation.js"></script>
+    <script src="/js/validations/validator.min.js"></script>
 </head>
 <!-- CÓDIGO -->
 <body>
@@ -22,16 +24,20 @@
         <div class="col-xs-12 col-sx-12 col-md-9 col-lg-9 datos personales wrap">
             <h3>Datos del representante</h3>
             <p id="DatosPersonales"></p>
-            <div class="formulario">
-                <form action="/empresa/informacion/<%=empresa.cmp_id%>" method="post" class="wrap" enctype="multipart/form-data">
+            <div class="formulario"> 
+                <form action="/empresa/informacion/<%=empresa.cmp_id%>" method="post" class="wrap" id="infoForm" enctype="multipart/form-data">
                     <label for="cmp_user_name"><p>Nombre</p></label>
-                    <input type="text" name="cmp_user_name" id="cmp_user_name" value="<%=empresa.cmp_user_name%>">
+                    <input type="text" name="cmp_user_name" id="cmp_user_name" value="<%=empresa.cmp_user_name%>" data-name="Nombre">
+                    <p class="errorMsgName" style="color: black;"></p>
                     <label for="cmp_user_lastname"><p>Apellidos</p></label>
-                    <input type="text" name="cmp_user_lastname" id="cmp_user_lastname"  value="<%=empresa.cmp_user_lastname%>">
+                    <input type="text" name="cmp_user_lastname" id="cmp_user_lastname"  value="<%=empresa.cmp_user_lastname%>" data-name="Apellido">
+                    <p class="errorMsgLastName" style="color: black;"></p>
                     <label for="cmp_user_dni"><p>DNI</p></label>
-                    <input type="number" name="cmp_user_dni" id="cmp_user_dni"  value="<%=empresa.cmp_user_dni%>">
+                    <input type="number" name="cmp_user_dni" id="cmp_user_dni"  value="<%=empresa.cmp_user_dni%>" data-name="DNI">
+                    <p class="errorMsgDni" style="color: black;"></p>
                     <label for="cmp_user_datebirth"><p>Fecha de nacimiento</p></label>
-                    <input type="date" name="cmp_user_datebirth" id="cmp_user_datebirth"value="<%=empresa.cmp_user_datebirth%>">
+                    <input type="date" name="cmp_user_datebirth" id="cmp_user_datebirth"value="<%=empresa.cmp_user_datebirth%>" data-name="Fecha de Nacimiento">
+                    <p class="errorMsgDatebirth" style="color: black;"></p>
                     <div class="genero">
                         <label for="cmp_user_gender"><p>Genero</p></label>
                         <label for="radioH">Hombre</label>
@@ -42,7 +48,8 @@
                     <label for="cmp_user_phone"><p>Teléfono</p></label>
                     <input type="number" name="cmp_user_phone" id="cmp_user_phone" value="<%=empresa.cmp_user_phone%>">
                     <label for="cmp_user_city"><p>Ciudad</p></label>
-                    <select name="cmp_user_city" id="cmp_user_city" value="<%=empresa.cmp_user_city%>"> 
+                    <select name="cmp_user_city" id="cmp_user_city" value="<%=empresa.cmp_user_city%>" data-name="Ciudad">
+                        <p class="errorMsgCity" style="color: black;"></p> 
                         <option value="CABA">Capital Federal</option>
                         <option value="GBA">Buenos Aires</option>
                         <option value="CO">Córdoba</option>
@@ -53,13 +60,16 @@
             <h3>Datos de la Empresa</h3>
             <p id="DatosProfesionales"></p>
                     <label for="cmp_name"><p>Nombre / Razon Social</p></label>
-                    <input type="text" name="cmp_name" id="cmp_name" value="<%=empresa.cmp_name%>"/>
+                    <input type="text" name="cmp_name" id="cmp_name" value="<%=empresa.cmp_name%>" data-name="Razon Social"/>
+                    <p class="errorMsgCmpName" style="color: black;"></p>
                     <label for="cmp_cuit"><p>Cuit</p></label>
-                    <input type="text" name="cmp_cuit" id="cmp_cuit" value="<%=empresa.cmp_cuit%>" />
+                    <input type="text" name="cmp_cuit" id="cmp_cuit" value="<%=empresa.cmp_cuit%>" data-name="Cuit"/>
+                    <p class="errorMsgCuit" style="color: black;"></p>
                     <label for="cmp_tel"><p>Teléfono</p></label>
                     <input type="number" name="cmp_tel" id="cmp_tel" value="<%=empresa.cmp_tel%>" />
                     <label for="cmp_sector"><p>Rubro</p></label>
-                    <input type="text" name="cmp_sector" id="cmp_sector" value="<%=empresa.cmp_sector%>" />
+                    <input type="text" name="cmp_sector" id="cmp_sector" value="<%=empresa.cmp_sector%>" data-name="Sector" />
+                    <p class="errorMsgSector" style="color: black;"></p>
                     <label for="cmp_description"><p>Descripción <small>Max 72 caracteres</small></p></label>
                     <textarea name="cmp_description" id="cmp_description" cols="30" rows="10"> <%=empresa.cmp_description%></textarea>
                     <label for="cmp_website"><p>Website</p></label>
@@ -73,7 +83,7 @@
                     <label for="cmp_avatar"><p>Subir Avatar <small>(dejar vacío para mantener el avatar actual)</small></p></label>
                     <input type="file" name="cmp_avatar" id="cmp_avatar">
                     <button type="submit">Guardar</button>
-                
+                    <p id="errorMsg" style="color: black;"></p>
                 </form>
             
             </div>

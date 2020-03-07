@@ -1,6 +1,7 @@
 const fs = require('fs');
 const dbFunctions = require('../helpers/readjson.js');
 const db = require('../database/models');
+const sequelize = require('sequelize')
 
 const controller = {
 	perfil: (req, res) => {
@@ -31,6 +32,9 @@ const controller = {
 		})
 	},
 	modificarInfo: (req,res)=>{
+		if(req.file.filename){
+			req.body.cmp_avatar = req.file.filename;
+		}
 		db.empresas.update(req.body,{
 			where:{id:req.session.user.id}
 		})
@@ -46,18 +50,26 @@ const controller = {
 	anuncios: (req, res) => {
 		db.anuncios.findAll(
 			{
-				raw:true,
+				//raw:true,
 			 where:{cmp_id:req.session.user.id},
 			 attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
 			 include:[{
 				 model: db.empresas, 
 				 as: 'empresas',
-				 attributes: []
-				}]
+				 attributes: ['cmp_avatar']
+				},
+				]
 			})
-		.then(result => {
+		.then(result => { 
+			db.sequelize.query(
+			  	`select b.id, b.adv_id, b.visto from clientes as a inner join postulantes as b on a.user_id = b.cli_id inner join anuncios as c on b.adv_id = c.id inner join empresas as d on c.cmp_id = d.id where d.id = ${req.session.user.id}`)
 			
-			res.render("empresa/anuncios", { anuncios: result });
+			.then(resultado =>{
+				console.log(resultado[0])
+			
+				res.render("empresa/anuncios", { anuncios: result, postulaciones:resultado[0] });
+			})
+			
 		})
 
 	},
@@ -88,7 +100,7 @@ const controller = {
 			
 			let fecha = new Date().toLocaleDateString().slice(0,10).split('-');
 			req.body.adv_publication = fecha[2] + '/' + fecha[1] + '/' + fecha[0];
-			let skills = req.body.adv_skills;
+			let skills = req.body.elskill;
 			delete req.body.adv_skills;
 			db.anuncios.create(req.body)
 			.then( anuncio =>{
@@ -98,7 +110,7 @@ const controller = {
 				 .then(anuncio =>{
 					for(let i = 0; i<skills.length;i++){
 
-						anuncio.addSkills(skills[i])
+						anuncio.addAdv_skills(skills[i])
 					}
 
 					})
@@ -154,7 +166,8 @@ const controller = {
 
 					anuncio.addAdv_skills(req.body.elskill[i]);
 				}
-
+				delete req.body.elskill;
+				anuncio.update(req.body);
 				return res.redirect("/empresa/perfil");
 			})
 	},
@@ -170,9 +183,22 @@ const controller = {
 		})
 	},
 	postulantes: (req, res) => {
-		res.render("empresa/postulantes", { title: "Express" });
+		db.anuncios.findByPk(req.params.id,
+			{
+				include:[{model:db.clientes, as:'candidatos', attributes:['user_id','user_name','user_lastname','user_email','user_avatar'],
+				include:[{model:db.cliente_education, as: 'cliente_education',attributes:['user_career']}
+				,{model:db.cliente_experience, as:'cliente_experience', attributes:['user_experience_description']},{model:db.skills, as:'skill'}]}
+				,{model:db.empresas,as:'empresas',attributes:['cmp_name','cmp_avatar']}
+				,{model:db.skills,as:'adv_skills'}
+				]
+			})
+			.then(resultado => {
+				//let skillsResult = resultado.compareSkills(anuncios.);
+				//return res.send(resultado)
+				res.render("empresa/postulantes", { title: "Express", anuncio:resultado });
+			})
 	},
-	postulantesDetalle: (req, res) => {
+	postulantesDetalle: (req, res) => { 
 		let id = req.query.id;
 		// traer info de usuario de DB segun su ID
 		// y guardarlo agrupado en objetos literales

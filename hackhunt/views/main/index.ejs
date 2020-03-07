@@ -123,11 +123,15 @@
 											</ul>
 											<p class="desc"><%= anuncio.adv_description %></p>
 											<p class="sal">$<%= anuncio.adv_salary %></p>
-											<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+											<%if(locals.type_user == 'cliente'){%>
+	
+												<p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 
+													<%= anuncio.compareSkills(cliente.skill).length +'/'+ anuncio.adv_skills.length %></p>
+											<%}%>
 										</div>
 									</div>
-								</a>
-							</div>
+								</div>
+							</a>
 						<% } %>
 					</div>
 					<div class="pagination">

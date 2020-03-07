@@ -1,12 +1,19 @@
 window.onload = function () {
-    let errorMsg = document.querySelector('#errorMsg'); 
-	let form = document.querySelector('#loginForm');
-	let formInputs = Array.from(form.elements);
+    let errorMsg = document.querySelector('#errorMsg');
+	let form = document.querySelector('#infoForm');
+    let formInputs = Array.from(form.elements);
+     
+    formInputs.pop();
+    formInputs.pop();
+    formInputs.pop();
+    formInputs.pop();
+    formInputs.pop();
+    formInputs.pop();
+
+    formInputs = formInputs.filter(input =>{return input.getAttribute('id') != 'cmp_tel' && input.getAttribute('id') != 'cmp_avatar'
+    && input.getAttribute('id') != 'cmp_user_gender'&& input.getAttribute('id') != 'cmp_description'&& input.getAttribute('id') != 'cmp_avatar' })
+    
 	
-    formInputs.pop();
-    formInputs.pop();
-    formInputs.pop();  
-    formInputs = formInputs.filter(input =>{return input.getAttribute('id') != 'skill_id' })
 
 	let errores = {};
 
@@ -72,11 +79,5 @@ window.onload = function () {
             errorMsg.innerHTML = 'Uno o mas campos contienen errores'
 		}
  		
-	}) 
-
-
-	
-
-
+	})
 }
-
