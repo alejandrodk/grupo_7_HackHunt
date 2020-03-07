@@ -3,8 +3,7 @@ const router = express.Router();
 
 const apiController = require('../controllers/apiController');
 
-router.get('/anuncios', apiController.anuncios);
-router.get('/favoritos', apiController.favoritos);
 router.post('/favoritos', apiController.addFavorite);
+router.delete('/favoritos', apiController.removeFavorite);
 
 module.exports = router;

@@ -16,13 +16,12 @@ function removeState(item){
 };
 
 for (const item of adds) {
-    item.addEventListener('click', function(e){
-        e.preventDefault;
-        
+    item.addEventListener('click', function(){
+
         if(item.classList.contains('far')){
             setState(item);
 
-            let url = 'localhost:3000/api/favoritos'
+            let url = '/api/favoritos'
             let data = {
                 id : 0,
                 user_id : cliente,
@@ -42,6 +41,23 @@ for (const item of adds) {
 
         } else {
             removeState(item);
+
+            let url = '/api/favoritos'
+            let data = {
+                user_id : cliente,
+                adv_id : anuncioId,
+            };
+        
+            fetch(url, {
+                method : 'DELETE',
+                body: JSON.stringify(data),
+                headers : {
+                    'content-type' : 'application/json'
+                }
+            })
+            .then(result => result.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
         }
     })
 }
