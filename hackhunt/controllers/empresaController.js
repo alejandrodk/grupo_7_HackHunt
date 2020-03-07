@@ -183,6 +183,9 @@ const controller = {
 		})
 	},
 	postulantes: (req, res) => {
+		/* buscamos el anuncio segun el id por parametro. 
+		   a la busqueda se incluye los clientes que se postularon, y datos adicionales a estos como los skills y la experiencia.
+		*/
 		db.anuncios.findByPk(req.params.id,
 			{
 				include:[{model:db.clientes, as:'candidatos', attributes:['user_id','user_name','user_lastname','user_email','user_avatar'],
@@ -193,8 +196,6 @@ const controller = {
 				]
 			})
 			.then(resultado => {
-				//let skillsResult = resultado.compareSkills(anuncios.);
-				//return res.send(resultado)
 				res.render("empresa/postulantes", { title: "Express", anuncio:resultado });
 			})
 	},
@@ -208,7 +209,7 @@ const controller = {
 		let formacion = '';
 		let idiomas = '';
 		let skills = '';
-		res.render("empresa/cv", 
+		res.render("empresa/cv",   
 		{ 
 			perfil: perfil,
 			profesionales: profesionales,

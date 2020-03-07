@@ -79,7 +79,12 @@ module.exports = (sequelize, dataTypes) => {
         
     }
 
-
+    /* Esta funcion va a realizar una comparación entre las skills de un cliente con las skills 
+       requeridas por el anuncio al que se postuló.
+       La función va a recibir un array con todos los skills del cliente postulado y mediante un 
+       ciclo for se recorren todos los skills y se comparan con cada uno de los skills excluyentes 
+       del anuncio para devolver un array con los skills que comparten ambos.
+    */
     anuncio.prototype.compareSkills = function(userSkills)
     {
         let skills;
