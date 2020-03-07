@@ -68,9 +68,16 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey : 'adv_id',
             otherKey : 'cli_id',
             timestamps : false
-        })
+        }),
+        anuncio.belongsToMany(models.clientes,{
+            as : 'clientes',
+            through : 'userFavoritos',
+            foreignKey : 'adv_id',
+            otherKey : 'user_id',
+            timestamps : false
+        }),
         anuncio.belongsToMany(models.skills,{
-                as : 'adv_skills',
+            as : 'adv_skills',
             through : 'anuncio_skill',
             foreignKey  : 'anuncio_id',
             otherKey : 'skill_id',
@@ -88,8 +95,6 @@ module.exports = (sequelize, dataTypes) => {
     anuncio.prototype.compareSkills = function(userSkills)
     {
         let skills;
-
-
             skills = this.adv_skills.filter(skill =>{
                 for(let i = 0; i<userSkills.length; i++)
                 {

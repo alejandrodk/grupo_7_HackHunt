@@ -137,7 +137,28 @@
     font-size: 15px;
 }
 /*RESULTADOS - ANUNCIOS*/
+#add-favorite {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+    color: gray;
+    z-index: 2;
+    padding: 3px;
+}
+#add-favorite.active{
+	background: rgb(255,0,195);
+	background: -moz-linear-gradient(-45deg, rgb(255,0,195) 0%, rgb(255,0,4) 100%);
+	background: -webkit-linear-gradient(-45deg, rgb(255,0,195) 0%,rgb(255,0,4) 100%);
+	background: linear-gradient(135deg, rgb(255,0,195) 0%,rgb(255,0,4) 100%);
+	background-clip: text;
+	color: transparent !important;
+	background-size: cover;
+}
+.container-fluid.cuerpo .resultados .anuncio{
+    position: relative;
+}
 .container-fluid.cuerpo .resultados .anuncios a{
+    position: relative;
     text-decoration: none;
     color: var(--main-bg-color);
 }

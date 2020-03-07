@@ -44,10 +44,10 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey : 'user_id'
         }),
         Cliente.belongsToMany(modelos.anuncios,{
-            as : 'favorito',
-            through : 'favoritos',
-            foreignKey  : 'cli_id',
-            otherKey : 'id',
+            as : 'favoritos',
+            through : 'userFavoritos',
+            foreignKey  : 'user_id',
+            otherKey : 'adv_id',
             timestamps : false
         }),
         Cliente.belongsToMany(modelos.anuncios,{

@@ -9,7 +9,7 @@ const controller = {
 		let 
 			page = req.query.page != undefined ? req.query.page : 0;
 			busquedas = req.session.busquedas != undefined ? req.session.busquedas.filtros : [];
-
+			user = req.session.user != undefined ? req.session.user.user_id : null;
 		busquedaAnuncios(req) 
 		.then(anuncios => {
 			if(req.session.type_user == 'cliente'){
@@ -24,7 +24,8 @@ const controller = {
 							busquedas,
 							anuncios,
 							page,
-							cliente
+							cliente,
+							user
 						})
 					})
 			}
@@ -33,7 +34,8 @@ const controller = {
 				return res.render('main/index',{ 
 					busquedas,
 					anuncios,
-					page
+					page,
+					user
 				}) 
 			}
 		})
