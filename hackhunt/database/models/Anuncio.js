@@ -68,9 +68,16 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey : 'adv_id',
             otherKey : 'cli_id',
             timestamps : false
-        })
+        }),
+        anuncio.belongsToMany(models.clientes,{
+            as : 'cliente',
+            through : 'favoritos',
+            foreignKey : 'adv_id',
+            otherKey : 'user_id',
+            timestamps : false
+        }),
         anuncio.belongsToMany(models.skills,{
-                as : 'adv_skills',
+            as : 'adv_skills',
             through : 'anuncio_skill',
             foreignKey  : 'anuncio_id',
             otherKey : 'skill_id',

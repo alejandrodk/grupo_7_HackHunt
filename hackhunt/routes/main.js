@@ -12,10 +12,24 @@ const mainController = require("../controllers/mainController");
 
 // ************ Router's ************ 
 router.get("/", filtrarBusqueda , mainController.home); 
-router.get("/publicacion/:dateFilter", filtrarBusqueda , mainController.home);
-router.get("/jornada/:workdayFilter", filtrarBusqueda , mainController.home);
-router.get("/skill/:skillFilter", filtrarBusqueda , mainController.home);
-router.get("/experiencia/:levelFilter", filtrarBusqueda , mainController.home);
+
+router.get("/jornada/:jornada", filtrarBusqueda , mainController.home);
+router.get("/jornada/:jornada/skill/:skill", filtrarBusqueda , mainController.home);
+router.get("/jornada/:jornada/experiencia/:experiencia", filtrarBusqueda , mainController.home);
+router.get("/jornada/:jornada/experiencia/:experiencia/skill/:skill", filtrarBusqueda , mainController.home);
+router.get("/jornada/:jornada/skill/:skill/experiencia/:experiencia", filtrarBusqueda , mainController.home);
+
+router.get("/skill/:skill", filtrarBusqueda , mainController.home);
+router.get("/skill/:skill/jornada/:jornada", filtrarBusqueda , mainController.home);
+router.get("/skill/:skill/experiencia/:experiencia", filtrarBusqueda , mainController.home);
+router.get("/skill/:skill/experiencia/:experiencia/jornada/:jornada", filtrarBusqueda , mainController.home);
+router.get("/skill/:skill/jornada/:jornada/experiencia/:experiencia", filtrarBusqueda , mainController.home);
+
+router.get("/experiencia/:experiencia", filtrarBusqueda , mainController.home);
+router.get("/experiencia/:experiencia/jornada/:jornada", filtrarBusqueda , mainController.home);
+router.get("/experiencia/:experiencia/skill/:skill", filtrarBusqueda , mainController.home);
+router.get("/experiencia/:experiencia/jornada/:jornada/skill/:skill", filtrarBusqueda , mainController.home);
+router.get("/experiencia/:experiencia/skill/:skill/jornada/:jornada", filtrarBusqueda , mainController.home);
 
 router.get("/detalle", mainController.detalleAnuncio);
 router.get('/postulacion', mainController.postulacion);

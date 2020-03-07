@@ -1,9 +1,10 @@
-const Sequelize = require("Sequelize")
+const Sequelize = require("sequelize")
 const Op = Sequelize.Op;
 const db = require('../database/models');
 const mainHelps = require('./mainHelpers');
 
 module.exports = (req) => {
+    const params = req.params;
     // consulta si existe la query de paginacion y devuelve offset y limit.
     let pagination = mainHelps.pagination(req);
     // segun los querystring recibidos, agregamos condiciones al where
@@ -27,6 +28,17 @@ module.exports = (req) => {
             {adv_location: {[Op.like]: '%'+ ubication +'%' }},
             ]
         }
+    }
+    if(params.jornada/*  && params.skill == undefined && params.experiencia == undefined */){
+        where.adv_working_day = {[Op.like]: '%'+ params.jornada +'%' };
+    }
+    if(params.skill){
+        where.skills = {[Op.like]: '%'+ params.skill +'%' };
+        where.adv_description = {[Op.like]: '%'+ params.skill +'%' };
+    }
+    if(params.experiencia){
+        where.adv_description = {[Op.like]: '%'+ params.experiencia +'%' };
+        where.adv_title = {[Op.like]: '%'+ params.experiencia +'%' };
     }
     // retornar la consulta
     return db.anuncios.findAll({

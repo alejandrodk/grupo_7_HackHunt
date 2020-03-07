@@ -46,8 +46,8 @@ module.exports = (sequelize, dataTypes) => {
         Cliente.belongsToMany(modelos.anuncios,{
             as : 'favorito',
             through : 'favoritos',
-            foreignKey  : 'cli_id',
-            otherKey : 'id',
+            foreignKey  : 'user_id',
+            otherKey : 'adv_id',
             timestamps : false
         }),
         Cliente.belongsToMany(modelos.anuncios,{
