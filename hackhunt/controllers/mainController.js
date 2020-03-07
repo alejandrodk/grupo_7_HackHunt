@@ -12,12 +12,30 @@ const controller = {
 
 		busquedaAnuncios(req) 
 		.then(anuncios => {
-			return res.send(anuncios)
-			res.render('main/index',{
-				busquedas,
-				anuncios,
-				page
-			})
+			if(req.session.type_user == 'cliente'){
+			
+				db.clientes.findByPk(req.session.user.user_id,
+					{
+						include:[{model:db.skills, as:'skill'}]
+					})
+					.then(cliente => {
+						//return res.send(cliente)
+						return res.render('main/index',{ 
+							busquedas,
+							anuncios,
+							page,
+							cliente
+						})
+					})
+			}
+			else{
+
+				return res.render('main/index',{ 
+					busquedas,
+					anuncios,
+					page
+				}) 
+			}
 		})
 	},
 	detalleAnuncio: (req, res) => {
@@ -34,7 +52,7 @@ const controller = {
 		})
 
 	},
-	postulacion: (req, res) => {
+	postulacion: (req, res) => { 
 		let anuncioId = req.query.anuncioId;
 		let userId = req.session.user.user_id;
 		db.postulantes.create({

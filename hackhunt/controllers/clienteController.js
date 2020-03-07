@@ -31,7 +31,7 @@ const controller = {
 
     },
     postulaciones: (req, res) => {
-        /*db.clientes.findOne({ where: { user_id: req.session.user.user_id },
+        db.clientes.findOne({ where: { user_id: req.session.user.user_id },
             include: ['cliente_cv'] })
             .then(user => {
                 sequelize.query(`SELECT * FROM postulantes JOIN anuncios ON postulantes.adv_id = anuncios.id JOIN empresas ON anuncios.cmp_id = empresas.id HAVING cli_id = ${user.user_id}`)
@@ -44,13 +44,13 @@ const controller = {
             })
             .catch(error => {
                 return res.send(error)
-            })*/
+            })
 
-            db.clientes.findOne({ where: { user_id: req.session.user.user_id },
+           /* db.clientes.findOne({ where: { user_id: req.session.user.user_id },
                 include: ['cliente_cv',{model:db.anuncios, as:"candidato"}] })
                 .then(user => {
                     return res.send(user);
-                })
+                })*/
     
     },
     favoritos: (req, res) => {

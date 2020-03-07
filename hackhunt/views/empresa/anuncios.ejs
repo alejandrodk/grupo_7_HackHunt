@@ -28,7 +28,7 @@
                         <p><span><%=anuncios.length%></span> Anuncios</p>
                     </div>
                     <div class="item">
-                        <p><span><%=anuncios.length%></span> Nuevos candidatos</p>
+                        <p><span><%=postulaciones.filter(p => p.visto != 1).length %></span> Nuevos candidatos</p>
                     </div>
                     <div class="item">
                         <p><span><%=anuncios.length%></span> Perfiles destacados</p>
@@ -71,13 +71,13 @@
             <% for (const anuncio of anuncios) { %>
                     <div class="item">
                         <ul>
-                            <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span>3</span></li>
-                            <li><i class="fas fa-users"></i> Candidatos totales <span><%= anuncio.candidatos.length %></span></li>
+                            <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span><%= postulaciones.filter(p => p.visto != 1 && anuncio.id == p.adv_id).length %></span></li>
+                            <li><i class="fas fa-users"></i> Candidatos totales <span><%= postulaciones.filter(p => p.adv_id == anuncio.id).length %></span></li>
                             <li><i class="fas fa-medal"></i> Solicitudes destacadas <span>2</span></li>
-                            <a href="anuncios/postulantes">Ver candidatos</a>
+                            <a href="anuncios/postulantes/<%=anuncio.id%>">Ver candidatos</a>
                         </ul>
                     </div>
-                    <% } %>
+                    <% } %> 
                 </div>
         </div>
     </div>

@@ -21,7 +21,7 @@ router.get("/anuncios/modificar/:id",soloEmpresa, empresaController.modificarPub
 router.post("/anuncios/modificar/:id",soloEmpresa, empresaController.actualizarPublicacion);
 router.patch("/anuncios/modificar/skills",soloEmpresa,empresaController.adv_modificarSkills)
 router.get("/anuncios/delete/:id",soloEmpresa, empresaController.borrarPublicacion);
-router.get("/anuncios/postulantes",soloEmpresa, empresaController.postulantes);
+router.get("/anuncios/postulantes/:id",soloEmpresa, empresaController.postulantes);
 router.get("/anuncios/postulantes/CV", soloEmpresa, empresaController.postulantesDetalle);
 
 module.exports = router;

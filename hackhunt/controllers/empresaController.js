@@ -1,6 +1,7 @@
 const fs = require('fs');
 const dbFunctions = require('../helpers/readjson.js');
 const db = require('../database/models');
+const sequelize = require('sequelize')
 
 const controller = {
 	perfil: (req, res) => {
@@ -57,13 +58,18 @@ const controller = {
 				 as: 'empresas',
 				 attributes: ['cmp_avatar']
 				},
-				{
-					model:db.clientes,
-					as:'candidatos'},]
+				]
 			})
-		.then(result => {
-			//return res.send(result)
-			res.render("empresa/anuncios", { anuncios: result });
+		.then(result => { 
+			db.sequelize.query(
+			  	`select b.id, b.adv_id, b.visto from clientes as a inner join postulantes as b on a.user_id = b.cli_id inner join anuncios as c on b.adv_id = c.id inner join empresas as d on c.cmp_id = d.id where d.id = ${req.session.user.id}`)
+			
+			.then(resultado =>{
+				console.log(resultado[0])
+			
+				res.render("empresa/anuncios", { anuncios: result, postulaciones:resultado[0] });
+			})
+			
 		})
 
 	},
@@ -177,9 +183,22 @@ const controller = {
 		})
 	},
 	postulantes: (req, res) => {
-		res.render("empresa/postulantes", { title: "Express" });
+		db.anuncios.findByPk(req.params.id,
+			{
+				include:[{model:db.clientes, as:'candidatos', attributes:['user_id','user_name','user_lastname','user_email','user_avatar'],
+				include:[{model:db.cliente_education, as: 'cliente_education',attributes:['user_career']}
+				,{model:db.cliente_experience, as:'cliente_experience', attributes:['user_experience_description']},{model:db.skills, as:'skill'}]}
+				,{model:db.empresas,as:'empresas',attributes:['cmp_name','cmp_avatar']}
+				,{model:db.skills,as:'adv_skills'}
+				]
+			})
+			.then(resultado => {
+				//let skillsResult = resultado.compareSkills(anuncios.);
+				//return res.send(resultado)
+				res.render("empresa/postulantes", { title: "Express", anuncio:resultado });
+			})
 	},
-	postulantesDetalle: (req, res) => {
+	postulantesDetalle: (req, res) => { 
 		let id = req.query.id;
 		// traer info de usuario de DB segun su ID
 		// y guardarlo agrupado en objetos literales
