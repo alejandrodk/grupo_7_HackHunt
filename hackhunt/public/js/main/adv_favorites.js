@@ -12,7 +12,42 @@ function removeState(item){
     item.classList.add('far');
 };
 
-for (const item of adds) {
+//let favorites = [{ adv_id : 82},{ adv_id : 88 }]
+
+/* const dbFavoritos = {};
+
+fetch('/api/favoritos')
+    .then(response => response.json())
+    .then(result => {
+        dbFavoritos = result; 
+    })
+    .catch(error => console.log(error))
+
+console.log(dbFavoritos);
+
+
+function isFavorite(favoritos, idAnuncio){
+    for (let adv of favoritos) {
+        if(adv.adv_id == idAnuncio){
+            return true
+        }
+    }   return false
+};
+
+for (let item of adds) {
+
+    let anuncioId = item.getAttribute('data-id');
+
+    for (let anuncio of dbFavoritos) {
+        if(anuncio.adv_id == anuncioId){
+            item.classList.remove('far');
+            item.classList.add('fas');
+            item.classList.add('active');
+        }
+    }    
+}; */
+
+for (let item of adds) {
     item.addEventListener('click', function(){
 
         let anuncioId = item.getAttribute('data-id');
