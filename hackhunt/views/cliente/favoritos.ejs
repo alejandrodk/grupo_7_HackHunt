@@ -36,27 +36,26 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncios">
-                <a href="/detalle">
-                    <div class="item">
-                        <div class="img">
-                            <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                <% for (let item of favoritos ){%>
+                    <a href="/detalle?id=<%= item.anuncios[0].id %>">
+                        <div class="item">
+                            <div class="img">
+                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                            </div>
+                            <div class="info">
+                                <h2><%= item.anuncios[0].adv_title %></h2>
+                                <ul>
+                                    <li>Digital House</li>
+                                    <li><%= item.anuncios[0].adv_location %></li>
+                                    <li><%= item.anuncios[0].adv_working_day %></li>
+                                </ul>
+                                <p class="desc"><%= item.anuncios[0].adv_description %></p>
+                                <p class="sal">$<%= item.anuncios[0].adv_salary %></p>
+                                <p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+                            </div>
                         </div>
-                        <div class="info">
-                            <h2>Desarrollador Web - Full Stack</h2>
-                            <ul>
-                                <li>Digital House</li>
-                                <li>Capital Federal</li>
-                                <li>Full Time</li>
-                            </ul>
-                            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-                                necessitatibus, commodi, odit voluptate molestias magnam odio dolorem totam
-                                cupiditate aspernatur, aliquid facere sed reiciendis voluptatem vel fuga eligendi
-                                est sint!</p>
-                            <p class="sal">$45K - 60K</p>
-                            <p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
-                        </div>
-                    </div>
-                </a>
+                    </a> 
+                 <% } %> 
             </div>
         </div>
     </div>
