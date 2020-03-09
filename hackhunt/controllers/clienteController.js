@@ -57,9 +57,18 @@ const controller = {
         if (req.query) {
             //si existe el queryString refinar la busqueda por empresa
         }
-        res.render('cliente/favoritos', {
-            title: 'Favoritos'
-        });
+
+        db.userFavoritos.findAll({
+            where : {
+                user_id : req.session.user.user_id
+            }, attributes : ['adv_id'], include : 'anuncios'
+        })
+        .then( favoritos => {
+            //res.send(favoritos)
+            res.render('cliente/favoritos', {
+                favoritos
+            });
+        })
     },
     alertas: (req, res) => {
         if (req.query) {

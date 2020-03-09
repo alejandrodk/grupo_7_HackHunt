@@ -108,7 +108,9 @@
 					<div class="anuncios">
 						<% for (anuncio of anuncios) { %>
 							<div class="anuncio">
-								<i class="far fa-heart fa-lg" id="add-favorite" data-id="<%= anuncio.id %>" data-user="<% if(user){ %><%= user %><% } %>"></i>
+								<%if(locals.type_user == 'cliente'){%>
+									<i class="far fa-heart fa-lg" id="add-favorite" data-id="<%= anuncio.id %>" data-user="<% if(user){ %><%= user %><% } %>"></i>
+									<% } %>
 								<a href="/detalle?id=<%= anuncio.id %>">
 									<div class="item">
 										<div class="img">

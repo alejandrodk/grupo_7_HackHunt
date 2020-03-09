@@ -1,51 +1,46 @@
 let adds = document.querySelectorAll('#add-favorite');
 
+// cambia el icono a solido y agrega el estado activo
 function setState(item){
     item.classList.remove('far');
     item.classList.add('fas');
     item.classList.add('active');
 };
-
+// cambia el icono a bordeado y elimina el estado activo
 function removeState(item){
     item.classList.remove('active');
     item.classList.remove('fas');
     item.classList.add('far');
 };
 
-//let favorites = [{ adv_id : 82},{ adv_id : 88 }]
+// se crea una variable response que espera a que se resuelta el pedido por fetch
+// y luego se le asigna su resultado.
+// se crea una variable data que espera a que "response" se haya resuelto
+// por ultimo se ejecuta la funcion checkFavorites
+// **** la funcion esta entre parentesis (...)() y con () al final para que se ejecute
+// sin tener que invocarla
 
-/* const dbFavoritos = {};
+(async function fetchFavorites(){
+    let response = await fetch('/api/favoritos');
+    let data = await response.json();
+    checkFavorites(adds, data.response)
+})();
 
-fetch('/api/favoritos')
-    .then(response => response.json())
-    .then(result => {
-        dbFavoritos = result; 
-    })
-    .catch(error => console.log(error))
-
-console.log(dbFavoritos);
-
-
-function isFavorite(favoritos, idAnuncio){
-    for (let adv of favoritos) {
-        if(adv.adv_id == idAnuncio){
-            return true
-        }
-    }   return false
-};
-
-for (let item of adds) {
-
-    let anuncioId = item.getAttribute('data-id');
-
-    for (let anuncio of dbFavoritos) {
-        if(anuncio.adv_id == anuncioId){
-            item.classList.remove('far');
-            item.classList.add('fas');
-            item.classList.add('active');
-        }
-    }    
-}; */
+function checkFavorites(advs,favoritos){
+    // se recorren cada uno de los anuncios
+    for (let item of advs) {
+        // se toma el id de cada anuncio
+        let anuncioId = item.getAttribute('data-id');
+        // se recorren los anuncios favoritos traidos por fetch y se buscan coincidencias
+        for (let anuncio of favoritos) {
+            if(anuncio.adv_id == anuncioId){
+                item.classList.remove('far');
+                item.classList.add('fas');
+                item.classList.add('active');
+            }
+        }    
+    };
+}
 
 for (let item of adds) {
     item.addEventListener('click', function(){
