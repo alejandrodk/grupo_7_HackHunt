@@ -94,7 +94,7 @@ module.exports = (sequelize, dataTypes) => {
     */
     anuncio.prototype.compareSkills = function(userSkills)
     {
-        let skills;
+        let skills; 
             skills = this.adv_skills.filter(skill =>{
                 for(let i = 0; i<userSkills.length; i++)
                 {

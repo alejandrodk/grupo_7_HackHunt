@@ -96,3 +96,15 @@ for (let item of adds) {
         }
     })
 }
+
+
+async function prueba()
+{
+    let response = await fetch('/api/favoritos')
+    let data = await response.json()
+    return data;
+    }
+
+    prueba()
+    .then(response => console.log(response))
+  

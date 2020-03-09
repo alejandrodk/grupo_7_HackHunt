@@ -73,5 +73,20 @@ module.exports = (sequelize, dataTypes) => {
         })
     };
 
+    Cliente.prototype.cvVisto = function(id_anuncio)
+    {
+        for(let i = 0; i<this.candidato.length; i++)
+        {
+            if(this.candidato[i].adv_id == id_anuncio)
+            {
+                if(candidato[i].visto != 1)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     return Cliente;
 }

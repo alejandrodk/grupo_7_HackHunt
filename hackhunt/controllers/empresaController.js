@@ -203,26 +203,31 @@ const controller = {
 		let id = req.query.id;
 		// traer info de usuario de DB segun su ID
 		// y guardarlo agrupado en objetos literales
+		db.clientes.findByPk(id,
+			{
+				include:[{model:db.cliente_cv, as:'cliente_cv'},{model:db.cliente_education, as:'cliente_education'},
+						 {model:db.cliente_experience, as: 'cliente_experience'},
+						 {model:db.skills, as:'skill'},
+						 {model:db.anuncios, as:'candidato'}],
+				attributes:['user_email','user_avatar','user_name','user_lastname']
+			})
+			.then(resultado => {
+				return res.send(resultado)	
+				res.render("empresa/cv",{cliente:resultado});
+			})
 		let perfil = '';
 		let profesionales = '';
 		let experiencia = '';
 		let formacion = '';
 		let idiomas = '';
 		let skills = '';
-		res.render("empresa/cv",   
-		{ 
-			perfil: perfil,
-			profesionales: profesionales,
-			experiencia: experiencia,
-			formacion: formacion,
-			idiomas: idiomas,
-			skills: skills
-		 });
+		
+		
 	},
 
-	ajax:(req,res)=> 
+	prueba:(req,res)=> 
 	{
-		console.log(req.body)
+		
 	}
 };
 

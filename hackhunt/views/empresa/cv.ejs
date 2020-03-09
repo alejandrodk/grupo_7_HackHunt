@@ -20,37 +20,37 @@
                 <h3 id="titular">Datos personales</h3>
                 <div class="perfil">
                     <div class="avatar">
-                        <img src="/images/user_avatar.jpg" alt="">
+                        <img src="/images/<%= cliente.user_avatar %>" alt="">
                     </div>
-                    <p>Desarrollador Web</p>
-                    <p>Junior</p>
+                    <p><%= cliente.cliente_cv.user_position %></p>
+                    <p><%= cliente.cliente_cv.user_position_level %></p>
                     <ul>
-                        <li><i class="fab fa-git-alt" title="Repositorio Git"></i> /Alejandrodk</li>
-                        <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> Alejandrodk</li>
-                        <li><i class="fas fa-user" title="Website"></i> www.alejandrodk.com</li>
+                        <li><i class="fab fa-git-alt" title="Repositorio Git"></i> /<%= cliente.cliente_cv.user_git %></li>
+                        <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> <%= cliente.cliente_cv.user_stack %></li>
+                        <li><i class="fas fa-user" title="Website"></i><%= cliente.cliente_cv.user_website %></li>
                     </ul>
                 </div>
                 <div class="info-cv wrap">
                     <h4>Nombre</h4>
-                    <h5>Otto Alejandro</h5>
+                    <h5><%= cliente.user_name %></h5>
                     <h4>Apellidos</h4>
-                    <h5>Barrios Padilla</h5>
+                    <h5><%= cliente.user_lastname %></h5>
                     <h4>DNI</h4>
-                    <h5>95.677.818</h5>
+                    <h5><%= cliente.cliente_cv.user_dni %></h5>
                     <h4>Nacionalidad</h4>
-                    <h5>Venezolano</h5>
+                    <h5>NO existe en la tabla</h5>
                     <h4>Edad</h4>
-                    <h5>25</h5>
+                    <h5>falta hacer el calculo</h5>
                     <h4>Genero</h4>
-                    <h5>Masculino</h5>
+                    <h5><%= cliente.cliente_cv.user_gender == 'H' ? 'Hombre' : 'Mujer' %></h5>
                     <h4>Estado Civil</h4>
-                    <h5>Soltero</h5>
+                    <h5><%= cliente.cliente_cv.user_civilstate %></h5>
                     <h4>Pais</h4>
-                    <h5>Argentina</h5>
+                    <h5>Falta el dato</h5>
                     <h4>Ciudad</h4>
-                    <h5>Capital Federal</h5>
+                    <h5><%= cliente.cliente_cv.user_city %></h5>
                     <h4>Telefono</h4>
-                    <h5>+54 9 11 2750 8104</h5>
+                    <h5><%= cliente.cliente_cv.user_phone %></h5>
                 </div>
             </div>
             <div class="col-xs-12 col-sx-12 col-md-3 col-lg-3 indice">
@@ -67,28 +67,31 @@
                 <h3 id="titular">Datos Profesionales</h3>
                 <div class="info-cv datos-prof">
                     <h4>Cargo / Profesion o titulo breve</h4>
-                    <h5>Desarrollador Web</h5>
+                    <h5><%= cliente.cliente_cv.user_position %></h5>
                     <h4>Nivel</h4>
-                    <h5>Junior</h5>
+                    <h5><%= cliente.cliente_cv.user_position_level %></h5>
                     <h4>Descripcion</h4>
-                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quo ducimus architecto laudantium error quam expedita beatae. Incidunt, pariatur perspiciatis.</h5>
+                    <h5><%= cliente.cliente_cv.user_position_description %></h5>
                 </div>
             </div>
             <div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 experiencia">
                 <p id="ExperienciaLaboral"></p>
                 <h3 id="titular">Experiencia Laboral</h3>
-                <div class="info-cv exp">
-                    <h4>Empresa</h4>
-                    <h5>Altamira Group</h5>
-                    <h4>Cargo</h4>
-                    <h5>Disenador Grafico</h5>
-                    <h4>Desde</h4>
-                    <h5>01/03/2017</h5>
-                    <h4>Hasta</h4>
-                    <h5>01/03/2020</h5>
-                    <h4>Descripcion</h4>
-                    <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod tempore dolore corporis repudiandae natus quo quos accusantium debitis ipsam deleniti explicabo deserunt, corrupti id libero, quia reprehenderit mollitia totam vel.</h5>
-                </div>
+                <% for(let i = 0; i< cliente.cliente_experience.length; i++){ %>
+
+                    <div class="info-cv exp">
+                        <h4>Empresa</h4>
+                        <h5><%= cliente.cliente_experience[i].user_cmp_experience %></h5>
+                        <h4>Cargo</h4>
+                        <h5><%= cliente.cliente_experience[i].user_cmp_position %></h5>
+                        <h4>Desde</h4>
+                        <h5><%= cliente.cliente_experience[i].user_cmp_experience_since %></h5>
+                        <h4>Hasta</h4>
+                        <h5><%= cliente.cliente_experience[i].user_cmp_experience_to %></h5>
+                        <h4>Descripcion</h4>
+                        <h5><%= cliente.cliente_experience[i].user_experience_description %></h5>
+                    </div>
+                <%}%>
             </div>
             <div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 formacion">
                 <p id="Formacion"></p>
@@ -107,11 +110,11 @@
                     <h4>Descripcion</h4>
                     <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores repellat vero dicta libero atque alias corporis saepe beatae. Harum, explicabo!</h5>
                     <h4>Repositorio Git</h4>
-                    <h5><a href="www.github.com/alejandrodk">alejandrodk</a></h5>
+                    <h5><a href="www.github.com/<%=cliente.cliente_cv.user_git %>"><%=cliente.cliente_cv.user_git %></a></h5>
                     <h4>Website</h4>
-                    <h5><a href="www.Alejandrodk.com">Alejandrodk</a></h5>
+                    <h5><a href="<%= cliente.cliente_cv.user_website %>"><%= cliente.cliente_cv.user_website %></a></h5>
                     <h4>StackOverflow</h4>
-                    <h5><a href="www.stackoverflow.com/Alejandrodk"></a>Alejandrodk</h5>
+                    <h5><a href="www.stackoverflow.com/<%= cliente.cliente_cv.user_git %>"></a><%= cliente.cliente_cv.user_git %></h5>
                 </div>
             </div>
             <div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 idiomas">
@@ -119,22 +122,21 @@
                 <h3 id="titular">Idiomas</h3>
                 <div class="info-cv lang">
                     <h4>Idioma</h4>
-                    <h5>Ingles</h5>
+                    <h5><%= cliente.cliente_cv.user_lang %></h5>
                     <h4>Nivel</h4>
-                    <h5>Medio</h5>
+                    <h5><%= cliente.cliente_cv.user_lang_level %></h5>
                 </div>
-                <div class="info-cv lang">
-                    <h4>Idioma</h4>
-                    <h5>Frances</h5>
-                    <h4>Nivel</h4>
-                    <h5>Basico</h5>
-                </div>
+                
             </div>
             <div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 skills">
                 <p id="Skills"></p>
                 <h3 id="titular">Skills</h3>
                 <div class="info-cv skills">
                     <h4>Habilidades</h4>
+                    <% for(let i=0; i<cliente.skill.length; i++){ %>
+                        <h5><%= cliente.skill[i].skill_name %></h5>
+                    <% }%>
+                    
                 </div>
             </div>
         </div>
