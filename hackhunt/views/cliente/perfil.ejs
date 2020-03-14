@@ -31,12 +31,12 @@
                         </div>
                         <div class="datos wrap">
                             <strong><p><%= user.user_name %></p></strong>
-                            <p><%= user.cliente_cv.user_position %></p>
-                            <p><%= user.cliente_cv.user_position_level %></p>
+                            <p><% user.cliente_cv == null ? "Sin Información" : user.cliente_cv.user_position   %></p>
+                            <p><%= user.cliente_cv == null ? "Sin Información" : user.cliente_cv.user_position_level %></p> 
                             <ul>
-                                <li><i class="fab fa-git-alt" title="Repositorio Git"></i> <%= user.cliente_cv.user_git %></li>
-                                <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> <%= user.cliente_cv.user_stack %></li>
-                                <li><i class="fas fa-user" title="Website"></i> <%= user.cliente_cv.user_website %></li>
+                                <li><i class="fab fa-git-alt" title="Repositorio Git"></i> <%=user.cliente_cv == null ? "Sin Información" : user.cliente_cv.user_git %></li>
+                                <li><i class="fab fa-stack-overflow" title="StackOverflow"></i> <%=user.cliente_cv == null ? "Sin Información" : user.cliente_cv.user_stack %></li>
+                                <li><i class="fas fa-user" title="Website"></i> <%=user.cliente_cv == null ? "Sin Información" : user.cliente_cv.user_website %></li>
                             </ul>
                         </div>
                         <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>
@@ -63,7 +63,7 @@
 						</div>
 					</form>
                     </div>
-                    <div class="sugeridos">
+                    <div class="sugeridos"> 
                         <div class="anuncios wrap">
                             <strong><p>Te pueden interesar</p></strong>
                             <a href="./">ver más</a>
@@ -71,7 +71,7 @@
 							<a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                 <div class="item wrap">
                                     <h3><%= anuncio.adv_title  %> </h3>
-                                    <p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
+                                    <p><i class="fas fa-magic" title="Skills que cumples"></i>  <%= anuncio.compareSkills(user.skill).length + " / " + anuncio.adv_skills.length %> </p>
                                     <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
                                     <i class="fab fa-hotjar" style="color: orangered;" title="¡EXCELENTE OPORTUNIDAD!"></i>
                                 </div>
@@ -86,7 +86,7 @@
                             <a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                 <div class="item wrap">
                                     <h3><%= anuncio.adv_title %>  <%=anuncio.created_at%></h3>
-                                    <p><i class="fas fa-magic" title="Skills que cumples"></i>10/10</p>
+                                    <p><i class="fas fa-magic" title="Skills que cumples"></i>  <%= anuncio.compareSkills(user.skill).length + " / " + anuncio.adv_skills.length %></p>
                                     <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
                                     <% if (anuncio.visto == 1) { %>
                                         <i class="far fa-eye" title="Visto por la empresa"></i>

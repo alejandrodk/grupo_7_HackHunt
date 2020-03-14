@@ -11,6 +11,7 @@ const empresaController = require("../controllers/empresaController");
 router.get("/perfil", soloEmpresa,empresaController.perfil);
 router.get("/perfil/modificar", soloEmpresa, empresaController.modificarPerfil);
 router.get("/perfil/configuracion",soloEmpresa, empresaController.configuracion);
+router.put("/perfil/configuracion",soloEmpresa, empresaController.actualizarConfiguracion);
 router.get("/informacion",soloEmpresa,empresaController.info);
 router.post("/informacion",upload.single('cmp_avatar'), soloEmpresa, empresaController.modificarInfo);
 router.get("/mensajes", soloEmpresa, empresaController.mensajes);

@@ -69,21 +69,20 @@ module.exports = (sequelize, dataTypes) => {
             through : 'seguidos',
             foreignKey : 'user_id',
             otherKey : 'cmp_id',
-            timestamps : false
+            timestamps : false 
         })
     };
+
+
 
     Cliente.prototype.cvVisto = function(id_anuncio)
     {
         for(let i = 0; i<this.candidato.length; i++)
         {
-            if(this.candidato[i].adv_id == id_anuncio)
-            {
-                if(candidato[i].visto != 1)
+                if(this.candidato[i].id = id_anuncio && this.candidato[i].postulantes.visto === 1)
                 {
                     return true;
                 }
-            }
         }
         return false;
     }

@@ -121,13 +121,16 @@ const controller = {
 
 			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
 			let user_avatar = req.file ? req.file.filename : 'user_avatar_default.jpg';
-			db.clientes.create({ ...req.body, user_avatar : user_avatar });
-			
-			delete req.body.user_passwd
-			let user = { ...req.body }
-			req.session.user = user;
-			req.session.type_user = 'cliente'
-			return res.redirect('registro/cv');
+			db.clientes.create({ ...req.body, user_avatar : user_avatar })
+			.then(()=>
+			{
+
+				delete req.body.user_passwd
+				let user = { ...req.body }
+				req.session.user = user;
+				req.session.type_user = 'cliente'
+				return res.redirect('registro/cv');
+			})
 
 		} else {
 			res.render('main/registroUsuario', { errors: errors.array() });
