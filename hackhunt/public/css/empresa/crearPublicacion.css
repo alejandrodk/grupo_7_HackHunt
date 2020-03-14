@@ -2,6 +2,10 @@
 	margin-bottom: 5%;
 }
 /*SEPARADOR------------------------------------*/
+select {
+	border: solid 1px white;
+	border-radius: 5px;
+}
 .separador {
 	margin: 2% 0;
 }
@@ -146,7 +150,8 @@
     width: 15%;
     padding-left: 1%;
 }
-.form-cont .info input:nth-child(odd){
+.form-cont .info input:nth-child(odd),
+#adv_location{
     width: 35%;
 }
 .form-cont .info label:first-child{

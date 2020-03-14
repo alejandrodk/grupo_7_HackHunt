@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="/css/header.css">
 	<link rel="stylesheet" href="/css/headerLog.css" />
 	<link rel="stylesheet" href="/css/footer.css" />
-	<script src="/js/main.js"></script>
 </head>
 <body>
 	<header>
@@ -30,11 +29,7 @@
 							<input type="text" name="search" id="search" placeholder="SELECT * FROM Empleos = 'Puesto','Empresa','Lenguaje' OR 'Palabra Clave'">
 							<p>En:</p>
 							<select name="ubication" id="ubication">
-								<option value="CABA">Capital Federal</option>
-								<option value="GBA">Buenos Aires</option>
-								<option value="CO">Córdoba</option>
-								<option value="MDZ">Mendoza</option>
-								<option value="RO">Rosario</option>
+								<option value="">Ciudad</option>
 							</select>
 							<button type="submit"><i class="fas fa-search"></i></button>
 						</div>
@@ -147,6 +142,9 @@
 	<footer>
 		<%- include('../partials/footer'); -%>
 	</footer>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/main/ciudades.js"></script>
 	<script src="/js/main/adv_favorites.js"></script>
 </body>
 

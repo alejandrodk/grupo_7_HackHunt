@@ -57,11 +57,7 @@
 							<input type="text" name="search" id="search">
 							<p>En:</p>
 							<select name="ubication" id="ubication">
-								<option value="CABA">Capital Federal</option>
-								<option value="GBA">Buenos Aires</option>
-								<option value="CO">Córdoba</option>
-								<option value="MDZ">Mendoza</option>
-								<option value="RO">Rosario</option>
+								<option value="">Ciudad</option>
 							</select>
 							<button><i class="fas fa-search"></i></button>
 						</div>
@@ -71,41 +67,27 @@
                         <div class="anuncios wrap">
                             <strong><p>Te pueden interesar</p></strong>
                             <a href="./">ver más</a>
-                            <a class="anuncio" href="/detalle">
+						<% for(let anuncio of relacionados){ %>
+							<a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                 <div class="item wrap">
-                                    <h3>Desarrollador Web Full Stack</h3>
+                                    <h3><%= anuncio.adv_title  %> </h3>
                                     <p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
+                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
                                     <i class="fab fa-hotjar" style="color: orangered;" title="¡EXCELENTE OPORTUNIDAD!"></i>
                                 </div>
-                            </a>
-                            <a class="anuncio" href="/detalle">
-                                <div class="item wrap">
-                                    <h3>Desarrollador Web Full Stack</h3>
-                                    <p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
-                                    <i class="fab fa-hotjar" style="color: transparent;" title="¡EXCELENTE OPORTUNIDAD!"></i>
-                                </div>
-                            </a>
-                            <a class="anuncio" href="/detalle">
-                                <div class="item wrap">
-                                    <h3>Desarrollador Web Full Stack</h3>
-                                    <p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> 5/12/19</p>
-                                    <i class="fab fa-hotjar" style="color: transparent;" title="¡EXCELENTE OPORTUNIDAD!"></i>
-                                </div>
-                            </a>                                                        
+                            </a>  
+						<% } %> 
                         </div>
                         <div class="postulaciones wrap">
                             <strong><p>Últimas postulaciones</p></strong>
                             <a href="/postulaciones">ver más</a>
                       
-                           <% for(let anuncio of user.candidato){ %>
+                           <% for(let anuncio of postulaciones){ %>
                             <a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                 <div class="item wrap">
                                     <h3><%= anuncio.adv_title %>  <%=anuncio.created_at%></h3>
-                                    <p><i class="fas fa-magic" title="Skills que cumples"></i> 10/10</p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%=  %></p>
+                                    <p><i class="fas fa-magic" title="Skills que cumples"></i>10/10</p>
+                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
                                     <i class="far fa-eye" title="Visto por la empresa"></i>
                                 </div>
                             </a> 
@@ -119,7 +101,8 @@
     <footer>
         <%- include('../partials/footer'); -%>
     </footer>    
-<!-- CÓDIGO -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/main/ciudades.js"></script>
 </body>
 
 </html>
