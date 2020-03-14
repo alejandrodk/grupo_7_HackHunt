@@ -112,7 +112,7 @@ const controller = {
 		}
 	},
 	registroUsuario: (req, res) => { 
-		res.render('main/registroUsuario', { title: 'Express' });
+		res.render('main/registroUsuario', { title: 'Registro de usuario' });
 	},
 	valRegUsuario: (req,res) => {
 		const errors = validationResult(req);
