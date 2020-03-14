@@ -69,9 +69,11 @@ module.exports = (sequelize, dataTypes) => {
             through : 'seguidos',
             foreignKey : 'user_id',
             otherKey : 'cmp_id',
-            timestamps : false
+            timestamps : false 
         })
     };
+
+
 
     Cliente.prototype.cvVisto = function(id_anuncio)
     {
