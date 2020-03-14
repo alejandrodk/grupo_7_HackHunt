@@ -72,7 +72,10 @@
                                     <input type="text" name="adv_area" id="adv_area" data-name="Área">
                                     <p class="errorMsgArea" style="color: black;"></p>
 									<label for="adv_location"><p>Ubicación</p></label>
-                                    <input type="text" name="adv_location" id="adv_location" data-name="Ubicación">
+                                    <!-- <input type="text" name="adv_location" id="adv_location" data-name="Ubicación"> -->
+                                    <select name="adv_location" id="adv_location">
+                                        <option value="null">Ciudad</option>
+                                    </select>
                                     <p class="errorMsgLocation" style="color: black;"></p>
 									<label for="adv_position"><p>Cargo</p></label>
                                     <input type="text" name="adv_position" id="adv_position" data-name="Cargo">
@@ -186,5 +189,7 @@
         }
     }
 </script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/empresa/ciudades.js"></script>
 </body>
 </html>

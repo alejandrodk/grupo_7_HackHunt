@@ -47,11 +47,22 @@ const controller = {
 			{
 				raw:true,
 				attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
-				include:[{model:db.empresas, as:'empresas',attributes:[]}]
+				include:[{model:db.empresas, as:'empresas',attributes:['cmp_avatar']}]
 			})
 		.then(resultado =>{
-			
-			res.render('main/detalleAnuncio', { anuncio: resultado });
+			db.anuncios.findAll({
+				limit:5,
+				attributes: ['id','adv_title','adv_location','adv_working_day'],
+				include:[{model:db.empresas, as:'empresas', attributes:['cmp_name','cmp_avatar']}]
+			})
+			.then(relacionados => {
+				//return res.send(relacionados)
+				res.render('main/detalleAnuncio', { 
+					anuncio: resultado,
+					relacionados
+				});
+
+			})
 		})
 
 	},

@@ -48,6 +48,7 @@ body{
 .container.header .secciones.mobile{
 	height: 0px;
 	overflow: hidden;
+	transition: all 1s;
 }
 .container.header .secciones.mobile a {
 	width: 100%;

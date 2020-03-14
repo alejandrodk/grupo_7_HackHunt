@@ -117,8 +117,9 @@
 	margin: 0;
     margin-right: 1%;
 }
-.container.cuerpo .funciones .busqueda select{
+.container.cuerpo .funciones .busqueda select {
 	border: solid 1px white;
+	width: 25%;
 }
 .container.cuerpo .funciones .busqueda button{
 	background: none;
@@ -175,7 +176,7 @@
 }
 .container.cuerpo .funciones .anuncios .anuncio .item h3,
 .container.cuerpo .funciones .postulaciones .anuncio .item h3{
-	width: 70%;
+	width: 65%;
     font-size: 21px;
     margin: 0;
     padding-right: 1%;

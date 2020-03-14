@@ -2,31 +2,30 @@ const db = require('../database/models');
 const sequelize = db.sequelize;
 const actUserCv = require('../helpers/act_user_cv.js');
 
-const controller = {
-    perfil: (req, res) => {
-        /*db.clientes.findOne({ where: { user_id: req.session.user.user_id },
-            include: ['cliente_cv'] })
-            .then(user => {
-                sequelize.query(`SELECT * FROM postulantes JOIN anuncios ON postulantes.adv_id = anuncios.id HAVING cli_id = ${user.user_id}`)
-                .then(result => {
-                    
-                    res.render('cliente/perfil',{
-                        user : user,
-                        anuncios : result[0]
-                    })
-                })
-            })
-            .catch(error => {
-                return res.send(error)
-            })*/
 
+const controller = {
+    
+    perfil: (req, res) => {
+        const sessionId = req.session.user.user_id;
             db.clientes.findOne({where: {user_id: req.session.user.user_id},
-                include: [{model:db.cliente_cv,as:'cliente_cv'},
-                {model:db.anuncios, as:'candidato',attributes:['id','adv_title','adv_location','created_at','updated_at']}]
+                include: [{model:db.cliente_cv,as:'cliente_cv'}]
+            //    {model:db.anuncios, as:'candidato',attributes:['id','adv_title','adv_publication','adv_location','created_at','updated_at']}]
                 })
                 .then(cliente =>{
-                   
-                    res.render('cliente/perfil',{user:cliente})
+                   sequelize.query(`SELECT * FROM anuncios JOIN postulantes ON anuncios.id = postulantes.adv_id WHERE postulantes.cli_id = ${sessionId}`)
+                   .then(misAnuncios => {
+                       db.anuncios.findAll({
+                           limit:3,
+                           attributes:['id','adv_title','adv_publication']
+                       })
+                       .then(relacionados => {
+                           res.render('cliente/perfil',{
+                                user:cliente,
+                                postulaciones:misAnuncios[0],
+                                relacionados
+                            })
+                        })
+                    })
                 }) 
 
     },
@@ -36,7 +35,7 @@ const controller = {
             .then(user => {
                 sequelize.query(`SELECT * FROM postulantes JOIN anuncios ON postulantes.adv_id = anuncios.id JOIN empresas ON anuncios.cmp_id = empresas.id HAVING cli_id = ${user.user_id}`)
                 .then(result => {
-                    //res.send(result)
+                    //return res.send(result)
                     res.render('cliente/postulaciones',{
                         anuncios : result[0]
                     })
@@ -45,13 +44,6 @@ const controller = {
             .catch(error => {
                 return res.send(error)
             })
-
-           /* db.clientes.findOne({ where: { user_id: req.session.user.user_id },
-                include: ['cliente_cv',{model:db.anuncios, as:"candidato"}] })
-                .then(user => {
-                    return res.send(user);
-                })*/
-    
     },
     favoritos: (req, res) => {
         if (req.query) {

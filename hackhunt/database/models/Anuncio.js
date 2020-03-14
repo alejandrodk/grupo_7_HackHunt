@@ -50,8 +50,7 @@ module.exports = (sequelize, dataTypes) => {
         adv_advantage : {
             type: dataTypes.STRING,
             allowNull: false
-        },
-
+        }
     }
     const anuncio = sequelize.define(alias,cols,{ tableName:'anuncios', timestamps: false});
 

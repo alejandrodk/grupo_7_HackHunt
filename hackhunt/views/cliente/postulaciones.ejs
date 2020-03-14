@@ -48,7 +48,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncios">
                 <% for(let anuncio of anuncios){ %>
-                    <a href="/detalle?id=<%= anuncio.id %>">
+                    <a href="/detalle?id=<%= anuncio.adv_id %>">
                         <div class="item">
                             <div class="img">
                                 <img src="/images/avatars/<%= anuncio.cmp_avatar %>" alt="">
@@ -61,7 +61,7 @@
                                     <li><%= anuncio.adv_working_day %></li>
                                 </ul>
                                 <p class="desc"><%= anuncio.adv_description %></p>
-                                <p class="sal"><%= anuncio.adv_salary %></p>
+                                <p class="sal">$<%= anuncio.adv_salary %></p>
                                 <p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
                             </div>
                         </div>
