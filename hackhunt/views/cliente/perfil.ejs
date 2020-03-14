@@ -88,7 +88,11 @@
                                     <h3><%= anuncio.adv_title %>  <%=anuncio.created_at%></h3>
                                     <p><i class="fas fa-magic" title="Skills que cumples"></i>10/10</p>
                                     <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
-                                    <i class="far fa-eye" title="Visto por la empresa"></i>
+                                    <% if (anuncio.visto == 1) { %>
+                                        <i class="far fa-eye" title="Visto por la empresa"></i>
+                                    <% } else { %>
+                                        <i class="far fa-eye" style="color:transparent"></i>
+                                    <% } %>
                                 </div>
                             </a> 
                         <% } %>                                                 
