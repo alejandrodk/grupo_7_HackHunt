@@ -39,12 +39,14 @@
                 <div class="filtro">
                     <!-- consultar si conviene utilizar listas o inputs para filtros -->
                     <h3>Mostrar</h3>
+                    
                     <ul>
-                        <li><input type="radio" name="filtrar" id="">Todas</li>
-                        <li><input type="radio" name="filtrar" id="">Activos</li>
-                        <li><input type="radio" name="filtrar" id="">Nuevas solicitudes</li>
-                        <li><input type="radio" name="filtrar" id="">Finalizados</li>
+                        <li><a href="/empresa/anuncios?filter=all">Todas</a></li>
+                        <li><a href="/empresa/anuncios?filter=active">Activos</a></li>
+                        <li><a href="/empresa/anuncios?filter=new">Nuevas solicitudes</a></li>
+                        <li><a href="/empresa/anuncios?filter=closed">Finalizados</a></li>
                     </ul>
+                
                 </div>
             </div>
             <div class="col-xs-12 col-sx-12 col-md-7 col-lg-7 anuncios">
@@ -53,7 +55,7 @@
                         <a class="mod" href="anuncios/modificar/<%=anuncio.id%>">Modificar</a>
                         <a class="del" href="anuncios/delete/<%=anuncio.id%>">Eliminar</a>
                         <div class="img">
-                            <img src="/images/avatars/<%=anuncio.empresas.cmp_avatar%>" alt="">
+                            <img src="/images/avatars/<%=anuncio.cmp_avatar%>" alt="">
                         </div>
                         <div class="info">
                             <h2><%= anuncio.adv_title %></h2>
@@ -81,6 +83,7 @@
                 </div>
         </div>
     </div>
+    <script src="/js/empresa/advFilter.js"></script>
 </body>
 
 </html>

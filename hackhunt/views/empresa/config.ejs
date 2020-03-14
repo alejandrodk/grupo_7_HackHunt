@@ -4,6 +4,7 @@
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/cliente/config.css" />
+    
 </head>
 <body>
     <header>
@@ -39,7 +40,8 @@
                     <h4>Cambiar Email</h4>
                     <p>Ingresá la nueva dirección email para tu cuenta</p>
                     <form action="?_method=PUT" method="post">
-                        <input type="email" name="" id="">
+                        <input type="email" name="cmp_user_email" id="" value="<%= empresa.cmp_user_email %>" data-name="Email" >
+                        <p class="errorMsgEmail" style="color: white;"></p>
                         <button type="submit">Cambiar Email</button>
                     </form>
                 </div>
@@ -47,11 +49,17 @@
                     <h4>Cambiar contraseña</h4>
                     <p>Ingresá tu contraseña actual seguida de tu nueva contraseña</p>
                     <form action="?_method=PUT" method="post">
-                        <input type="password" name="" id="" placeholder="Contraseña anterior">
-                        <input type="password" name="" id="" placeholder="Nueva contraseña">
-                        <input type="password" name="" id="" placeholder="Repetir contraseña">
+                        <input type="password" name="cmp_user_oldPasswd" id="" placeholder="Contraseña anterior" data-name="Contraseña antigua" requred>
+                        <p class="errorMsgEmail" style="color: white;"></p>
+                        <input type="password" name="cmp_user_passwd" id="" placeholder="Nueva contraseña" data-name="Contraseña nueva" required>
+                        <p class="errorMsgEmail" style="color: white;"></p>
+                        <input type="password" name="cmp_user_repPasswd" id="" placeholder="Repetir contraseña" data-name="Repetir Contraseña" required>
+                        <p class="errorMsgEmail" style="color: white;"></p>
                         <button type="submit">Cambiar contraseña</button>
-                    </form>
+                        <% if(typeof error != 'undefined') { %>
+                            <p class="errorMsgEmail" style="color: red;"><%=error %></p>
+                        <%}%>
+                    </form> 
                 </div>
                  <div class="item titulo">
                     <h3>Notificaciones</h3>

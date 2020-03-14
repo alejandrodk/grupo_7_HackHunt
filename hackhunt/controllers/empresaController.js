@@ -1,7 +1,8 @@
-const fs = require('fs');
+
 const dbFunctions = require('../helpers/readjson.js');
 const db = require('../database/models');
-const sequelize = require('sequelize')
+const sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
 
 const controller = {
 	perfil: (req, res) => {
@@ -22,8 +23,47 @@ const controller = {
 
 	},
 	configuracion: (req, res) => {
-		res.render('empresaconfig');
+		db.empresas.findByPk(req.session.user.id)
+		.then(resultado => res.render('empresa/config', {empresa:resultado} ))
+		
 	},
+
+	actualizarConfiguracion: (req,res) =>
+	{
+	
+		db.empresas.findByPk(req.session.user.id,{attributes:['id','cmp_user_email','cmp_user_passwd']})
+			.then(resultado => {
+		if(req.body.cmp_user_email)
+		{
+				delete resultado.cmp_passwd
+				resultado.update(req.body)
+				.then(resu => res.render('empresa/config',{empresa:resu}))
+		}
+		if(req.body.cmp_user_passwd)
+		{	
+		
+			if(bcrypt.compareSync(req.body.cmp_user_oldPasswd,resultado.cmp_user_passwd)){
+				
+				if(req.body.cmp_user_passwd === req.body.cmp_user_repPasswd)
+				{
+					req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
+					resultado.update({ cmp_user_passwd:req.body.cmp_user_passwd})
+					.then(resu => res.render('empresa/config',{empresa:resu}))
+				}
+				else
+				{
+					res.render('empresa/config',{empresa:resultado, error:"Error al cambiar la contraseña"}) 
+				}
+			}
+			else{
+				res.render('empresa/config',{empresa:resultado, error:"Error al cambiar la contraseña"})
+			}	
+		}
+
+			})
+		
+	},
+
 	info: (req, res) => {
 		db.empresas.findByPk(req.session.user.id)
 		.then(empresa =>{
@@ -32,13 +72,13 @@ const controller = {
 		})
 	},
 	modificarInfo: (req,res)=>{
-		if(req.file.filename){
+		if(req.file){
 			req.body.cmp_avatar = req.file.filename;
 		}
 		db.empresas.update(req.body,{
 			where:{id:req.session.user.id}
 		})
-		.then(()=>{
+		.then(()=>{ 
 
 			return res.redirect('/empresa/informacion'); 
 		})
@@ -48,7 +88,42 @@ const controller = {
 		res.render("empresa/mensajes", { title: "Express" });
 	}, 
 	anuncios: (req, res) => {
-		db.anuncios.findAll(
+		let filter = "";
+		switch (req.query.filter)
+		{
+			case "new":
+				filter = "and postu.visto is null";
+				break;
+				
+		}
+
+		db.sequelize.query(`
+		select adv.*, cmp.cmp_avatar
+		from anuncios as adv
+		left outer join postulantes as postu on adv.id = postu.adv_id
+		left outer join empresas as cmp on adv.cmp_id = cmp.id
+		where adv.cmp_id = ${req.session.user.id} ${filter} group by adv.id order by adv.id asc
+		`,{ type: sequelize.QueryTypes.SELECT ,
+			})
+		.then(result => {
+			
+			//return res.send(resultado)
+
+			db.sequelize.query(
+				  `select b.id, b.adv_id, b.visto from clientes as a 
+				  inner join postulantes as b on a.user_id = b.cli_id 
+				  inner join anuncios as c on b.adv_id = c.id inner join empresas as d on c.cmp_id = d.id where d.id = ${req.session.user.id}`
+				  ,{ type: sequelize.QueryTypes.SELECT 
+				  })
+			
+			.then(resultado =>{
+				
+				//return res.send(result)
+				res.render("empresa/anuncios", { anuncios: result, postulaciones:resultado });
+			})
+		})
+
+		/*db.anuncios.findAll(
 			{
 				//raw:true,
 			 where:{cmp_id:req.session.user.id},
@@ -58,6 +133,9 @@ const controller = {
 				 as: 'empresas',
 				 attributes: ['cmp_avatar']
 				},
+				{
+				model:db.clientes, as:'candidatos', 
+				},
 				]
 			})
 		.then(result => { 
@@ -65,12 +143,12 @@ const controller = {
 			  	`select b.id, b.adv_id, b.visto from clientes as a inner join postulantes as b on a.user_id = b.cli_id inner join anuncios as c on b.adv_id = c.id inner join empresas as d on c.cmp_id = d.id where d.id = ${req.session.user.id}`)
 			
 			.then(resultado =>{
-				console.log(resultado[0])
-			
+				
+				return res.send(result)
 				res.render("empresa/anuncios", { anuncios: result, postulaciones:resultado[0] });
 			})
 			
-		})
+		})*/
 
 	},
 	anuncioDetalle: (req, res) => {
@@ -93,6 +171,8 @@ const controller = {
 			})
 		})
 	},
+
+	
 	postearPublicacion : (req,res) => {
 		
 		db.empresas.findByPk(req.session.user.id)
@@ -196,11 +276,13 @@ const controller = {
 				]
 			})
 			.then(resultado => {
+				//return res.send(resultado)
 				res.render("empresa/postulantes", { title: "Express", anuncio:resultado });
 			})
 	},
 	postulantesDetalle: (req, res) => { 
 		let id = req.query.id;
+		let adv_id = req.query.adv;
 		// traer info de usuario de DB segun su ID
 		// y guardarlo agrupado en objetos literales
 		db.clientes.findByPk(id,
@@ -212,17 +294,20 @@ const controller = {
 				attributes:['user_email','user_avatar','user_name','user_lastname']
 			})
 			.then(resultado => {
-				return res.send(resultado)	
-				res.render("empresa/cv",{cliente:resultado});
+				if(resultado.cvVisto(adv_id))
+				{
+					res.render("empresa/cv",{cliente:resultado});
+				}
+				else
+				{
+					db.sequelize.query(`update postulantes as d set visto = 1 where id = (select a.id from (select * from postulantes) as a inner join clientes as b on a.cli_id = b.user_id where a.adv_id = ${adv_id})`)
+					.then(()=>{
+						res.render("empresa/cv",{cliente:resultado});
+					})
+				}
+				
 			})
-		let perfil = '';
-		let profesionales = '';
-		let experiencia = '';
-		let formacion = '';
-		let idiomas = '';
-		let skills = '';
-		
-		
+	
 	},
 
 	prueba:(req,res)=> 

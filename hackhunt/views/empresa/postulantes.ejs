@@ -53,7 +53,7 @@
             <div class="col-12 postulantes">
                 <% for(let i = 0; i< anuncio.candidatos.length; i++){ %>
 
-                    <a href="/empresa/anuncios/postulante/cv?id=<%= anuncio.candidatos[i].user_id %>">
+                    <a href="/empresa/anuncios/postulante/cv?id=<%= anuncio.candidatos[i].user_id %>&adv=<%=anuncio.id%>">
                         <div class="item">
                             <div class="perfil wrap">
                                 <div class="avatar">
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="datos wrap">
                                     <strong>
-                                        <p><%= anuncio.candidatos[i].user_name %></p>
+                                        <p><%= anuncio.candidatos[i].user_name %></p> 
                                     </strong>
                                     <p><%= anuncio.candidatos[i].user_career %></p>
                                     <p id="bio"><%= anuncio.candidatos[i].cliente_experience[0].user_experience_description %></p>

@@ -51,9 +51,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        skills : {
-            type: dataTypes.STRING,
-        }
+
     }
     const anuncio = sequelize.define(alias,cols,{ tableName:'anuncios', timestamps: false});
 
