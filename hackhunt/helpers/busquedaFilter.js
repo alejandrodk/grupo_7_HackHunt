@@ -17,29 +17,69 @@ module.exports = (req) => {
         mainHelps.addFilter(req, search);
         // buscamos coincidencias en todos los campos del anuncio
         where = {
-            [Op.or]: [
-            {adv_title: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_description: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_area: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_position: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_working_day: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_advantage: {[Op.like]: '%'+ search.trim() +'%' }},
-            {skills: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_location: {[Op.like]: '%'+ ubication +'%' }},
-            ],
-            
+            [Op.and] : 
+                [{adv_location:  ubication}, 
+                    {[Op.or]: [
+                        {adv_title: {[Op.like]: '%'+ search.trim() +'%' }},
+                        {adv_description: {[Op.like]: '%'+ search.trim() +'%' }},
+                        {adv_area: {[Op.like]: '%'+ search.trim() +'%' }},
+                        {adv_position: {[Op.like]: '%'+ search.trim() +'%' }},
+                        {adv_working_day: {[Op.like]: '%'+ search.trim() +'%' }},
+                        {adv_advantage: {[Op.like]: '%'+ search.trim() +'%' }}
+                    ]
+                }]
         }
     }
-    if(params.jornada/*  && params.skill == undefined && params.experiencia == undefined */){
-        where.adv_working_day = {[Op.like]: '%'+ params.jornada +'%' };
+    if(params.jornada /* && params.skill == undefined && params.experiencia == undefined */){
+        where = {
+            [Op.or] : [
+                {adv_working_day : {[Op.like]: '%'+ params.jornada.replace('_','%') +'%' }},
+                {adv_title : {[Op.like]: '%'+ params.jornada.replace('_','%') +'%' }},
+                {adv_description : {[Op.like]: '%'+ params.jornada.replace('_','%') +'%' }}
+            ]
+        }
     }
     if(params.skill){
-        where.skills = {[Op.like]: '%'+ params.skill +'%' };
-        where.adv_description = {[Op.like]: '%'+ params.skill +'%' };
+        where = {
+            [Op.or] : [
+                {adv_title : {[Op.like]: '%'+ params.skill +'%' }},
+                {adv_description : {[Op.like]: '%'+ params.skill +'%' }}
+            ]
+        }
     }
     if(params.experiencia){
-        where.adv_description = {[Op.like]: '%'+ params.experiencia +'%' };
-        where.adv_title = {[Op.like]: '%'+ params.experiencia +'%' };
+        if(params.experiencia == 'junior'){
+            where = {
+                [Op.or] : [
+                    {adv_title : {[Op.like]: '%'+ params.experiencia +'%' }},
+                    {adv_title : {[Op.like]: '%jr%' }},
+                    {adv_description : {[Op.like]: '%'+ params.experiencia +'%' }},
+                    {adv_description : {[Op.like]: '%jr%' }},
+                ]
+            }
+        }
+        if(params.experiencia == 'semi-senior'){
+            where = {
+                [Op.or] : [
+                    {adv_title : {[Op.like]: '%'+ params.experiencia +'%' }},
+                    {adv_title : {[Op.like]: '%semi%' }},
+                    {adv_title : {[Op.like]: '%ssr%' }},
+                    {adv_description : {[Op.like]: '%'+ params.experiencia +'%' }},
+                    {adv_description : {[Op.like]: '%semi%' }},
+                    {adv_description : {[Op.like]: '%ssr%' }},
+                ]
+            }
+        }
+        if(params.experiencia == 'senior'){
+            where = {
+                [Op.or] : [
+                    {adv_title : {[Op.like]: '%'+ params.experiencia +'%' }},
+                    {adv_title : {[Op.like]: '%sr%' }},
+                    {adv_description : {[Op.like]: '%'+ params.experiencia +'%' }},
+                    {adv_description : {[Op.like]: '%sr%' }},
+                ]
+            }
+        }
     }
     // retornar la consulta
     return db.anuncios.findAll({
