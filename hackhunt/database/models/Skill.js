@@ -25,7 +25,8 @@ module.exports = (sequelize, dataTypes) => {
             as : 'anuncios',
             through : 'anuncio_skill',
             foreignKey : 'skill_id',
-            otherKey : 'anuncio_id'
+            otherKey : 'anuncio_id',
+            onDelete: 'cascade'
         })
         
     };

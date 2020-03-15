@@ -30,6 +30,9 @@ module.exports = (req) => {
                 }]
         }
     }
+    //esto es para agregar filtro de anuncios activos
+    //{adv_date_contract:{[Op.gte]:Sequelize.fn('NOW')}}
+    
     if(params.jornada /* && params.skill == undefined && params.experiencia == undefined */){
         where = {
             [Op.or] : [

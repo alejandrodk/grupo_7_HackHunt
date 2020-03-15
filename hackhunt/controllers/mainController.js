@@ -20,7 +20,8 @@ const controller = {
 						include:[{model:db.skills, as:'skill'}]
 					})
 					.then(cliente => {
-						//return res.send(cliente)
+
+			
 						return res.render('main/index',{ 
 							busquedas,
 							anuncios,
@@ -31,6 +32,7 @@ const controller = {
 					})
 			}
 			else{
+		
 
 				return res.render('main/index',{ 
 					busquedas,

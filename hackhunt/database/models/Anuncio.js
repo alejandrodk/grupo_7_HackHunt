@@ -24,7 +24,7 @@ module.exports = (sequelize, dataTypes) => {
 
         },
         adv_date_contract : {
-            type: dataTypes.STRING,
+            type: dataTypes.DATEONLY,
             allowNull: false
         },
         adv_area : {
@@ -78,6 +78,7 @@ module.exports = (sequelize, dataTypes) => {
             through : 'anuncio_skill',
             foreignKey  : 'anuncio_id',
             otherKey : 'skill_id',
+            onDelete: 'cascade',
             timestamps : false
         }) 
         

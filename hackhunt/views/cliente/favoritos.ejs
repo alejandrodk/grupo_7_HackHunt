@@ -36,26 +36,26 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncios">
-                <% for (let item of favoritos ){%>
-                    <a href="/detalle?id=<%= item.anuncios[0].id %>">
+                <% user.favoritos.forEach(item =>{%>
+                    <a href="/detalle?id=<%= item.id %>">
                         <div class="item">
                             <div class="img">
-                                <img src="https://dla.cdncimeco.com/uploads/2019/07/image5d320c2f994a1.png" alt="">
+                                <img src="/images/avatars/<%=item.empresas.cmp_avatar %>" alt="">
                             </div>
                             <div class="info">
-                                <h2><%= item.anuncios[0].adv_title %></h2>
+                                <h2><%= item.adv_title %></h2>
                                 <ul>
-                                    <li>Digital House</li>
-                                    <li><%= item.anuncios[0].adv_location %></li>
-                                    <li><%= item.anuncios[0].adv_working_day %></li>
+                                    <li><%= item.empresas.cmp_name %></li>
+                                    <li><%= item.adv_location %></li>
+                                    <li><%= item.adv_working_day %></li>
                                 </ul>
-                                <p class="desc"><%= item.anuncios[0].adv_description %></p>
-                                <p class="sal">$<%= item.anuncios[0].adv_salary %></p>
-                                <p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+                                <p class="desc"><%= item.adv_description %></p>
+                                <p class="sal">$<%= item.adv_salary %></p>
+                                <p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> <%= item.compareSkills(user.skill).length + " / " + item.adv_skills.length %></p>
                             </div>
                         </div>
                     </a> 
-                 <% } %> 
+                 <% }) %> 
             </div>
         </div>
     </div>
