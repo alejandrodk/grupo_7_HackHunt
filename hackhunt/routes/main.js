@@ -34,6 +34,8 @@ router.get("/experiencia/:experiencia/skill/:skill/jornada/:jornada", filtrarBus
 router.get("/detalle", mainController.detalleAnuncio);
 router.get('/postulacion', mainController.postulacion);
 
+router.get("/detalle/empresa/:id", mainController.detalleEmpresa);
+
 router.get("/login", soloGuest, mainController.loginUsuario);
 router.post("/login", validator.user_login, mainController.validarUsuario);
 

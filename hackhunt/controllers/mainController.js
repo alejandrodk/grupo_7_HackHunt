@@ -77,6 +77,24 @@ const controller = {
 			return res.redirect('/perfil/postulaciones')
 		})
 	},
+	detalleEmpresa : (req, res) => {
+
+		let id = req.params.id;
+		db.empresas.findByPk(id,{
+			include : 'anuncios'
+		})
+		.then( empresa => {
+			db.empresas.findAll({
+				limit : 5
+			})
+			.then(relacionadas => {
+				res.render('main/detalleEmpresa', {
+					empresa,
+					relacionadas
+				})
+			})
+		})
+	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
 	},

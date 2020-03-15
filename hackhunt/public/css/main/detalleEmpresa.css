@@ -1,0 +1,148 @@
+/*SEPARADOR------------------------------------*/
+.separador {
+	margin: 2% 0;
+}
+.separador .volver{
+	align-items: center;
+}
+.separador .volver a{
+	text-decoration: none;
+    color: var(--main-texto-blanco);
+    padding-right: 1%;
+    border-right: solid 1px var(--main-texto-blanco);
+}
+.separador .titulo{
+	align-items: center;
+}
+.separador .titulo p{
+    color: var(--main-texto-blanco);
+    margin: 0;
+    padding-left: 1%;
+    border-left: solid 1px var(--main-texto-blanco);
+}
+/**/
+.contenedor {
+	background: var(--main-texto-blanco);
+	border-radius: 10px;
+	margin-top: 3%;
+	padding: 1% 4%;
+	min-height: 600px;
+}
+.contenedor .header {
+	width: 100%;
+	height: 10%;
+    min-height: 170px;
+    align-items: center;
+}
+.contenedor .header .avatar{
+	width: 15%;
+	height: 150px;
+	margin-right: 5%;
+}
+.contenedor .header .avatar img {
+	width: 100%;
+	border-radius: 5px;
+}
+.contenedor .header .info {
+    position: relative;
+	width: 80%;
+}
+.contenedor .header .info i {
+	margin-right: 10px;
+}
+.contenedor .header #add-favorite {
+	position: absolute;
+	top: 10%;
+	right: 10px;
+}
+.contenedor .header .info h1 {
+	font-size: 25px;
+	width: 100%;
+}
+.contenedor .header .info .redes {
+	width: 25%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.contenedor .header .info .infoEmpresa {
+    width: 50%;
+}
+.contenedor .header .info .redes p,
+.contenedor .header .info .infoEmpresa p {
+	width: 100%;
+	margin: 0;
+}
+.contenedor .descripcion {
+    width: 100%;
+    min-height: 100px;
+}
+.contenedor .descripcion p {
+	width: 100%;
+	text-align: justify;
+}
+.contenedor .anuncios {
+	width: 100%;
+	min-height: 200px;
+	align-content: start;
+}
+.contenedor .anuncios h3 {
+	width: 100%;
+	font-size: 20px;
+	height: 31px;
+}
+.contenedor .anuncios a {
+    width: 100%;
+	min-height: 40px;
+	background: white;
+    text-decoration: none;
+    color: var(--main-bg-color-2);
+	border-radius: 5px;
+    margin-bottom: 1%;
+}
+.contenedor .anuncios a .item {
+	padding: 1%;
+}
+.contenedor .anuncios a .item h2 {
+	font-size: 20px;
+	width: 50%;
+}
+.contenedor .anuncios a .item  h3{
+	font-size: 20px;
+	font-weight: 20;
+	width: 50%;
+}
+.relacionados {
+	margin-top: 7%;
+}
+.relacionados a {
+	width: 100%;
+	height: auto;
+    padding: 2%;
+	color: var(--main-bg-color-2);
+}
+.relacionados a .item {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 2%;
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: 10px;
+	background: var(--main-texto-blanco);
+	-webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+	box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.relacionados a .item .img {
+	width: 40%;
+}
+.relacionados a .item .img img {
+	width: 100%;
+}
+.relacionados a .item .info {
+	width: 60%;
+	padding-left: 6%;
+}
+.relacionados a .item .info h3 {
+	font-size: 20px;
+}

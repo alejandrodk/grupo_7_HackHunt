@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <!--Luego hay que hacer una validación de sesión iniciada para mostrar un header u otro-->
+    <link rel="stylesheet" href="/css/headerLog.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/main/detalleEmpresa.css" />
+</head>
+<!-- CÓDIGO -->
+<body>
+    <header>
+        <% if(type_user == "empresa"){%>
+			<%- include('../partials/headerEmp'); -%>
+		<%} if(type_user == "usuario"){%>
+			<%- include('../partials/headerLog'); -%>
+		<%}if(type_user == "guest"){%>
+			<%- include('../partials/header'); -%>
+		<%}%>
+    </header>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row separador">
+                <div class="col-9 volver wrap">
+                    <a href="../">../Volver</a>
+                </div>
+                <div class="col-3 titulo wrap">
+                    <p>Empresas relacionadas</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                    <div class="contenedor wrap">
+                        <div class="header wrap">
+                            <div class="avatar wrap">
+                                <img src="/images/avatars/<%= empresa.cmp_avatar %>" alt="">
+                            </div>
+                            <div class="info wrap">
+                                <h1><%= empresa.cmp_name %></h1>
+                                <div class="redes">
+                                    <p><i class="fab fa-linkedin"></i><%= empresa.cmp_linkedin %></p>
+                                    <p><i class="fab fa-instagram"></i><%= empresa.cmp_instagram %></p>
+                                    <p><i class="fab fa-facebook-square"></i><%= empresa.cmp_facebook %></p>
+                                    <p><%= empresa.cmp_website %></p>
+                                </div>
+                                <div class="infoEmpresa">
+                                    <p><i class="far fa-building"></i><%= empresa.cmp_sector %></p>
+                                    <p><i class="far fa-id-card"></i><%= empresa.cmp_cuit %></p>
+                                    <p><i class="fas fa-phone-square-alt"></i><%= empresa.cmp_tel %></p>
+                                </div>
+                                <i class="fa-heart fa-lg far" id="add-favorite"></i>
+                            </div>
+                        </div>
+                        <div class="descripcion">
+                            <p><%= empresa.cmp_description %></p>
+                        </div>
+                        <div class="anuncios wrap">
+                            <h3>Búsquedas activas</h3>
+                            <% for(let anuncio of empresa.anuncios){ %>
+                                <a href="/detalle?id=<%= anuncio.id %>">
+                                    <div class="item wrap">
+                                        <h2><%= anuncio.adv_title %></h2>
+                                        <h3><%= anuncio.adv_location %></h3>
+                                    </div>
+                                </a>
+                            <% } %> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="relacionados wrap">
+                        <% for(let empresa of relacionadas){ %>
+                            <a href="/detalle/empresa/<%= empresa.id %>">
+                                <div class="item">
+                                    <div class="img">
+                                        <img src="/images/avatars/<%= empresa.cmp_avatar %>" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <h3><%= empresa.cmp_name %></h3>
+                                        <p><%= empresa.cmp_sector %></p>
+                                    </div>
+                                </div>
+                            </a>
+                        <% } %> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+</body>
+</html>

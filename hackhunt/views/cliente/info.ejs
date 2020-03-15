@@ -88,15 +88,15 @@
             <div class="formulario">
                 <form action="?_method=PATCH&form=laboral" method="post" class="wrap">
                     <label for="user_cmp_experience"><p>Empresa</p></label>
-                    <input type="text" name="user_cmp_experience" id="user_cmp_experience" value="<%=user.cliente_experience == null ? "" :  user.cliente_experience.user_cmp_experience %>">
+                    <input type="text" name="user_cmp_experience" id="user_cmp_experience" value="<%=user.cliente_experience == null ? "" :  user.cliente_experience[0].user_cmp_experience %>">
                     <label for="user_cmp_position"><p>Cargo</p></label>
-                    <input type="text" name="user_cmp_position" id="user_cmp_position" value="<%= user.cliente_experience == null ? "" : user.cliente_experience.user_cmp_position %>">
+                    <input type="text" name="user_cmp_position" id="user_cmp_position" value="<%= user.cliente_experience == null ? "" : user.cliente_experience[0].user_cmp_position %>">
                     <label for="user_cmp_experience_since"><p>Desde</p></label>
-                    <input type="date" name="user_cmp_experience_since" id="user_cmp_experience_since" value="<%=  %>">
+                    <input type="date" name="user_cmp_experience_since" id="user_cmp_experience_since" value="<%=user.cliente_experience == null ? "" : user.cliente_experience[0].user_cmp_experience_since %>">
                     <label for="user_cmp_experience_to"><p>Hasta</p></label>
-                    <input type="date" name="user_cmp_experience_to" id="user_cmp_experience_to" value="<%= %>">
+                    <input type="date" name="user_cmp_experience_to" id="user_cmp_experience_to" value="<%= user.cliente_experience == null ? "" : user.cliente_experience[0].user_cmp_experience_to %>">
                     <label for="user_cmp_experience_description"><p>Descripción</p></label>
-                    <textarea name="user_cmp_experience_description" id="user_cmp_experience_description" cols="30" rows="10"><%= user.cliente_experience == null ? "" : user.cliente_experience.user_experience_description %></textarea>
+                    <textarea name="user_cmp_experience_description" id="user_cmp_experience_description" cols="30" rows="10"><%= user.cliente_experience == null ? "" : user.cliente_experience[0].user_experience_description %></textarea>
                     <button type="submit">Guardar</button>
                 </form>
             </div>
