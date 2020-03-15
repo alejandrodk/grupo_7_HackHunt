@@ -15,7 +15,9 @@ const controller = {
                   //sequelize.query(`SELECT * FROM anuncios JOIN postulantes ON anuncios.id = postulantes.adv_id WHERE postulantes.cli_id = ${sessionId}`)
                  db.anuncios.findAll(
                      {
-                         include:[{model:db.clientes, as:"candidatos", where:{user_id: req.session.user.user_id}},{model:db.skills, as:"adv_skills"}]
+                        include:[
+                           {model:db.clientes, as:"candidatos", where:{user_id: req.session.user.user_id}},
+                           {model:db.skills, as:"adv_skills"}]
                      }
                  )
                   .then(misAnuncios => {

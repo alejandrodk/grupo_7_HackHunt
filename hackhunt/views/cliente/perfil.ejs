@@ -73,7 +73,11 @@
                                     <h3><%= anuncio.adv_title  %> </h3>
                                     <p><i class="fas fa-magic" title="Skills que cumples"></i>  <%= anuncio.compareSkills(user.skill).length + " / " + anuncio.adv_skills.length %> </p>
                                     <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
-                                    <i class="fab fa-hotjar" style="color: orangered;" title="¡EXCELENTE OPORTUNIDAD!"></i>
+                                    <% if (anuncio.compareSkills(user.skill).length > anuncio.adv_skills.length - 3) { %>
+                                        <i class="fab fa-hotjar" style="color: orangered;" title="¡EXCELENTE OPORTUNIDAD!"></i>
+                                        <% } else { %>
+                                            <i class="fab fa-hotjar" style="color: transparent;"></i>
+                                    <% } %>
                                 </div>
                             </a>  
 						<% } %> 
@@ -88,7 +92,7 @@
                                     <h3><%= anuncio.adv_title %>  <%=anuncio.created_at%></h3>
                                     <p><i class="fas fa-magic" title="Skills que cumples"></i>  <%= anuncio.compareSkills(user.skill).length + " / " + anuncio.adv_skills.length %></p>
                                     <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
-                                    <% if (anuncio.visto == 1) { %>
+                                    <% if (anuncio.candidatos[0].postulantes.visto == 1) { %>
                                         <i class="far fa-eye" title="Visto por la empresa"></i>
                                     <% } else { %>
                                         <i class="far fa-eye" style="color:transparent"></i>
