@@ -32,6 +32,7 @@ module.exports = (sequelize, dataTypes) => {
             through : 'postulantes',
             foreignKey : 'cli_id',
             otherKey : 'adv_id',
+            onDelete: 'cascade',
             timestamps : false
         })
     };

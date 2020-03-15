@@ -88,26 +88,60 @@ const controller = {
 		res.render("empresa/mensajes", { title: "Express" });
 	}, 
 	anuncios: (req, res) => {
-		let filter = "";
+		let query = "";
+		let fecha = new Date().toLocaleDateString().slice(0,10).split('-');
+				if(fecha[1] <10)
+				{
+					fecha[1] = "0"+fecha[1];
+				}
+				fecha = fecha[0] + '-' + fecha[1] + '-' + fecha[2];
+		//{adv_date_contract:{[Op.gte]:Sequelize.fn('NOW')}}
 		switch (req.query.filter)
 		{
 			case "new":
-				filter = "and postu.visto is null";
-				break;
 				
-		}
-
-		db.sequelize.query(`
+			 query =	`
 		select adv.*, cmp.cmp_avatar
 		from anuncios as adv
-		left outer join postulantes as postu on adv.id = postu.adv_id
-		left outer join empresas as cmp on adv.cmp_id = cmp.id
-		where adv.cmp_id = ${req.session.user.id} ${filter} group by adv.id order by adv.id asc
-		`,{ type: sequelize.QueryTypes.SELECT ,
+		inner join postulantes as postu on adv.id = postu.adv_id
+		inner join empresas as cmp on adv.cmp_id = cmp.id
+		where adv.cmp_id = ${req.session.user.id} and postu.visto is null group by adv.id order by adv.id asc
+		`
+				break;
+			case "active":
+				
+				query = `
+				select adv.*, cmp.cmp_avatar
+				from anuncios as adv
+				left outer join postulantes as postu on adv.id = postu.adv_id
+				inner join empresas as cmp on adv.cmp_id = cmp.id
+				where adv.cmp_id = ${req.session.user.id} and adv_date_contract > '${fecha}' group by adv.id order by adv.id asc`
+				break;
+
+			case "closed":
+				query = `
+				select adv.*, cmp.cmp_avatar
+				from anuncios as adv
+				left outer join postulantes as postu on adv.id = postu.adv_id
+				inner join empresas as cmp on adv.cmp_id = cmp.id
+				where adv.cmp_id = ${req.session.user.id} and adv_date_contract < '${fecha}' group by adv.id order by adv.id asc`
+				break;
+				
+				default:
+					query = `
+				select adv.*, cmp.cmp_avatar
+				from anuncios as adv
+				left outer join postulantes as postu on adv.id = postu.adv_id
+				inner join empresas as cmp on adv.cmp_id = cmp.id
+				where adv.cmp_id = ${req.session.user.id} group by adv.id order by adv.id asc`
+				break;
+		}
+
+		db.sequelize.query(query,{ type: sequelize.QueryTypes.SELECT ,
 			})
 		.then(result => {
 			
-			//return res.send(resultado)
+			//return res.send(result)
 
 			db.sequelize.query(
 				  `select b.id, b.adv_id, b.visto from clientes as a 
@@ -240,7 +274,7 @@ const controller = {
 	actualizarPublicacion: (req, res) => {
 		// actualizar info en la DB y enviar a la vista previa 
 		
-		db.anuncios.findOne({where:{cmp_id:req.session.user.id}})
+		db.anuncios.findOne({where:{id:req.params.id}})
 			.then(anuncio => {
 				for(let i = 0; i<req.body.elskill.length;i++){
 

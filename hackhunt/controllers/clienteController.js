@@ -18,7 +18,7 @@ const controller = {
                          include:[{model:db.clientes, as:"candidatos", where:{user_id: req.session.user.user_id}},{model:db.skills, as:"adv_skills"}]
                      }
                  )
-                  .then(misAnuncios => {
+                  .then(misAnuncios => { 
                        db.anuncios.findAll({
                            limit:3,
                            attributes:['id','adv_title','adv_publication'],
@@ -38,13 +38,14 @@ const controller = {
     },
     postulaciones: (req, res) => {
         db.clientes.findOne({ where: { user_id: req.session.user.user_id },
-            include: ['cliente_cv'] })
+            include: ['cliente_cv',{model:db.anuncios, as:"candidato", include:[{model:db.empresas, as:"empresas",attributes:['cmp_avatar','cmp_name']},{model:db.skills, as:"adv_skills"}]},{model:db.skills,as:"skill"}] })
             .then(user => {
                 sequelize.query(`SELECT * FROM postulantes JOIN anuncios ON postulantes.adv_id = anuncios.id JOIN empresas ON anuncios.cmp_id = empresas.id HAVING cli_id = ${user.user_id}`)
                 .then(result => {
-                    //return res.send(result)
+                   // return res.send(user.skill)
                     res.render('cliente/postulaciones',{
-                        anuncios : result[0]
+                        anuncios : result[0],
+                        usuario:user
                     })
                 })
             })
@@ -57,15 +58,16 @@ const controller = {
             //si existe el queryString refinar la busqueda por empresa
         }
 
-        db.userFavoritos.findAll({
-            where : {
-                user_id : req.session.user.user_id
-            }, attributes : ['adv_id'], include : 'anuncios'
-        })
-        .then( favoritos => {
-            //res.send(favoritos)
+        db.clientes.findOne({
+            where:{user_id:req.session.user.user_id},
+            include:[{model:db.skills,as:'skill'},
+                     {model:db.anuncios,as:"favoritos",include:[{model:db.empresas,as:"empresas",attributes:['cmp_name','cmp_avatar']},
+                                                                {model:db.skills,as:"adv_skills"}]
+                        }]})
+        .then( user => { 
+           //return res.send(user)
             res.render('cliente/favoritos', {
-                favoritos
+                user
             });
         })
     },

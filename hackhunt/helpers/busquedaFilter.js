@@ -17,18 +17,18 @@ module.exports = (req) => {
         mainHelps.addFilter(req, search);
         // buscamos coincidencias en todos los campos del anuncio
         where = {
-            [Op.or]: [
-            {adv_title: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_description: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_area: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_position: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_working_day: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_advantage: {[Op.like]: '%'+ search.trim() +'%' }},
-            {skills: {[Op.like]: '%'+ search.trim() +'%' }},
-            {adv_location: {[Op.like]: '%'+ ubication +'%' }},
-            ],
+            [Op.or]: {
+            adv_title: {[Op.like]: '%'+ search.trim() +'%' },
+            adv_description: {[Op.like]: '%'+ search.trim() +'%' },
+            adv_area: {[Op.like]: '%'+ search.trim() +'%' },
+            adv_position: {[Op.like]: '%'+ search.trim() +'%' },
+            adv_working_day: {[Op.like]: '%'+ search.trim() +'%' },
+            adv_advantage: {[Op.like]: '%'+ search.trim() +'%' },
+            //{skills: {[Op.like]: '%'+ search.trim() +'%' }},
+            adv_location: {[Op.like]: '%'+ ubication +'%' },
             
-        }
+            //{adv_date_contract:{[Op.gte]:Sequelize.fn('NOW')}}
+        }}
     }
     if(params.jornada/*  && params.skill == undefined && params.experiencia == undefined */){
         where.adv_working_day = {[Op.like]: '%'+ params.jornada +'%' };
