@@ -180,6 +180,18 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos skills wrap">
+                    <h3>Skills</h3>
+                    <p id="Skills"></p>
+                    <label for="skill_id"><p>Skills</p><span id="add"><i class="fas fa-plus"></i></span></label>
+                    <select name="skill_id" id="skill_id" data-user="<%= user.user_id %>"> <%# user guardado en res.locals %>
+                        <option value="">Agregar Skill</option>
+                    </select>
+                    
+                    <div class="areas">
+                        <p>Tus Skills</p>                    
+                    </div>
+                </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos preferencias wrap">
                     <h3>Preferencia laboral</h3>
                     <p id="PreferenciaLaboral"></p>
@@ -216,6 +228,7 @@
     </div>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="/js/main/cvCiudades.js"></script>
+	<script src="/js/main/cvSkills.js"></script>
 </body>
 
 </html>

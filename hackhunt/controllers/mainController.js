@@ -65,38 +65,6 @@ const controller = {
 		})
 
 	},
-	postulacion: (req, res) => { 
-		if(req.session.user == undefined){
-			return res.redirect('/login')
-		}
-		let anuncioId = req.query.anuncioId;
-		let userId = req.session.user.user_id;
-		db.postulantes.create({
-			adv_id : anuncioId,
-			cli_id : userId
-		})
-		.then(result => {
-			return res.redirect('/perfil/postulaciones')
-		})
-	},
-	detalleEmpresa : (req, res) => {
-
-		let id = req.params.id;
-		db.empresas.findByPk(id,{
-			include : 'anuncios'
-		})
-		.then( empresa => {
-			db.empresas.findAll({
-				limit : 5
-			})
-			.then(relacionadas => {
-				res.render('main/detalleEmpresa', {
-					empresa,
-					relacionadas
-				})
-			})
-		})
-	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
 	},
@@ -114,6 +82,7 @@ const controller = {
 				if(bcrypt.compareSync(req.body.user_passwd,user.user_passwd)){
 					console.log('contrasena correcta')
 					req.session.user = user;
+					res.locals.user = user;
 					req.session.type_user = 'cliente';
 					console.log('sesion creada con usuario: ' + req.session.user.user_name)
 					res.cookie('user_id', bcrypt.hashSync(user.user_id.toString(),10),{maxAge: 1000 * 60 * 30 });
@@ -152,6 +121,7 @@ const controller = {
 				}
 
 				req.session.user = user;
+				res.locals.user = user;
 				req.session.type_user = 'cliente'
 
 				return res.redirect('/registro/cv');
@@ -192,6 +162,24 @@ const controller = {
 		//} else {
 		//	res.render('main/completarRegistro', { errors: errors.array(), user: user });
 		//	}
+	},
+	detalleEmpresa : (req, res) => {
+
+		let id = req.params.id;
+		db.empresas.findByPk(id,{
+			include : 'anuncios'
+		})
+		.then( empresa => {
+			db.empresas.findAll({
+				limit : 5
+			})
+			.then(relacionadas => {
+				res.render('main/detalleEmpresa', {
+					empresa,
+					relacionadas
+				})
+			})
+		})
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });

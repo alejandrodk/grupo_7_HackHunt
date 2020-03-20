@@ -17,13 +17,18 @@ module.exports = {
     skill : (req, res) => {
         db.skills.findByPk(req.params.id)
         .then( response => {
-            res.json({
-                status_code : res.statusCode,
-                collection : 'skills',
-                resource : 'skill',
-                response
-            });
-        })
+            if(response){
+            return res.json({
+                    status_code : res.statusCode,
+                    collection : 'skills',
+                    resource : 'skill',
+                    response
+                });
+            }
+            return res.status(404).json({
+                status : res.statusCode
+            })
+        }).catch(error => console.log(error));
     },
     create : (req, res) => {
 

@@ -115,15 +115,6 @@ const controller = {
         let urlAncla = actUserCv.actualizarCv(tipoForm,contentForm,idUser);
         res.redirect('/perfil/informacion' + urlAncla);
     },
-    borrarSkill : (req, res) => {
-        db.user_skill.destroy({
-            where : {
-                skill_id : req.params.skill_id,
-                user_id : req.session.user.user_id
-            }
-        })
-        res.redirect('/perfil/informacion#Skills');
-    },
     mensajes: (req, res) => {
         res.render('cliente/mensajes', {
             title: 'Mensajes'

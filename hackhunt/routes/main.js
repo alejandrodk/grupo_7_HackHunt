@@ -33,7 +33,6 @@ router.get("/experiencia/:experiencia/jornada/:jornada/skill/:skill", filtrarBus
 router.get("/experiencia/:experiencia/skill/:skill/jornada/:jornada", filtrarBusqueda , mainController.home);
 
 router.get("/detalle", mainController.detalleAnuncio);
-router.get('/postulacion', mainController.postulacion);
 
 router.get("/detalle/empresa/:id", mainController.detalleEmpresa);
 
