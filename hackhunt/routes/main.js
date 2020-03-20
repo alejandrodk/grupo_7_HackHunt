@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const upload = require('../middlewares/multer.js');
 const soloGuest = require('../middlewares/soloGuest');
+const soloCliente = require('../middlewares/soloCliente');
 const { check, body } = require('express-validator');
 const validator = require('../middlewares/form_validators');
 const filtrarBusqueda = require('../middlewares/filtrarBusqueda');
@@ -42,7 +43,7 @@ router.post("/login", validator.user_login, mainController.validarUsuario);
 router.get("/registro", soloGuest, mainController.registroUsuario);
 router.post("/registro", upload.single('user_avatar'), validator.user_register, mainController.valRegUsuario);
 
-router.get("/registro/cv", soloGuest, mainController.completarCv);
+router.get("/registro/cv", soloCliente,  mainController.completarCv);
 router.post("/registro/cv",validator.user_complete_cv ,mainController.valCompletarCv);
 
 router.get("/empresa/login", soloGuest, mainController.loginEmpresa);
@@ -59,6 +60,3 @@ router.get("/logout", mainController.logout);
 
 
 module.exports = router;
-
-/*
-*/

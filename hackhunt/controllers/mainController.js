@@ -20,8 +20,6 @@ const controller = {
 						include:[{model:db.skills, as:'skill'}]
 					})
 					.then(cliente => {
-
-			
 						return res.render('main/index',{ 
 							busquedas,
 							anuncios,
@@ -30,10 +28,7 @@ const controller = {
 							user
 						})
 					})
-			}
-			else{
-		
-
+			} else{
 				return res.render('main/index',{ 
 					busquedas,
 					anuncios,
@@ -128,7 +123,7 @@ const controller = {
 			}) .catch( error => { console.log(error) })
 
 		} else {
-		return res.render('main/loginUsuario', { errors: errors.array() });
+			return res.render('main/loginUsuario', { errors: errors.array() });
 		}
 	},
 	registroUsuario: (req, res) => { 
@@ -142,21 +137,29 @@ const controller = {
 			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
 			let user_avatar = req.file ? req.file.filename : 'user_avatar_default.jpg';
 			db.clientes.create({ ...req.body, user_avatar : user_avatar })
-			.then(()=>
-			{
+			.then(usuario =>{
+				let { user_id, user_name, user_email } = usuario;
 
-				delete req.body.user_passwd
-				let user = { ...req.body }
+				let user = {
+					user_id,
+					user_name,
+					user_email
+				}
+
 				req.session.user = user;
 				req.session.type_user = 'cliente'
-				return res.redirect('registro/cv');
+
+				return res.redirect('/registro/cv');
 			})
+			.catch(error => console.log(error))
 
 		} else {
+
 			res.render('main/registroUsuario', { errors: errors.array() });
 		}
 	},
 	completarCv : (req,res) => {
+
 		res.render('main/completarRegistro', { title: 'Completar tu registro' });
 	},
 	valCompletarCv : (req,res) => {
