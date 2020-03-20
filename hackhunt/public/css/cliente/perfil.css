@@ -249,8 +249,7 @@
     .container.cuerpo .funciones .postulaciones .anuncio .item p,
     .container.cuerpo .funciones .postulaciones .anuncio .item p i,
     .container.cuerpo .funciones .postulaciones .anuncio .item i,
-    .container.cuerpo .info .estadisticas,
-    .container.cuerpo .funciones .anuncios {
+    .container.cuerpo .funciones .busqueda {
 		display: none !important;
 	}
 

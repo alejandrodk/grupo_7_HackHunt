@@ -59,11 +59,7 @@
                             <p>Ciudad</p>
                         </label>
                         <select name="user_city" id="user_city">
-                            <option value="CABA">Capital Federal</option>
-                            <option value="GBA">Buenos Aires</option>
-                            <option value="CO">Córdoba</option>
-                            <option value="MDZ">Mendoza</option>
-                            <option value="RO">Rosario</option>
+                            <option value="null">Ciudad</option>
                         </select>
                     </div>
                 </div>
@@ -211,15 +207,15 @@
                         <p>Ubicación</p>
                     </label>
                     <select name="user_work_location" id="user_work_location">
-                        <option value="CAP">Capital Federal</option>
-                        <option value="GBA">Buenos Aires</option>
+                        <option value="null">Ciudad</option>
                     </select>
                     <button type="submit">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
-    <!-- CÓDIGO -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="/js/main/cvCiudades.js"></script>
 </body>
 
 </html>
