@@ -34,12 +34,12 @@ app.set("view engine", "ejs");
 const mainRouter = require("./routes/main");
 const clienteRouter = require("./routes/cliente");
 const empresaRouter = require("./routes/empresa");
-const apiRouter = require('./api/routes/apiRoutes');
+const anunciosRouter = require('./api/routes/anunciosRoutes');
 
 app.use("/", mainRouter);
 app.use("/perfil", clienteRouter);
 app.use("/empresa", empresaRouter);
-app.use("/api", apiRouter);
+app.use("/api/anuncios", anunciosRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
