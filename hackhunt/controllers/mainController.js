@@ -39,7 +39,8 @@ const controller = {
 		})
 	},
 	detalleAnuncio: (req, res) => {
-		
+		user = req.session.user != undefined ? req.session.user.user_id : null;
+
 		db.anuncios.findByPk(req.query.id,
 			{
 				raw:true,
@@ -56,7 +57,8 @@ const controller = {
 				//return res.send(relacionados)
 				res.render('main/detalleAnuncio', { 
 					anuncio: resultado,
-					relacionados
+					relacionados,
+					user
 				});
 
 			})
@@ -64,6 +66,9 @@ const controller = {
 
 	},
 	postulacion: (req, res) => { 
+		if(req.session.user == undefined){
+			return res.redirect('/login')
+		}
 		let anuncioId = req.query.anuncioId;
 		let userId = req.session.user.user_id;
 		db.postulantes.create({

@@ -21,7 +21,7 @@ function removeState(item){
 // sin tener que invocarla
 
 (async function fetchFavorites(){
-    let response = await fetch('/api/favoritos');
+    let response = await fetch('/api/anuncios/favoritos');
     let data = await response.json();
     checkFavorites(adds, data.response)
 })();
@@ -51,7 +51,7 @@ for (let item of adds) {
         if(item.classList.contains('far')){
             setState(item);
 
-            let url = '/api/favoritos'
+            let url = '/api/anuncios/favoritos'
             let data = {
                 id : 0,
                 user_id : cliente,
@@ -72,7 +72,7 @@ for (let item of adds) {
         } else {
             removeState(item);
 
-            let url = '/api/favoritos'
+            let url = '/api/anuncios/favoritos'
             let data = {
                 user_id : cliente,
                 adv_id : anuncioId,

@@ -9,7 +9,52 @@ module.exports = {
         .then(result => {
             res.json({
                 status_code : res.statusCode,
-                collection : 'postulantes',
+                collection : 'postulaciones',
+                total_items : result.length,
+                response : result
+            });
+        })    
+    },
+    postulacionesDetalle : (req, res) => {
+        let { adv , id } = req.params;
+        console.log(req.query)
+        db.postulantes.findOne({
+            where : {
+                [Op.and] : [
+                    { adv_id : adv },
+                    { cli_id : id }
+                ]
+            }
+        })
+        .then(result => {
+            if(result){
+                res.json({
+                    status_code : res.statusCode,
+                    collection : 'postulaciones',
+                    resource : 'postulacion',
+                    total_items : result.length,
+                    response : result
+                });
+            } else {
+                res.json({
+                    status_code : 404,
+                    collection : 'postulaciones',
+                    response : 'Sin resultados'
+                });
+            }
+        })    
+    },
+    postulacionesCliente : (req, res) => {
+
+        let cli_id = req.query.id
+
+        db.postulantes.findAll({
+            where : { cli_id : cli_id }
+        })
+        .then(result => {
+            res.json({
+                status_code : res.statusCode,
+                collection : 'postulaciones',
                 total_items : result.length,
                 response : result
             });
@@ -35,7 +80,8 @@ module.exports = {
         }) .catch(error => res.json(error))
     },
     removePostulation : (req, res) => {
-
+        console.log('-----REMOVE POSTULATION-------');
+        
         let { adv_id, cli_id } = req.body;
 
         db.postulantes.destroy({
