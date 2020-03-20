@@ -8,11 +8,12 @@ const controller = {
     perfil: (req, res) => {
         const sessionId = req.session.user.user_id;
             db.clientes.findOne({where: {user_id: req.session.user.user_id},
-                include: [{model:db.cliente_cv,as:'cliente_cv'},{model:db.skills, as:'skill'}]
-            //    {model:db.anuncios, as:'candidato',attributes:['id','adv_title','adv_publication','adv_location','created_at','updated_at']}]
+                include: [
+                    {model:db.cliente_cv,as:'cliente_cv'},
+                    {model:db.skills, as:'skill'}
+                ]
                 })
                 .then(cliente =>{
-                  //sequelize.query(`SELECT * FROM anuncios JOIN postulantes ON anuncios.id = postulantes.adv_id WHERE postulantes.cli_id = ${sessionId}`)
                  db.anuncios.findAll(
                      {
                         include:[
@@ -27,11 +28,23 @@ const controller = {
                            include:[{model:db.skills,as:"adv_skills"}]
                        })
                        .then(relacionados => {
-                        
-                           res.render('cliente/perfil',{
-                                user:cliente,
-                                postulaciones:misAnuncios,
-                                relacionados
+                            db.postulantes.findAll({
+                                where : {
+                                    cli_id : req.session.user.user_id,
+                                    visto : 1
+                                }, 
+                                attributes : [
+                                    [sequelize.fn('COUNT', sequelize.col('visto')), 'visto']
+                                ]
+                            })
+                            .then( vistos => {
+                                res.render('cliente/perfil',{
+                                    
+                                     user:cliente,
+                                     postulaciones:misAnuncios,
+                                     relacionados,
+                                     vistos
+                                 })
                             })
                         })
                     })
@@ -95,7 +108,6 @@ const controller = {
             })
     }, 
     actInfo: (req, res) => {
-        // 
         let tipoForm = req.query.form;
         let contentForm = req.body;
         let idUser = req.session.user.user_id;

@@ -66,9 +66,10 @@
 }
 /**/
 .container.cuerpo .info .estadisticas{
+    align-content: baseline;
 	margin-top: 6%;
     padding: 3%;
-    height: 300px;
+    min-height: 390px;
     background: var(--main-texto-blanco);
     border-radius: 5px;
     position: relative;
@@ -76,13 +77,29 @@
     -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
     box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
-.container.cuerpo .info .estadisticas p{
-	font-size: 20px;
-    font-weight: 500;
+.container.cuerpo .estadisticas .titulo {
+    width: 100%;
+    height: 10%;
+	padding: 0;
 }
-.container.cuerpo .info .estadisticas ul{
+.container.cuerpo .estadisticas .skills {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
+	padding: 0;
+	width: 100%;
+    height: 40%;
+    min-height: 100px;
+	align-content: baseline;
+}
+.container.cuerpo .estadisticas .skills li {
 	list-style: none;
-    padding: 0;
+	width: 18%;
+	height: 30%;
+	text-align: center;
+	background: var(--main-color-verde);
+	border-radius: 5px;
+	margin: 3px;
 }
 /*FUNCIONES-----------------------------------*/
 .container.cuerpo .funciones .busqueda{
