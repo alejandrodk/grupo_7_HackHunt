@@ -10,8 +10,8 @@ router.post('/favoritos', favoritosController.addFavorite);
 router.delete('/favoritos', favoritosController.removeFavorite);
 
 router.get('/postulaciones', postulacionesController.postulaciones);
+router.get('/postulaciones/:id', postulacionesController.postulacionesCliente);
 router.get('/postulaciones/:id/:adv', postulacionesController.postulacionesDetalle);
-router.get('/postulaciones/cliente/:id', postulacionesController.postulacionesCliente);
 //router.get('/postulaciones/anuncio/:id', postulacionesController.postulacionesCliente);
 router.post('/postulaciones', postulacionesController.addPostulation);
 router.delete('/postulaciones', postulacionesController.removePostulation);

@@ -46,7 +46,7 @@ module.exports = {
     },
     postulacionesCliente : (req, res) => {
 
-        let cli_id = req.query.id
+        let cli_id = req.params.id
 
         db.postulantes.findAll({
             where : { cli_id : cli_id }
@@ -80,7 +80,6 @@ module.exports = {
         }) .catch(error => res.json(error))
     },
     removePostulation : (req, res) => {
-        console.log('-----REMOVE POSTULATION-------');
         
         let { adv_id, cli_id } = req.body;
 
