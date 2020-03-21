@@ -39,7 +39,9 @@
                         <p class="not_found">Anuncio No encontrado</p>
                         <% }else{%>
                     <div class="avatar">
-                        <img src="/images/avatars/<%= anuncio.cmp_avatar %>" alt="">
+                        <a href="/detalle/empresa/<%= anuncio.cmp_id %>">
+                            <img src="/images/avatars/<%= anuncio.cmp_avatar %>" alt="">
+                        </a>
                     </div>
                     <div class="cabecera wrap">
                         <h1><%= anuncio.adv_title %></h1>
@@ -87,7 +89,7 @@
                         <p> <%= anuncio.adv_description %> </p>
                     </div>
                     <div class="postular">
-                        <a href="postulacion?anuncioId=<%= anuncio.id %>">Postularme</a>
+                        <button id="postulation" data-id="<%= anuncio.id %>" data-user="<%= user %>">Postularme</button>
                     </div>
                     <%  } %>
                 </div>
@@ -117,5 +119,6 @@
     <footer>
         <%- include('../partials/footer'); -%>
     </footer>
+    <script src="/js/main/postulation.js"></script>
 </body>
 </html>

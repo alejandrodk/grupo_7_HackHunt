@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/cliente/perfil.css" />
+    <script src="/js/chart.js"></script>
 </head>
 <!-- CÓDIGO -->
 <body>
@@ -39,14 +40,10 @@
                                 <li><i class="fas fa-user" title="Website"></i> <%=user.cliente_cv == null ? "Sin Información" : user.cliente_cv.user_website %></li>
                             </ul>
                         </div>
-                        <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>
+                        <a href="perfil/configuracion"><i class="fas fa-user-edit" title="Editar información"></i></a>
                     </div>
-                    <div class="estadisticas wrap">
-                        <p class="titulo">Resumen de cuenta</p>
-                        <ul>
-                            <li>Postulaciones activas: XX</li>
-                            <li>Empresas que han visto tu CV: XX</li>
-                        </ul>
+                    <div class="estadisticas wrap" data-vistas="<%= vistos[0].visto %>" data-activas="<%= postulaciones.length %>"> <%# tomamos la data desde JS %>
+                        <canvas id="anunciosData" width="300" height="300"></canvas>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 funciones">
@@ -111,6 +108,7 @@
     </footer>    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/main/ciudades.js"></script>
+    <script src="/js/cliente/infograph.js"></script>
 </body>
 
 </html>

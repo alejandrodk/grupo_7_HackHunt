@@ -59,11 +59,7 @@
                             <p>Ciudad</p>
                         </label>
                         <select name="user_city" id="user_city">
-                            <option value="CABA">Capital Federal</option>
-                            <option value="GBA">Buenos Aires</option>
-                            <option value="CO">Córdoba</option>
-                            <option value="MDZ">Mendoza</option>
-                            <option value="RO">Rosario</option>
+                            <option value="null">Ciudad</option>
                         </select>
                     </div>
                 </div>
@@ -184,8 +180,17 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 skills wrap">
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos skills wrap">
+                    <h3>Skills</h3>
                     <p id="Skills"></p>
+                    <label for="skill_id"><p>Skills</p><span id="add"><i class="fas fa-plus"></i></span></label>
+                    <select name="skill_id" id="skill_id" data-user="<%= user.user_id %>"> <%# user guardado en res.locals %>
+                        <option value="">Agregar Skill</option>
+                    </select>
+                    
+                    <div class="areas">
+                        <p>Tus Skills</p>                    
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos preferencias wrap">
                     <h3>Preferencia laboral</h3>
@@ -202,39 +207,28 @@
                         <p>Puesto deseado</p>
                     </label>
                     <input type="text" name="user_work_wish" id="user_work_wish" placeholder="Desarrollador Front-End">
-                    <button id="adItem">+</button>
-                    <div class="puestos">
-                        <p>Puestos seleccionados</p>
-                    </div>
                     <label for="user_wish_area">
                         <p>Área</p>
                     </label>
                     <input type="text" name="user_wish_area" id="user_wish_area" placeholder="Desarrollo Web">
-                    <button id="adItem">+</button>
-                    <div class="areas">
-                        <p>Áreas seleccionadas</p>
-                    </div>
                     <label for="user_salary">
                         <p>Remuneración Pretendida</p>
                     </label>
                     <input type="text" name="user_salary" id="user_salary" placeholder="*Opcional">
                     <label for="user_work_location">
-                        <p>Ubicación/es</p>
+                        <p>Ubicación</p>
                     </label>
                     <select name="user_work_location" id="user_work_location">
-                        <option value="CAP">Capital Federal</option>
-                        <option value="GBA">Buenos Aires</option>
+                        <option value="null">Ciudad</option>
                     </select>
-                    <button id="adItem">+</button>
-                    <div class="ubicaciones">
-                        <p>Ubicaciones seleccionadas</p>
-                    </div>
                     <button type="submit">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
-    <!-- CÓDIGO -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="/js/main/cvCiudades.js"></script>
+	<script src="/js/main/cvSkills.js"></script>
 </body>
 
 </html>

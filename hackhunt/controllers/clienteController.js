@@ -6,69 +6,48 @@ const controller = {
 
     perfil: (req, res) => {
         const sessionId = req.session.user.user_id;
-        db
-            .clientes
-            .findOne({
-                where: {
-                    user_id: req.session.user.user_id
-                },
+            db.clientes.findOne({where: {user_id: req.session.user.user_id},
                 include: [
-                    {
-                        model: db.cliente_cv,
-                        as: 'cliente_cv'
-                    }, {
-                        model: db.skills,
-                        as: 'skill'
-                    }
+                    {model:db.cliente_cv,as:'cliente_cv'},
+                    {model:db.skills, as:'skill'}
                 ]
-                // {model:db.anuncios,
-                // as:'candidato',attributes:['id','adv_title','adv_publication','adv_location','created_at','updated_at']}]
-            })
-            .then(cliente => {
-                // sequelize.query(`SELECT * FROM anuncios JOIN postulantes ON anuncios.id =
-                // postulantes.adv_id WHERE postulantes.cli_id = ${sessionId}`)
-                db
-                    .anuncios
-                    .findAll({
-                        include: [
-                            {
-                                model: db.clientes,
-                                as: "candidatos",
-                                where: {
-                                    user_id: req.session.user.user_id
-                                }
-                            }, {
-                                model: db.skills,
-                                as: "adv_skills"
-                            }
-                        ]
-                    })
-                    .then(misAnuncios => {
-                        db
-                            .anuncios
-                            .findAll({
-                                limit: 3,
-                                attributes: [
-                                    'id', 'adv_title', 'adv_publication'
-                                ],
-                                include: [
-                                    {
-                                        model: db.skills,
-                                        as: "adv_skills"
-                                    }
+                })
+                .then(cliente =>{
+                 db.anuncios.findAll(
+                     {
+                        include:[
+                           {model:db.clientes, as:"candidatos", where:{user_id: req.session.user.user_id}},
+                           {model:db.skills, as:"adv_skills"}]
+                     }
+                 )
+                  .then(misAnuncios => { 
+                       db.anuncios.findAll({
+                           limit:3,
+                           attributes:['id','adv_title','adv_publication'],
+                           include:[{model:db.skills,as:"adv_skills"}]
+                       })
+                       .then(relacionados => {
+                            db.postulantes.findAll({
+                                where : {
+                                    cli_id : req.session.user.user_id,
+                                    visto : 1
+                                }, 
+                                attributes : [
+                                    [sequelize.fn('COUNT', sequelize.col('visto')), 'visto']
                                 ]
                             })
-                            .then(relacionados => {
-
-                                res.render('cliente/perfil', {
-                                    user: cliente,
-                                    postulaciones: misAnuncios,
-                                    relacionados
-                                })
+                            .then( vistos => {
+                                res.render('cliente/perfil',{
+                                    
+                                     user:cliente,
+                                     postulaciones:misAnuncios,
+                                     relacionados,
+                                     vistos
+                                 })
                             })
                     })
             })
-
+        })
     },
     postulaciones: (req, res) => {
         db
@@ -178,24 +157,12 @@ const controller = {
             })
     },
     actInfo: (req, res) => {
-        //
         let tipoForm = req.query.form;
         let contentForm = req.body;
         let idUser = req.session.user.user_id;
         console.log(idUser);
         let urlAncla = actUserCv.actualizarCv(tipoForm, contentForm, idUser);
         res.redirect('/perfil/informacion' + urlAncla);
-    },
-    borrarSkill: (req, res) => {
-        db
-            .user_skill
-            .destroy({
-                where: {
-                    skill_id: req.params.skill_id,
-                    user_id: req.session.user.user_id
-                }
-            })
-        res.redirect('/perfil/informacion#Skills');
     },
     mensajes: (req, res) => {
         res.render('cliente/mensajes', {title: 'Mensajes'});

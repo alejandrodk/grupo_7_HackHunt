@@ -14,9 +14,8 @@ router.get("/postulaciones", soloCliente, clienteController.postulaciones);
 router.get("/favoritos", soloCliente, clienteController.favoritos);
 router.get("/alertas", soloCliente, clienteController.alertas);
 
-router.get("/informacion", soloCliente, clienteController.info);
-router.patch("/informacion", soloCliente, clienteController.actInfo);
-router.get('/informacion/skill_delete/:skill_id',soloCliente,clienteController.borrarSkill);
+router.get("/informacion",soloCliente, clienteController.info);
+router.patch("/informacion",soloCliente, clienteController.actInfo);
 
 router.get("/configuracion", soloCliente, clienteController.configuracion);
 router.patch("/configuracion", clienteController.actConfig);

@@ -20,8 +20,6 @@ const controller = {
 						include:[{model:db.skills, as:'skill'}]
 					})
 					.then(cliente => {
-
-			
 						return res.render('main/index',{ 
 							busquedas,
 							anuncios,
@@ -30,10 +28,7 @@ const controller = {
 							user
 						})
 					})
-			}
-			else{
-		
-
+			} else{
 				return res.render('main/index',{ 
 					busquedas,
 					anuncios,
@@ -44,7 +39,8 @@ const controller = {
 		})
 	},
 	detalleAnuncio: (req, res) => {
-		
+		user = req.session.user != undefined ? req.session.user.user_id : null;
+
 		db.anuncios.findByPk(req.query.id,
 			{
 				raw:true,
@@ -61,23 +57,13 @@ const controller = {
 				//return res.send(relacionados)
 				res.render('main/detalleAnuncio', { 
 					anuncio: resultado,
-					relacionados
+					relacionados,
+					user
 				});
 
 			})
 		})
 
-	},
-	postulacion: (req, res) => { 
-		let anuncioId = req.query.anuncioId;
-		let userId = req.session.user.user_id;
-		db.postulantes.create({
-			adv_id : anuncioId,
-			cli_id : userId
-		})
-		.then(result => {
-			return res.redirect('/perfil/postulaciones')
-		})
 	},
 	loginUsuario: (req, res) => {
 		res.render('main/loginUsuario', { title: 'Express' });
@@ -96,6 +82,7 @@ const controller = {
 				if(bcrypt.compareSync(req.body.user_passwd,user.user_passwd)){
 					console.log('contrasena correcta')
 					req.session.user = user;
+					res.locals.user = user;
 					req.session.type_user = 'cliente';
 					console.log('sesion creada con usuario: ' + req.session.user.user_name)
 					res.cookie('user_id', bcrypt.hashSync(user.user_id.toString(),10),{maxAge: 1000 * 60 * 30 });
@@ -110,7 +97,7 @@ const controller = {
 			}) .catch( error => { console.log(error) })
 
 		} else {
-		return res.render('main/loginUsuario', { errors: errors.array() });
+			return res.render('main/loginUsuario', { errors: errors.array() });
 		}
 	},
 	registroUsuario: (req, res) => { 
@@ -124,21 +111,30 @@ const controller = {
 			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
 			let user_avatar = req.file ? req.file.filename : 'user_avatar_default.jpg';
 			db.clientes.create({ ...req.body, user_avatar : user_avatar })
-			.then(()=>
-			{
+			.then(usuario =>{
+				let { user_id, user_name, user_email } = usuario;
 
-				delete req.body.user_passwd
-				let user = { ...req.body }
+				let user = {
+					user_id,
+					user_name,
+					user_email
+				}
+
 				req.session.user = user;
+				res.locals.user = user;
 				req.session.type_user = 'cliente'
-				return res.redirect('registro/cv');
+
+				return res.redirect('/registro/cv');
 			})
+			.catch(error => console.log(error))
 
 		} else {
+
 			res.render('main/registroUsuario', { errors: errors.array() });
 		}
 	},
 	completarCv : (req,res) => {
+
 		res.render('main/completarRegistro', { title: 'Completar tu registro' });
 	},
 	valCompletarCv : (req,res) => {
@@ -166,6 +162,24 @@ const controller = {
 		//} else {
 		//	res.render('main/completarRegistro', { errors: errors.array(), user: user });
 		//	}
+	},
+	detalleEmpresa : (req, res) => {
+
+		let id = req.params.id;
+		db.empresas.findByPk(id,{
+			include : 'anuncios'
+		})
+		.then( empresa => {
+			db.empresas.findAll({
+				limit : 5
+			})
+			.then(relacionadas => {
+				res.render('main/detalleEmpresa', {
+					empresa,
+					relacionadas
+				})
+			})
+		})
 	},
 	loginEmpresa: (req, res) => {
 		res.render('main/loginEmpresa', { title: 'Express' });
