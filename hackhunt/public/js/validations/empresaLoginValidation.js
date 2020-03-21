@@ -1,73 +1,101 @@
 window.onload = function () {
-    let errorMsg = document.querySelector('#errorMsg');
-	let form = document.querySelector('#loginForm');
-	let formInputs = Array.from(form.elements);
-	formInputs.pop();
+    let errorMsg = document.querySelectorAll('#errorMsg');
+    let forms = document.querySelectorAll('.loginForm');
+    let formInputsArray = [];
+    forms.forEach((oneForm, i) => {
 
-	let errores = {};
+        formInputsArray.push(Array.from(oneForm.elements));
+        formInputsArray[i].pop();
+    })
 
-	formInputs.forEach(function (oneInput) {
-		oneInput.addEventListener('blur', function () {
+    let errores = {};
 
-			let inputValue = this.value;
-			if (validator.isEmpty(inputValue, { ignore_whitespace: true })) {
-				this.classList.remove('is-valid')
-                this.classList.add('is-invalid')
-                this.nextElementSibling.innerHTML = `El campo ${this.dataset.name} es obligatorio`;
-                    
-				errores[this.name] = true;
+    for (let i = 0; i < formInputsArray.length; i++) {
 
-				console.log(errores);
-			} else {
-				// validar que el texto ingresado en el input sea un email
-				if(this.dataset.name == 'Email'){
-					if(validator.isEmail(this.value, { ignore_whitespace: true })){
+        formInputsArray[i].forEach(function (oneInput) {
 
-						this.classList.remove('is-invalid')
-						this.classList.add('is-valid')
-						this.nextElementSibling.innerHTML = ``;
-							
-						delete errores[this.name];
-					} else {
-						this.classList.add('is-invalid')
-						this.classList.remove('is-valid')
-						this.nextElementSibling.innerHTML = `Debes ingresar un Email valido`;
-					}
-				} else {
+            oneInput.addEventListener('blur', function () {
 
-					this.classList.remove('is-invalid')
-					this.classList.add('is-valid')
-					this.nextElementSibling.innerHTML = ``;
-						
-					delete errores[this.name];
-				}
-				
-				console.log(errores);
-			}
-		});
-	});
+                let inputValue = this.value;
+                if (validator.isEmpty(inputValue, {ignore_whitespace: true})) {
+                    this
+                        .classList
+                        .remove('is-valid')
+                    this
+                        .classList
+                        .add('is-invalid')
+                    this.nextElementSibling.innerHTML = `El campo ${this.dataset.name} es obligatorio`;
 
-	form.addEventListener('submit', function(e) {
+                    errores[this.name] = true;
 
-        formInputs.forEach(function (oneInput) {
+                    console.log(errores);
+                } else {
+                    // validar que el texto ingresado en el input sea un email
+                    if (this.dataset.name == 'Email') {
+                        if (validator.isEmail(this.value, {ignore_whitespace: true})) {
 
-            let inputValue = oneInput.value;
+                            this
+                                .classList
+                                .remove('is-invalid')
+                            this
+                                .classList
+                                .add('is-valid')
+                            this.nextElementSibling.innerHTML = ``;
 
-            if (validator.isEmpty(inputValue, { ignore_whitespace: true })) {
+                            delete errores[this.name];
+                        } else {
+                            this
+                                .classList
+                                .add('is-invalid')
+                            this
+                                .classList
+                                .remove('is-valid')
+                            this.nextElementSibling.innerHTML = `Debes ingresar un Email valido`;
+                        }
+                    } else {
 
-                oneInput.classList.add('is-invalid')
-                oneInput.nextElementSibling.innerHTML = `El campo ${oneInput.dataset.name} es obligatorio`;
+                        this
+                            .classList
+                            .remove('is-invalid')
+                        this
+                            .classList
+                            .add('is-valid')
+                        this.nextElementSibling.innerHTML = ``;
 
-                 errores[oneInput.name] = true;
-			} 
-		});
+                        delete errores[this.name];
+                    }
 
-		if (Object.keys(errores).length > 0) {
-			console.log(errores);
-            e.preventDefault();
-            errorMsg.innerHTML = 'Uno o mas campos contienen errores'
-		}
- 		
-	}) 
+                    console.log(errores);
+                }
+            });
+        });
+    }
+
+    forms.forEach((oneForm, i) => {
+
+        oneForm.addEventListener('submit', function (e) {
+
+            formInputsArray[i].forEach(function (oneInput) {
+
+                let inputValue = oneInput.value;
+
+                if (validator.isEmpty(inputValue, {ignore_whitespace: true})) {
+
+                    oneInput
+                        .classList
+                        .add('is-invalid')
+                    oneInput.nextElementSibling.innerHTML = `El campo ${oneInput.dataset.name} es obligatorio`;
+
+                    errores[oneInput.name] = true;
+                }
+            });
+
+            if (Object.keys(errores).length > 0) {
+                console.log(errores);
+                e.preventDefault();
+                errorMsg[i].innerHTML = 'Uno o mas campos contienen errores'
+            }
+
+        })
+    })
 }
-

@@ -71,17 +71,21 @@ module.exports = (sequelize, dataTypes) => {
             otherKey : 'cmp_id',
             timestamps : false 
         })
-    };
+    }; 
 
 
 
-    Cliente.prototype.cvVisto = function(id_anuncio)
+    Cliente.prototype.cvVisto = function(id_anuncio,id_cliente)
     {
+       
         for(let i = 0; i<this.candidato.length; i++)
         {
-                if(this.candidato[i].id = id_anuncio && this.candidato[i].postulantes.visto === 1)
+               if(this.candidato[i].id == id_anuncio && this.candidato[i].postulantes.cli_id == id_cliente)
                 {
-                    return true;
+                    if(this.candidato[i].postulantes.visto == 1)
+                    {
+                        return true;
+                    }
                 }
         }
         return false;

@@ -4,6 +4,8 @@
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/cliente/config.css" />
+    <script src="/js/validations/clienteConfigValidation.js"></script>
+    <script src="/js/validations/validator.min.js"></script>
 </head>
 <body>
     <header>
@@ -41,20 +43,26 @@
                     <p id="email"></p>
                     <h4>Cambiar Email</h4>
                     <p>Ingresá la nueva dirección email para tu cuenta</p>
-                    <form action="?_method=PATCH&form=mail" method="post">
-                        <input type="email" name="user_email" id="user_email" value="<%= user.user_email %>">
+                    <form action="?_method=PATCH&form=mail" method="post" class="configForm">
+                        <input type="email" name="user_email" id="user_email" value="<%= user.user_email %>" data-name="Email">
+                        <p class="errorMsgEmail" style="color: red;"></p>
                         <button type="submit">Cambiar Email</button>
+                        <p id="errorMsg" style="color: red;"></p>
                     </form>
                 </div>
                 <div class="item clave">
                     <p id="passwd"></p>
                     <h4>Cambiar contraseña</h4>
                     <p>Ingresá tu contraseña actual seguida de tu nueva contraseña</p>
-                    <form action="?_method=PATCH&form=passwd" method="post">
-                        <input type="password" name="user_last_passwd" id="user_last_passwd" placeholder="Contraseña anterior">
-                        <input type="password" name="user_new_passwd" id="user_new_passwd" placeholder="Nueva contraseña">
-                        <input type="password" name="user_repeat_passwd" id="user_repeat_passwd" placeholder="Repetir contraseña">
+                    <form action="?_method=PATCH&form=passwd" method="post" class="configForm">
+                        <input type="password" name="user_last_passwd" id="user_last_passwd" placeholder="Contraseña anterior" data-name="Contraseña Antigua">
+                        <p class="errorMsgEmail" style="color: red;"></p>
+                        <input type="password" name="user_new_passwd" id="user_new_passwd" placeholder="Nueva contraseña" data-name="Contraseña Nueva">
+                        <p class="errorMsgEmail" style="color: red;"></p>
+                        <input type="password" name="user_repeat_passwd" id="user_repeat_passwd" placeholder="Repetir contraseña" data-name="Repetir Contraseña">
+                        <p class="errorMsgEmail" style="color: red;"></p>
                         <button type="submit">Cambiar contraseña</button>
+                        <p id="errorMsg" style="color: red;"></p>
                     </form>
                 </div>
                  <div class="item titulo">

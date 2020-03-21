@@ -5,7 +5,7 @@ const soloCliente = (req,res,next)=> {
         return next();
     } else {
        // res.send('No tienes permisos para acceder a esta sección')
-       return  res.redirect('/')
+       return  res.redirect('/forbidden')
     }
 }
 

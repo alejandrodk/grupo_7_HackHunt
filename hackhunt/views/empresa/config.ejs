@@ -4,7 +4,8 @@
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/cliente/config.css" />
-    
+    <script src="/js/validations/empresaConfigValidation.js"></script>
+    <script src="/js/validations/validator.min.js"></script>
 </head>
 <body>
     <header>
@@ -39,26 +40,25 @@
                 <div class="item perfil">
                     <h4>Cambiar Email</h4>
                     <p>Ingresá la nueva dirección email para tu cuenta</p>
-                    <form action="?_method=PUT" method="post">
+                    <form action="?_method=PUT" method="post" class="configForm">
                         <input type="email" name="cmp_user_email" id="" value="<%= empresa.cmp_user_email %>" data-name="Email" >
-                        <p class="errorMsgEmail" style="color: white;"></p>
+                        <p class="errorMsgEmail" style="color: red;"></p>
                         <button type="submit">Cambiar Email</button>
+                        <p id="errorMsg" style="color: red;"></p>
                     </form>
                 </div>
                 <div class="item clave">
                     <h4>Cambiar contraseña</h4>
                     <p>Ingresá tu contraseña actual seguida de tu nueva contraseña</p>
-                    <form action="?_method=PUT" method="post">
-                        <input type="password" name="cmp_user_oldPasswd" id="" placeholder="Contraseña anterior" data-name="Contraseña antigua" requred>
-                        <p class="errorMsgEmail" style="color: white;"></p>
-                        <input type="password" name="cmp_user_passwd" id="" placeholder="Nueva contraseña" data-name="Contraseña nueva" required>
-                        <p class="errorMsgEmail" style="color: white;"></p>
-                        <input type="password" name="cmp_user_repPasswd" id="" placeholder="Repetir contraseña" data-name="Repetir Contraseña" required>
-                        <p class="errorMsgEmail" style="color: white;"></p>
+                    <form action="?_method=PUT" method="post" class="configForm">
+                        <input type="password" name="cmp_user_oldPasswd" id="" placeholder="Contraseña anterior" data-name="Contraseña antigua" >
+                        <p class="errorMsgEmail" style="color: red;"></p>
+                        <input type="password" name="cmp_user_passwd" id="" placeholder="Nueva contraseña" data-name="Contraseña nueva" >
+                        <p class="errorMsgEmail" style="color: red;"></p>
+                        <input type="password" name="cmp_user_repPasswd" id="" placeholder="Repetir contraseña" data-name="Repetir Contraseña" >
+                        <p class="errorMsgEmail" style="color: red;"></p>
                         <button type="submit">Cambiar contraseña</button>
-                        <% if(typeof error != 'undefined') { %>
-                            <p class="errorMsgEmail" style="color: red;"><%=error %></p>
-                        <%}%>
+                        <p id="errorMsg" style="color: red;"></p>
                     </form> 
                 </div>
                  <div class="item titulo">
