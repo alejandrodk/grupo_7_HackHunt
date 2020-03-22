@@ -98,7 +98,6 @@ const controller = {
             //si existe el queryString refinar la busqueda por empresa
         }
 
-<<<<<<< HEAD
         db.clientes.findOne({
             where:{user_id:req.session.user.user_id},
             include:[{model:db.skills,as:'skill'},
@@ -113,38 +112,6 @@ const controller = {
                 user
             });
         })
-=======
-        db
-            .clientes
-            .findOne({
-                where: {
-                    user_id: req.session.user.user_id
-                },
-                include: [
-                    {
-                        model: db.skills,
-                        as: 'skill'
-                    }, {
-                        model: db.anuncios,
-                        as: "favoritos",
-                        include: [
-                            {
-                                model: db.empresas,
-                                as: "empresas",
-                                attributes: ['cmp_name', 'cmp_avatar']
-                            }, {
-                                model: db.skills,
-                                as: "adv_skills"
-                            }
-                        ]
-                    }
-                ]
-            })
-            .then(user => {
-                //return res.send(user)
-                res.render('cliente/favoritos', {user});
-            })
->>>>>>> 2bf6af173ec93778d46a0723392417cb1ed979a0
     },
     alertas: (req, res) => {
         if (req.query) {
