@@ -41,13 +41,12 @@ const controller = {
 	detalleAnuncio: (req, res) => {
 		user = req.session.user != undefined ? req.session.user.user_id : null;
 
-		db.anuncios.findByPk(req.query.id,
-			{
-				
-				
-				include:[{model:db.empresas, as:'empresas',attributes:['cmp_avatar']},
-						 {model:db.skills, as:"adv_skills"}]
-			})
+		db.anuncios.findByPk(req.query.id,{ 
+			include:[
+				{model:db.empresas, as:'empresas',attributes:['cmp_avatar']},
+				{model:db.skills, as:"adv_skills"}
+			]
+		})
 		.then(resultado =>{
 			db.anuncios.findAll({
 				limit:5,
@@ -159,7 +158,6 @@ const controller = {
 
 				return res.redirect('/login');
 			})
-
 		//} else {
 		//	res.render('main/completarRegistro', { errors: errors.array(), user: user });
 		//	}

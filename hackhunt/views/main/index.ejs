@@ -71,15 +71,9 @@
 						<dd><a href="/jornada/part_time/">Medio Tiempo <span id="cant">(57)</span></a></dd>
 						<dd><a href="/jornada/home_office/">Home Office <span id="cant">(150)</span></a></dd>
 					</dl>
-					<dl>
+					<dl id="filter-skills">
 						<dt><i class="fas fa-code"></i> Lenguajes</dt>
 						<dd><a href="/skill/HTML/">HTML <span id="cant">(56)</span></a></dd>
-						<dd><a href="/skill/CSS/">CSS <span id="cant">(25)</span></a></dd>
-						<dd><a href="/skill/Node/">Node.js <span id="cant">(78)</span></a></dd>
-						<dd><a href="/skill/react/">React <span id="cant">(102)</span></a></dd>
-						<dd><a href="/skill/C++/">C++ <span id="cant">(47)</span></a></dd>
-						<dd><a href="/skill/JAVA/">JAVA <span id="cant">(25)</span></a></dd>
-						<dd><a href="/skill/PHP/">PHP <span id="cant">(92)</span></a></dd>
 					</dl>
 					<dl>
 						<dt><i class="fas fa-brain"></i> Experiencia</dt>
@@ -142,9 +136,35 @@
 	<footer>
 		<%- include('../partials/footer'); -%>
 	</footer>
+	<div class="background">
+        <div class="item">
+            <img src="/images/backgrounds/item-green.png" alt="">
+        </div>
+        <div class="item">
+            <img src="/images/backgrounds/item-pink.png" alt="">
+        </div>
+        <div class="item">
+            <img src="/images/backgrounds/item-green.png" alt="">
+        </div>
+        <div class="code-box n1">
+            <p class="code"><span id="declare">var</span><span id="var"> findJob</span> =</p>
+            <p class="code"><span id="array">['you','need','hack','hunt']</span>;</p>
+            <p class="code">db.<span id="yellow">HackHunt</span>.findAll() <span id="array">// find my job today</span></p>
+            <p class="code"><span id="var">.then </span>(<span id="object"> result </span><span id="declare"> => </span> { <span id="object">result</span><span id="yellow">.find(</span> item <span id="declare"> => </span> <span id="yellow">)</span></p>
+            <p class="code">}<span id="var">) .catch</span>(<span id="object"> error </span><span id="declare"> => </span><span id="array">console</span><span id="yellow">.log(</span><span id="object">error</span><span id="yellow">)</span>)</p>
+        </div>
+        <div class="code-box n2">
+            <p class="code"><span id="declare">var</span><span id="var"> findJob</span> =</p>
+            <p class="code"><span id="array">['you','need','hack','hunt']</span>;</p>
+            <p class="code">db.<span id="yellow">HackHunt</span>.findAll() <span id="array">// find my job today</span></p>
+            <p class="code"><span id="var">.then </span>(<span id="object"> result </span><span id="declare"> => </span> { <span id="object">result</span><span id="yellow">.find(</span> item <span id="declare"> => </span> <span id="yellow">)</span></p>
+            <p class="code">}<span id="var">) .catch</span>(<span id="object"> error </span><span id="declare"> => </span><span id="array">console</span><span id="yellow">.log(</span><span id="object">error</span><span id="yellow">)</span>)</p>
+        </div>
+    </div> 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/main/ciudades.js"></script>
+	<script src="/js/main/filtroSkills.js"></script>
 	<script src="/js/main/adv_favorites.js"></script>
 </body>
 

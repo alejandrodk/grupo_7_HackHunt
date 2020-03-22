@@ -1,13 +1,9 @@
-body {
-	background-image: url(/images/backgrounds/background-dot.png), linear-gradient(to bottom, rgb(51, 56, 66) 49%, rgb(49, 54, 64) 51%, rgb(20, 22, 27) 83%, rgb(19, 21, 26) 84%);
-	position: relative;
-}
 /*BARRA MENU-----------------------------------*/
 .barra-menu{
 	margin: 3% 0;
 }
 .barra-menu a {
-    background: var(--main-texto-blanco);
+    background: white;
     margin-right: 1%;
     padding: 5px;
     border-radius: 5px;
@@ -22,7 +18,7 @@ body {
 /**/
 .container.config .barra{
     width: 90%;
-    background: var(--main-bg-color);
+    background: linear-gradient(to right, rgb(55, 237, 0) 0%, rgb(0, 230, 230) 100%);
     border-radius: 5px;
     padding: 5px;
     height: 40px;
@@ -32,18 +28,15 @@ body {
 }
 .container.config .barra h2{
     font-size: 25px;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 200;
 }
 /* PANEL */
 .container.config .panel .panel{
     width: 100%;
-    background: var(--main-texto-blanco);
+    background: white;
     padding: 3%;
     border-radius: 10px;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container.config .panel .panel ul{
     padding: 5%;
@@ -57,7 +50,7 @@ body {
 /* CUERPO */
 .container.config .item.titulo{
     width: 100%;
-    background: var(--main-bg-color);
+    background: linear-gradient(to right, rgb(55, 237, 0) 0%, rgb(0, 230, 230) 100%);
     border-radius: 5px;
     padding: 5px;
     height: 40px;
@@ -65,19 +58,19 @@ body {
 }
 .container.config .item.titulo h3{
     font-size: 25px;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 100;
     padding-left: 3%;
 }
 .container.config .item{
     width: 100%;
-    background: var(--main-texto-blanco);
+    background: white;
     border-radius: 5px;
     padding: 2%;
     margin: 2% 0;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.container.config .item input {
+    background: var(--main-texto-blanco);
 }
 .container.config .item h4{
     font-weight: 300;

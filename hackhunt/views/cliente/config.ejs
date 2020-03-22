@@ -3,6 +3,7 @@
 <head>
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/headerLog.css" />
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/cliente/config.css" />
     <script src="/js/validations/clienteConfigValidation.js"></script>
     <script src="/js/validations/validator.min.js"></script>
@@ -17,7 +18,6 @@
                 <a href="/perfil/informacion">Editar mi CV</a>
                 <a href="/perfil/postulaciones">Mis postulaciones</a>
                 <a href="/perfil/favoritos">Favoritos</a>
-                <a href="/perfil/alertas">Alertas</a>
                 <a href="/perfil/configuracion" id="select">Configuración</a>
             </div>
             <div class="col-12 barra">
@@ -28,7 +28,6 @@
                     <ul>
                         <li><a href="#perfil">Perfil</a></li>
                         <li><a href="#notificaciones">Notificaciones</a></li>
-                        <li><a href="#alertas">Alertas</a></li>
                         <li><a href="#privacidad">Privacidad</a></li>
                         <li><a href="/perfil/informacion">Mi CV</a></li>
                     </ul>
@@ -117,6 +116,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
 </body>
 
 </html>

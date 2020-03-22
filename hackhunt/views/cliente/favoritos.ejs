@@ -3,8 +3,9 @@
 
 <head>
     <%- include('../partials/head'); -%>
-    <link rel="stylesheet" href="/css/headerLog.css" />
-    <link rel="stylesheet" href="/css/cliente/favoritos.css" />
+    <link rel="stylesheet" href="/css/headerLog.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/cliente/favoritos.css">
 </head>
 <body>
     <header>
@@ -20,19 +21,21 @@
                     <a href="/perfil/configuracion">Configuración</a>
                 </div>
             <div class="col-12 barra">
-                <h2>Ofertas favoritas</h2>
+                <h2>Anuncios favoritos</h2>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 panel">
                 <div class="seguidas">
-                    <h3>Empresas más guardadas</h3>
-                    <a href="?empresa=mercado-libre">
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="https://elcomodorense.net/wp-content/uploads/2019/05/mercadolibre.jpg" alt="">
+                    <h3>Empresas favoritas</h3>
+                    <% for(let item of user.favoritos){ %>
+                        <a href="/detalle/empresa/<%=item.empresas.id %>">
+                            <div class="item">
+                                <div class="avatar">
+                                    <img src="/images/avatars/<%=item.empresas.cmp_avatar %>" alt="<%= item.empresas.cmp_name %>" title="<%= item.empresas.cmp_name %>">
+                                </div>
+                                <h2><%= item.empresas.cmp_name %></h2>
                             </div>
-                            <h2>Mercado Libre</h2>
-                        </div>
-                    </a>
+                        </a>
+                    <% } %> 
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncios">
@@ -59,5 +62,16 @@
             </div>
         </div>
     </div>
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <div class="background">
+        <div class="item">
+            <img src="/images/backgrounds/item-green.png" alt="">
+        </div>
+        <div class="item">
+            <img src="/images/backgrounds/item-pink.png" alt="">
+        </div>
+    </div> 
 </body>
 </html>

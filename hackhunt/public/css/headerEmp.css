@@ -1,9 +1,14 @@
+body {
+	background-image: url(/images/backgrounds/background-dot.png) !important;
+	background-color: #e2e2e2;
+	background-blend-mode: overlay;
+}
 .container-fluid .container {
 	position: relative;
     z-index: 2;
 }
 .container-fluid.header {
-    background: var(--main-bg-color);
+	background: linear-gradient(to right, rgba(55,237,0,1) 0%, rgba(0,230,230,1) 100%);
 }
 .container.header .row{
 	padding-top: 5px;
@@ -19,7 +24,7 @@
 	text-decoration: none;
 }
 .container.header .info h1{
-	color: var(--main-logo);
+	color: var(--main-bg-color-2);
 	font-size: 25px;
 	font-weight: 200;
 }
@@ -31,7 +36,7 @@
 	align-items: center;
 }
 .container.header .secciones a{
-    color: var(--main-texto-blanco);
+	color: var(--main-bg-color);
     font-weight: 100;
     font-size: 15px;
 }

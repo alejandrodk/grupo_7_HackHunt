@@ -1,3 +1,5 @@
+let divSkills = document.querySelector('.container');
+
 // insertar skills en el select ------------------------------
 let selectSkills = document.querySelector('#skill_id');
 
@@ -28,7 +30,7 @@ function checkSkill(skill, skills) {
 // traer e imprimir los skills del cliente 
 function imprimirSkills(add) {
     console.log('---- imprimirSkills() -----');
-
+    divSkills.style.cursor = 'auto';
     axios.get(`/api/clientes/skills/${cliente}`)
         .then(result => {
 
@@ -56,6 +58,7 @@ imprimirSkills(false);
 // Evento agregar skill --------------------------------------------
 buttonAdd.addEventListener('click', function () {
     console.log('---- Agregar Skill -----');
+    divSkills.style.cursor = 'wait';
     let skill = selectSkills.value;
     // traer todos los skills
     axios.get(`/api/clientes/skills/${cliente}`)
@@ -84,7 +87,7 @@ buttonAdd.addEventListener('click', function () {
 
 function deleteSkill(user, skill) {
     console.log('---- deleteSkill() -----');
-
+    divSkills.style.cursor = 'wait';
     axios.post('/api/clientes/skills/delete', {
             user_id: user,
             skill_id: skill
@@ -117,6 +120,7 @@ function traerBotones(deleteEvents) {
 
 // esperar que se carguen los skills del cliente
 function traerBotonesDelay() {
+    divSkills.style.cursor = 'wait';
     console.log('---- traerBotonesDelay() -----');
     setTimeout(function () {
         console.log('setTimeOut activado');

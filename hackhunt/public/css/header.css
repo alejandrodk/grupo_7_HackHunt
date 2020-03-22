@@ -1,10 +1,10 @@
 /*HEADER-----------------------------------*/
-body{
-	background-image: url(/hackhunt/public/images/bg/code.png);
+.container-fluid .container {
+    position: relative;
+    z-index: 2;
 }
-.container-fluid.header,
-body{
-	background: var(--main-bg-color);
+.container-fluid.header{
+    background: var(--main-bg-color);
 }
 .container.header .row{
 	padding-top: 5px;
