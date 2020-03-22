@@ -40,7 +40,7 @@
                         <% }else{%>
                     <div class="avatar">
                         <a href="/detalle/empresa/<%= anuncio.cmp_id %>">
-                            <img src="/images/avatars/<%= anuncio.cmp_avatar %>" alt="">
+                            <img src="/images/avatars/<%= anuncio.empresas.cmp_avatar %>" alt="">
                         </a>
                     </div>
                     <div class="cabecera wrap">
@@ -64,26 +64,17 @@
                         </div>
                     </div>
                     <div class="skills wrap">
-                        <div class="item wrap">
+                        
                             <p>Skills: Excluyentes</p>
                             <ul>
-                                <li><i class="fab fa-js-square"></i> Javascript</li>
-                                <li><i class="fas fa-code"></i> Express</li>
-                                <li><i class="fab fa-html5"></i> HTML5</li>
-                                <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                                <li><i class="fab fa-git-alt"></i> Git</li>
-                                <li><i class="fab fa-node"></i> Node.js</li>
-                                <li><i class="fab fa-react"></i> React</li>
+                                <%anuncio.adv_skills.forEach(skill => {%>
+
+                                    <li><img src="/images/icons/<%= skill.skill_name %>.png" alt="" width="18px"> <%= skill.skill_name %></li>
+                                <%})%>
+                               
                             </ul>
-                        </div>
-                        <div class="item wrap">
-                            <p>Skills: Deseables</p>
-                            <ul>
-                                <li><i class="fas fa-database"></i> SQL</li>
-                                <li><i class="fab fa-php"></i> PHP</li>
-                                <li><i class="fab fa-laravel"></i> Laravel</li>
-                            </ul>
-                        </div>
+                        
+                        
                     </div>
                     <div class="descp">
                         <p> <%= anuncio.adv_description %> </p>

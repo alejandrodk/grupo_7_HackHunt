@@ -7,11 +7,22 @@ const bcrypt = require('bcrypt');
 const controller = {
     perfil: (req, res) => {
         let empresa;
+        let fecha = new Date()
+            .toLocaleDateString()
+            .slice(0, 10)
+            .split('-');
+        if (fecha[1] < 10) {
+            fecha[1] = "0" + fecha[1];
+        }
+        fecha = fecha[0] + '-' + fecha[1] + '-' + fecha[2];
+        
+     
         db
             .empresas
             .findByPk(req.session.user.id, {
                 attributes: {
-                    exclude: ['cmp_user_passwd']
+                    exclude: ['cmp_user_passwd'],
+    
                 }
             })
             .then(result => {
@@ -20,11 +31,17 @@ const controller = {
 
             })
             .then(resultado => {
-
-                return res.render("empresa/perfil", {
-                    empresa: empresa,
-                    anuncios: resultado
-                });
+                db.sequelize.query(`select count(adv_date_contract) as finalizados from anuncios where adv_date_contract < '${fecha}' and cmp_id = ${req.session.user.id}`,{type: sequelize.QueryTypes.SELECT})
+                .then(finalizados =>
+                    {
+                       
+                        return res.render("empresa/perfil", {
+                            empresa: empresa,
+                            anuncios: resultado,
+                            finalizados:finalizados[0]
+                        });
+                    })
+                   
             })
 
     },
@@ -186,32 +203,7 @@ const controller = {
                     })
             })
 
-        /*db.anuncios.findAll(
-			{
-				//raw:true,
-			 where:{cmp_id:req.session.user.id},
-			 attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
-			 include:[{
-				 model: db.empresas,
-				 as: 'empresas',
-				 attributes: ['cmp_avatar']
-				},
-				{
-				model:db.clientes, as:'candidatos',
-				},
-				]
-			})
-		.then(result => {
-			db.sequelize.query(
-			  	`select b.id, b.adv_id, b.visto from clientes as a inner join postulantes as b on a.user_id = b.cli_id inner join anuncios as c on b.adv_id = c.id inner join empresas as d on c.cmp_id = d.id where d.id = ${req.session.user.id}`)
-
-			.then(resultado =>{
-
-				return res.send(result)
-				res.render("empresa/anuncios", { anuncios: result, postulaciones:resultado[0] });
-			})
-
-		})*/
+ 
 
     },
     anuncioDetalle: (req, res) => {
@@ -293,7 +285,7 @@ const controller = {
 
             })
 
-            //return res.redirect(`/detalle?id=${id}`);
+           
         },
     modificarPerfil: (req, res) => {
         let user = dbFunctions.modifyCompany(req.session.user_id);
