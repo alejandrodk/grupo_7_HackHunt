@@ -41,12 +41,12 @@ const controller = {
 	detalleAnuncio: (req, res) => {
 		user = req.session.user != undefined ? req.session.user.user_id : null;
 
-		db.anuncios.findByPk(req.query.id,
-			{
-				raw:true,
-				attributes:{include:[db.Sequelize.col('empresas.cmp_avatar')]},
-				include:[{model:db.empresas, as:'empresas',attributes:['cmp_avatar']}]
-			})
+		db.anuncios.findByPk(req.query.id,{ 
+			include:[
+				{model:db.empresas, as:'empresas',attributes:['cmp_avatar']},
+				{model:db.skills, as:"adv_skills"}
+			]
+		})
 		.then(resultado =>{
 			db.anuncios.findAll({
 				limit:5,
@@ -54,7 +54,7 @@ const controller = {
 				include:[{model:db.empresas, as:'empresas', attributes:['cmp_name','cmp_avatar']}]
 			})
 			.then(relacionados => {
-				//return res.send(relacionados)
+				
 				res.render('main/detalleAnuncio', { 
 					anuncio: resultado,
 					relacionados,
@@ -158,7 +158,6 @@ const controller = {
 
 				return res.redirect('/login');
 			})
-
 		//} else {
 		//	res.render('main/completarRegistro', { errors: errors.array(), user: user });
 		//	}
@@ -174,6 +173,7 @@ const controller = {
 				limit : 5
 			})
 			.then(relacionadas => {
+			
 				res.render('main/detalleEmpresa', {
 					empresa,
 					relacionadas
@@ -248,8 +248,8 @@ const controller = {
 					delete empresa.cmp_cuit;
 					delete empresa.cmp_tel;
 					delete empresa.cmp_sector;
-			req.session.type_user = 'company';
-			req.session.data = empresa;
+			req.session.type_user = 'empresa';
+			req.session.user = empresa; 
 			res.cookie('user_id', bcrypt.hashSync(empresa.id.toString(),12),{maxAge: 1000 * 60 * 30 });
 			return res.redirect('/empresa/perfil');
 		})

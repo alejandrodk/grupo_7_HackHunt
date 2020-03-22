@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/empresa/perfil.css" />
+    <script src="/js/chart.js"></script>
 </head>
 <!-- CÓDIGO -->
 <body>
@@ -42,12 +43,13 @@
                         </div>
                         <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>
                     </div>
-                    <div class="estadisticas wrap">
-                        <p class="titulo">Resumen de cuenta</p>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                        </ul>
+                    <div class="estadisticas wrap" data-finalizados="<%=finalizados.finalizados %>" data-activos="<%= anuncios.length %>">
+                        <% if(anuncios.length == 0){%>
+                            <p>Sin Anuncios</p>
+                       <% }else{%>
+
+                            <canvas id="anunciosData" width="100" height="100"></canvas> 
+                       <% }%>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 funciones">
@@ -60,7 +62,8 @@
                             <% for (anuncio of anuncios) { %>
                                 <a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                     <div class="item wrap">
-                                        <h3><%= anuncio.adv_title %></h3>
+                                          
+                                        <h3><%= anuncio.adv_title.substring(0,30) %></h3>
                                         <p><i class="fas fa-users" title="Skills que cumples"></i> Postulantes</p>
                                         <p title="Número de postulantes"> <%=  %></p>
                                         <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
@@ -76,6 +79,7 @@
     <footer>
         <%- include('../partials/footer'); -%>
     </footer>    
+    <script src="/js/empresa/infograph.js"></script>
 <!-- CÓDIGO -->
 </body>
 

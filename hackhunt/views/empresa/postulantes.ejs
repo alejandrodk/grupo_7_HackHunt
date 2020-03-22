@@ -57,7 +57,7 @@
                         <div class="item">
                             <div class="perfil wrap">
                                 <div class="avatar">
-                                    <div class="item">
+                                    <div class="item">  
                                         <img src="/images/<%=anuncio.candidatos[i].user_avatar %>" alt="">
                                     </div>
                                 </div>
@@ -65,12 +65,12 @@
                                     <strong>
                                         <p><%= anuncio.candidatos[i].user_name %></p> 
                                     </strong>
-                                    <p><%= anuncio.candidatos[i].user_career %></p>
-                                    <p id="bio"><%= anuncio.candidatos[i].cliente_experience[0].user_experience_description %></p>
+                                    <p><%= anuncio.candidatos[i].cliente_experience[0] != null ? anuncio.candidatos[i].user_career : "Sin datos" %></p>
+                                    <p id="bio"><%= anuncio.candidatos[i].cliente_experience[0] != null ? anuncio.candidatos[i].cliente_experience[0].user_experience_description : "Sin Datos"%></p>
                                     <p><i class="fas fa-magic"></i> Skills 
                                         <span>
                                         <%=   anuncio.compareSkills(anuncio.candidatos[i].skill).length +'/'+ anuncio.adv_skills.length     %>
-                                             
+                                        <%=anuncio.anunciosFinalizados()%>   
                                         
                                             
                                     </span></p>

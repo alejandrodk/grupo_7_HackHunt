@@ -105,5 +105,7 @@ module.exports = (sequelize, dataTypes) => {
         return skills;        
     }
 
+
+
     return anuncio;
 }

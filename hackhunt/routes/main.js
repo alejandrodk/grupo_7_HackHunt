@@ -54,7 +54,7 @@ router.post("/empresa/registro", upload.single('cmp_avatar'),validator.cmp_regis
 router.post("/recuperar", mainController.recuperar);
 router.post("/empresa/recuperar", mainController.recuperarEmpresa);
 
-router.get("/pruebas", mainController.pruebas);
+router.get("/forbidden",(req,res)=>{res.render("main/forbidden")});
 router.get("/logout", mainController.logout);
 
 

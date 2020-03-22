@@ -24,7 +24,7 @@
                 <% } %>
                 <div class="item login">
                     <h3>Ingresá a tu cuenta</h3>
-                    <form action="login" method="POST" id="loginForm">
+                    <form action="login" method="POST" class="loginForm">
                         <label for="user_email">
                             <p>Correo</p>
                         </label>
@@ -36,15 +36,17 @@
                         <input type="password" name="user_passwd" id="user_passwd" data-name="Clave">
                         <p class="errorMsgPasswd" style="color: white;"></p>
                         <button type="submit" id="submitForm">POST</button>
-                        <p id="errorMsg" style="color: white;"></p>
+                        <p class="errorMsg" style="color: white;"></p>
                     </form>
                 </div>
                 <div class="item lostpas">
                     <h3>Recuperar tu clave</h3>
-                    <form action="recuperar" method="post">
+                    <form action="recuperar" method="post" class="loginForm">
                         <label for="">Usuario || correo</label>
-                        <input type="text" name="" id="" placeholder="">
+                        <input type="text" name="user_email" id="" placeholder="" data-name="Email">
+                        <p class="errorMsgEmail" style="color: black;"></p>
                         <button type="submit">Recuperar</button>
+                        <p class="errorMsg" style="color: black;"></p>
                     </form>
                 </div>
             </div>

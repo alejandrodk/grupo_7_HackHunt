@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>HACKHUNT: Error - Forbidden</title>
+</head>
+<style>
+   body{
+        background-image: url('/images/error-404.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #333842;
+    }
+</style>
+
+<body>
+    <script>
+        setTimeout(function () {
+           // after 2 seconds
+           console.log("hola")
+           window.location.href = "/";
+        }, 2000)
+      </script>
+</body>
+</html>
