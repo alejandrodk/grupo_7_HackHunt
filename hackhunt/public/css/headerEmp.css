@@ -1,0 +1,118 @@
+body {
+	background-image: url(/images/backgrounds/background-dot.png) !important;
+	background-color: #e2e2e2;
+	background-blend-mode: overlay;
+}
+.container-fluid .container {
+	position: relative;
+    z-index: 2;
+}
+.container-fluid.header {
+	background: linear-gradient(to right, rgba(55,237,0,1) 0%, rgba(0,230,230,1) 100%);
+}
+.container.header .row{
+	padding-top: 5px;
+}
+.container.header .info,
+.container.header .botones{
+	align-items: center;
+}
+.container.header .info a{
+	width: auto;
+}
+.container.header .info a:hover{
+	text-decoration: none;
+}
+.container.header .info h1{
+	color: var(--main-bg-color-2);
+	font-size: 25px;
+	font-weight: 200;
+}
+#huntLogo{
+	font-weight: 500;
+}
+.container.header .secciones {
+	justify-content: space-around;
+	align-items: center;
+}
+.container.header .secciones a{
+	color: var(--main-bg-color);
+    font-weight: 100;
+    font-size: 15px;
+}
+.container.header .secciones a:hover,
+.container.header .secciones a:hover > i{
+	background: var(--main-color-rosa);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+/* MENU MOBILE */
+.menu-mobile-icon {
+	display: none;
+}
+.container.header .secciones.mobile{
+	height: 0px;
+	overflow: hidden;
+	transition: all 1s;
+}
+.container.header .secciones.mobile a {
+	width: 100%;
+	font-size: 18px;
+	text-align: center;
+}
+.container.header .secciones.mobile a:hover{
+	background-color: var(--main-bg-color-2);
+}
+.container.header .secciones.mobile{
+	display: none !important;
+}
+.activeMenu{
+	height: auto !important;
+	transition: all 1s;
+}
+/* EXTRA SMALL----------------------------------------------------- */
+@media (max-width: 768px) {
+	.container.header .secciones {
+		display: none !important;
+	}
+	.container.header .info {
+		width: 90% !important;
+	}
+	.menu-mobile-icon {
+		color: var(--main-texto-blanco);
+		width: 10%;
+		margin: auto;
+		display: block !important;
+	}
+	.container.header .secciones.mobile{
+		display: block !important;
+	}
+	.container.header .info {
+		justify-content: center;
+	}
+	.container.header .secciones a{
+		font-size: 12px;
+	}
+}
+
+/* SMALL-----------------------------------------------------------------*/
+@media (min-width: 769px) and (max-width: 991px) {
+	.container.header .secciones {
+		display: none !important;
+	}
+	.container.header .secciones.mobile{
+		display: block !important;
+	}
+	.container.header .info {
+		width: 90%;
+	}
+}
+
+/* MEDIUM---------------------------------------------------------------------------------------*/
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+/* LARGE----------------------------------------------------------------------------------------*/
+@media (min-width: 1201px) {}

@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <%- include('../partials/head'); -%>
-    <link rel="stylesheet" href="/css/headerLog.css" />
-    <link rel="stylesheet" href="/css/cliente/config.css" />
+    <link rel="stylesheet" href="/css/headerEmp.css" />
+    <link rel="stylesheet" href="/css/empresa/config.css" />
     <script src="/js/validations/empresaConfigValidation.js"></script>
     <script src="/js/validations/validator.min.js"></script>
 </head>
@@ -91,32 +91,6 @@
                         <button type="submit">Guardar preferencias</button>
                     </form>
                 </div>
-                <div class="item titulo">
-                    <h3>Alertas</h3>
-                    <p id="alertas"></p>
-                </div>
-                <div class="item alertas">
-                    <h4>Modificar alertas</h4>
-                </div>
-                <div class="item titulo">
-                    <h3>Privacidad</h3>
-                    <p id="privacidad"></p>
-                </div>
-                <div class="item privacidad">
-                    <h4>Visualización de perfil</h4>
-                    <form action="?_method=PUT" method="post">
-                        <input type="radio" name="cmp_profile_visibility" id="cmp_profile_visibility" value="true">
-                        <label for="cmp_profile_visibility">Público</label>
-                        <p>Mi perfil de empresa sera visible para todos los usuarios</p>
-                        <input type="radio" name="cmp_profile_visibility" id="cmp_profile_visibility" value="false">
-                        <label for="cmp_profile_visibility">Privado</label>
-                        <p>Mi perfil de empresa sera visible solo para los usuarios a quienes contacte</p>
-                        <button type="submit">Guardar preferencias</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-3 info">
-
             </div>
         </div>
     </div>

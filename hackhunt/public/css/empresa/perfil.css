@@ -3,7 +3,7 @@
 	margin: 3% 0;
 }
 .barra-menu a {
-    background: var(--main-texto-blanco);
+    background: white;
     margin-right: 1%;
     padding: 5px;
     border-radius: 5px;
@@ -17,12 +17,9 @@
 }
 /*INFO-----------------------------------*/
 .container.cuerpo .info .perfil{
-	background: var(--main-texto-blanco);
+	background: white;
     border-radius: 5px;
     position: relative;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container.cuerpo .info .perfil .avatar{
     width: 40%;
@@ -75,13 +72,11 @@
 .container.cuerpo .info .estadisticas{
 	margin-top: 6%;
     padding: 3%;
-    height: 300px;
-    background: var(--main-texto-blanco);
+    height: auto;
+    background: white;
     border-radius: 5px;
     position: relative;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+
 }
 .container.cuerpo .info .estadisticas p{
 	font-size: 20px;
@@ -95,12 +90,9 @@
 
 /**/
 .container.cuerpo .funciones .anuncios{
-	background: var(--main-texto-blanco);
+	background: white;
     border-radius: 5px;
     position: relative;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
     padding: 2%;
 }
 .container.cuerpo .funciones .anuncios strong{

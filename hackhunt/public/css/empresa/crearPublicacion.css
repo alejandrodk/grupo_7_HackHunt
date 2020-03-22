@@ -76,7 +76,7 @@ select {
     width: 100%;
 }
 .form-cont{
-    background: var(--main-texto-blanco); 
+    background: white; 
     border-radius: 10px;
     margin-bottom: 2%;
 }
@@ -85,7 +85,7 @@ select {
     border: solid 1px white;
 }
 .form-cont .titulo{
-    background: #bfbfbf;
+    background: linear-gradient(to right, rgba(55,237,0,1) 0%, rgba(0,230,230,1) 100%);
     align-items: center;
     padding: 2% 4%;
     border-radius: 10px;
@@ -105,6 +105,8 @@ select {
     border-bottom: solid 1px var(--main-bg-color-3);  
 }
 .form-cont .descrp textarea{
+    background: var(--main-texto-blanco);
+    padding: 1%;
     width: 95%;
     border: solid 1px white;
     border-radius: 10px;
@@ -128,6 +130,7 @@ select {
     border: solid 1px white;
     border-radius: 10px;
     height: 150px;
+    background: #f3f3f3;
 }
 /**/
 .form-cont .info{
@@ -162,6 +165,9 @@ select {
     width: 25%;
     border-radius: 5px;
 }
+.info input {
+	background: var(--main-texto-blanco);
+}
 /**/
 .form-cont .beneficios{
     padding: 2%;
@@ -173,14 +179,15 @@ select {
     width: 100%;
     border-radius: 5px;
     height: 100px;
+    background-color: var(--main-texto-blanco);
 }
 .anuncio form button{
     width: 100px;
     height: 40px;
     border-radius: 5px;
-    background: transparent;
-    color: white;
-    border: solid 2px;
+    background: white;
+    color: var(--main-bg-color);
+    border: solid 2px var(--main-color-verde);
 }
 .is-invalid{
     border:solid 2px var(--main-color-rosa) !important;
@@ -213,10 +220,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
-	background: var(--main-texto-blanco);
-	-webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+	background: white;
 }
 .container.detalle .relacionados .item .img{
 	position: absolute;
@@ -247,17 +251,6 @@ select {
 }
 .container.detalle .relacionados .item li {
     font-size: 15px;
-}
-/**/
-.postular button{
-	width: 100px;
-    height: 40px;
-	border-radius: 5px;
-	-webkit-background: linear-gradient(90deg, #e52e71, #ff8a00);
-	-moz-background: linear-gradient(90deg, #e52e71, #ff8a00);
-    background: linear-gradient(90deg, #e52e71, #ff8a00);
-    color: white;
-    border: solid 2px;
 }
 
 /* EXTRA SMALL----------------------------------------------------- */

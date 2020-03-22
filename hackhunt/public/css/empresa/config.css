@@ -1,0 +1,130 @@
+/*BARRA MENU-----------------------------------*/
+.barra-menu{
+	margin: 3% 0;
+}
+.barra-menu a {
+    background: white;
+    margin-right: 1%;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--main-bg-color);
+    font-weight: 300;
+}
+#select{
+    color: var(--main-texto-blanco);
+	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
+    border: solid 2px var(--main-texto-blanco);
+}
+/**/
+.container.config .barra{
+    width: 90%;
+    background: linear-gradient(to right, rgb(55, 237, 0) 0%, rgb(0, 230, 230) 100%);
+    border-radius: 5px;
+    padding: 5px;
+    height: 40px;
+    margin-top: 0;
+    margin-bottom: 2%;
+    padding-left: 2%;
+}
+.container.config .barra h2{
+    font-size: 25px;
+    color: var(--main-bg-color);
+    font-weight: 200;
+}
+/* PANEL */
+.container.config .panel .panel{
+    width: 100%;
+    background: white;
+    padding: 3%;
+    border-radius: 10px;
+}
+.container.config .panel .panel ul{
+    padding: 5%;
+    list-style: none;
+}
+.container.config .panel .panel ul a{
+    text-decoration: none;
+    color: var(--main-bg-color-2);
+}
+
+/* CUERPO */
+.container.config .item.titulo{
+    width: 100%;
+    background: linear-gradient(to right, rgb(55, 237, 0) 0%, rgb(0, 230, 230) 100%);
+    border-radius: 5px;
+    padding: 5px;
+    height: 40px;
+    margin-top: 0; 
+}
+.container.config .item.titulo h3{
+    font-size: 25px;
+    color: var(--main-bg-color);
+    font-weight: 100;
+    padding-left: 3%;
+}
+.container.config .item{
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    padding: 2%;
+    margin: 2% 0;
+}
+.container.config .item input {
+    background: var(--main-texto-blanco);
+}
+.container.config .item h4{
+    font-weight: 300;
+    color: var(--main-bg-color);
+    font-size: 20px;
+}
+.container.config .item p{
+    color: gray;
+    font-size: 15px;
+    font-weight: 100;
+}
+/**/
+.item.alertas{
+    min-height: 200px;
+}
+/**/
+.container.config input[type*='text'],
+.container.config input[type*='password'],
+.container.config input[type*='email']{
+    border: solid 1px white;
+    border-radius: 5px;
+}
+.container.config input[type*='email']{
+    width: 100%;
+}
+.container.config input[type*='password']{
+    width: 40%;
+}
+.container.config .item.clave form input:first-child{
+    display: block;
+    margin-bottom: 1%;
+}
+.container.config button{
+    display: block;
+    width: 170px;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    margin-top: 3%;
+    background: var(--main-color-verde);;
+    color: var(--main-bg-color);
+}
+
+/* EXTRA SMALL----------------------------------------------------- */
+@media (max-width: 768px) {
+    .barra-menu a {
+        margin: 2%;
+    }
+}
+
+/* SMALL-----------------------------------------------------------------*/
+@media (min-width: 769px) and (max-width: 991px) {}
+
+/* MEDIUM---------------------------------------------------------------------------------------*/
+@media (min-width: 992px) and (max-width: 1200px) {}
+
+/* LARGE----------------------------------------------------------------------------------------*/
+@media (min-width: 1201px) {}

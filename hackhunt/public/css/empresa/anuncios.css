@@ -3,7 +3,7 @@
 	margin: 3% 0;
 }
 .barra-menu a {
-    background: var(--main-texto-blanco);
+    background: white;
     margin-right: 1%;
     padding: 5px;
     border-radius: 5px;
@@ -18,7 +18,7 @@
 /* BARRA */
 .container.post .barra{
     width: 90%;
-    background: var(--main-bg-color);
+    background: linear-gradient(to right, rgb(55, 237, 0) 0%, rgb(0, 230, 230) 100%);
     border-radius: 5px;
     padding: 5px;
     height: 40px;
@@ -28,7 +28,7 @@
 }
 .container.post .barra h2{
     font-size: 25px;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 200;
     margin: 0;
 }
@@ -39,12 +39,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: var(--main-texto-blanco);
+    background: white;
     border-radius: 5px;
     margin: 3% 0;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container.post .stats .detalle .item{
     width: 25%;
@@ -71,12 +68,9 @@
 /* PANEL */
 .container.post .panel .filtro{
     width: 100%;
-    background: var(--main-texto-blanco);
+    background: white;
     border-radius: 5px;
     padding: 5%;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .container.post .panel .filtro h3{
     font-weight: 300;
@@ -105,10 +99,7 @@
     margin: 15px 0;
     margin-top: 0;
     border-radius: 10px;
-    background: var(--main-texto-blanco);
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    background: white;
 }
 .container.post .anuncios .item .img{
     display: flex;
@@ -156,7 +147,7 @@
     background: white;
     padding: 2px 5px;
     border-radius: 5px;
-    border: solid 1px var(--main-bg-color);
+    background: var(--main-color-verde);
 }
 .container.post .anuncios .item>.del{
     position: absolute;
@@ -165,7 +156,7 @@
     background: white;
     padding: 2px 5px;
     border-radius: 5px;
-    border: solid 1px var(--main-bg-color);
+    background: var(--main-color-rosa);
 }
 /* CANDIDATOS ---------------------------*/
 .container.post .candidatos .item {
@@ -177,10 +168,7 @@
     margin: 15px 0;
     margin-top: 0;
     border-radius: 10px;
-    background: var(--main-texto-blanco);
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
+    background: white;
 }
 .container.post .candidatos .item ul {
     list-style: none;
