@@ -67,9 +67,9 @@
 						<% for(let anuncio of relacionados){ %>
 							<a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                 <div class="item wrap">
-                                    <h3><%= anuncio.adv_title  %> </h3>
+                                    <h3><%= anuncio.adv_title.substring(0,40)  %> </h3>
                                     <p><i class="fas fa-magic" title="Skills que cumples"></i>  <%= anuncio.compareSkills(user.skill).length + " / " + anuncio.adv_skills.length %> </p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
+                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication.substring(0,10) %></p>
                                     <% if (anuncio.compareSkills(user.skill).length > anuncio.adv_skills.length - 3) { %>
                                         <i class="fab fa-hotjar" style="color: orangered;" title="¡EXCELENTE OPORTUNIDAD!"></i>
                                         <% } else { %>
@@ -86,9 +86,9 @@
                            <% for(let anuncio of postulaciones){ %>
                             <a class="anuncio" href="/detalle?id=<%= anuncio.id %>">
                                 <div class="item wrap">
-                                    <h3><%= anuncio.adv_title %>  <%=anuncio.created_at%></h3>
+                                    <h3><%= anuncio.adv_title.substring(0,45) %>  <%=anuncio.created_at%></h3>
                                     <p><i class="fas fa-magic" title="Skills que cumples"></i>  <%= anuncio.compareSkills(user.skill).length + " / " + anuncio.adv_skills.length %></p>
-                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication %></p>
+                                    <p><i class="fas fa-calendar-day" title="Fecha de publicación"></i> <%= anuncio.adv_publication.substring(0,10) %></p>
                                     <% if (anuncio.candidatos[0].postulantes.visto == 1) { %>
                                         <i class="far fa-eye" title="Visto por la empresa"></i>
                                     <% } else { %>
@@ -105,7 +105,32 @@
     </div>
     <footer>
         <%- include('../partials/footer'); -%>
-    </footer>    
+    </footer>
+    <div class="background">
+        <div class="item">
+            <img src="/images/backgrounds/item-green.png" alt="">
+        </div>
+        <div class="item">
+            <img src="/images/backgrounds/item-pink.png" alt="">
+        </div>
+        <div class="item">
+            <img src="/images/backgrounds/item-green.png" alt="">
+        </div>
+        <div class="code-box n1">
+            <p class="code"><span id="declare">var</span><span id="var"> findJob</span> =</p>
+            <p class="code"><span id="array">['you','need','hack','hunt']</span>;</p>
+            <p class="code">db.<span id="yellow">HackHunt</span>.findAll() <span id="array">// find my job today</span></p>
+            <p class="code"><span id="var">.then </span>(<span id="object"> result </span><span id="declare"> => </span> { <span id="object">result</span><span id="yellow">.find(</span> item <span id="declare"> => </span> <span id="yellow">)</span></p>
+            <p class="code">}<span id="var">) .catch</span>(<span id="object"> error </span><span id="declare"> => </span><span id="array">console</span><span id="yellow">.log(</span><span id="object">error</span><span id="yellow">)</span>)</p>
+        </div>
+        <div class="code-box n2">
+            <p class="code"><span id="declare">var</span><span id="var"> findJob</span> =</p>
+            <p class="code"><span id="array">['you','need','hack','hunt']</span>;</p>
+            <p class="code">db.<span id="yellow">HackHunt</span>.findAll() <span id="array">// find my job today</span></p>
+            <p class="code"><span id="var">.then </span>(<span id="object"> result </span><span id="declare"> => </span> { <span id="object">result</span><span id="yellow">.find(</span> item <span id="declare"> => </span> <span id="yellow">)</span></p>
+            <p class="code">}<span id="var">) .catch</span>(<span id="object"> error </span><span id="declare"> => </span><span id="array">console</span><span id="yellow">.log(</span><span id="object">error</span><span id="yellow">)</span>)</p>
+        </div>
+    </div> 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/main/ciudades.js"></script>
     <script src="/js/cliente/infograph.js"></script>

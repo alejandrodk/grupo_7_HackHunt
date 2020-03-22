@@ -5,6 +5,7 @@
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/cliente/info.css" />
     <link rel="stylesheet" href="/css/headerLog.css" />
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 <!-- CÓDIGO -->
 <body>
@@ -44,11 +45,7 @@
                     <input type="number" name="user_phone" id="user_phone" value="<%=user.cliente_cv == null ? "" : user.cliente_cv.user_phone %>">
                     <label for="user_city"><p>Ciudad</p></label>
                     <select name="user_city" id="user_city">
-                        <option value="CABA">Capital Federal</option>
-                        <option value="GBA">Buenos Aires</option>
-                        <option value="CO">Córdoba</option>
-                        <option value="MDZ">Mendoza</option>
-                        <option value="RO">Rosario</option>
+                        <option value="">Ciudad</option>
                     </select>
                     <button type="submit">Guardar</button>
                 </form>
@@ -160,26 +157,13 @@
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos skills wrap">
             <h3>Skills</h3>
             <p id="Skills"></p>
-            <div class="formulario">
-                <form action="?_method=PATCH&form=skills" method="post" class="wrap">
-                    <label for="skill_id"><p>Skills</p></label>
-                    <select name="skill_id" id="skill_id">
-                        <option value="">Agregar Skill</option>
-                        <% skills.forEach(skill => { %>
-                            <option value="<%= skill.skill_id %>"><%= skill.skill_name %></option>
-                        <% }) %> 
-                    </select>
-                    <button type="submit" id="adItem">+</button>
-                </form>
-                <div class="areas">
-                    <p>Tus Skills</p>
-                    <% user.skill.forEach(skill => { %>                     
-                        <div class="item">
-                            <a href="/perfil/informacion/skill_delete/<%= skill.skill_id %>" id="deleteSkill">X</a>
-                            <h2><%= skill.skill_name  %> </h2>
-                        </div>
-                    <% }) %>
-                </div>
+            <label for="skill_id"><p>Skills</p><span id="add"><i class="fas fa-plus"></i></span></label>
+            <select name="skill_id" id="skill_id" data-user="<%= user.user_id %>"> <%# user guardado en res.locals %>
+                <option value="">Agregar Skill</option>
+            </select>
+            <div class="areas">
+                <p>Tus Skills</p> 
+                <%# Los skills se insertan via API %>                   
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 datos preferencias wrap">
@@ -208,6 +192,22 @@
         </div>
     </div>
 </div>
-<!-- CÓDIGO -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/main/cvCiudades.js"></script>
+<script src="/js/main/cvSkills.js"></script>
+<footer>
+    <%- include('../partials/footer'); -%>
+</footer>
+<div class="background">
+    <div class="item">
+        <img src="/images/backgrounds/item-green.png" alt="">
+    </div>
+    <div class="item">
+        <img src="/images/backgrounds/item-pink.png" alt="">
+    </div>
+    <div class="item">
+        <img src="/images/backgrounds/item-green.png" alt="">
+    </div>
+</div> 
 </body>
 </html>

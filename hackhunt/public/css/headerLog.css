@@ -1,8 +1,9 @@
+.container-fluid .container {
+	position: relative;
+    z-index: 2;
+}
 .container-fluid.header {
     background: var(--main-bg-color);
-}
-body{
-	background: var(--main-bg-color-2);
 }
 .container.header .row{
 	padding-top: 5px;

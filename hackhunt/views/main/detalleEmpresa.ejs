@@ -4,27 +4,27 @@
 <head>
     <%- include('../partials/head'); -%>
     <!--Luego hay que hacer una validación de sesión iniciada para mostrar un header u otro-->
-    <link rel="stylesheet" href="/css/headerLog.css" />
+    <link rel="stylesheet" href="/css/headerLog.css">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/main/detalleEmpresa.css" />
 </head>
 <!-- CÓDIGO -->
 <body>
-    <header>
-        <% if(type_user == "empresa"){%>
+	<header>
+		<% if(type_user == "empresa"){%>
 			<%- include('../partials/headerEmp'); -%>
-		<%} if(type_user == "usuario"){%>
+		<%} if(type_user == "cliente"){%>
 			<%- include('../partials/headerLog'); -%>
 		<%}if(type_user == "guest"){%>
-			<%- include('../partials/header'); -%>
+			<%- include('../partials/header'); -%> 
 		<%}%>
-    </header>
+	</header>
     <div class="container-fluid">
         <div class="container">
             <div class="row separador">
-                <div class="col-9 volver wrap">
-                    <a href="../">../Volver</a>
+                <div class="col-9 titulo wrap">
+                    <p>Detalle de empresa</p>
                 </div>
                 <div class="col-3 titulo wrap">
                     <p>Empresas relacionadas</p>
