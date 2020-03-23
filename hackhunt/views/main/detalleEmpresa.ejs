@@ -44,15 +44,17 @@
                                     <p><i class="fab fa-instagram"></i><%= empresa.cmp_instagram %></p>
                                     <p><i class="fab fa-facebook-square"></i><%= empresa.cmp_facebook %></p>
                                     <p><%= empresa.cmp_website %></p>
-                                </div>
+                                </div> 
                                 <div class="infoEmpresa">
                                     <p><i class="far fa-building"></i><%= empresa.cmp_sector %></p>
                                     <p><i class="far fa-id-card"></i><%= empresa.cmp_cuit %></p>
                                     <p><i class="fas fa-phone-square-alt"></i><%= empresa.cmp_tel %></p>
                                 </div>
-                                <i class="fa-heart fa-lg far" id="add-favorite"></i>
+                                <%if(locals.type_user == 'cliente'){%>
+									<i class="far fa-heart fa-lg" id="add-favorite" data-id="<%= empresa.id %>" data-user="<% if(user){ %><%= user %><% } %>"></i>
+									<% } %>
                             </div>
-                        </div>
+                        </div> 
                         <div class="descripcion">
                             <p><%= empresa.cmp_description %></p>
                         </div>
@@ -92,5 +94,6 @@
     <footer>
         <%- include('../partials/footer'); -%>
     </footer>
+    <script src="/js/main/emp_favorite.js"></script>
 </body>
 </html>

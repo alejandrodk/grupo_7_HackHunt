@@ -39,13 +39,13 @@
             <div class="col-xs-12 col-sx-12 col-md-2 col-lg-2 panel">
                 <div class="filtro">
                     <!-- consultar si conviene utilizar listas o inputs para filtros -->
-                    <h3>Mostrar</h3>
+                    <h3>Mostrar</h3> 
                     
                     <ul>
-                        <li><a href="/empresa/anuncios?filter=all">Todas</a></li>
-                        <li><a href="/empresa/anuncios?filter=active">Activos</a></li>
-                        <li><a href="/empresa/anuncios?filter=new">Nuevas solicitudes</a></li>
-                        <li><a href="/empresa/anuncios?filter=closed">Finalizados</a></li>
+                        <li><input type="radio" <%= filtro == undefined ? "checked" : "" %>name="filtro" data-name="all" class="adv_filtro">Todas</li>
+                        <li><input type="radio" <%= filtro == "active" ? "checked" : "" %> name="filtro" data-name="active" class="adv_filtro">Activos</li>
+                        <li><input type="radio" <%= filtro == "new" ? "checked" : "" %> name="filtro" data-name="new" class="adv_filtro">Nuevas solicitudes</li>
+                        <li><input type="radio" <%= filtro == "closed" ? "checked" : "" %> name="filtro" data-name="closed" class="adv_filtro">Finalizados</li>
                     </ul>
                 
                 </div>
@@ -86,6 +86,7 @@
         </div>
     </div>
     <script src="/js/empresa/advFilter.js"></script>
+    <script src="/js/empresa/filtro.js"></script>
 </body>
 
 </html>

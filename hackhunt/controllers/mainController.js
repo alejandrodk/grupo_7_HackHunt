@@ -163,7 +163,7 @@ const controller = {
 		//	}
 	},
 	detalleEmpresa : (req, res) => {
-
+		let user = req.session.user != undefined ? req.session.user.user_id : null;
 		let id = req.params.id;
 		db.empresas.findByPk(id,{
 			include : 'anuncios'
@@ -176,7 +176,8 @@ const controller = {
 			
 				res.render('main/detalleEmpresa', {
 					empresa,
-					relacionadas
+					relacionadas,
+					user
 				})
 			})
 		})

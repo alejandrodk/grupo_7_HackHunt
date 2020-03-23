@@ -37,6 +37,7 @@ const empresaRouter = require("./routes/empresa");
 const anunciosRouter = require('./api/routes/anuncios');
 const clientesRouter = require('./api/routes/clientes');
 const skillsRouter = require('./api/routes/skills');
+const cmpRouter = require('./api/routes/empresas');
 
 app.use("/", mainRouter);
 app.use("/perfil", clienteRouter);
@@ -46,6 +47,7 @@ app.use("/empresa", empresaRouter);
 app.use("/api/clientes", clientesRouter);
 app.use("/api/anuncios", anunciosRouter);
 app.use("/api/skills", skillsRouter);
+app.use("/api/empresas", cmpRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************

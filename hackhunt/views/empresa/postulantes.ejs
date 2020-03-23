@@ -3,7 +3,7 @@
 
 <head>
     <%- include('../partials/head'); -%>
-    <link rel="stylesheet" href="/css/headerEmp.css" />
+    <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/empresa/postulantes.css" />
 </head>
 
@@ -21,16 +21,17 @@
             </div>
             <div class="col-12 barra">
                 <h2>Solicitudes recibidas</h2>
-            </div>
+            </div> 
             <div class="col-2 panel">
                 <div class="filtro">
                     <!-- consultar si conviene utilizar listas o inputs para filtros -->
-                    <h3>Ordenar por</h3>
-                    <ul>
-                        <li><input type="radio" name="filtrar" id="">Todos</li>
-                        <li><input type="radio" name="filtrar" id="">Skills</li>
-                        <li><input type="radio" name="filtrar" id="">Nuevos</li>
-                        <li><input type="radio" name="filtrar" id="">Fecha</li>
+                    <h3>Ordenar por</h3>  
+                    <ul>  
+                        
+                        <li><input type="radio" name="filtro" <%= filtro == undefined ? 'checked' : ''%>  id="<%=anuncio.id %>" class="filtrar" data-name="all">Todos</li>
+                        <li><input type="radio" name="filtro" <%= filtro == "skills" ? 'checked' : ""%> id="<%=anuncio.id %>" class="filtrar" data-name="skills">Skills</li>
+                        <li><input type="radio" name="filtro" <%= filtro == "new" ? 'checked' : '' %>  id="<%=anuncio.id %>" class="filtrar"data-name="new">Nuevos</li>
+                        
                     </ul>
                 </div>
             </div>
@@ -61,7 +62,7 @@
                                         <img src="/images/<%=anuncio.candidatos[i].user_avatar %>" alt="">
                                     </div>
                                 </div>
-                                <div class="datos wrap">
+                                <div class="datos wrap"> 
                                     <strong>
                                         <p><%= anuncio.candidatos[i].user_name %></p> 
                                     </strong>
@@ -83,6 +84,7 @@
             </div>
         </div>
     </div>
+    <script src="/js/empresa/filtro.js"></script>
 </body>
 
 </html>

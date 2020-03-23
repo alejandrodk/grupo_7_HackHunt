@@ -9,6 +9,43 @@ window.onload = function () {
 
     let errores = {};
 
+
+    async function verificarEmail()
+{
+   
+    let input = document.querySelector("#cmp_user_email")
+    let url = "/api/empresas/email?email=" + input.value;
+    let fetchEmail = await fetch(url);
+    let emailUsed = await fetchEmail.json();
+    if(emailUsed.response[0])
+    {
+        input
+        .classList
+        .add('is-invalid')
+    input
+        .classList
+        .remove('is-valid')
+    input.nextElementSibling.innerHTML = `Email en uso`;
+        return false
+    }
+    else
+    {
+        input
+                            .classList
+                            .remove('is-invalid')
+                        input
+                            .classList
+                            .add('is-valid')
+                        input.nextElementSibling.innerHTML = ``;
+                        delete errores[input.name];
+        return true
+    }
+
+  
+}
+
+
+
     formInputs.forEach(function (oneInput) {
         oneInput.addEventListener('blur', function () {
 
@@ -30,25 +67,23 @@ window.onload = function () {
                 if (this.dataset.name == 'Email') {
                     if (validator.isEmail(this.value, {ignore_whitespace: true})) {
 
-                        this
-                            .classList
-                            .remove('is-invalid')
-                        this
-                            .classList
-                            .add('is-valid')
-                        this.nextElementSibling.innerHTML = ``;
 
-                        delete errores[this.name];
-                    } else {
-                        this
-                            .classList
-                            .add('is-invalid')
-                        this
-                            .classList
-                            .remove('is-valid')
-                        this.nextElementSibling.innerHTML = `Debes ingresar un Email valido`;
+                        verificarEmail()
+                      
                     }
-                } else {
+                    else
+                    {
+                        this
+                        .classList
+                        .add('is-invalid')
+                    this
+                        .classList
+                        .remove('is-valid')
+                    this.nextElementSibling.innerHTML = `El formato de email es invalido`;
+                    } 
+                }
+                
+                else {
 
                     this
                         .classList

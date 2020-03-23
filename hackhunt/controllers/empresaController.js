@@ -198,7 +198,8 @@ const controller = {
                         //return res.send(result)
                         res.render("empresa/anuncios", {
                             anuncios: result,
-                            postulaciones: resultado
+                            postulaciones: resultado,
+                            filtro: req.query.filter
                         });
                     })
             })
@@ -352,17 +353,28 @@ const controller = {
     postulantes: (req, res) => {
         /* buscamos el anuncio segun el id por parametro.
 		   a la busqueda se incluye los clientes que se postularon, y datos adicionales a estos como los skills y la experiencia.
-		*/
+        */
+       let filtro = ["id","asc"];
+        switch(req.query.filter)
+        {
+            case "new": filtro = [{model:db.clientes,as:"candidatos"},"user_id","desc"];
+            console.log("holaaaaaaaa")
+            break;
+        }
+        //order:[[{model:db.clientes,as:"candidatos"},"user_id","desc"]],
         db
             .anuncios
             .findByPk(req.params.id, {
+                
                 include: [
                     {
                         model: db.clientes,
                         as: 'candidatos',
+                        
                         attributes: [
                             'user_id', 'user_name', 'user_lastname', 'user_email', 'user_avatar'
                         ],
+                        
                         include: [
                             {
                                 model: db.cliente_education,
@@ -374,9 +386,11 @@ const controller = {
                                 attributes: ['user_experience_description']
                             }, {
                                 model: db.skills,
-                                as: 'skill'
+                                as: 'skill',
                             }
-                        ]
+                        ],
+                       
+                        
                     }, {
                         model: db.empresas,
                         as: 'empresas',
@@ -385,15 +399,19 @@ const controller = {
                         model: db.skills,
                         as: 'adv_skills'
                     }
-                ]
+                ],
+                
+                order:[filtro]
             })
             .then(resultado => {
                 //return res.send(resultado)
                 res.render("empresa/postulantes", {
                     title: "Express",
-                    anuncio: resultado
+                    anuncio: resultado,
+                    filtro:req.query.filter
                 });
             })
+            .catch(error => console.log(error))
     },
     postulantesDetalle: (req, res) => {
         let id = req.query.id;

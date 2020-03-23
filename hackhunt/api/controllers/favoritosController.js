@@ -3,7 +3,7 @@ const Sequelize = require("sequelize")
 const Op = Sequelize.Op;
 
 module.exports = {
-    favoritos : (req, res) => {
+    favoritos : (req, res) => { 
         db.userFavoritos.findAll()
         .then(result => {
             res.json({
