@@ -20,13 +20,13 @@
                 <a href="/perfil/configuracion">Configuración</a>
             </div>
             <div class="col-12 barra wrap">
-                <h2>Empresas que seguís</h2>
+                <h2>Anuncios de empresas que seguís</h2>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 panel">
                 <div class="seguidas">
                     <h3>Empresas seguidas</h3>
                     <% for(let emp of seguidos){ %>
-                        <a href="">
+                        <a href="/detalle/empresa/<%= emp.cmp_id %>">
                             <div class="item">
                                 <div class="avatar">
                                     <img src="/images/avatars/<%= emp.empresas[0].cmp_avatar %>" alt="">
@@ -39,7 +39,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncios">
                 <% for(let adv of anuncios){ %>
-                    <a href="/detalle">
+                    <a href="/detalle?id=<%= adv.id %>">
                         <div class="item">
                             <div class="img">
                                 <img src="/images/avatars/<%= adv.empresas.cmp_avatar %>" alt="">

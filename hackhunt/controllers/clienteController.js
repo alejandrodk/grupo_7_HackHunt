@@ -108,7 +108,7 @@ const controller = {
         })
         .then( seguidos => {
 
-            let queryWhere = [{cmp_id: {[Op.like]: '% %' }}]
+            let queryWhere = []
 
             for(let cmp of seguidos){
                 queryWhere.push({cmp_id: {[Op.like]: '%'+ cmp.cmp_id +'%' }})
