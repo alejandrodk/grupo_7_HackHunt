@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" href="/css/headerLog.css" />
+    <link rel="stylesheet" href="/css/cliente/seguidos.css" />
+</head>
+<body>
+    <header>
+        <%- include('../partials/headerLog'); -%>
+    </header>  
+    <div class="container alertas">
+        <div class="row">
+            <div class="col-12 barra-menu wrap">
+                <a href="/perfil/informacion">Editar mi CV</a>
+                <a href="/perfil/postulaciones">Mis postulaciones</a>
+                <a href="/perfil/favoritos">Favoritos</a>
+                <a href="/perfil/seguidos" id="select">Seguidos</a>
+                <a href="/perfil/configuracion">Configuración</a>
+            </div>
+            <div class="col-12 barra wrap">
+                <h2>Empresas que seguís</h2>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 panel">
+                <div class="seguidas">
+                    <h3>Empresas seguidas</h3>
+                    <% for(let emp of seguidos){ %>
+                        <a href="">
+                            <div class="item">
+                                <div class="avatar">
+                                    <img src="/images/avatars/<%= emp.empresas[0].cmp_avatar %>" alt="">
+                                </div>
+                                <h2><%= emp.empresas[0].cmp_name %></h2>
+                            </div>
+                        </a>
+                    <% } %> 
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 anuncios">
+                <% for(let adv of anuncios){ %>
+                    <a href="/detalle">
+                        <div class="item">
+                            <div class="img">
+                                <img src="/images/avatars/<%= adv.empresas.cmp_avatar %>" alt="">
+                            </div>
+                            <div class="info">
+                                <h2><%= adv.adv_title %></h2>
+                                <ul>
+                                    <li><%= adv.empresas.cmp_name %></li>
+                                    <li><%= adv.adv_location %></li>
+                                    <li><%= adv.adv_working_Day %></li>
+                                </ul>
+                                <p class="desc"><%= adv.adv_description %></p>
+                                <p class="sal">$<%= adv.adv_salary %></p>
+                                <p class="skills"><i class="fas fa-magic" title="Skills que cumples"></i> 5/8</p>
+                            </div>
+                        </div>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

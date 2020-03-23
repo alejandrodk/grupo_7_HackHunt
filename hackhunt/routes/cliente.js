@@ -12,7 +12,7 @@ const clienteController = require("../controllers/clienteController");
 router.get("/", soloCliente, clienteController.perfil);
 router.get("/postulaciones", soloCliente, clienteController.postulaciones);
 router.get("/favoritos", soloCliente, clienteController.favoritos);
-router.get("/alertas", soloCliente, clienteController.alertas);
+router.get("/seguidos", soloCliente, clienteController.seguidos);
 
 router.get("/informacion",soloCliente, clienteController.info);
 router.patch("/informacion",soloCliente, clienteController.actInfo);

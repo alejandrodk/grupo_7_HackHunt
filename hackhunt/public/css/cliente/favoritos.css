@@ -45,7 +45,11 @@ body {
 /**/
 .container.fav .barra{
     width: 90%;
-    background: var(--main-bg-color);
+    background: -moz-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -webkit-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -o-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -ms-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: linear-gradient(to right, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
     border-radius: 5px;
     padding: 5px;
     height: 40px;
@@ -55,7 +59,7 @@ body {
 }
 .container.fav .barra h2{
     font-size: 25px;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 200;
 }
 /* PANEL */

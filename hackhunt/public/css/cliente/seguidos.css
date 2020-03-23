@@ -11,7 +11,7 @@
     font-weight: 300;
 }
 #select{
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
 	background: -webkit-linear-gradient(45deg, #e52e71, #ff8a00);
     border: solid 2px var(--main-texto-blanco);
 }
@@ -23,10 +23,14 @@
 }
 .container.alertas .barra h2{
     font-size: 25px;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 200;
-    width: 23%;
-    background: var(--main-bg-color);
+    width: 100%;
+    background: -moz-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -webkit-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -o-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -ms-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: linear-gradient(to right, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
     border-radius: 5px;
     padding: 7px;
 }
@@ -59,29 +63,6 @@
     display: inline;
     text-decoration: none;
     color: var(--main-bg-color);
-}
-/**/
-.container.alertas .barra a.boton{
-    width: 20%;
-    height: 50px;
-    margin: 0 2%;
-    text-decoration: none;
-    color: var(--main-bg-color-2);
-}
-.container.alertas .barra .config{
-    border: solid 1px transparent;
-    border-radius: 5px;
-    background: var(--main-color-verde);;
-    color: var(--main-bg-color);
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.75);
-}
-.container.alertas .barra .config p{
-    margin: 0;
 }
 
 /* PANEL */
