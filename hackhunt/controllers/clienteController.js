@@ -1,5 +1,8 @@
 const db = require('../database/models');
+const Sequelize = require("sequelize")
 const sequelize = db.sequelize;
+const Op = Sequelize.Op;
+
 const actUserCv = require('../helpers/act_user_cv.js');
 
 const controller = {
@@ -50,30 +53,18 @@ const controller = {
         })
     },
     postulaciones: (req, res) => {
-        db
-            .clientes
-            .findOne({
+        db.clientes.findOne({
                 where: {
                     user_id: req.session.user.user_id
                 },
                 include: [
-                    'cliente_cv', {
-                        model: db.anuncios,
-                        as: "candidato",
+                    'cliente_cv', 
+                    { model: db.anuncios, as: "candidato", 
                         include: [
-                            {
-                                model: db.empresas,
-                                as: "empresas",
-                                attributes: ['cmp_avatar', 'cmp_name']
-                            }, {
-                                model: db.skills,
-                                as: "adv_skills"
-                            }
+                            { model: db.empresas, as: "empresas", attributes: ['cmp_avatar', 'cmp_name'] }, 
+                            { model: db.skills, as: "adv_skills" }
                         ]
-                    }, {
-                        model: db.skills,
-                        as: "skill"
-                    }
+                    }, { model: db.skills, as: "skill"}
                 ]
             })
             .then(user => {
@@ -82,7 +73,6 @@ const controller = {
                         `SELECT * FROM postulantes JOIN anuncios ON postulantes.adv_id = anuncios.id JOIN empresas ON anuncios.cmp_id = empresas.id HAVING cli_id = ${user.user_id}`
                     )
                     .then(result => {
-                        // return res.send(user.skill)
                         res.render('cliente/postulaciones', {
                             anuncios: result[0],
                             usuario: user
@@ -94,10 +84,6 @@ const controller = {
             })
         },
     favoritos: (req, res) => {
-        if (req.query) {
-            //si existe el queryString refinar la busqueda por empresa
-        }
-
         db.clientes.findOne({
             where:{user_id:req.session.user.user_id},
             include:[{model:db.skills,as:'skill'},
@@ -107,17 +93,40 @@ const controller = {
                     ]}]
                 })
         .then( user => { 
-           //return res.send(user)
             res.render('cliente/favoritos', {
                 user
             });
         })
     },
-    alertas: (req, res) => {
-        if (req.query) {
-            //si existe el queryString refinar la busqueda por empresa
-        }
-        res.render('cliente/alertas', {title: 'Alertas '});
+    seguidos: (req, res) => {
+        db.cmpFavoritos.findAll({
+            where : {
+                user_id : req.session.user.user_id
+            },
+            attributes : ['cmp_id'],
+            include : [{model : db.empresas, as: 'empresas', attributes : ['cmp_name','cmp_avatar']}]
+        })
+        .then( seguidos => {
+
+            let queryWhere = []
+
+            for(let cmp of seguidos){
+                queryWhere.push({cmp_id: {[Op.like]: '%'+ cmp.cmp_id +'%' }})
+            }
+            db.anuncios.findAll({
+                where : {
+                    [Op.or]: [...queryWhere]
+                },
+                include : [{model : db.empresas, as: 'empresas', attributes : ['cmp_name','cmp_avatar']}]
+            })
+            .then( anuncios => {
+
+                res.render('cliente/seguidos', {
+                    seguidos,
+                    anuncios
+                });
+            })
+        })
     },
     info: (req, res) => {
         db.clientes.findOne({

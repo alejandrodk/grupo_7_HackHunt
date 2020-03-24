@@ -50,7 +50,11 @@ body {
 /* BARRA */
 .container.post .barra{
     width: 90%;
-    background: var(--main-bg-color);
+    background: -moz-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -webkit-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -o-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -ms-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: linear-gradient(to right, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
     border-radius: 5px;
     padding: 5px;
     height: 40px;
@@ -59,33 +63,12 @@ body {
     padding-left: 2%;
 }
 
-@keyframes escribir {
-    from { width: 100% }
-    to { width:0 }
-}
-#var{
-    color: #d943fd;  
-}
-#nom{
-    color: #f1fd43;
-}
-#ig{
-    color: #00c3ff; 
-}
 .container.post .barra h2{
     width: 350px;
     position: relative;
     font-size: 25px;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 200; 
-}
-.container.post .barra h2 #efc{
-    position:absolute;
-    right:0;
-    width:0;
-    background: var(--main-bg-color);
-    border-left: 1px solid white;
-    animation: escribir 4s steps(39) infinite alternate;
 }
 /**/
 .container.post .stats .detalle{
