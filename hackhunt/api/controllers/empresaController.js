@@ -1,5 +1,6 @@
 const db = require('../../database/models');
 const Sequelize = require('sequelize');
+const empresa = db.empresas;
 const Op = Sequelize.Op;
 
 module.exports = 
@@ -54,6 +55,35 @@ module.exports =
                 .catch(error => console.log(error))
             }
         })
+    },
+
+    check: (req,res) =>
+    {
+        let email = req.query.email;
+        
+        empresa.findAll({
+            where:{cmp_user_email:email},
+            attributes:['cmp_user_email']
+        })
+        .then(response =>
+            {
+                if(response)
+                {
+                    return res.json({
+                        status_code:res.statusCode,
+                        response:response
+                    })
+                }
+                else
+                {
+                    return res.status(404).json(
+                        {
+                            status_code:res.statusCode
+                        }
+                    )
+                }
+            })
+            .catch(error => res.json(error))
     }
 }
 

@@ -176,6 +176,29 @@ const controller = {
             );
             res.redirect('/perfil/configuracion/' + urlAncla);
         })
+    },
+
+    cambiarAvatar: (req,res) => 
+    {
+        let id = req.params.id;
+       
+        if(req.file)
+        {
+            req.body.avatar = req.file.filename;
+            db.clientes.update({user_avatar : req.body.avatar},
+                {
+                    where:{user_id : id}
+                })
+                .then(()=>
+                {
+                    return res.redirect('/perfil');
+                })
+        }
+        else
+        {
+            return res.redirect('/perfil');
+        }
+        
     }
 };
 
