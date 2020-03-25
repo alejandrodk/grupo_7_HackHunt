@@ -16,6 +16,12 @@ module.exports = {
         let offset = page != 0 ? maxResults * parseInt(page) : 0 ;
         let limit = maxResults;
 
+        if(req.query.page == undefined){
+            // si no se recibe la query "page" traer todos los resultados
+            offset = 0;
+            limit = 100
+        }
+
         db.anuncios.findAll({
             include : [{ model : db.empresas , as: 'empresas', attributes: ['cmp_name','cmp_avatar'] } ],
             offset,
