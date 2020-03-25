@@ -4,14 +4,19 @@ const Op = Sequelize.Op;
 
 module.exports = {
     postulaciones : (req, res) => {
-
-        db.postulantes.findAll()
+        
+        let postulaciones = db.postulantes.findAll();
+        let postulantes = db.postulantes.findAll({ group : 'cli_id'});
+        Promise
+        .all([postulaciones, postulantes])
         .then(result => {
+
             res.json({
                 status_code : res.statusCode,
                 collection : 'postulaciones',
-                total_items : result.length,
-                response : result
+                postulantes : result[1].length,
+                total_items : result[0].length,
+                response : result[0]
             });
         })    
     },

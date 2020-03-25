@@ -77,6 +77,9 @@ body {
 .main-cards .card #bold {
   font-weight: 800;
 }
+.main-cards i{
+  margin-right: 5px;
+}
 .main-cards .card p {
   margin: 0;
   margin-right: 19px;
@@ -104,6 +107,7 @@ body {
 }
 .main-cards .card .content {
   display: flex;
+  align-items: center;
 }
 .main-ranking {
   width: 60%;

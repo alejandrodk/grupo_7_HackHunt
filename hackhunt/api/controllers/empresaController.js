@@ -4,7 +4,23 @@ const empresa = db.empresas;
 const Op = Sequelize.Op;
 
 module.exports = 
-{
+{   empresas : (req, res) => {
+
+        db.empresas.findAll()
+        .then(response => {
+            if(response){
+            return res.json({
+                    status_code : res.statusCode,
+                    collection : 'empresas',
+                    total_items : response.length,
+                    response
+                });
+            }
+            return res.status(404).json({
+                status : res.statusCode
+            })
+        }).catch(error => console.log(error))
+    },
     favoritos: (req,res) =>
     {
         db.cmpFavoritos.findAll()

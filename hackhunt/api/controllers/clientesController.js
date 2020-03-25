@@ -4,6 +4,20 @@ const Op = Sequelize.Op;
 
 module.exports = {
     clientes : (req, res) => {
+        db.clientes.findAll()
+        .then(response => {
+            if(response){
+            return res.json({
+                    status_code : res.statusCode,
+                    collection : 'clientes',
+                    total_items : response.length,
+                    response
+                });
+            }
+            return res.status(404).json({
+                status : res.statusCode
+            })
+        }).catch(error => console.log(error))
 
     },
     cliente : (req, res) => {

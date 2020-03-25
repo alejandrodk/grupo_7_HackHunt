@@ -4,7 +4,7 @@ const router = express.Router();
 
 const empresaController = require('../controllers/empresaController');
 
-
+router.get('/', empresaController.empresas);
 router.get('/favoritos', empresaController.favoritos); 
 router.post('/favoritos', empresaController.addFavorite); 
 router.delete('/favoritos', empresaController.removeFavorite);

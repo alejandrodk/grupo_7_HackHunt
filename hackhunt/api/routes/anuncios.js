@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
+const anunciosController = require('../controllers/anunciosController');
 const favoritosController = require('../controllers/favoritosController');
 const postulacionesController = require('../controllers/postulacionesController');
 
+router.get('/', anunciosController.anuncios);
+router.get('/activos', anunciosController.activos);
+router.get('/expirados', anunciosController.expirados);
 
 router.get('/favoritos', favoritosController.favoritos);
 //router.get('/favoritos/:id', favoritosController.favoritos); -- favoritos por cliente
