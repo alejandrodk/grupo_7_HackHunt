@@ -2,28 +2,38 @@ const db = require('../../database/models');
 const Sequelize = require("sequelize")
 const Op = Sequelize.Op;
 
+const dateHelper = require('../helpers/date');
+const helpers = require('../helpers/apiHelpers');
+
 module.exports = {
     anuncios : (req, res) => {
-        let date = new Date();
-        let dd = date.getDate();
-        let mm = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-        let yyyy = date.getFullYear();
+        let actualPage = req.query.page ? req.query.page : 0;
 
-        let fecha = `${yyyy}-${mm}-${dd}`
+        let fecha = dateHelper.getDate;
 
-        db.anuncios.findAll()
-        //db.sequelize.query(`select * from anuncios where adv_date_contract > '${fecha}'`)
+        let page = req.query.page != undefined ? req.query.page : 0;
+        let maxResults = 4;
+        let offset = page != 0 ? maxResults * parseInt(page) : 0 ;
+        let limit = maxResults;
+
+        db.anuncios.findAll({
+            include : [{ model : db.empresas , as: 'empresas', attributes: ['cmp_name','cmp_avatar'] } ],
+            offset,
+            limit
+        })
         .then(response => {
             if(response){
                 let actives = response.filter(item => item.adv_date_contract > fecha);
                 let expired = response.filter(item => item.adv_date_contract < fecha);
-
+                
                 return res.json({ 
                     status_code : res.statusCode,
                     collection : 'anuncios',
                     total_items : response.length,
                     actives : actives.length,
                     expired : expired.length,
+                    next : actualPage <= response.length / maxResults ? `http://localhost:3000/api/anuncios?page=${ parseInt(actualPage) + 1 }` : null,
+                    prev : actualPage > 0 ? `http://localhost:3000/api/anuncios?page=${ parseInt(actualPage) - 1 }` : null,
                     response
                 });
             }
@@ -33,12 +43,8 @@ module.exports = {
         }).catch(error => console.log(error))
     },
     activos : (req, res) => {
-        let date = new Date();
-        let dd = date.getDate();
-        let mm = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-        let yyyy = date.getFullYear();
 
-        let fecha = `${yyyy}-${mm}-${dd}`
+        let fecha = dateHelper.getDate;
 
         db.sequelize.query(`select * from anuncios where adv_date_contract > '${fecha}'`)
         .then(response => {
@@ -58,12 +64,8 @@ module.exports = {
         }).catch(error => console.log(error))
     },
     expirados : (req, res) => {
-        let date = new Date();
-        let dd = date.getDate();
-        let mm = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-        let yyyy = date.getFullYear();
 
-        let fecha = `${yyyy}-${mm}-${dd}`
+        let fecha = dateHelper.getDate;
 
         db.sequelize.query(`select * from anuncios where adv_date_contract < '${fecha}'`)
         .then(response => {

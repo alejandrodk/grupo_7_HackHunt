@@ -1,31 +1,102 @@
 import React, {Component} from 'react';
+import Axios from 'axios';
 
 class MainAdv extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            anuncios : [],
+            siguiente : '',
+            anterior : ''
+        }
+    }
+
+    componentDidMount(){
+
+        Axios.get('http://localhost:3000/api/anuncios?page=0')
+        .then(result => {
+            
+            this.setState({
+                anuncios : result.data.response,
+                siguiente : result.data.next,
+                anterior : result.data.prev
+            })
+        })
+    }
+    // event handler
+    
+    cargarSiguiente(){
+        let { siguiente } = this.state;
+
+        Axios.get(siguiente)
+        .then(result => {
+            
+            this.setState({
+                anuncios : result.data.response,
+                siguiente : result.data.next,
+                anterior : result.data.prev
+            })
+        })
+    }
+    cargarAnterior(){
+        let { anterior } = this.state;
+
+        Axios.get(anterior)
+        .then(result => {
+            
+            this.setState({
+                anuncios : result.data.response,
+                siguiente : result.data.next,
+                anterior : result.data.prev
+            })
+        })
+    }
+
+    // render del componente 
     render(){
+        let { anuncios, siguiente, anterior } = this.state;
         return(
             <div className="main-adv">
                 <div className="header">
                     <h2>Búsquedas activas</h2>
                     <div className="pagination">
-                        <button id="prev">
+                        {
+                            anterior != null ? 
+                            <button id="prev"
+                            onClick={ () => this.cargarAnterior() }
+                            >
                             <i className="fas fa-arrow-circle-left"></i>
                             Anterior
-                        </button>
-                        <button id="next">
+                            </button>
+                            :
+                            ''
+                        }
+                        {
+                            siguiente != null ? 
+                            <button id="next"
+                            onClick={ () => this.cargarSiguiente() }
+                            >
                             <i className="fas fa-arrow-circle-right"></i>
                             Siguiente
-                        </button>
+                            </button>
+                            :
+                            ''
+                        }
                     </div>
                 </div>
                 <div className="content">
-                    <div className="item">
-                        <div className="avatar">
-                            <img src="" alt=""/>
-                        </div>
-                        <h2>Diseñador gráfico UX/UI</h2>
-                        <h3>Mercado Liebre</h3>
-                        <h3>Capital Federal</h3>
-                    </div>
+                    { anuncios.map( (item, i) => {
+                        return(
+                            <div className="item" key={i}>
+                                <div className="avatar">
+                                    <img src={`./avatars/${ item.empresas.cmp_avatar }`} alt=""/>
+                                </div>
+                                <h2>{ item.adv_title }</h2>
+                                <h3>{ item.empresas.cmp_name }</h3>
+                                <h3>{ item.adv_location }</h3>
+                            </div>
+                        )
+                    }) }
                 </div>
             </div>
         )

@@ -50,7 +50,6 @@ class MainCards extends Component {
     }
 
     componentDidUpdate(){
-        console.log('Component Did Update');
         
     }
     // event handler
@@ -58,7 +57,6 @@ class MainCards extends Component {
     // render de componente
     render(){
         let { usuarios, anuncios, postulaciones } = this.state;
-        console.log(this.state);
         
         return (
             <div className="main-cards">
