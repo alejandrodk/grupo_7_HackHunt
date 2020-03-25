@@ -1,0 +1,205 @@
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: roboto;
+  margin: 0;
+}
+.main-sidebar {
+  width: 10%;
+  background: #1c1c1c;
+  padding: 1%;
+}
+.main-sidebar h1 {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  color: #ddb30f;
+  font-weight: 400;
+}
+.main-sidebar h2 {
+  color: white;
+  font-weight: 300;
+  text-align: left;
+  font-size: 18px;
+  border-bottom: 2px solid #a8e004;
+  margin-right: 42%;
+}
+.main-container {
+  width: 90%;
+  background-image: url(background-dot.png), linear-gradient(to bottom, rgb(51, 56, 66) 49%, rgb(49, 54, 64) 51%, rgb(20, 22, 27) 83%, rgb(19, 21, 26) 84%);
+	position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 800px;
+  align-content: baseline;
+}
+.main-container header {
+  width: 100%;
+  background: -moz-linear-gradient(left, #a8e004 0%, rgba(0,230,230,1) 100%);
+  background: -webkit-linear-gradient(left, #a8e004 0%, rgba(0,230,230,1) 100%);
+  background: -o-linear-gradient(left, #a8e004 0%, rgba(0,230,230,1) 100%);
+  background: -ms-linear-gradient(left, #a8e004 0%, rgba(0,230,230,1) 100%);
+  background: linear-gradient(to right, #a8e004 0%, rgba(0,230,230,1) 100%);
+}
+.main-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin: 4% 5% 4% 5%;
+}
+.main-cards .card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+  -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+  -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+  box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+}
+.main-cards .card h2 {
+  font-size: 19px;
+  margin: 0;
+  font-weight: 300;
+  width: 100%;
+  color: gray;
+}
+.main-cards .card #bold {
+  font-weight: 800;
+}
+.main-cards .card p {
+  margin: 0;
+  margin-right: 19px;
+  font-size: 18px;
+  font-weight: 300;
+}
+.main-cards .card.users {
+  border-left: solid 5px #a8e004;
+}
+.main-cards .card.adv {
+  border-left: solid 5px rgb(0, 230, 230);
+}
+.main-cards .card.postulations {
+  border-left: solid 5px #f83e82;
+}
+.main-chart {
+  width: 25%;
+  height: 350px;
+  background: #dcd8d8;
+  margin-left: 5%;
+  border-radius: 10px;
+  -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+  -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+  box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+}
+.main-cards .card .content {
+  display: flex;
+}
+.main-ranking {
+  width: 60%;
+  height: 350px;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  border-radius: 10px;
+  align-content: baseline;
+  background: #dcd8d8;
+  -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+  -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+  box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+}
+.main-ranking h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 300;
+  color: #5e5e5e;
+  width: 100%;
+}
+.main-ranking .content {
+  display: flex;
+  border-radius: 5px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 3%;
+}
+.main-ranking .content .item {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  background: white;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-ranking .content .item .avatar {
+  width: 10%;
+}
+.main-ranking .content .item h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  width: 40%;
+}
+.main-ranking .content .item h3 {
+  margin: 0;
+  width: 25%;
+}
+.main-adv {
+  margin-left: 5%;
+  width: 90%;
+  height: 400px;
+  margin-top: 3%;
+}
+.main-adv .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-adv .header h2 {
+  font-size: 20px;
+  color: white;
+  font-weight: 300;
+}
+.main-adv .header .pagination button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+.main-adv .content {
+  background: #dcd8d8;
+  border-radius: 10px;
+  min-height: 300px;
+  padding: 1%;
+}
+.main-adv .content .item {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 1%;
+}
+.main-adv .content .item .avatar {
+  width: 5%;
+  border-radius: 10px;
+}
+.main-adv .content .item h2 {
+  font-size: 20px;
+  margin: auto 20px;
+}
+.main-adv .content .item h3 {
+  margin: auto 20px;
+  font-weight: 300;
+}
