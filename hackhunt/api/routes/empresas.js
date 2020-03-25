@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 
-const empresaFavController = require('../controllers/empresaFavController');
-const checkEmailController = require('../controllers/checkEmailController');
+const empresaController = require('../controllers/empresaController');
 
-router.get('/favoritos', empresaFavController.favoritos); 
-router.post('/favoritos', empresaFavController.addFavorite); 
-router.delete('/favoritos', empresaFavController.removeFavorite);
 
-router.get('/email', checkEmailController.check);
+router.get('/favoritos', empresaController.favoritos); 
+router.post('/favoritos', empresaController.addFavorite); 
+router.delete('/favoritos', empresaController.removeFavorite);
+
+router.get('/email', empresaController.check);
 
 module.exports = router; 

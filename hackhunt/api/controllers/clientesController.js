@@ -63,5 +63,50 @@ module.exports = {
             return res.json(response)
             
         }).catch(error => res.send(error))
+    },
+
+    check:(req,res) =>
+    {
+        let email = req.query.check;
+        console.log("el email es: ",email)
+        db.clientes.findOne({where:{user_email:email}})
+        .then(respuesta =>
+            {
+                if(respuesta)
+                {
+
+                    return res.json({response:respuesta})
+                }
+                else
+                {
+                    return res.status(404).json({status_code:res.statusCode})
+                }
+            })
+        /*db.clientes.findOne(
+            {
+                where: { user_email: "ale@dh.com" },
+                attributes: ['user_email']
+            }
+            .then(respuesta => {
+                
+                if(response)
+                {
+                    return res.json(
+                        {
+                        status_code:res.statusCode,
+                        response:response
+                         })
+                }
+                else
+                {
+                    return res.status(404).json(
+                        {
+                            status_code:res.statusCode
+                        }
+                    )
+                }
+            })
+            .catch(error => res.json(error))
+        )*/
     }
 }

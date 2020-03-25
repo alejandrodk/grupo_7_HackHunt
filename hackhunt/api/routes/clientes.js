@@ -8,4 +8,6 @@ router.get('/skills/:id', controller.skills)
 router.post('/skills', controller.addSkill)
 router.post('/skills/delete', controller.deleteSkill)
 
+router.get('/email', controller.check)
+
 module.exports = router;
