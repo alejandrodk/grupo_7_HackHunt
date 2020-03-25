@@ -39,6 +39,14 @@ const clientesRouter = require('./api/routes/clientes');
 const skillsRouter = require('./api/routes/skills');
 const cmpRouter = require('./api/routes/empresas');
 
+// habilitar CORS para api
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin' , '*');
+	res.header('Access-Control-Allow-Headers' , 'Authorization, X-API-KEY, Origin, X-Requested');
+	res.header('Access-Control-Allow-Methods' , 'GET, POST, OPTIONS, PUT, DELETE');
+	res.header('Allow' , 'GET, POST, OPTION, PUT, DELETE');
+	next()
+})
 app.use("/", mainRouter);
 app.use("/perfil", clienteRouter);
 app.use("/empresa", empresaRouter);
