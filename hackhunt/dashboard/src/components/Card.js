@@ -1,14 +1,11 @@
 import React from 'react';
 
-function card(){
+function card(props){
     return (
-        <div className ="card">
-            <h2>Total de usuarios registrados</h2>
+        <div className ={`card ${ props.tipo }`}>
+            <h2>{ props.title }</h2>
             <div className ="content">
-                <i className ="fas fa-users" />
-                <p><span id="bold">25</span> clientes</p>
-                <i className ="far fa-building" />
-                <p><span id="bold">15</span> empresas</p>
+            { props.children }
             </div>
         </div>
     )

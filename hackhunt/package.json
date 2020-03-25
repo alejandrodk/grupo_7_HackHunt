@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "server": "nodemon ./bin/www",
+    "client": "cd ./dashboard && npm start",
+    "start" : "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "acorn": "^7.1.1",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.7",
     "cookie-parser": "^1.4.4",
+    "currently": "0.0.8",
     "debug": "~2.6.9",
     "ejs": "^2.7.4",
     "express": "~4.16.1",
@@ -23,5 +26,8 @@
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.2",
     "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
   }
 }
