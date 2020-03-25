@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "nodemon ./bin/www",
-    "client": "cd ./dashboard && npm start",
-    "start" : "concurrently \"npm run server\" \"npm run client\""
+    "node": "nodemon ./bin/www",
+    "react": "cd ./dashboard && npm start",
+    "start" : "concurrently \"npm run node\" \"npm run react\""
   },
   "dependencies": {
     "acorn": "^7.1.1",
