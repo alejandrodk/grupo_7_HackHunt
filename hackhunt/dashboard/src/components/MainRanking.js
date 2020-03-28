@@ -3,31 +3,23 @@ import Axios from 'axios';
 
 
 class MainRanking extends Component {
-    constructor(props)
-    {
-        super(props);
-        this.state = 
-        {
-            empresas:[]
-        }
+
+    state = {
+        prueba : 0,
+        empresas : []
     }
 
-    componentDidMount()
-    {
+    componentDidMount(){
+
         Axios.get('http://localhost:3000/api/empresas/rank_postulados')
-        .then(result =>
-            {
-                
-                this.setState({
-                empresas:result.response,
-                })
-                
+        .then(result =>{
+            
+            this.setState({
+                empresas : result.data.response
             })
+               
+        })
         .catch(error => console.log(error))
-    }
-
-    componentDidUpdate(){
-        
     }
 
     render(){
