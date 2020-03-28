@@ -4,15 +4,15 @@ import Chart from 'chart.js';
 class MainChart extends Component {
     constructor(props){
         super(props);
+        this.canvas = React.createRef();
         this.state = {
             
         }
     }
-    componentDidMount() {
-
-        const node = this.node; 
     
-        var myChart = new Chart(node, {
+    componentDidMount() {
+        const chart = this.canvas.current.getContext('2d')
+        var myChart = new Chart(chart, {
             type: "doughnut",
             data: {
                 labels: ["Postulaciones activas", "Vistas por la empresa"],
@@ -25,19 +25,14 @@ class MainChart extends Component {
             }
         })
         console.log(myChart);
-        
     }
-
-    componentDidUpdate(){
-
-    }   
-    
+        
     render(){
         return(
             <div className="main-chart">
             <canvas
                  width= {450} height= {400} 
-                ref={node => (this.node = node)}
+                ref={ this.canvas }
             />
             </div>
         )
