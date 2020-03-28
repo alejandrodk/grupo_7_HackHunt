@@ -6,10 +6,29 @@
     <link rel="stylesheet" href="/css/headerEmp.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/empresa/perfil.css" />
+    <link rel="stylesheet" href="/css/cliente/avatar.css" />
     <script src="/js/chart.js"></script>
 </head>
 <!-- CÓDIGO -->
-<body>
+<body> 
+    <div class="lightbox">
+        <div class="innerlightbox">
+            <div class="lightboxtitle">
+            <h5>Cambiar Avatar</h5>
+        </div>
+            <span class="close">X</span>
+            <div class="preview">
+                <img src="/images/avatars/<%= empresa.cmp_avatar %>" alt="" id="output_image">
+            </div>
+            <div class="form">
+            <form action="/empresa/<%=user.id%>" method="post" enctype="multipart/form-data">
+                
+                <input type="file" name="avatar" id="file">
+                <input type="submit" value="guardar">
+            </form>
+        </div>
+        </div>
+    </div>
     <header>
         <%- include('../partials/headerEmp'); -%>
     </header>    
@@ -25,6 +44,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 info">
                     <div class="perfil wrap">
                         <div class="avatar"> 
+                            <i class="fas fa-edit"></i>
                             <div class="item">
                                 
                                 <img src="/images/avatars/<%=empresa.cmp_avatar %>" alt="">
@@ -41,7 +61,7 @@
                                 <li><i class="fab fa-instagram-square" title="Website"></i><small> <%=empresa.cmp_instagram%></small></li>
                             </ul>
                         </div>
-                        <a href=""><i class="fas fa-user-edit" title="Editar información"></i></a>
+                        <a href="/empresa/informacion"><i class="fas fa-user-edit" title="Editar información"></i></a>
                     </div>
                     <div class="estadisticas wrap" data-finalizados="<%=finalizados.finalizados %>" data-activos="<%= anuncios.length %>">
                         <% if(anuncios.length == 0){%>
@@ -80,6 +100,7 @@
         <%- include('../partials/footer'); -%>
     </footer>    
     <script src="/js/empresa/infograph.js"></script>
+    <script src="/js/cliente/avatar.js"></script>
 <!-- CÓDIGO -->
 </body>
 

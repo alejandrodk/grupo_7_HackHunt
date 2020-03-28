@@ -100,6 +100,42 @@ module.exports =
                 }
             })
             .catch(error => res.json(error))
+    },
+
+    masPostulada: (req,res) =>
+    {
+        db.sequelize.query(`
+        SELECT 
+        empresas.cmp_name as "empresa",
+        count(anuncios.id) as "cant_anuncios", 
+        count(postulantes.cli_id) as "cant_postulantes" 
+        FROM anuncios
+        left join postulantes on anuncios.id = postulantes.adv_id
+        inner join empresas on empresas.id = anuncios.cmp_id
+        group by empresas.cmp_name
+        order by count(postulantes.cli_id) desc
+        limit 5`,{type: Sequelize.QueryTypes.SELECT})
+        .then(resultado =>
+            {
+                if(resultado){
+                return res.json(
+                    {
+                        status_code:res.statusCode,
+                        rows: resultado.length,
+                        response: resultado,
+                    }
+                )
+                }
+                else
+                {
+                    return res.status(404).json(
+                        {
+                            status_code:res.statusCode,
+                            response:"no data"
+                        }
+                    )   
+                }
+            })
     }
 }
 

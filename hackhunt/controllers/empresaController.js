@@ -463,7 +463,29 @@ const controller = {
 
     },
 
-    prueba: (req, res) => {}
+    prueba: (req, res) => {},
+    
+    cambiarAvatar: (req,res) => 
+    {
+        let cmp_id = req.params.id;
+       
+        if(req.file)
+        {
+            req.body.avatar = req.file.filename;
+            db.clientes.update({cmp_avatar : req.body.avatar},
+                {
+                    where:{id : cmp_id}
+                })
+                .then(()=>
+                {
+                    return res.redirect('/perfil');
+                })
+        }
+        else
+        {
+            return res.redirect('/perfil');
+        }
+    }
 };
 
 module.exports = controller;

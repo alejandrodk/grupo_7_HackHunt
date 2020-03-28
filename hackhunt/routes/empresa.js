@@ -14,6 +14,7 @@ router.get("/perfil/configuracion",soloEmpresa, empresaController.configuracion)
 router.put("/perfil/configuracion",soloEmpresa, empresaController.actualizarConfiguracion);
 router.get("/informacion",soloEmpresa,empresaController.info);
 router.post("/informacion",upload.single('cmp_avatar'), soloEmpresa, empresaController.modificarInfo);
+router.post("/:id", upload.single('avatar'),soloEmpresa, empresaController.cambiarAvatar);
 router.get("/mensajes", soloEmpresa, empresaController.mensajes);
 router.get("/anuncios/",soloEmpresa, empresaController.anuncios);
 router.get("/anuncios/crear",soloEmpresa, empresaController.crearPublicacion);

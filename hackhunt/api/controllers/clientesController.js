@@ -82,7 +82,7 @@ module.exports = {
     check:(req,res) =>
     {
         let email = req.query.check;
-        console.log("el email es: ",email)
+        
         db.clientes.findOne({where:{user_email:email}})
         .then(respuesta =>
             {
@@ -96,31 +96,6 @@ module.exports = {
                     return res.status(404).json({status_code:res.statusCode})
                 }
             })
-        /*db.clientes.findOne(
-            {
-                where: { user_email: "ale@dh.com" },
-                attributes: ['user_email']
-            }
-            .then(respuesta => {
-                
-                if(response)
-                {
-                    return res.json(
-                        {
-                        status_code:res.statusCode,
-                        response:response
-                         })
-                }
-                else
-                {
-                    return res.status(404).json(
-                        {
-                            status_code:res.statusCode
-                        }
-                    )
-                }
-            })
-            .catch(error => res.json(error))
-        )*/
+        
     }
 }

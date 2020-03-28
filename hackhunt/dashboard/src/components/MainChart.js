@@ -10,7 +10,7 @@ class MainChart extends Component {
     }
     componentDidMount() {
 
-        const node = this.node;
+        const node = this.node; 
     
         var myChart = new Chart(node, {
             type: "doughnut",
@@ -36,7 +36,7 @@ class MainChart extends Component {
         return(
             <div className="main-chart">
             <canvas
-                style={{ width: 800, height: 300 }}
+                 width= {450} height= {400} 
                 ref={node => (this.node = node)}
             />
             </div>

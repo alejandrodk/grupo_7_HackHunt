@@ -76,7 +76,7 @@
 .container.cv .datos label {
     width: 40%;
     padding-right: 4%;
-    color: var(--main-texto-blanco);
+    color: var(--main-texto-negro);
     margin-bottom: 1%;
     display: flex;
     flex-wrap: wrap;
