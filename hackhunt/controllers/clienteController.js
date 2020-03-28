@@ -73,8 +73,19 @@ const controller = {
                         `SELECT * FROM postulantes JOIN anuncios ON postulantes.adv_id = anuncios.id JOIN empresas ON anuncios.cmp_id = empresas.id HAVING cli_id = ${user.user_id}`
                     )
                     .then(result => {
+
+                        let noVistos = result[0].filter( adv => adv.visto != null);
+                        let vistos = result[0].filter( adv => adv.visto == 1);
+
+                        let stats = {
+                            vistos : vistos.length,
+                            noVistos : noVistos.length,
+                            totales : result[0].length
+                        }
+
                         res.render('cliente/postulaciones', {
                             anuncios: result[0],
+                            stats,
                             usuario: user
                         })
                     })
