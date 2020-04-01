@@ -5,6 +5,7 @@
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/headerEmp.css" />
     <link rel="stylesheet" href="/css/empresa/anuncios.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
 </head>
 
 <body>
@@ -25,15 +26,12 @@
             <div class="col-12 stats">
                 <div class="detalle">
                     <div class="item">
-                        
                         <p><span><%=anuncios.length%></span> Anuncios</p>
                     </div>
                     <div class="item">
                         <p><span><%=postulaciones.filter(p => p.visto != 1).length %></span> Nuevos candidatos</p>
                     </div>
-                    <div class="item">
-                        <p><span><%=anuncios.length%></span> Perfiles destacados</p>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-xs-12 col-sx-12 col-md-2 col-lg-2 panel">
@@ -64,6 +62,7 @@
                                 <li><%= anuncio.adv_cmp_name %></li>
                                 <li><%= anuncio.adv_location %></li>
                                 <li><%= anuncio.adv_working_day %></li>
+                            
                             </ul>
                             <p class="desc"><%= anuncio.adv_description %></p>
                         </div>
@@ -76,7 +75,6 @@
                         <ul>
                             <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span><%= postulaciones.filter(p => p.visto != 1 && anuncio.id == p.adv_id).length %></span></li>
                             <li><i class="fas fa-users"></i> Candidatos totales <span><%= postulaciones.filter(p => p.adv_id == anuncio.id).length %></span></li>
-                            <li><i class="fas fa-medal"></i> Solicitudes destacadas <span>2</span></li>
                             <a href="anuncios/postulantes/<%=anuncio.id%>">Ver candidatos</a>
                         </ul>
                         
@@ -87,6 +85,9 @@
     </div>
     <script src="/js/empresa/advFilter.js"></script>
     <script src="/js/empresa/filtro.js"></script>
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
 </body>
 
 </html>

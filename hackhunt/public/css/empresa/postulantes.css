@@ -100,6 +100,12 @@
     border-radius: 5px;
     border: solid 1px var(--main-bg-color);
 }
+
+.fa-star {
+    right: 5px;
+    position: absolute;
+    color: rgb(230,140,0);
+}
 /* PANEL */
 .panel .filtro{
     width: 100%;

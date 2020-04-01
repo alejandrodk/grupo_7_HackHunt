@@ -195,7 +195,7 @@ const controller = {
                     )
                     .then(resultado => {
 
-                        //return res.send(result)
+                        //return res.send(resultado) 
                         res.render("empresa/anuncios", {
                             anuncios: result,
                             postulaciones: resultado,
@@ -408,7 +408,7 @@ const controller = {
                 res.render("empresa/postulantes", {
                     title: "Express",
                     anuncio: resultado,
-                    filtro:req.query.filter
+                    filtro:req.query.filter 
                 });
             })
             .catch(error => console.log(error))

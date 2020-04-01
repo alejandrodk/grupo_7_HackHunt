@@ -92,17 +92,47 @@ module.exports = (sequelize, dataTypes) => {
     */
     anuncio.prototype.compareSkills = function(userSkills)
     {
-        let skills; 
+        let skills;
             skills = this.adv_skills.filter(skill =>{
+               
                 for(let i = 0; i<userSkills.length; i++)
                 {
                     if(skill.skill_name == userSkills[i].skill_name)
                     {
+                       
                         return skill;
                     }
                       
-                }})
-        return skills;        
+                }
+                
+            })
+        return skills;          
+    }
+
+    anuncio.prototype.destacados = function(postulantes)
+    {
+        let destacados = 0;
+         
+
+        postulantes.map(unPostulante =>
+            {
+                let cont = 0;
+                this.adv_skills.map(adv_skill =>
+                    {
+                        unPostulante.skill.map(cli_skill =>
+                            {
+                                if(adv_skill.skill_name == cli_skill.skill_name)
+                                {
+                                    cont ++;
+                                }
+                            })
+                    })
+                    if(cont >= this.adv_skills.length -1)
+                    {
+                        destacados ++;
+                    }
+                })
+                return destacados;
     }
 
 

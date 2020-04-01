@@ -6,6 +6,7 @@ const express = require("express");
 const logger = require("morgan");
 const path = require("path");
 const methodOverride = require('method-override');
+const favicon = require('express-favicon');
 // ******* Middlewares  require ********
 const cookieValidate = require('./middlewares/cookieValidate');
 const auth = require('./middlewares/auth');
@@ -25,6 +26,7 @@ app.use(methodOverride('_method'));
 app.use(cookieValidate);
 app.use(auth);
 
+app.use(favicon(__dirname + '/public/images/favicon.png'));
 // ************ Template Engine - (don't touch) ************
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

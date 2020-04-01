@@ -12,7 +12,7 @@ class MainCards extends Component {
                 empresas : 0,
             },
             anuncios : {
-                activos : 0,
+                activos : 0, 
                 caducados : 0,
             },
             postulaciones : {

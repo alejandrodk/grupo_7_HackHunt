@@ -62,11 +62,11 @@
     font-style: oblique;
 }
 .container.post .detalle .item:first-child {
-    border-right: solid 1px var(--main-bg-color-3);
+    /*border-right: solid 1px var(--main-bg-color-3);*/
     margin-left: 10%;
 }
 .container.post .detalle .item:last-child {
-    border-left: solid 1px var(--main-bg-color-3);
+    /*border-left: solid 1px var(--main-bg-color-3);*/
     margin-right: 10%;
 }
 /* PANEL */
@@ -190,6 +190,8 @@
     text-align: center;
     border-radius: 5px;
     margin: 1%;
+    align-self: baseline;
+    padding: 4px 0;
 }
 .container.post .candidatos .item span{
     font-weight: bold;

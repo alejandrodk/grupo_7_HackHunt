@@ -5,6 +5,7 @@
     <%- include('../partials/head'); -%>
     <link rel="stylesheet" href="/css/headerLog.css" />
     <link rel="stylesheet" href="/css/empresa/postulantes.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
 </head>
 
 <body>
@@ -20,7 +21,7 @@
                 <a href="/empresa/perfil/configuracion">Configuración</a>
             </div>
             <div class="col-12 barra">
-                <h2>Solicitudes recibidas</h2>
+                <h2>Solicitudes recibidas / Postulantes destacados: <%=anuncio.destacados(anuncio.candidatos) %></h2>
             </div> 
             <div class="col-2 panel">
                 <div class="filtro">
@@ -59,19 +60,23 @@
                             <div class="perfil wrap">
                                 <div class="avatar">
                                     <div class="item">  
-                                        <img src="/images/<%=anuncio.candidatos[i].user_avatar %>" alt="">
+                                        <img src="/images/avatars/<%=anuncio.candidatos[i].user_avatar %>" alt="">
                                     </div>
                                 </div>
                                 <div class="datos wrap"> 
                                     <strong>
                                         <p><%= anuncio.candidatos[i].user_name %></p> 
                                     </strong>
+                                    <% if(anuncio.compareSkills(anuncio.candidatos[i].skill).length >= anuncio.adv_skills.length -1){ %>
+
+                                    <i class="fas fa-star"></i>
+                                   <% } %>
                                     <p><%= anuncio.candidatos[i].cliente_experience[0] != null ? anuncio.candidatos[i].user_career : "Sin datos" %></p>
                                     <p id="bio"><%= anuncio.candidatos[i].cliente_experience[0] != null ? anuncio.candidatos[i].cliente_experience[0].user_experience_description : "Sin Datos"%></p>
                                     <p><i class="fas fa-magic"></i> Skills 
                                         <span>
                                         <%=   anuncio.compareSkills(anuncio.candidatos[i].skill).length +'/'+ anuncio.adv_skills.length     %>
-                                
+                                        
                                         
                                             
                                     </span></p>
@@ -85,6 +90,9 @@
         </div>
     </div>
     <script src="/js/empresa/filtro.js"></script>
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
 </body>
 
 </html>
