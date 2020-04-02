@@ -1,7 +1,7 @@
 setTimeout(() => {
     // la funcion se hace asincrona ya que los filtros de skills vienen desde Api
     // traemos todos los filtros
-    const params = document.querySelectorAll('dd a');
+    const params = document.querySelectorAll('.menu dd a');
     // traemos todos los anuncios
     axios.get('/api/anuncios')
     .then(result => {
