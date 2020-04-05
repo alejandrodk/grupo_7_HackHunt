@@ -17,7 +17,7 @@ close.addEventListener("click", function()
 file.addEventListener("change",function()
 {
     file = document.querySelector("#file")
-    let archivo =  _PREVIEW_URL = URL.createObjectURL(file.files[0]);
+    _PREVIEW_URL = URL.createObjectURL(file.files[0]);
     output.setAttribute('src', _PREVIEW_URL);
 })
 

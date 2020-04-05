@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="/css/headerEmp.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/empresa/crearPublicacion.css" />
-    
+    <link rel="stylesheet" href="/css/widgEditor.css">
     <script src="/js/validations/crearAnuncioValidation.js"></script>
     <script src="/js/validations/validator.min.js"></script>
+    <script src="/js/widgEditor.js"></script>
 </head>
 <!-- CÓDIGO -->
 <body>
@@ -36,10 +37,22 @@
                                     <input type="text" name="adv_title" id="adv_title" data-name="Título">
                                     <p class="errorMsgTitle" style="color: black;"></p>
 								</div>
-								<div class="descrp wrap">
+							<!---	<div class="descrp wrap">
                                     <textarea name="adv_description" id="adv_description" cols="30" rows="10" placeholder="Descripción" data-name="Descripción"></textarea>
                                     <p class="errorMsgDescription" style="color: black;"></p>
-								</div>
+                                </div> --->
+                                <div id="editorXWidgContainer" class="widgContainer descrp wrap">
+                                   
+                                <!--
+                                     A textarea is swapped with the iframe when there is a need to
+                                     view the HTML source
+                                -->
+                                    <textarea id="ORIGINAL_IDWidgTextarea" class="widgEditor" name="adv_description" cols="30" rows="10" placeholder="Descripción" data-name="Descripción">
+                                    </textarea>
+                                    <p class="errorMsgDescription" style="color: black;"></p>
+                                    <input id="editorX" name="editorX" type="hidden" />
+                                  
+                                </div>
                                 
                                 <div class=" datos skills wrap">
 									<div class="titulo wrap">

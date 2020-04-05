@@ -358,7 +358,7 @@ const controller = {
         switch(req.query.filter)
         {
             case "new": filtro = [{model:db.clientes,as:"candidatos"},"user_id","desc"];
-            console.log("holaaaaaaaa")
+         
             break;
         }
         //order:[[{model:db.clientes,as:"candidatos"},"user_id","desc"]],
@@ -372,15 +372,12 @@ const controller = {
                         as: 'candidatos',
                         
                         attributes: [
-                            'user_id', 'user_name', 'user_lastname', 'user_email', 'user_avatar'
+                            'user_id', 'user_name', 'user_avatar'
                         ],
                         
                         include: [
                             {
-                                model: db.cliente_education,
-                                as: 'cliente_education',
-                                attributes: ['user_career']
-                            }, {
+                               
                                 model: db.cliente_experience,
                                 as: 'cliente_experience',
                                 attributes: ['user_experience_description']
@@ -478,12 +475,12 @@ const controller = {
                 })
                 .then(()=>
                 {
-                    return res.redirect('/perfil');
+                    return res.redirect('/empresa/perfil');
                 })
         }
         else
         {
-            return res.redirect('/perfil');
+            return res.redirect('/empresa/perfil');
         }
     }
 };

@@ -19,7 +19,7 @@ module.exports = {
         if(busquedas.indexOf(filtro) == -1){
             busquedas.push(filtro);
         }
-
+        
     },
     deleteFilter : (req, filtro) => {
 
@@ -27,7 +27,8 @@ module.exports = {
 
         if(busquedas.indexOf(filtro) != -1){
 
-            busquedas.splice(busquedas.indexOf(filtro), 1);     
+            busquedas.splice(busquedas.indexOf(filtro), 1);
+               
                     
         } 
 

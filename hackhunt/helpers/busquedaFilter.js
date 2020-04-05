@@ -3,35 +3,57 @@ const Op = Sequelize.Op;
 const db = require('../database/models');
 const mainHelps = require('./mainHelpers');
 
-module.exports = (req) => {
+module.exports = (req) => {  
     const params = req.params;
     // consulta si existe la query de paginacion y devuelve offset y limit.
     let pagination = mainHelps.pagination(req);
     // segun los querystring recibidos, agregamos condiciones al where
     let where = {}
-
+    let where_cmp = {}
+    let orderBy = "";
     if(req.query.search){
 
-        let { search, ubication } = req.query;
+        let { search } = req.query;
         // guardamos el filtro actual en las busquedas en la session
         mainHelps.addFilter(req, search);
         // buscamos coincidencias en todos los campos del anuncio
+        
         where = {
-            [Op.and] : 
-                [{adv_location:  ubication}, 
-                    {[Op.or]: [
+                    [Op.or]: [
                         {adv_title: {[Op.like]: '%'+ search.trim() +'%' }},
                         {adv_description: {[Op.like]: '%'+ search.trim() +'%' }},
                         {adv_area: {[Op.like]: '%'+ search.trim() +'%' }},
                         {adv_position: {[Op.like]: '%'+ search.trim() +'%' }},
                         {adv_working_day: {[Op.like]: '%'+ search.trim() +'%' }},
-                        {adv_advantage: {[Op.like]: '%'+ search.trim() +'%' }}
+                        {adv_advantage: {[Op.like]: '%'+ search.trim() +'%' }},
+                       
                     ]
-                }]
+               
         }
+      
+
+        
     }
+    if(req.query.ubication)
+        {
+            let { ubication } = req.query;
+            where = 
+            {
+                [Op.and] :
+                    [{adv_location: ubication},where]
+            }
+        }
     //esto es para agregar filtro de anuncios activos
     //{adv_date_contract:{[Op.gte]:Sequelize.fn('NOW')}}
+
+    if(req.query.order && req.query.order == "salary")
+    {
+        orderBy = [['adv_salary','DESC']] 
+    }
+    if(req.query.order && req.query.order == "date")
+    {
+        orderBy = [['adv_date_contract','DESC']];
+    }
     
     if(params.jornada /* && params.skill == undefined && params.experiencia == undefined */){
         where = {
@@ -88,12 +110,13 @@ module.exports = (req) => {
     return db.anuncios.findAll({
                 
                 where : where,
-		    	offset : pagination.offset,
-		    	limit : pagination.limit,
+		    	offset : pagination.offset,  
+                limit : pagination.limit,
+                order: orderBy,
 		    	include:[{
                     model: db.empresas, 
                     as: 'empresas',
-                    attributes: ['cmp_name','cmp_avatar']
+                    attributes: ['cmp_name','cmp_avatar'],
                    },
                    {model:db.skills, as:'adv_skills'} ]
 		    })

@@ -29,6 +29,7 @@ const controller = {
 						})
 					})
 			} else{
+				
 				return res.render('main/index',{ 
 					busquedas,
 					anuncios,

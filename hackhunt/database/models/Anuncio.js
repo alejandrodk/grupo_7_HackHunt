@@ -44,7 +44,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         adv_salary : {
-            type: dataTypes.STRING,
+            type: dataTypes.INTEGER,
             allowNull: false
         },
         adv_advantage : {

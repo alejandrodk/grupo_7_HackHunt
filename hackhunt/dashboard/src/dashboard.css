@@ -124,6 +124,7 @@ body {
   border-radius: 10px;
   align-content: baseline;
   background: #dcd8d8;
+  align-content: initial;
   -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
   -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
   box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
