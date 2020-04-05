@@ -52,6 +52,22 @@ const controller = {
 								return 0
 							})
 						}
+						if(req.query.order && req.query.order == "date")
+    						{
+								valores.sort(function(a,b)
+							{
+								if(a.adv_date_contract < b.adv_date_contract)
+								{
+									return 1;
+								}
+								if(a.adv_date_contract > b.adv_date_contract)
+								{
+									return -1
+								}
+								return 0
+							})
+							}
+
 					return res.render('main/index',{ 
 						busquedas,
 						anuncios:valores,
