@@ -3,6 +3,7 @@ const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
 const userCv = require('../helpers/user_cv.js');
 const busquedaAnuncios = require('../helpers/busquedaFilter');
+const mainHelps = require('../helpers/mainHelpers');
 
 const controller = {
 	home: (req, res) => {
@@ -11,33 +12,84 @@ const controller = {
 			busquedas = req.session.busquedas != undefined ? req.session.busquedas.filtros : [];
 			user = req.session.user != undefined ? req.session.user.user_id : null;
 			
-		busquedaAnuncios(req) 
-		.then(anuncios => {
-			if(req.session.type_user == 'cliente'){
-			
-				db.clientes.findByPk(req.session.user.user_id,
+			if(req.session.busqueda_activa.length >0)
+			{
+				
+				let valores = [];
+				mainHelps.addFilter(req, req.query.search);
+				
+				req.session.busqueda_activa.map((oneValue,i )=>
 					{
-						include:[{model:db.skills, as:'skill'}]
+						let count = 0;
+						busquedas.forEach(oneWord=>
+							{
+								if(oneValue.adv_description.toLowerCase().includes(oneWord.toLowerCase())==true || 
+									oneValue.adv_title.toLowerCase().includes(oneWord.toLowerCase())==true || 
+									oneValue.adv_area.toLowerCase().includes(oneWord.toLowerCase())==true || 
+									oneValue.adv_location.toLowerCase().includes(oneWord.toLowerCase())==true|| 
+									oneValue.adv_position.toLowerCase().includes(oneWord.toLowerCase())==true)
+								{
+									count++;
+								}
+							})
+						count == busquedas.length ? valores.push(oneValue) : null;
+
+						
 					})
-					.then(cliente => {
+					if(req.query.order && req.query.order == "salary")
+						{
+							
+							valores.sort(function(a,b)
+							{
+								if(a.adv_salary < b.adv_salary)
+								{
+									return 1;
+								}
+								if(a.adv_salary > b.adv_salary)
+								{
+									return -1
+								}
+								return 0
+							})
+						}
+					return res.render('main/index',{ 
+						busquedas,
+						anuncios:valores,
+						page,
+						user
+					}) 
+			}
+			else{
+
+				busquedaAnuncios(req) 
+				.then(anuncios => {
+					busquedas.length>0? req.session.busqueda_activa = anuncios:null;
+					if(req.session.type_user == 'cliente'){
+					
+						db.clientes.findByPk(req.session.user.user_id,
+							{
+								include:[{model:db.skills, as:'skill'}]
+							})
+							.then(cliente => {
+								return res.render('main/index',{ 
+									busquedas,
+									anuncios,
+									page,
+									cliente,
+									user
+								})
+							})
+					} else{
+						
 						return res.render('main/index',{ 
 							busquedas,
 							anuncios,
 							page,
-							cliente,
 							user
-						})
-					})
-			} else{
-				
-				return res.render('main/index',{ 
-					busquedas,
-					anuncios,
-					page,
-					user
-				}) 
+						}) 
+					}
+				})
 			}
-		})
 	},
 	detalleAnuncio: (req, res) => {
 		user = req.session.user != undefined ? req.session.user.user_id : null;

@@ -18,6 +18,7 @@ module.exports = (req) => {
         mainHelps.addFilter(req, search);
         // buscamos coincidencias en todos los campos del anuncio
         
+        
         where = {
                     [Op.or]: [
                         {adv_title: {[Op.like]: '%'+ search.trim() +'%' }},
@@ -30,8 +31,6 @@ module.exports = (req) => {
                     ]
                
         }
-      
-
         
     }
     if(req.query.ubication)
