@@ -6,7 +6,7 @@ axios.get(`/api/skills/`)
         let skills = result.data.response;
         for(let skill of skills){
             filtros.innerHTML += `
-            <dd><a href="/skill/${skill.skill_name}/">${skill.skill_name}<span id="cant">(56)</span></a></dd>
+            <dd><a href="/skill/${skill.skill_name}/">${skill.skill_name}<span id="cant"></span></a></dd>
             `
         }
         }).catch(error => console.log(error))

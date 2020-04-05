@@ -347,6 +347,7 @@ body {
     /*BARRA BUSQUEDA */
     .container-fluid.buscador .barra input{
         width: 100%;
+        text-overflow: ellipsis;
     }
     .container-fluid.buscador .barra p{
         text-align: left;
@@ -389,8 +390,9 @@ body {
     }
     /* ORDER BY */
     .container-fluid.cuerpo .menu dd {
-        /* Crear efecto dropdown */
-        display: none;
+        height: 0;
+        overflow: hidden;
+        transition: 0.5s all;
     }
     /* RESULTADOS */
     .container-fluid.cuerpo .anuncios a .item .img{
@@ -408,6 +410,12 @@ body {
     }
     .container-fluid.cuerpo .resultados .anuncios .item .info .desc {
         display: none;
+    }
+    .background{
+        display: none;
+    }
+    .container-fluid.cuerpo .menu #filter-skills {
+        height: 50px !important; 
     }
 }
 
