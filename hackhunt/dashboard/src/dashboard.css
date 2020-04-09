@@ -29,7 +29,6 @@ body {
   text-align: left;
   font-size: 18px;
   border-bottom: 2px solid #a8e004;
-  margin-right: 42%;
 }
 .main-container {
   width: 90%;
@@ -43,7 +42,7 @@ body {
 .main-container header {
   width: 100%;
   display: flex;
-  justify-content: right;
+  justify-content: space-around;
   background: -moz-linear-gradient(left, #a8e004 0%, rgba(0,230,230,1) 100%);
   background: -webkit-linear-gradient(left, #a8e004 0%, rgba(0,230,230,1) 100%);
   background: -o-linear-gradient(left, #a8e004 0%, rgba(0,230,230,1) 100%);
@@ -71,6 +70,10 @@ body {
   -webkit-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
   -moz-box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
   box-shadow: -1px 10px 26px 0px rgba(0,0,0,0.65);
+  transition: 0.5s all;
+}
+.main-cards .card:hover{
+  transform: scale(1.05);
 }
 .main-cards .card h2 {
   font-size: 19px;
@@ -102,7 +105,7 @@ body {
 }
 .main-chart {
   width: 25%;
-  height: 350px;
+  min-height: 370px;
   background: #dcd8d8;
   margin-left: 5%;
   border-radius: 10px;
@@ -116,7 +119,7 @@ body {
 }
 .main-ranking {
   width: 60%;
-  height: 350px;
+  min-height: 370px;
   padding: 2%;
   display: flex;
   flex-wrap: wrap;
@@ -133,7 +136,7 @@ body {
   margin: 0;
   font-size: 20px;
   font-weight: 300;
-  color: #5e5e5e;
+  color: #363636;
   width: 100%;
 }
 .main-ranking .content {
@@ -146,6 +149,7 @@ body {
 .main-ranking .content .item {
   width: 100%;
   height: 50px;
+  margin: 2px 0;
   display: flex;
   background: white;
   border-radius: 5px;
@@ -153,7 +157,15 @@ body {
   align-items: center;
 }
 .main-ranking .content .item .avatar {
-  width: 10%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+}
+.main-ranking .content .item .avatar img{
+  width: 100%;
 }
 .main-ranking .content .item h1 {
   margin: 0;
@@ -189,6 +201,9 @@ body {
   font-size: 15px;
   cursor : pointer;
 }
+.main-adv .header .pagination button i {
+  margin: 0 7px;
+}
 .main-adv .content {
   background: #dcd8d8;
   border-radius: 10px;
@@ -201,17 +216,28 @@ body {
   display: flex;
   background: white;
   border-radius: 5px;
-  margin-bottom: 1%;
+  margin: 4px 0px;
+  padding: 4px;
 }
 .main-adv .content .item .avatar {
-  width: 5%;
-  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.main-adv .content .item .avatar img {
+  width: 100%;
 }
 .main-adv .content .item h2 {
   font-size: 20px;
   margin: auto 20px;
+  width: 35%;
 }
 .main-adv .content .item h3 {
   margin: auto 20px;
   font-weight: 300;
+  width: 25%;
 }

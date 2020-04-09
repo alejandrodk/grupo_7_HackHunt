@@ -3,7 +3,7 @@
 	margin: 3% 0;
 }
 .barra-menu a {
-    background: var(--main-texto-blanco);
+    background: white;
     margin-right: 1%;
     padding: 5px;
     border-radius: 5px;
@@ -18,7 +18,11 @@
 /* BARRA */
 .barra{
     width: 90%;
-    background: var(--main-bg-color);
+    background: -moz-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -webkit-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -o-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: -ms-linear-gradient(left, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
+    background: linear-gradient(to right, var(--main-color-verde) 0%, rgba(0,230,230,1) 100%);
     border-radius: 5px;
     padding: 5px;
     height: 40px;
@@ -28,7 +32,7 @@
 }
 .barra h2{
     font-size: 25px;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 200;
     margin: 0;
 }
@@ -55,7 +59,7 @@ h5 {
     width: 50%;
 }
 .info-cv{
-    background: var(--main-texto-blanco);
+    background: white;
     border-radius: 10px;
     padding: 1%;
 }
@@ -66,7 +70,7 @@ h5 {
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-    background: var(--main-texto-blanco);
+    background: white;
     padding: 2%;
     border-radius: 5px;   
     margin-right: 1%;
@@ -96,7 +100,7 @@ h5 {
 /* INDICE  */
 .indice {
     padding: 1%;
-    background: var(--main-bg-color-3);
+    background: white;
     border-radius: 10px;
 }
 .indice h3{
@@ -104,11 +108,11 @@ h5 {
 }
 .indice a{
     text-decoration: none;
-    color: var(--main-texto-blanco);
+    color: var(--main-bg-color);
     font-weight: 3;
 }
 .indice a:hover {
-    background: var(--main-bg-color);
+    background: var(--main-texto-blanco);
 }
 /* INFO PERSONAL */
 
