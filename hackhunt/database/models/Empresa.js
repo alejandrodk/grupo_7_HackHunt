@@ -82,18 +82,28 @@ module.exports = (sequelize, dataTypes) =>
         cmp_description: 
         {
             type:dataTypes.TEXT
-        }
+        } 
       
     }
     
+   
     const empresa = sequelize.define(alias,cols,{  timestamps: false});
-
     empresa.associate = function(models)
+  
     {
         empresa.hasMany(models.anuncios,{
-            as: "anuncios",
+            as: "anuncios", 
             foreignKey: "cmp_id"
-        });
+        }),
+    
+
+   
+        empresa.belongsToMany(models.clientes,{
+            through : 'cmpFavoritos',
+            as:"cliente_favorito",
+            foreignKey:"cmp_id",
+            otherKey:"user_id"
+        })
     }
 
     return empresa;

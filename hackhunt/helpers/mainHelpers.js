@@ -31,9 +31,7 @@ module.exports = {
 
         if(busquedas.indexOf(filtro) != -1){
 
-            busquedas.splice(busquedas.indexOf(filtro), 1);
-               
-                    
+            busquedas.splice(busquedas.indexOf(filtro), 1);       
         } 
 
     },

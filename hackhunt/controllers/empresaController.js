@@ -22,19 +22,19 @@ const controller = {
             .findByPk(req.session.user.id, {
                 attributes: {
                     exclude: ['cmp_user_passwd'],
-    
+
                 }
             })
             .then(result => {
                 empresa = result;
-                return result.getAnuncios();
+            
+                return result.getAnuncios(); 
 
             })
             .then(resultado => {
                 db.sequelize.query(`select count(adv_date_contract) as finalizados from anuncios where adv_date_contract < '${fecha}' and cmp_id = ${req.session.user.id}`,{type: sequelize.QueryTypes.SELECT})
                 .then(finalizados =>
                     {
-                       
                         return res.render("empresa/perfil", {
                             empresa: empresa,
                             anuncios: resultado,
@@ -296,24 +296,31 @@ const controller = {
 
     },
     modificarPublicacion: (req, res) => {
-        let anuncios;
-        db
-            .anuncios
-            .findByPk(req.params.id, {include: ['adv_skills']})
-            .then(resultado => {
-                anuncios = resultado;
-                db
-                    .skills
-                    .findAll()
-                    .then(skills => {
-
-                        res.render("empresa/modificarPublicacion", {
-                            publicacion: anuncios,
-                            skills: skills,
-                            title: "Express"
+        if(req.query.id == req.session.user.id)
+        {
+            let anuncios;
+            db
+                .anuncios
+                .findByPk(req.params.id, {include: ['adv_skills']})
+                .then(resultado => {
+                    anuncios = resultado;
+                    db
+                        .skills
+                        .findAll()
+                        .then(skills => {
+    
+                            res.render("empresa/modificarPublicacion", {
+                                publicacion: anuncios,
+                                skills: skills,
+                                title: "Express"
+                            })
                         })
-                    })
-            })
+                })
+        }
+        else{
+            return res.redirect('/empresa/perfil')
+        }
+        
     },
     adv_modificarSkills: (req, res) => {},
     actualizarPublicacion: (req, res) => {
@@ -338,7 +345,9 @@ const controller = {
     },
 
     borrarPublicacion: (req, res) => {
-        db
+        if(req.query.id == req.session.user.id)
+        {
+            db
             .anuncios
             .destroy({
                 where: {
@@ -349,6 +358,11 @@ const controller = {
 
                 return res.redirect("/empresa/perfil");
             })
+        }
+        else{
+            return res.redirect('/empresa/perfil');
+        }
+        
     },
     postulantes: (req, res) => {
         /* buscamos el anuncio segun el id por parametro.

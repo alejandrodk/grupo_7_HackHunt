@@ -4,7 +4,7 @@ const Op = Sequelize.Op;
 
 module.exports = {
     favoritos : (req, res) => { 
-        db.userFavoritos.findAll()
+        db.userFavoritos.findAll({where:{user_id:req.params.id}})
         .then(result => {
             res.json({
                 status_code : res.statusCode,

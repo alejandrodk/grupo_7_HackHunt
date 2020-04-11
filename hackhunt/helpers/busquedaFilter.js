@@ -9,30 +9,60 @@ module.exports = (req) => {
     let pagination = mainHelps.pagination(req);
     // segun los querystring recibidos, agregamos condiciones al where
     let where = {}
-    let where_cmp = {}
+    let array_or = [];
     let orderBy = "";
-    if(req.query.search){
+    console.log("los datos del session busqueda: "+req.session.busquedas.filtros)
+    if(req.query.search){ 
 
         let { search } = req.query;
         // guardamos el filtro actual en las busquedas en la session
         mainHelps.addFilter(req, search);
         // buscamos coincidencias en todos los campos del anuncio
         
-        
-        where = {
-                    [Op.or]: [
-                        {adv_title: {[Op.like]: '%'+ search.trim() +'%' }},
-                        {adv_description: {[Op.like]: '%'+ search.trim() +'%' }},
-                        {adv_area: {[Op.like]: '%'+ search.trim() +'%' }},
-                        {adv_position: {[Op.like]: '%'+ search.trim() +'%' }},
-                        {adv_working_day: {[Op.like]: '%'+ search.trim() +'%' }},
-                        {adv_advantage: {[Op.like]: '%'+ search.trim() +'%' }},
-                       
-                    ]
-               
-        }
+
+    
+            
+            let {filtros} = req.session.busquedas; 
+            
+            
+            filtros.forEach(oneFiltro =>
+                {
+                    array_or.push(
+                        {[Op.or]:[
+                        {adv_title: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                        {adv_description: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                        {adv_area: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                        {adv_position: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                        {adv_working_day: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                        {adv_advantage: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                        {adv_location: {[Op.like]: '%'+ oneFiltro.trim() +'%' }}
+                        ]})}
+                ) 
         
     }
+    if(!req.query.search && req.session.busquedas.filtros.length>0)
+    {
+        console.log("entre en el if de no tener search")
+        req.session.busquedas.filtros.forEach(oneFiltro =>
+            {
+                array_or.push(
+                    {[Op.or]:[
+                    {adv_title: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                    {adv_description: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                    {adv_area: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                    {adv_position: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                    {adv_working_day: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                    {adv_advantage: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                    {adv_location: {[Op.like]: '%'+ oneFiltro.trim() +'%' }}
+                    ]})}
+            )
+        where = 
+        {
+            [Op.and]:array_or
+                
+        }
+    }
+
     if(req.query.ubication)
         {
             let { ubication } = req.query;
@@ -55,35 +85,35 @@ module.exports = (req) => {
     }
     
     if(params.jornada /* && params.skill == undefined && params.experiencia == undefined */){
-        where = {
+       array_or.push( {
             [Op.or] : [
                 {adv_working_day : {[Op.like]: '%'+ params.jornada.replace('_','%') +'%' }},
                 {adv_title : {[Op.like]: '%'+ params.jornada.replace('_','%') +'%' }},
                 {adv_description : {[Op.like]: '%'+ params.jornada.replace('_','%') +'%' }}
             ]
-        }
+        })
     }
     if(params.skill){
-        where = {
+        array_or.push( {
             [Op.or] : [
                 {adv_title : {[Op.like]: '%'+ params.skill +'%' }},
                 {adv_description : {[Op.like]: '%'+ params.skill +'%' }}
             ]
-        }
+        })
     }
     if(params.experiencia){
         if(params.experiencia == 'junior'){
-            where = {
+            array_or.push( {
                 [Op.or] : [
                     {adv_title : {[Op.like]: '%'+ params.experiencia +'%' }},
                     {adv_title : {[Op.like]: '%jr%' }},
                     {adv_description : {[Op.like]: '%'+ params.experiencia +'%' }},
                     {adv_description : {[Op.like]: '%jr%' }},
                 ]
-            }
+            })
         }
         if(params.experiencia == 'semi-senior'){
-            where = {
+           array_or.push( {
                 [Op.or] : [
                     {adv_title : {[Op.like]: '%'+ params.experiencia +'%' }},
                     {adv_title : {[Op.like]: '%semi%' }},
@@ -92,18 +122,24 @@ module.exports = (req) => {
                     {adv_description : {[Op.like]: '%semi%' }},
                     {adv_description : {[Op.like]: '%ssr%' }},
                 ]
-            }
+            })
         }
         if(params.experiencia == 'senior'){
-            where = {
+            array_or.push( {
                 [Op.or] : [
                     {adv_title : {[Op.like]: '%'+ params.experiencia +'%' }},
                     {adv_title : {[Op.like]: '%sr%' }},
                     {adv_description : {[Op.like]: '%'+ params.experiencia +'%' }},
                     {adv_description : {[Op.like]: '%sr%' }},
                 ]
-            }
+            })
         }
+    }
+
+    where = 
+    {
+        [Op.and]:array_or
+            
     }
     // retornar la consulta
     return db.anuncios.findAll({
@@ -116,6 +152,8 @@ module.exports = (req) => {
                     model: db.empresas, 
                     as: 'empresas',
                     attributes: ['cmp_name','cmp_avatar'],
+                    include: [{model:db.clientes,as:"cliente_favorito",
+                               attributes:['user_id']}]
                    },
                    {model:db.skills, as:'adv_skills'} ]
 		    })

@@ -57,8 +57,9 @@ module.exports = (sequelize, dataTypes) => {
     anuncio.associate = function(models){
         anuncio.belongsTo(models.empresas,{
             as: "empresas",
-            foreignKey: "cmp_id",
+            foreignKey: "cmp_id", 
         }),
+        
         anuncio.belongsToMany(models.clientes,{
             as : 'candidatos',
             through : 'postulantes',
@@ -99,7 +100,6 @@ module.exports = (sequelize, dataTypes) => {
                 {
                     if(skill.skill_name == userSkills[i].skill_name)
                     {
-                       
                         return skill;
                     }
                       
@@ -134,6 +134,8 @@ module.exports = (sequelize, dataTypes) => {
                 })
                 return destacados;
     }
+
+
 
 
 

@@ -8,7 +8,7 @@ router.get('/', anunciosController.anuncios);
 router.get('/activos', anunciosController.activos);
 router.get('/expirados', anunciosController.expirados);
 
-router.get('/favoritos', favoritosController.favoritos);
+router.get('/favoritos/:id', favoritosController.favoritos);
 //router.get('/favoritos/:id', favoritosController.favoritos); -- favoritos por cliente
 router.post('/favoritos', favoritosController.addFavorite); 
 router.delete('/favoritos', favoritosController.removeFavorite);

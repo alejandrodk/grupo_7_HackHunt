@@ -10,9 +10,10 @@ const controller = {
 		let 
 			page = req.query.page != undefined ? req.query.page : 0;
 			busquedas = req.session.busquedas != undefined ? req.session.busquedas.filtros : [];
+			console.log("lo que tiene filtros cuando borro 1: " +req.session.busquedas.filtros)
 			user = req.session.user != undefined ? req.session.user.user_id : null;
 			
-			if(req.session.busqueda_activa.length >0)
+			/*if(req.session.busqueda_activa.length >0)
 			{
 				
 				let valores = [];
@@ -28,6 +29,7 @@ const controller = {
 									oneValue.adv_area.toLowerCase().includes(oneWord.toLowerCase())==true || 
 									oneValue.adv_location.toLowerCase().includes(oneWord.toLowerCase())==true|| 
 									oneValue.adv_position.toLowerCase().includes(oneWord.toLowerCase())==true)
+									
 								{
 									count++;
 								}
@@ -36,6 +38,7 @@ const controller = {
 
 						
 					})
+					
 					if(req.query.order && req.query.order == "salary")
 						{
 							
@@ -68,25 +71,85 @@ const controller = {
 							})
 							}
 
+							if(req.query.order && req.query.order == "relevance")
+    						{
+								valores.sort(function(a,b)
+							{
+								if(a.empresas.cliente_favorito.length < b.empresas.cliente_favorito.length)
+								{
+							
+									return 1;
+								}
+								if(a.empresas.cliente_favorito.length > b.empresas.cliente_favorito.length)
+								{
+									
+									return -1
+								}
+							
+								return 0
+							})
+							}
+							if(req.session.type_user == 'cliente'){
+					
+								db.clientes.findByPk(req.session.user.user_id,
+									{
+										include:[{model:db.skills, as:'skill'}]
+									})
+									.then(cliente => {
+										
+										return res.render('main/index',{ 
+											busquedas,
+											anuncios:valores,
+											page,
+											cliente,
+											user
+										})
+									})
+							} else{	
+					
 					return res.render('main/index',{ 
 						busquedas,
 						anuncios:valores,
 						page,
 						user
-					}) 
+					}) }
 			}
-			else{
-
+			else{*/
+				console.log("se envian los datos a la funcion busqueda anuncios")
 				busquedaAnuncios(req) 
 				.then(anuncios => {
-					busquedas.length>0? req.session.busqueda_activa = anuncios:null;
-					if(req.session.type_user == 'cliente'){
 					
+					/*if(req.query.order && req.query.order == "relevance")
+    						{
+								anuncios.sort(function(a,b)
+							{
+								if(a.empresas.cliente_favorito.length < b.empresas.cliente_favorito.length)
+								{
+							
+									return 1;
+								}
+								if(a.empresas.cliente_favorito.length > b.empresas.cliente_favorito.length)
+								{
+									
+									return -1
+								}
+							
+								return 0
+							})
+							}
+							
+					busquedas.length>0? req.session.busqueda_activa = anuncios:null;
+					return res.send(req.session.busqueda_activa.compareSkills(['ReactJs','CSS']))*/
+					//busquedas.length>0? req.session.busqueda_activa = anuncios:null;
+					console.log("a la salida de la funcion, session: "+ req.session.busquedas.filtros)
+					if(req.session.type_user == 'cliente'){
+					console.log("se buscan los datos del usuario para el home")
 						db.clientes.findByPk(req.session.user.user_id,
 							{
 								include:[{model:db.skills, as:'skill'}]
 							})
 							.then(cliente => {
+								console.log("se redirecciona al home siendo usuario")
 								return res.render('main/index',{ 
 									busquedas,
 									anuncios,
@@ -96,7 +159,7 @@ const controller = {
 								})
 							})
 					} else{
-						
+						console.log("se envian los datos al home sin ser usuario")
 						return res.render('main/index',{ 
 							busquedas,
 							anuncios,
@@ -105,7 +168,7 @@ const controller = {
 						}) 
 					}
 				})
-			}
+			/*}*/
 	},
 	detalleAnuncio: (req, res) => {
 		user = req.session.user != undefined ? req.session.user.user_id : null;
@@ -235,7 +298,7 @@ const controller = {
 		let user = req.session.user != undefined ? req.session.user.user_id : null;
 		let id = req.params.id;
 		db.empresas.findByPk(id,{
-			include : 'anuncios'
+			include : 'anuncios'  
 		})
 		.then( empresa => {
 			db.empresas.findAll({

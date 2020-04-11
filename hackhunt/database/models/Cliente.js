@@ -25,7 +25,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         user_avatar : {
             type: dataTypes.STRING
-        }
+        } 
     }
     const Cliente = sequelize.define(alias,cols,{  timestamps: false});
 
@@ -65,14 +65,14 @@ module.exports = (sequelize, dataTypes) => {
             timestamps : false
         }),
         Cliente.belongsToMany(modelos.empresas,{
-            as : 'empresa',
-            through : 'seguidos',
+            as : 'empresa_favorita',
+            through : 'cmpFavoritos',
             foreignKey : 'user_id',
             otherKey : 'cmp_id',
             timestamps : false 
         })
-    }; 
 
+    }
 
 
     Cliente.prototype.cvVisto = function(id_anuncio,id_cliente)

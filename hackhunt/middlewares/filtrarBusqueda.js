@@ -7,15 +7,17 @@ module.exports = (req, res, next) => {
         req.session.busquedas = {
             filtros : []
         }
+        console.log("se vació el filtros session")
         return next();
     }
     if(req.query.deleteFilter){
        
         let filter = req.query.deleteFilter;
-        console.log("valor actual de busquedas: "+ req.session.busquedas.filtros)
+        console.log("se ejecuta el borrado del filtro")
         mainHelps.deleteFilter(req,filter);
-
-        res.redirect('/');
+        console.log("se hace next despues del borrado del filtro")
+        
+        return res.redirect('/');
     }
 
     return next();

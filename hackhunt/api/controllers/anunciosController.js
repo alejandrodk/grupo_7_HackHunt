@@ -6,7 +6,7 @@ const dateHelper = require('../helpers/date');
 const helpers = require('../helpers/apiHelpers');
 
 module.exports = {
-    anuncios : (req, res) => {
+    anuncios : (req, res) => { 
         let actualPage = req.query.page ? req.query.page : 0;
 
         let fecha = dateHelper.getDate;
@@ -23,7 +23,8 @@ module.exports = {
         }
 
         db.anuncios.findAll({
-            include : [{ model : db.empresas , as: 'empresas', attributes: ['cmp_name','cmp_avatar'] } ],
+            include : [{ model : db.empresas , as: 'empresas', attributes: ['cmp_name','cmp_avatar'] },
+                       { model : db.skills , as: 'adv_skills'} ],
             offset,
             limit
         })
@@ -89,5 +90,11 @@ module.exports = {
                 status : res.statusCode
             })
         }).catch(error => console.log(error))
+    },
+
+    cantidades: (req,res)=>
+    {
+        
     }
+
 }

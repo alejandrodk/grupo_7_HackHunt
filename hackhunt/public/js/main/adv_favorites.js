@@ -21,12 +21,13 @@ function removeState(item){
 // sin tener que invocarla
 
 (async function fetchFavorites(){
-    let response = await fetch('/api/anuncios/favoritos');
+    let id = document.querySelector('#add-favorite').getAttribute('data-user');
+    let response = await fetch(`/api/anuncios/favoritos/${id}`);
     let data = await response.json();
     checkFavorites(adds, data.response)
 })();
 
-function checkFavorites(advs,favoritos){
+function checkFavorites(advs,favoritos){ 
     // se recorren cada uno de los anuncios
     for (let item of advs) {
         // se toma el id de cada anuncio
