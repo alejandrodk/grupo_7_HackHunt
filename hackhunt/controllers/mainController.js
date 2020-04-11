@@ -13,134 +13,12 @@ const controller = {
 			console.log("lo que tiene filtros cuando borro 1: " +req.session.busquedas.filtros)
 			user = req.session.user != undefined ? req.session.user.user_id : null;
 			
-			/*if(req.session.busqueda_activa.length >0)
-			{
-				
-				let valores = [];
-				mainHelps.addFilter(req, req.query.search);
-				
-				req.session.busqueda_activa.map((oneValue,i )=>
-					{
-						let count = 0;
-						busquedas.forEach(oneWord=>
-							{
-								if(oneValue.adv_description.toLowerCase().includes(oneWord.toLowerCase())==true || 
-									oneValue.adv_title.toLowerCase().includes(oneWord.toLowerCase())==true || 
-									oneValue.adv_area.toLowerCase().includes(oneWord.toLowerCase())==true || 
-									oneValue.adv_location.toLowerCase().includes(oneWord.toLowerCase())==true|| 
-									oneValue.adv_position.toLowerCase().includes(oneWord.toLowerCase())==true)
-									
-								{
-									count++;
-								}
-							})
-						count == busquedas.length ? valores.push(oneValue) : null;
-
-						
-					})
-					
-					if(req.query.order && req.query.order == "salary")
-						{
-							
-							valores.sort(function(a,b)
-							{
-								if(a.adv_salary < b.adv_salary)
-								{
-									return 1;
-								}
-								if(a.adv_salary > b.adv_salary)
-								{
-									return -1
-								}
-								return 0
-							})
-						}
-						if(req.query.order && req.query.order == "date")
-    						{
-								valores.sort(function(a,b)
-							{
-								if(a.adv_date_contract < b.adv_date_contract)
-								{
-									return 1;
-								}
-								if(a.adv_date_contract > b.adv_date_contract)
-								{
-									return -1
-								}
-								return 0
-							})
-							}
-
-							if(req.query.order && req.query.order == "relevance")
-    						{
-								valores.sort(function(a,b)
-							{
-								if(a.empresas.cliente_favorito.length < b.empresas.cliente_favorito.length)
-								{
-							
-									return 1;
-								}
-								if(a.empresas.cliente_favorito.length > b.empresas.cliente_favorito.length)
-								{
-									
-									return -1
-								}
-							
-								return 0
-							})
-							}
-							if(req.session.type_user == 'cliente'){
-					
-								db.clientes.findByPk(req.session.user.user_id,
-									{
-										include:[{model:db.skills, as:'skill'}]
-									})
-									.then(cliente => {
-										
-										return res.render('main/index',{ 
-											busquedas,
-											anuncios:valores,
-											page,
-											cliente,
-											user
-										})
-									})
-							} else{	
-					
-					return res.render('main/index',{ 
-						busquedas,
-						anuncios:valores,
-						page,
-						user
-					}) }
-			}
-			else{*/
+			
 				console.log("se envian los datos a la funcion busqueda anuncios")
 				busquedaAnuncios(req) 
 				.then(anuncios => {
 					
-					/*if(req.query.order && req.query.order == "relevance")
-    						{
-								anuncios.sort(function(a,b)
-							{
-								if(a.empresas.cliente_favorito.length < b.empresas.cliente_favorito.length)
-								{
-							
-									return 1;
-								}
-								if(a.empresas.cliente_favorito.length > b.empresas.cliente_favorito.length)
-								{
-									
-									return -1
-								}
-							
-								return 0
-							})
-							}
-							
-					busquedas.length>0? req.session.busqueda_activa = anuncios:null;
-					return res.send(req.session.busqueda_activa.compareSkills(['ReactJs','CSS']))*/
-					//busquedas.length>0? req.session.busqueda_activa = anuncios:null;
+					
 					console.log("a la salida de la funcion, session: "+ req.session.busquedas.filtros)
 					if(req.session.type_user == 'cliente'){
 					console.log("se buscan los datos del usuario para el home")
@@ -168,7 +46,7 @@ const controller = {
 						}) 
 					}
 				})
-			/*}*/
+			
 	},
 	detalleAnuncio: (req, res) => {
 		user = req.session.user != undefined ? req.session.user.user_id : null;

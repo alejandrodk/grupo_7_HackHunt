@@ -12,7 +12,7 @@ module.exports = (req) => {
     let array_or = [];
     let orderBy = "";
     console.log("los datos del session busqueda: "+req.session.busquedas.filtros)
-    if(req.query.search){ 
+    if(req.query.search){  
 
         let { search } = req.query;
         // guardamos el filtro actual en las busquedas en la session
@@ -56,21 +56,18 @@ module.exports = (req) => {
                     {adv_location: {[Op.like]: '%'+ oneFiltro.trim() +'%' }}
                     ]})}
             )
-        where = 
+        /*where = 
         {
             [Op.and]:array_or
                 
-        }
+        }*/
     }
 
     if(req.query.ubication)
         {
             let { ubication } = req.query;
-            where = 
-            {
-                [Op.and] :
-                    [{adv_location: ubication},where]
-            }
+          
+                array_or.push({[Op.or]:{adv_location: {[Op.like]: '%'+ ubication.trim() +'%' }}})  
         }
     //esto es para agregar filtro de anuncios activos
     //{adv_date_contract:{[Op.gte]:Sequelize.fn('NOW')}}
