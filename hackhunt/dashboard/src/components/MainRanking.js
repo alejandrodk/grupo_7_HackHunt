@@ -33,7 +33,7 @@ class MainRanking extends Component {
                 {empresas.map((empresa,i) => (
                     <div key={i} className="item">
                         <div className="avatar">
-                            <img src="" alt=""/>
+                            <img src={empresa.avatar} alt={empresa.empresa} />
                         </div>
                         <h1>{empresa.empresa}</h1>
                         <h3>{empresa.cant_anuncios} Anuncios</h3>

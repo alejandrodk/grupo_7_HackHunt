@@ -89,7 +89,7 @@ class MainAdv extends Component {
                         return(
                             <div className="item" key={i}>
                                 <div className="avatar">
-                                    <img src={`./avatars/${ item.empresas.cmp_avatar }`} alt=""/>
+                                    <img src={item.empresas.cmp_avatar} alt={ item.adv_title }/>
                                 </div>
                                 <h2>{ item.adv_title }</h2>
                                 <h3>{ item.empresas.cmp_name }</h3>

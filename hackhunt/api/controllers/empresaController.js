@@ -9,6 +9,7 @@ module.exports =
         db.empresas.findAll()
         .then(response => {
             if(response){
+            response.map( item => item.cmp_avatar = `http://localhost:3000/images/avatars/${item.cmp_avatar}`)
             return res.json({
                     status_code : res.statusCode,
                     collection : 'empresas',
@@ -107,6 +108,7 @@ module.exports =
         db.sequelize.query(`
         SELECT 
         empresas.cmp_name as "empresa",
+        empresas.cmp_avatar as "avatar",
         count(anuncios.id) as "cant_anuncios", 
         count(postulantes.cli_id) as "cant_postulantes" 
         FROM anuncios
@@ -118,6 +120,7 @@ module.exports =
         .then(resultado =>
             {
                 if(resultado){
+                resultado.map( item => item.avatar = `http://localhost:3000/images/avatars/${ item.avatar }`)
                 return res.json(
                     {
                         status_code:res.statusCode,

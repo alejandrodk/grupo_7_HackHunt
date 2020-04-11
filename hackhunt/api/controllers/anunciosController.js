@@ -12,7 +12,7 @@ module.exports = {
         let fecha = dateHelper.getDate;
 
         let page = req.query.page != undefined ? req.query.page : 0;
-        let maxResults = 4;
+        let maxResults = 5;
         let offset = page != 0 ? maxResults * parseInt(page) : 0 ;
         let limit = maxResults;
 
@@ -32,7 +32,7 @@ module.exports = {
             if(response){
                 let actives = response.filter(item => item.adv_date_contract > fecha);
                 let expired = response.filter(item => item.adv_date_contract < fecha);
-                
+                response.map( item => item.empresas.cmp_avatar = `http://localhost:3000/images/avatars/${item.empresas.cmp_avatar}`)
                 return res.json({ 
                     status_code : res.statusCode,
                     collection : 'anuncios',

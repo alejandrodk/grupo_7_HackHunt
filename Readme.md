@@ -5,13 +5,16 @@ Tu trabajo como desarrollador más cerca.
 
 [Trello](https://trello.com/b/Gkna0BJn/proyecto-digital-house)
 
-## ¿Quienes somos?
+## Dashboard
 
-Somos una plataforma enfocada en brindar soluciones para el reclutamiento de profesionales del desarrollo web y software.
+[Dashboard](http://localhost:3001)
 
-Al ser una plataforma especializada, brindamos mejores soluciones a empleadores y usuarios para hacer su búsqueda lo más específica y satisfactoria posible poniendo a su disposición las herramientas necesarias para conseguir el canditato y el trabajo ideal.
+## Descripción
 
-## ¿Qué nos motiva? 
+Proyecto Integrador para la cursada de Desarrollo Web Full Stack de Digital House.
+En el mismo, aplicamos los conocimientos adquiridos durante el curso, aplicando las metodologías ágiles y SCRUM
+
+## Enfoque
 
 Con el equipo de HackHunt decidimos crear un único sitio especializado en busqueda de trabajo para desarrolladores manteniendo las practicidades de un cv dinámico online pero agregando caracteristicas únicas que otros sitios con propositos mas genericos no pueden.
 
@@ -58,21 +61,44 @@ Esto ayuda a nuestros candidatos a conseguir oportunidades laborales enfocadas e
 [Computrabajo](https://www.computrabajo.com.ar/)
 
 -----------------------------------------------------------------------------------
-### Funciones Especiales
+### Librerias
 
-|Helpers            |Descripcion                    |Parametros                   |
-|-------------------|-------------------------------|-----------------------------|
-|getAllCompanies(), getAllUsers(), getAllAnuncios()  |`'devuelve un objeto literal con datos de las companias/usuarios y la ruta del archivo json'`            |            |
-|getCompanyById(id), getUserById(id), getAnuncioById()             |`"Devuelve los datos de la compañia/usuario segun el id dado"`            |Recibe el id buscado            |
-|getNewId(array)             |`devuelve el proximo id disponible para usar`|Recibe un objeto literal obtenido de las funciones getAllCompanies(), getAllUsers(), getAllAnuncios() |
-|writeFile(newItem,db)             |`Inserta en el archivo JSON el nuevo item y guarda nuevamente los datos.`|Recibe (de tipo objeto literal) el nuevo item creado para insertar en la db JSON y el objeto literal obtenido de las funciones getAllCompanies(), getAllUsers(), getAllAnuncios()|
-|modifyUser(id)             |`devuelve un objeto literal que contiene los datos del usuario y la ruta en sus propiedades .file y .ruta respectivamente`|Recibe como parametro el id a buscar|
-|modifyCompany(id)             |`devuelve un objeto literal que contiene los datos de la empresa y la ruta en sus propiedades .file y .ruta respectivamente`|Recibe como parametro el id a buscar|
-|modifyAnuncio(id)             |`devuelve un objeto literal que contiene los datos del anuncio y la ruta en sus propiedades .file y .ruta respectivamente`|Recibe como parametro el id a buscar|
-|saveUpdates(array)             |`guarda datos modificados tanto para empresa, cliente o anuncio `|Esta función recibe un objeto literal con las propiedades .file y .ruta el cual tiene los datos modificados en .file|
-|Dashes             |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+|Nombre            |Descripcion                    |Enlace                    |
+|-------------------|-------------------------------|-------------------------------|
+|currently  |`'Inicio de aplicación'`|[npm currently](https://www.npmjs.com/package/currently)|
+|Nodemon  |`'Refrescar servidor'`|[npm React](https://www.npmjs.com/package/react)|
+|React Js  |`'Cliente'`|[npm React](https://www.npmjs.com/package/react)|
+|Node Js  |`'Servidor'`|[Node Js](https://nodejs.org/es/)|
+|Express Js  |`'Peticiones HTTP'`|[npm Express](https://www.npmjs.com/package/express)|
+|method-override  |`'Métodos HTTP'`|[npm React](https://www.npmjs.com/package/method-override)|
+|Express-validator  |`'Validacion'`|[npm Express-Validator](https://www.npmjs.com/package/express-validator)|
+|Sequelize  |`'ORM Manejo de consultas a la base de datos '`|[npm Sequelize](https://www.npmjs.com/package/sequelize)|
+|Sequelize-cli  |`' Command Line Interface para Sequelize '`| [npm Sequelize-cli](https://www.npmjs.com/package/sequelize-cli)|
+|mysql2  |`'Cliente MySQL para Node'`| [npm mysql2](https://www.npmjs.com/package/mysql2)|
+|Axios  |`'Peticiones API'`|[npm Axios](https://www.npmjs.com/package/axios)|
+|Bcrypt  |`'Hashing'`|[npm bcrypt](https://www.npmjs.com/package/bcrypt)|
+|Chart Js  |`'Gráficos'`|[npm chart.js](https://www.npmjs.com/package/chart.js)|
+|express-favicon |`'Favicon'`|[npm Express-favicon](https://www.npmjs.com/package/express-favicon)|
+|Multer  |`'Carga de imagenes'`|[npm multer](https://www.npmjs.com/package/multer)|
 
-
+### API
+|Coleccion            |Método                    |Descripción                    |Endpoint                    |
+|-------------------|-------------------------------|-------------------------------|-------------------------------|
+|Anuncios           |GET                |Total de anuncios                 |localhost:3000/api/anuncios/     |
+|Anuncios           |GET                 |Anuncios activos                |localhost:3000/api/anuncios/activos     |
+|Anuncios           |GET                 |Anuncios Expirados                |localhost:3000/api/anuncios/expirados     |
+|Anuncios           |GET                 |Anuncios Favoritos                |localhost:3000/api/anuncios/favoritos    |
+|Anuncios           |GET                 |Postulantes               |localhost:3000/api/anuncios/postulaciones    |
+|Postulaciones      |GET                 |Total postulaciones               |localhost:3000/api/anuncios/postulaciones/    |
+|Postulaciones      |GET                 |Detalle de postulacion              |localhost:3000/api/anuncios/postulaciones/{id cliente}/{id anuncio}    |
+|Postulaciones      |GET                 |Postulaciones de un cliente             |localhost:3000/api/anuncios/postulaciones/{id cliente}   |
+|skills             |GET                 |Total de skills           |localhost:3000/api/skills  |
+|skills             |POST                |Crear skill          |localhost:3000/api/skills  |
+|skills             |DELETE              |Eliminar skill         |localhost:3000/api/skills/{skill id}  |
+|Clientes           |GET                 |Total de clientes         |localhost:3000/api/clientes/  |
+|Clientes           |GET                 |Skills de cliente        |localhost:3000/api/clientes/skills/{id cliente}  |
+|Clientes           |POST                 |Agregar skill a cliente        |localhost:3000/api/clientes/skills/ |
+|Clientes           |DELETE                 |Eliminar skill de cliente        |localhost:3000/api/clientes/skills/ |
 
 License
 ----

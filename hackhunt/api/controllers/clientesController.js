@@ -7,6 +7,7 @@ module.exports = {
         db.clientes.findAll()
         .then(response => {
             if(response){
+            response.map(item => item.user_avatar = `http://localhost:3000/images/avatars/${item.user_avatar}`)
             return res.json({
                     status_code : res.statusCode,
                     collection : 'clientes',
