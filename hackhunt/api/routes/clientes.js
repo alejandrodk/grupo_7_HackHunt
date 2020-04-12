@@ -8,6 +8,9 @@ router.get('/skills/:id', controller.skills)
 router.post('/skills', controller.addSkill)
 router.post('/skills/delete', controller.deleteSkill)
 
+router.get('/notificaciones', controller.getNotificaciones)
+router.post('/notificaciones', controller.storeNotification)
+
 router.get('/email', controller.check)
 
 module.exports = router;

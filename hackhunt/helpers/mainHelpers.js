@@ -13,7 +13,7 @@ module.exports = {
         }
     },
     addFilter : (req, filtro) => {
-        if(filtro)
+        if(filtro) 
         {
 
             let busquedas = req.session.busquedas.filtros;

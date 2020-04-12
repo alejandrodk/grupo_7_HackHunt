@@ -71,24 +71,24 @@
                 </div>
                 <div class="item notificaciones">
                     <h4>Modificar notificaciones</h4>
-                    <form action="?_method=PUT" method="post">
+                    <form action="?_method=PUT" method="post" class="notificaciones_form">
                         <div class="item">
-                            <input type="checkbox" name="user_promotions" id="user_promotions">
+                            <input type="checkbox" name="novedades" id="user_promotions">
                             <label for="">Recibir novedades y promociones</label>
                             <p>Consejos, promociones y nuevas funciones</p>
                         </div>
                         <div class="item">
-                            <input type="checkbox" name="user_adversings" id="user_adversings">
+                            <input type="checkbox" name="recomendados" id="user_adversings">
                             <label for="">Envío de avisos recomendados</label>
                             <p>Envío semanal de ofertas laborales que se ajustan a mis búsquedas / CV.</p>
                         </div>
                         <div class="item">
-                            <input type="checkbox" name="user_stadistics" id="user_stadistics">
+                            <input type="checkbox" name="resumen" id="user_stadistics">
                             <label for="">Resumen de Actividad</label>
                             <p>Envío mensual de un resumen sobre la actividad entre las empresas y mi CV.</p>
                         </div>
                         <div class="item">
-                            <input type="checkbox" name="user_special_adversings" id="user_special_adversings">
+                            <input type="checkbox" name="destacados" id="user_special_adversings">
                             <label for="">Avisos destacados</label>
                             <p>Envío de avisos en los que tengo mayores posibilidades.</p>
                         </div>
@@ -96,7 +96,7 @@
                     </form>
                 </div>
                 <div class="item titulo">
-                    <h3>Privacidad</h3>
+                    <h3>Privacidad</h3> 
                     <p id="privacidad"></p>
                 </div>
                 <div class="item privacidad">
@@ -120,6 +120,8 @@
     <footer>
         <%- include('../partials/footer'); -%>
     </footer>
+
+    <script src="/js/cliente/notificaciones.js"></script>
 </body>
 
 </html>
