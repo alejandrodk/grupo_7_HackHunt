@@ -44,6 +44,7 @@ select {
 .datos.skills .areas{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 3%;
 }
 .datos.skills .areas p {
 	width: 100%;
@@ -124,6 +125,7 @@ select {
 .form-cont .skills select {
     width: 50%;
     padding: 0 1%;
+    background: var(--main-texto-blanco);
 }
 .form-cont .skills textarea{
     width: 45%;
@@ -155,6 +157,7 @@ select {
 }
 .form-cont .info input:nth-child(odd),
 #adv_location{
+    background: var(--main-texto-blanco);
     width: 35%;
 }
 .form-cont .info label:first-child{

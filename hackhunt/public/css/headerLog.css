@@ -27,13 +27,14 @@
 	font-weight: 500;
 }
 .container.header .secciones {
-	justify-content: space-around;
+	justify-content: right;
 	align-items: center;
 }
 .container.header .secciones a{
     color: var(--main-texto-blanco);
     font-weight: 100;
-    font-size: 15px;
+	font-size: 15px;
+	margin: 0 2%;
 }
 .container.header .secciones a:hover,
 .container.header .secciones a:hover > i{

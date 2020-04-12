@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"> 
- 
+<html lang="en">
+
 <head>
     <%- include('../partials/head'); -%>
     <!--Luego hay que hacer una validación de sesión iniciada para mostrar un header u otro-->
@@ -13,9 +13,10 @@
     <script src="/js/widgEditor.js"></script>
 </head>
 <!-- CÓDIGO -->
+
 <body>
     <header>
-	    <%- include('../partials/headerEmp'); -%>
+        <%- include('../partials/headerEmp'); -%>
     </header>
     <div class="container-fluid cuerpo">
         <div class="container detalle">
@@ -29,180 +30,195 @@
             </div>
             <div class="row cuerpo">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 wrap">
-					<div class="anuncio wrap">
+                    <div class="anuncio wrap">
                         <form action="/empresa/anuncios/crear" method="post" id="loginForm">
-							<div class="form-cont wrap">
-								<div class="titulo wrap">
-									<label for="adv_title"><p>Título</p></label>
+                            <div class="form-cont wrap">
+                                <div class="titulo wrap">
+                                    <label for="adv_title">
+                                        <p>Título</p>
+                                    </label>
                                     <input type="text" name="adv_title" id="adv_title" data-name="Título">
                                     <p class="errorMsgTitle" style="color: black;"></p>
-								</div>
-							<!---	<div class="descrp wrap">
+                                </div>
+                                <!---	<div class="descrp wrap">
                                     <textarea name="adv_description" id="adv_description" cols="30" rows="10" placeholder="Descripción" data-name="Descripción"></textarea>
                                     <p class="errorMsgDescription" style="color: black;"></p>
                                 </div> --->
                                 <div id="editorXWidgContainer" class="widgContainer descrp wrap">
-                                   
-                                <!--
+
+                                    <!--
                                      A textarea is swapped with the iframe when there is a need to
                                      view the HTML source
                                 -->
-                                    <textarea id="ORIGINAL_IDWidgTextarea" class="widgEditor" name="adv_description" cols="30" rows="10" placeholder="Descripción" data-name="Descripción">
+                                    <textarea id="ORIGINAL_IDWidgTextarea" class="widgEditor" name="adv_description"
+                                        cols="30" rows="10" placeholder="Descripción" data-name="Descripción">
                                     </textarea>
                                     <p class="errorMsgDescription" style="color: black;"></p>
                                     <input id="editorX" name="editorX" type="hidden" />
-                                  
+
                                 </div>
-                                
+
                                 <div class=" datos skills wrap">
-									<div class="titulo wrap">
-									<label for="skills"><p>Skills</p></label>
-								</div>
-									<div class="formulario">
-										
-											<label for="">Agregar Skill</label>
-											<select name="skill_id" id="skill_id">
-												
-												<% skills.forEach(skill => { %>
-													<option value="<%= skill.skill_id %>"><%= skill.skill_name %></option>
-												<% }) %> 
-											</select>
-											<span id="adItem">+</span>
-										
-									</div>
-									
-										<div class="areas">
-											<p>Tus Skills</p>
-											
-										</div>
-									
-								</div>
-								<div class="info wrap">
-									<label for="adv_date_contract"><p>Fecha de contratación</p></label>
-                                    <input type="date" name="adv_date_contract" id="adv_date_contract" data-name="Fecha de Contratación">
+                                    <div class="wrap">
+                                        <label for="skills">
+                                            <p>Skills requeridos para este anuncio</p>
+                                        </label>
+                                    </div>
+                                    <div class="formulario">
+                                        <select name="skill_id" id="skill_id">
+                                            <% skills.forEach(skill => { %>
+                                            <option value="<%= skill.skill_id %>"><%= skill.skill_name %></option>
+                                            <% }) %>
+                                        </select>
+                                        <span id="adItem">+</span>
+
+                                    </div>
+
+                                    <div class="areas">
+                                        <p>Skills actuales</p>
+
+                                    </div>
+
+                                </div>
+                                <div class="info wrap">
+                                    <label for="adv_date_contract">
+                                        <p>Fecha de contratación</p>
+                                    </label>
+                                    <input type="date" name="adv_date_contract" id="adv_date_contract"
+                                        data-name="Fecha de Contratación">
                                     <p class="errorMsgDate" style="color: black;"></p>
-									<label for="adv_area"><p>Área</p></label>
+                                    <label for="adv_area">
+                                        <p>Área</p>
+                                    </label>
                                     <input type="text" name="adv_area" id="adv_area" data-name="Área">
                                     <p class="errorMsgArea" style="color: black;"></p>
-									<label for="adv_location"><p>Ubicación</p></label>
+                                    <label for="adv_location">
+                                        <p>Ubicación</p>
+                                    </label>
                                     <!-- <input type="text" name="adv_location" id="adv_location" data-name="Ubicación"> -->
                                     <select name="adv_location" id="adv_location">
                                         <option value="null">Ciudad</option>
                                     </select>
                                     <p class="errorMsgLocation" style="color: black;"></p>
-									<label for="adv_position"><p>Cargo</p></label>
+                                    <label for="adv_position">
+                                        <p>Cargo</p>
+                                    </label>
                                     <input type="text" name="adv_position" id="adv_position" data-name="Cargo">
                                     <p class="errorMsgPosition" style="color: black;"></p>
-									<label for="adv_working_day"><p>Jornada</p></label>
+                                    <label for="adv_working_day">
+                                        <p>Jornada</p>
+                                    </label>
                                     <input type="text" name="adv_working_day" id="adv_working_day" data-name="Jornada">
                                     <p class="errorMsgWorking_day" style="color: black;"></p>
-									<label for="adv_salary"><p>Salario</p></label>
+                                    <label for="adv_salary">
+                                        <p>Salario</p>
+                                    </label>
                                     <input type="text" name="adv_salary" id="adv_salary" data-name="Salario">
                                     <p class="errorMsgSalary" style="color: black;"></p>
-								</div>
-								<div class="beneficios">
-									<label for="adv_advantage"><p>Beneficios (opcional)</p></label>
-									<textarea name="adv_advantage" id="adv_advantage" cols="30" rows="10"></textarea>
-								</div>
-							</div>
-							<button type="submit">Publicar</button>
+                                </div>
+                                <div class="beneficios">
+                                    <label for="adv_advantage">
+                                        <p>Beneficios (opcional)</p>
+                                    </label>
+                                    <textarea name="adv_advantage" id="adv_advantage" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Publicar</button>
                             <button type="reset">Limpiar</button>
                             <p id="errorMsg" style="color: black;"></p>
-						</form>
-					</div>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 relacionados wrap">
                     <% for(let i = 0; i< anuncios.length;i++){ %>
 
-                        <a href="/detalle">
-                            <div class="item">
-                                <div class="img">
-                                    <img src="/images/avatars/<%=anuncios[i].cmp_avatar %>" alt="">
-                                </div>
-                                <div class="info">
-                                    <h3>Desarrollador Web - Full Stack</h3>
-                                    <p>Digital House</p>
-                                    <ul>
-                                        <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
-                                        <li><i class="fas fa-briefcase"></i> Full Time</li>
-                                    </ul>
-                                </div>
+                    <a href="/detalle">
+                        <div class="item">
+                            <div class="img">
+                                <img src="/images/avatars/<%=anuncios[i].cmp_avatar %>" alt="">
                             </div>
-                        </a>
+                            <div class="info">
+                                <h3>Desarrollador Web - Full Stack</h3>
+                                <p>Digital House</p>
+                                <ul>
+                                    <li><i class="fas fa-map-marker-alt"></i> Capital Federal</li>
+                                    <li><i class="fas fa-briefcase"></i> Full Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </a>
                     <% } %>
-                    
+
                 </div>
             </div>
-       </div>
+        </div>
     </div>
     <footer>
         <%- include('../partials/footer'); -%>
     </footer>
-<!-- CÓDIGO -->
-<script>
+    <!-- CÓDIGO -->
+    <script>
         var skills = document.getElementById('skill_id');
-    var addButton = document.getElementById('adItem');
-    var areas = document.querySelector('.areas');
-    var form = document.querySelector(".formulario");
-    deleteSkill();
-    addButton.addEventListener('click', function(){
-        let checkHidden = document.querySelectorAll('.hiddenSkill');
-        let ass = 0;
-        for(let i = 0; i< checkHidden.length; i++)
-        {
-            if(checkHidden[i].value == skills.value)
-            {
-                ass = 1;
+        var addButton = document.getElementById('adItem');
+        var areas = document.querySelector('.areas');
+        var form = document.querySelector(".formulario");
+        deleteSkill();
+        addButton.addEventListener('click', function () {
+            let checkHidden = document.querySelectorAll('.hiddenSkill');
+            let ass = 0;
+            for (let i = 0; i < checkHidden.length; i++) {
+                if (checkHidden[i].value == skills.value) {
+                    ass = 1;
+                }
+            }
+            if (ass == 0) {
+
+                var div = document.createElement('DIV');
+                div.setAttribute('class', 'item');
+                div.setAttribute('id', skills.value);
+
+                var hiddenInput = document.createElement('INPUT');
+                hiddenInput.setAttribute('name', 'elskill');
+                hiddenInput.setAttribute('class', 'hiddenSkill');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.value = skills.value;
+                form.appendChild(hiddenInput);
+
+                var a = document.createElement('A')
+                a.setAttribute('id', 'deleteSkill');
+                a.innerHTML = "X";
+
+                var h2 = document.createElement('H2');
+                h2.setAttribute('id', skills.value);
+                h2.innerHTML = skills[skills.selectedIndex].innerHTML;
+
+                areas.appendChild(div);
+                div.appendChild(a);
+                div.appendChild(h2);
+
+                deleteSkill();
+
+            }
+        })
+
+        function deleteSkill() {
+            let hidInput = document.querySelectorAll('.hiddenSkill');
+            var del = document.querySelectorAll('#deleteSkill');
+            for (var i = 0; i < del.length; i++) {
+                del[i].addEventListener('click', function () {
+                    for (let n = 0; n < hidInput.length; n++) {
+                        if (hidInput[n].value == this.parentNode.children[1].getAttribute('id')) {
+                            hidInput[n].remove();
+                        }
+                    }
+                    this.parentNode.remove();
+
+                })
             }
         }
-        if(ass==0){
-
-            var div = document.createElement('DIV');
-            div.setAttribute('class','item');
-            div.setAttribute('id',skills.value);
-            
-            var hiddenInput = document.createElement('INPUT');
-            hiddenInput.setAttribute('name','elskill');
-            hiddenInput.setAttribute('class','hiddenSkill');
-            hiddenInput.setAttribute('type','hidden');
-            hiddenInput.value = skills.value;
-            form.appendChild(hiddenInput);
-
-            var a = document.createElement('A')
-            a.setAttribute('id','deleteSkill');
-            a.innerHTML = "X";
-
-            var h2 = document.createElement('H2');
-            h2.setAttribute('id',skills.value);
-            h2.innerHTML = skills[skills.selectedIndex].innerHTML;
-
-            areas.appendChild(div);
-            div.appendChild(a);
-            div.appendChild(h2);
-
-            deleteSkill();
-        
-        }
-    })
-    function deleteSkill()
-    {
-        let hidInput = document.querySelectorAll('.hiddenSkill');
-        var del = document.querySelectorAll('#deleteSkill');
-        for(var i = 0; i<del.length;i++){
-            del[i].addEventListener('click',function(){
-                for(let n = 0;n<hidInput.length;n++)
-                {
-                    if(hidInput[n].value == this.parentNode.children[1].getAttribute('id')){
-                        hidInput[n].remove();
-                    }
-                }
-                this.parentNode.remove();
-                
-            })
-        }
-    }
-</script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/js/empresa/ciudades.js"></script>
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/empresa/ciudades.js"></script>
 </body>
+
 </html>
