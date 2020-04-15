@@ -75,7 +75,7 @@
                         <ul>
                             <li><i class="fas fa-concierge-bell"></i> Nuevas solicitudes <span><%= postulaciones.filter(p => p.visto != 1 && anuncio.id == p.adv_id).length %></span></li>
                             <li><i class="fas fa-users"></i> Candidatos totales <span><%= postulaciones.filter(p => p.adv_id == anuncio.id).length %></span></li>
-                            <a href="anuncios/postulantes/<%=anuncio.id%>">Ver candidatos</a>
+                            <a href="postulantes/<%=anuncio.id%>">Ver candidatos</a>
                         </ul>
                         
                     </div>

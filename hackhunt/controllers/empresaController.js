@@ -296,8 +296,7 @@ const controller = {
 
     },
     modificarPublicacion: (req, res) => {
-        if(req.query.id == req.session.user.id)
-        {
+    
             let anuncios;
             db
                 .anuncios
@@ -308,18 +307,22 @@ const controller = {
                         .skills
                         .findAll()
                         .then(skills => {
-    
-                            res.render("empresa/modificarPublicacion", {
-                                publicacion: anuncios,
-                                skills: skills,
-                                title: "Express"
-                            })
+                            if(anuncios.cmp_id == req.session.user.id)
+                            {
+
+                                res.render("empresa/modificarPublicacion", {
+                                    publicacion: anuncios,
+                                    skills: skills,
+                                    title: "Express"
+                                })
+                            }
+                            else
+                            {
+                                return res.redirect('/empresa/perfil')
+                            }
                         })
                 })
-        }
-        else{
-            return res.redirect('/empresa/perfil')
-        }
+      
         
     },
     adv_modificarSkills: (req, res) => {},
@@ -483,13 +486,14 @@ const controller = {
         if(req.file)
         {
             req.body.avatar = req.file.filename;
-            db.clientes.update({cmp_avatar : req.body.avatar},
+            db.empresas.update({cmp_avatar : req.body.avatar},
                 {
                     where:{id : cmp_id}
                 })
                 .then(()=>
                 {
-                    return res.redirect('/empresa/perfil');
+                    console.log("el nombre del file: "+ req.body.avatar)
+                    return res.redirect('/empresa/perfil'); 
                 })
         }
         else
