@@ -1,8 +1,8 @@
 let divSkills = document.querySelector('.container');
 
-// insertar skills en el select ------------------------------
+// 1- insertar skills en el select ------------------------------
 let selectSkills = document.querySelector('#skill_id');
-
+console.log('insertar skills en el select')
 axios.get('/api/skills')
     .then(response => {
 
@@ -14,6 +14,7 @@ axios.get('/api/skills')
 
 // agregar skills al CV ---------------------------------------
 let buttonAdd = document.querySelector('#add');
+// 2- traer n° de cliente
 let cliente = selectSkills.getAttribute('data-user');
 
 // funcion para comprobar si el cliente ya tiene el skill
@@ -27,7 +28,7 @@ function checkSkill(skill, skills) {
     }
 }
 
-// traer e imprimir los skills del cliente 
+// 3- traer e imprimir los skills del cliente 
 function imprimirSkills(add) {
     console.log('---- imprimirSkills() -----');
     divSkills.style.cursor = 'auto';
@@ -36,11 +37,15 @@ function imprimirSkills(add) {
 
             let data = result.data.response.skill;
             let skillsWrapper = document.querySelector('.skills .areas');
+            /*
+            si la funcion recibe un parametro true, borramos todos los skills del box
+            antes de volver a agregarlos, de lo contrario se sumarian los ya existentes
+            */
             if (add) {
                 skillsWrapper.innerHTML = '';
             }
+            // agregamos los skills al box
             for (item of data) {
-
                 let elem = `
             <div class="item">
                 <span id="delete" data-id="${item.user_skill.skill_id}">X</span>
@@ -125,6 +130,6 @@ function traerBotonesDelay() {
     setTimeout(function () {
         console.log('setTimeOut activado');
         traerBotones()
-    }, 3000);
+    }, 1500);
 }
 traerBotonesDelay();

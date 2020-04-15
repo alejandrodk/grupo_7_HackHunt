@@ -394,6 +394,9 @@ body {
         overflow: hidden;
         transition: 0.5s all;
     }
+    .container-fluid.cuerpo .menu  dl.active dd{
+        height: auto !important;
+    }
     /* RESULTADOS */
     .container-fluid.cuerpo .anuncios a .item .img{
         width: 30%!important;
@@ -416,6 +419,9 @@ body {
     }
     .container-fluid.cuerpo .menu #filter-skills {
         height: 50px !important; 
+    }
+    .container-fluid.cuerpo .menu #filter-skills.active {
+        height: 150px !important; 
     }
 }
 

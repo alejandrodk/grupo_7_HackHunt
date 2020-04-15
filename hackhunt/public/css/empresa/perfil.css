@@ -31,7 +31,8 @@
 .container.cuerpo .info .perfil .avatar .item {
 	width: 100px;
 	height: 100px;
-	background: gray;
+    background: url(/images/avatars/company_avatar_default.jpg);
+    background-size: 100%;
 	border-radius: 50%;
 	overflow: hidden;
 	display: flex;
@@ -120,12 +121,12 @@
 }
 .container.cuerpo .funciones .anuncios .anuncio .item:hover{
     transform: scale(1.05);
-    background: var(--main-texto-blanco);
+    background: white;
     border: none;
     border-radius: 5px;
-    -webkit-box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.75);
-    box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.55);
+    box-shadow: -1px 4px 18px 0px rgba(0,0,0,0.55);
 }
 .container.cuerpo .funciones .anuncios .anuncio .item h3{
 	width: 50%;

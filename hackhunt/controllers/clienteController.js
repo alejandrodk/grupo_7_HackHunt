@@ -74,11 +74,10 @@ const controller = {
                     )
                     .then(result => {
 
-                        let noVistos = result[0].filter( adv => adv.visto != null);
-                        let vistos = result[0].filter( adv => adv.visto == 1);
+                        let noVistos = result[0].filter( adv => adv.visto === null);
 
                         let stats = {
-                            vistos : vistos.length,
+                            vistos : result[0].length - noVistos.length,
                             noVistos : noVistos.length,
                             totales : result[0].length
                         }
