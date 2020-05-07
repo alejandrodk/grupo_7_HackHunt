@@ -10,7 +10,7 @@
   "dependencies": {
     "acorn": "^7.1.1",
     "axios": "^0.19.2",
-    "bcrypt": "^3.0.7",
+    "bcrypt-nodejs": "0.0.3",
     "chart.js": "^2.9.3",
     "cookie-parser": "^1.4.4",
     "currently": "0.0.8",
