@@ -1,5 +1,5 @@
 const fs = require('fs');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 
 var loginFunctions = 
 {

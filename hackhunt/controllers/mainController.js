@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const { validationResult, body} = require('express-validator');
 const db = require('../database/models');
 const userCv = require('../helpers/user_cv.js');

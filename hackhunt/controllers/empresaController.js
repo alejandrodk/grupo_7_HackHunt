@@ -2,7 +2,7 @@
 const dbFunctions = require('../helpers/readjson.js');
 const db = require('../database/models');
 const sequelize = require('sequelize');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 
 const controller = {
     perfil: (req, res) => {
