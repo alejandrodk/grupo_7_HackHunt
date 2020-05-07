@@ -1,9 +1,9 @@
 module.exports = {
   "development": {
-    "username": "u730690020_hackhunt",
-    "password": "123456",
-    "database": "u730690020_hackhunt",
-    "host": "213.190.6.127",
+    "username": "dbhackhunt",
+    "password": "DBhackhunt2020!",
+    "database": "hackhunt",
+    "host": "localhost",
     "dialect": "mysql",
     
   },

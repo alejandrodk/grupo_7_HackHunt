@@ -10,24 +10,20 @@ const controller = {
 		let 
 			page = req.query.page != undefined ? req.query.page : 0;
 			busquedas = req.session.busquedas != undefined ? req.session.busquedas.filtros : [];
-			console.log("lo que tiene filtros cuando borro 1: " +req.session.busquedas.filtros)
+			//console.log("lo que tiene filtros cuando borro 1: " +req.session.busquedas.filtros)
 			user = req.session.user != undefined ? req.session.user.user_id : null;
-			
-			
-				console.log("se envian los datos a la funcion busqueda anuncios")
+				//console.log("se envian los datos a la funcion busqueda anuncios")
 				busquedaAnuncios(req) 
 				.then(anuncios => {
-					
-					
-					console.log("a la salida de la funcion, session: "+ req.session.busquedas.filtros)
+					//console.log("a la salida de la funcion, session: "+ req.session.busquedas.filtros)
 					if(req.session.type_user == 'cliente'){
-					console.log("se buscan los datos del usuario para el home")
+					//console.log("se buscan los datos del usuario para el home")
 						db.clientes.findByPk(req.session.user.user_id,
 							{
 								include:[{model:db.skills, as:'skill'}]
 							})
 							.then(cliente => {
-								console.log("se redirecciona al home siendo usuario")
+								//console.log("se redirecciona al home siendo usuario")
 								return res.render('main/index',{ 
 									busquedas,
 									anuncios,
@@ -37,7 +33,7 @@ const controller = {
 								})
 							})
 					} else{
-						console.log("se envian los datos al home sin ser usuario")
+						//console.log("se envian los datos al home sin ser usuario")
 						return res.render('main/index',{ 
 							busquedas,
 							anuncios,
