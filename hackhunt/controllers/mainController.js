@@ -105,7 +105,7 @@ const controller = {
 					res.locals.user = user;
 					req.session.type_user = 'cliente';
 					console.log('sesion creada con usuario: ' + req.session.user.user_name)
-					res.cookie('user_id', bcrypt.hashSync(user.user_id.toString(),10),{maxAge: 1000 * 60 * 30 });
+					res.cookie('user_id', bcrypt.hashSync(user.user_id.toString()),{maxAge: 1000 * 60 * 30 });
 					console.log('cookie creada');
 					res.cookie('type_user','cliente',{maxAge: 1000 * 60 * 30 });
 					
@@ -128,7 +128,7 @@ const controller = {
 
 		if(errors.isEmpty()){	
 
-			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd,10);
+			req.body.user_passwd = bcrypt.hashSync(req.body.user_passwd);
 			let user_avatar = req.file ? req.file.filename : 'user_avatar_default.jpg';
 			db.clientes.create({ ...req.body, user_avatar : user_avatar })
 			.then(usuario =>{
@@ -225,7 +225,7 @@ const controller = {
 					req.session.type_user = 'empresa';
 					req.session.user = empresa;
 					
-					res.cookie('user_id', bcrypt.hashSync(empresa.id.toString(),12),{maxAge: 1000 * 60 * 30 });
+					res.cookie('user_id', bcrypt.hashSync(empresa.id.toString()),{maxAge: 1000 * 60 * 30 });
 					res.cookie('type_user', "empresa",{maxAge: 1000 * 60 * 30 });
 			        return res.redirect('/empresa/perfil');
 					
@@ -254,7 +254,7 @@ const controller = {
 		 .then(resultado => {
 			 if(resultado == null)
 			 {
-				req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd,12);
+				req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd);
 				const user = db.empresas.create({...req.body,cmp_avatar:req.file.filename})
 				return user;
 			}
@@ -271,7 +271,7 @@ const controller = {
 					delete empresa.cmp_sector;
 			req.session.type_user = 'empresa';
 			req.session.user = empresa; 
-			res.cookie('user_id', bcrypt.hashSync(empresa.id.toString(),12),{maxAge: 1000 * 60 * 30 });
+			res.cookie('user_id', bcrypt.hashSync(empresa.id.toString()),{maxAge: 1000 * 60 * 30 });
 			return res.redirect('/empresa/perfil');
 		})
 		 .catch(error =>{

@@ -73,7 +73,7 @@ const controller = {
                     if (bcrypt.compareSync(req.body.cmp_user_oldPasswd, resultado.cmp_user_passwd)) {
 
                         if (req.body.cmp_user_passwd === req.body.cmp_user_repPasswd) {
-                            req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd, 12);
+                            req.body.cmp_user_passwd = bcrypt.hashSync(req.body.cmp_user_passwd);
                             resultado
                                 .update({cmp_user_passwd: req.body.cmp_user_passwd})
                                 .then(resu => res.render('empresa/config', {empresa: resu}))
