@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('favorito_user', {
+    return queryInterface.createTable('favoritos', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -34,6 +34,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-   return queryInterface.dropTable('favorito_user');
+   return queryInterface.dropTable('favoritos');
   }
 };

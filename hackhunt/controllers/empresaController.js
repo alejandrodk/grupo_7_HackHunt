@@ -300,7 +300,7 @@ const controller = {
             let anuncios;
             db
                 .anuncios
-                .findByPk(req.params.id, {include: ['adv_skills']})
+                .findByPk(req.params.id, {include: ['adv_skills']}) 
                 .then(resultado => {
                     anuncios = resultado;
                     db
@@ -348,9 +348,28 @@ const controller = {
     },
 
     borrarPublicacion: (req, res) => {
-        if(req.query.id == req.session.user.id)
-        {
-            db
+        db.anuncios.findByPk(req.params.id,{attributes:['cmp_id']})
+        .then(result =>
+            {
+               if(result && result.cmp_id == req.session.user.id)
+               {
+                db
+                .anuncios
+                .destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(() => {
+    
+                    return res.redirect("/empresa/perfil");
+                })
+               }
+               else{
+                return res.redirect("/empresa/perfil");
+               }
+            })
+           /* db
             .anuncios
             .destroy({
                 where: {
@@ -360,11 +379,8 @@ const controller = {
             .then(() => {
 
                 return res.redirect("/empresa/perfil");
-            })
-        }
-        else{
-            return res.redirect('/empresa/perfil');
-        }
+            })*/
+
         
     },
     postulantes: (req, res) => {
