@@ -1,5 +1,5 @@
 const db = require('../database/models');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
     actualizarCv : (form,info,id) => {

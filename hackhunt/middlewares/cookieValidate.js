@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const db = require('../database/models');
 
 const auth = ((req,res,next) => {

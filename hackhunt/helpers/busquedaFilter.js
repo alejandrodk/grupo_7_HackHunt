@@ -11,40 +11,16 @@ module.exports = (req) => {
     let where = {}
     let array_or = [];
     let orderBy = "";
-    console.log("los datos del session busqueda: "+req.session.busquedas.filtros)
-    if(req.query.search){  
+    //console.log("los datos del session busqueda: "+req.session.busquedas.filtros);
 
+    if(req.query.search){  
         let { search } = req.query;
         // guardamos el filtro actual en las busquedas en la session
         mainHelps.addFilter(req, search);
         // buscamos coincidencias en todos los campos del anuncio
-        
-
-    
-            
             let {filtros} = req.session.busquedas; 
-            
-            
-            filtros.forEach(oneFiltro =>
-                {
-                    array_or.push(
-                        {[Op.or]:[
-                        {adv_title: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
-                        {adv_description: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
-                        {adv_area: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
-                        {adv_position: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
-                        {adv_working_day: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
-                        {adv_advantage: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
-                        {adv_location: {[Op.like]: '%'+ oneFiltro.trim() +'%' }}
-                        ]})}
-                ) 
-        
-    }
-    if(!req.query.search && req.session.busquedas.filtros.length>0)
-    {
-        console.log("entre en el if de no tener search")
-        req.session.busquedas.filtros.forEach(oneFiltro =>
-            {
+
+            filtros.forEach(oneFiltro => {
                 array_or.push(
                     {[Op.or]:[
                     {adv_title: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
@@ -54,13 +30,25 @@ module.exports = (req) => {
                     {adv_working_day: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
                     {adv_advantage: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
                     {adv_location: {[Op.like]: '%'+ oneFiltro.trim() +'%' }}
-                    ]})}
-            )
-        /*where = 
-        {
-            [Op.and]:array_or
-                
-        }*/
+                    ]})
+                }
+            )  
+    }
+    if(!req.query.search && req.session.busquedas.filtros.length>0){
+        //console.log("entre en el if de no tener search")
+        req.session.busquedas.filtros.forEach(oneFiltro => {
+            array_or.push(
+                {[Op.or]:[
+                {adv_title: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                {adv_description: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                {adv_area: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                {adv_position: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                {adv_working_day: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                {adv_advantage: {[Op.like]: '%'+ oneFiltro.trim() +'%' }},
+                {adv_location: {[Op.like]: '%'+ oneFiltro.trim() +'%' }}
+                ]})
+            }
+        )
     }
 
     if(req.query.ubication)
@@ -70,8 +58,6 @@ module.exports = (req) => {
                 array_or.push({[Op.or]:{adv_location: {[Op.like]: '%'+ ubication.trim() +'%' }}})  
         }
     //esto es para agregar filtro de anuncios activos
-    //{adv_date_contract:{[Op.gte]:Sequelize.fn('NOW')}}
-
     if(req.query.order && req.query.order == "salary")
     {
         orderBy = [['adv_salary','DESC']] 
@@ -81,7 +67,7 @@ module.exports = (req) => {
         orderBy = [['adv_date_contract','DESC']];
     }
     
-    if(params.jornada /* && params.skill == undefined && params.experiencia == undefined */){
+    if(params.jornada){
        array_or.push( {
             [Op.or] : [
                 {adv_working_day : {[Op.like]: '%'+ params.jornada.replace('_','%') +'%' }},
@@ -133,26 +119,24 @@ module.exports = (req) => {
         }
     }
 
-    where = 
-    {
-        [Op.and]:array_or
-            
+    where = {
+        [Op.and]:array_or      
     }
     // retornar la consulta
     return db.anuncios.findAll({
-                
-                where : where,
-		    	offset : pagination.offset,  
-                limit : pagination.limit,
-                order: orderBy,
-		    	include:[{
-                    model: db.empresas, 
-                    as: 'empresas',
-                    attributes: ['cmp_name','cmp_avatar'],
-                    include: [{model:db.clientes,as:"cliente_favorito",
-                               attributes:['user_id']}]
-                   },
-                   {model:db.skills, as:'adv_skills'} ]
-		    })
+        
+        where : where,
+		offset : pagination.offset,  
+        limit : pagination.limit,
+        order: orderBy,
+		include:[{
+            model: db.empresas, 
+            as: 'empresas',
+            attributes: ['cmp_name','cmp_avatar'],
+            include: [{model:db.clientes,as:"cliente_favorito",
+                       attributes:['user_id']}]
+           },
+           {model:db.skills, as:'adv_skills'} ]
+	})
 
 }
