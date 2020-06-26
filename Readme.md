@@ -1,7 +1,7 @@
 # HackHunt
 Tu trabajo como desarrollador más cerca.
 
-[Web del proyecto](https://hackhunt.xyz/)
+[Web del proyecto](http://hackhunt.xyz/)
 ## Tablero del proyecto
 
 [Trello](https://trello.com/b/Gkna0BJn/proyecto-digital-house)
