@@ -11,7 +11,7 @@
     "acorn": "^7.1.1",
     "axios": "^0.21.1",
     "bcrypt-nodejs": "0.0.3",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "cookie-parser": "^1.4.4",
     "currently": "0.0.8",
     "debug": "~2.6.9",
